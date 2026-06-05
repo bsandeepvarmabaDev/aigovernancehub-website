@@ -57,6 +57,13 @@ body {
   margin: 0 auto 36px;
 }
 
+.platforms {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 35px;
+  font-weight: 600;
+}
+
 .primary-btn,
 .secondary-btn {
   display: inline-block;
