@@ -4,32 +4,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>AI Governance Hub | Enterprise AI Governance Platform</title>
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
   <header class="hero">
-
     <nav class="nav">
-
       <div class="logo">🛡️ AI Governance Hub</div>
 
       <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="#demo">Product Demo</a>
+        <a href="#demo">Live Preview</a>
         <a href="#jira">Jira</a>
         <a href="#frameworks">Frameworks</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#contact">Contact</a>
       </div>
-
     </nav>
 
     <div class="hero-content">
+      <p class="preview-badge">Interactive Product Preview</p>
 
       <h1>Enterprise AI Governance Platform</h1>
 
@@ -46,208 +42,145 @@
       </p>
 
       <div class="hero-buttons">
-        <a class="primary-btn" href="mailto:support@aigovernancehub.ai">Request Demo</a>
-        <a class="secondary-btn" href="#demo">View Product Demo</a>
+        <a class="primary-btn" href="#demo">Try Live Preview</a>
+        <a class="secondary-btn" href="mailto:support@aigovernancehub.ai">Request Demo</a>
       </div>
-
     </div>
-
   </header>
 
   <section class="section" id="features">
-
     <h2>Platform Capabilities</h2>
+    <p>
+      Selected capabilities below include clickable previews. Advanced integrations are roadmap features.
+    </p>
 
     <div class="grid">
-      <div class="card">AI Review Management</div>
-      <div class="card">Risk Classification & Heatmaps</div>
-      <div class="card">Model Registry</div>
-      <div class="card">AI Asset Inventory</div>
-      <div class="card">Vendor Governance</div>
-      <div class="card">Evidence Repository</div>
-      <div class="card">Policy Management</div>
-      <div class="card">SLA Monitoring</div>
-      <div class="card">Executive Reporting</div>
-      <div class="card">Audit Activity Tracking</div>
-      <div class="card">Governance Analytics</div>
-      <div class="card">Production Validation</div>
+      <div class="card clickable" onclick="openModal('AI Review Management', 'Manage AI intake, review assignments, approvals, audit status and review lifecycle from one governance queue.', 'Demo Preview')">AI Review Management</div>
+      <div class="card clickable" onclick="openModal('Risk Classification', 'Classify AI use cases as low, medium or high risk based on data sensitivity, customer impact and automation level.', 'Live Preview')">Risk Classification & Heatmaps</div>
+      <div class="card clickable" onclick="openModal('Model Registry', 'Maintain AI model details including owner, version, vendor, risk level, approval status and validation evidence.', 'Demo Preview')">Model Registry</div>
+      <div class="card clickable" onclick="openModal('AI Asset Inventory', 'Track enterprise AI systems, agents, copilots, owners, business units and lifecycle status.', 'Demo Preview')">AI Asset Inventory</div>
+      <div class="card clickable" onclick="openModal('Vendor Governance', 'Govern third-party AI vendors, contracts, risk status, approval evidence and compliance coverage.', 'Demo Preview')">Vendor Governance</div>
+      <div class="card clickable" onclick="openModal('Evidence Repository', 'Store privacy reviews, security reviews, testing reports, approvals and audit evidence.', 'Demo Preview')">Evidence Repository</div>
+      <div class="card clickable" onclick="openModal('Policy Management', 'Create and maintain AI usage policies, review rules, control requirements and governance standards.', 'Roadmap')">Policy Management</div>
+      <div class="card clickable" onclick="openModal('SLA Monitoring', 'Track overdue reviews, pending approvals, review aging and escalation status.', 'Demo Preview')">SLA Monitoring</div>
+      <div class="card clickable" onclick="openModal('Executive Reporting', 'Show AI risk posture, audit readiness, open reviews and framework coverage to leadership.', 'Demo Preview')">Executive Reporting</div>
+      <div class="card clickable" onclick="openModal('Audit Activity Tracking', 'Maintain review logs, decisions, approvers, evidence history and audit trails.', 'Demo Preview')">Audit Activity Tracking</div>
+      <div class="card clickable" onclick="openModal('Governance Analytics', 'Analyze risk trends, review bottlenecks, framework gaps and governance KPIs.', 'Demo Preview')">Governance Analytics</div>
+      <div class="card clickable" onclick="openModal('Production Validation', 'Validate AI systems before production release using risk controls and approval evidence.', 'Roadmap')">Production Validation</div>
     </div>
-
   </section>
 
   <section class="section dark" id="demo">
-
-    <h2>20 Product Demo Features</h2>
+    <h2>Live Product Preview</h2>
 
     <p>
-      A portfolio-ready product showcase for enterprise AI governance, risk, compliance and Jira-based delivery workflows.
+      This section gives visitors a real glimpse of how AI Governance Hub can work.
     </p>
 
     <div class="metrics-grid">
-      <div class="metric-card">
-        <h3>42</h3>
-        <p>AI Assets</p>
-      </div>
-
-      <div class="metric-card">
-        <h3>12</h3>
-        <p>Open Reviews</p>
-      </div>
-
-      <div class="metric-card">
-        <h3>5</h3>
-        <p>High Risk Systems</p>
-      </div>
-
-      <div class="metric-card">
-        <h3>94%</h3>
-        <p>Audit Ready</p>
-      </div>
+      <div class="metric-card"><h3>42</h3><p>AI Assets</p></div>
+      <div class="metric-card"><h3>12</h3><p>Open Reviews</p></div>
+      <div class="metric-card"><h3>5</h3><p>High Risk Systems</p></div>
+      <div class="metric-card"><h3>94%</h3><p>Audit Ready</p></div>
     </div>
 
     <div class="feature-grid">
 
-      <div class="feature-card">
-        <h3>1. Governance Dashboard</h3>
-        <p>Central dashboard for AI assets, risk levels, reviews, approvals and audit readiness.</p>
+      <div class="feature-card live-card">
+        <span class="status live">Live Demo</span>
+        <h3>Risk Assessment Wizard</h3>
+
+        <label><input type="checkbox" id="personalData"> Uses personal data</label>
+        <label><input type="checkbox" id="customerFacing"> Customer facing AI</label>
+        <label><input type="checkbox" id="autoDecision"> Makes automated decisions</label>
+
+        <button class="small-btn" onclick="calculateRisk()">Run Assessment</button>
+
+        <div id="riskResult" class="result-box">
+          Select options and run assessment.
+        </div>
+
+        <div id="reviewResult" class="review-box">
+          Required reviews will appear here.
+        </div>
       </div>
 
-      <div class="feature-card">
-        <h3>2. Risk Assessment Wizard</h3>
-        <p>Select answers below to calculate sample AI risk.</p>
-
-        <label><input type="checkbox" id="personalData"> Uses Personal Data</label>
-        <label><input type="checkbox" id="customerFacing"> Customer Facing</label>
-        <label><input type="checkbox" id="autoDecision"> Makes Automated Decisions</label>
-
-        <button class="small-btn" onclick="calculateRisk()">Calculate Risk</button>
-
-        <p id="riskResult" class="result-box">Risk Level: Not Calculated</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>3. AI Inventory</h3>
-        <p>Track AI applications, copilots, agents, owners, business units and status.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>4. Model Registry</h3>
-        <p>Maintain model name, version, owner, vendor, risk level and validation status.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>5. Governance Workflow</h3>
-        <p>AI Intake → Risk Assessment → Review Board → Approval → Production → Monitoring</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>6. Governance Copilot</h3>
+      <div class="feature-card clickable" onclick="openModal('Governance Copilot', 'Sample question: Can I deploy this AI chatbot? Sample answer: Security Review, Privacy Review and Responsible AI Review are required before production release.', 'Demo Preview')">
+        <span class="status preview">Demo Preview</span>
+        <h3>Governance Copilot</h3>
         <p><strong>User:</strong> Can I deploy this AI chatbot?</p>
         <p><strong>Copilot:</strong> Security, Privacy and Responsible AI reviews are required.</p>
       </div>
 
-      <div class="feature-card">
-        <h3>7. AI Policy Generator</h3>
-        <p>Generate draft AI usage policies, controls and governance guidelines.</p>
-        <button class="small-btn">Generate Policy</button>
+      <div class="feature-card clickable" onclick="openModal('AI Policy Generator', 'Generates draft AI usage policies, governance controls, risk rules and approval guidance based on the AI use case.', 'Roadmap')">
+        <span class="status roadmap">Roadmap</span>
+        <h3>AI Policy Generator</h3>
+        <p>Generate AI usage policies and governance controls.</p>
       </div>
 
-      <div class="feature-card">
-        <h3>8. Control Mapping Assistant</h3>
-        <p>Map AI systems to EU AI Act, NIST AI RMF, ISO 42001 and GDPR controls.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>9. Compliance Mapping</h3>
-        <p>View framework coverage and identify compliance gaps.</p>
-        <div class="progress-bar"><div class="progress-fill">95%</div></div>
-      </div>
-
-      <div class="feature-card">
-        <h3>10. Vendor Governance</h3>
-        <p>Track third-party AI vendors, approvals, contracts and risk status.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>11. Evidence Repository</h3>
-        <p>Store review documents, approvals, validation reports and audit evidence.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>12. SLA Monitoring</h3>
-        <p>Monitor overdue reviews, aging approvals and governance escalations.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>13. Executive Reporting</h3>
-        <p>Provide leadership views for AI risk, compliance and governance KPIs.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>14. Audit Readiness Score</h3>
-        <p>Calculate readiness based on mapped controls and available evidence.</p>
-        <div class="progress-bar"><div class="progress-fill">94%</div></div>
-      </div>
-
-      <div class="feature-card">
-        <h3>15. Product Roadmap</h3>
-        <p>Version 1.1: Website Demo</p>
-        <p>Version 1.2: Copilot + Wizard</p>
-        <p>Version 2.0: Real AI Agent</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>16. AI Review Queue</h3>
-        <p>Prioritize reviews by risk, SLA, business impact and pending approvals.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>17. Framework Coverage Dashboard</h3>
+      <div class="feature-card clickable" onclick="openModal('Compliance Mapping Assistant', 'Maps AI systems to EU AI Act, NIST AI RMF, ISO 42001, GDPR and internal governance controls.', 'Demo Preview')">
+        <span class="status preview">Demo Preview</span>
+        <h3>Compliance Mapping</h3>
         <p>EU AI Act: 95%</p>
         <p>NIST AI RMF: 100%</p>
         <p>ISO 42001: 92%</p>
       </div>
 
-      <div class="feature-card">
-        <h3>18. Production Validation</h3>
-        <p>Validate AI systems before production release using governance controls.</p>
+      <div class="feature-card clickable" onclick="openModal('Evidence Repository', 'Central place to store review documents, security assessments, privacy reviews, test reports and approval evidence.', 'Demo Preview')">
+        <span class="status preview">Demo Preview</span>
+        <h3>Evidence Repository</h3>
+        <p>✓ Security Assessment</p>
+        <p>✓ Privacy Review</p>
+        <p>✓ Approval Memo</p>
+        <p>✓ Audit Evidence</p>
       </div>
 
-      <div class="feature-card">
-        <h3>19. AI Agent Governance</h3>
-        <p>Govern autonomous agents, tools, prompts, actions, approvals and monitoring.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>20. Enterprise Integrations</h3>
-        <p>Connect Jira, Confluence, ServiceNow, Azure DevOps, Slack and Teams.</p>
+      <div class="feature-card clickable" onclick="openModal('Executive Reporting', 'Provides leadership with AI risk posture, audit readiness score, open review count and framework coverage.', 'Demo Preview')">
+        <span class="status preview">Demo Preview</span>
+        <h3>Executive Reporting</h3>
+        <p>Audit Readiness</p>
+        <div class="progress-bar"><div class="progress-fill">94%</div></div>
       </div>
 
     </div>
-
   </section>
 
   <section class="section" id="jira">
-
-    <h2>Jira Integration</h2>
+    <h2>Jira Integration Preview</h2>
 
     <p>
-      AI Governance Hub is planned to integrate with Jira so teams can manage AI governance reviews directly inside agile delivery workflows.
+      AI Governance Hub is planned to integrate with Jira so teams can manage AI governance reviews directly inside agile workflows.
     </p>
 
-    <div class="grid">
+    <div class="workflow">
+      <div>AI Intake Ticket</div>
+      <span>↓</span>
+      <div>Risk Review</div>
+      <span>↓</span>
+      <div>Security Review</div>
+      <span>↓</span>
+      <div>Privacy Review</div>
+      <span>↓</span>
+      <div>Approval</div>
+      <span>↓</span>
+      <div>Production Monitoring</div>
+    </div>
+
+    <button class="primary-blue-btn" onclick="openModal('Jira Governance Workflow', 'A Jira issue can trigger AI risk assessment, route high-risk use cases to security/privacy/responsible AI reviewers, track SLA status, attach evidence and show governance status in dashboards.', 'Planned Integration')">
+      View Jira Governance Flow
+    </button>
+
+    <div class="grid jira-grid">
       <div class="card">Create AI Governance Review Tickets</div>
       <div class="card">Link AI Systems to Jira Epics</div>
       <div class="card">Trigger Risk Assessment from Jira</div>
-      <div class="card">Route High-Risk AI Use Cases for Approval</div>
-      <div class="card">Track SLA, Evidence and Audit Status</div>
-      <div class="card">Show Governance Status in Jira Dashboards</div>
+      <div class="card">Route High-Risk AI Use Cases</div>
+      <div class="card">Track SLA and Evidence</div>
+      <div class="card">Show Jira Dashboard Status</div>
     </div>
-
   </section>
 
   <section class="section dark" id="frameworks">
-
     <h2>Governance Framework Mapping</h2>
 
     <p>
@@ -264,11 +197,9 @@
       <span>SOC 2</span>
       <span>PCI DSS</span>
     </div>
-
   </section>
 
   <section class="section" id="screenshots">
-
     <h2>Platform Screenshots</h2>
 
     <p>
@@ -276,7 +207,6 @@
     </p>
 
     <div class="screenshots-grid">
-
       <div class="screenshot-card">
         <img src="images/dashboard.png.png" alt="AI Governance Dashboard">
         <h3>AI Governance Dashboard</h3>
@@ -316,15 +246,11 @@
         <img src="images/validation-reporting.png.png" alt="Production Validation & Reporting">
         <h3>Production Validation & Reporting</h3>
       </div>
-
     </div>
-
   </section>
 
   <section class="section" id="contact">
-
     <h2>Contact</h2>
-
     <p>For demos, feedback, partnerships, or early access:</p>
 
     <p>
@@ -332,7 +258,6 @@
         support@aigovernancehub.ai
       </a>
     </p>
-
   </section>
 
   <footer>
@@ -340,33 +265,56 @@
     <p>© 2026 AI Governance Hub. All rights reserved.</p>
   </footer>
 
+  <div id="featureModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <span id="modalStatus" class="status preview">Demo Preview</span>
+      <h2 id="modalTitle">Feature Title</h2>
+      <p id="modalText">Feature details will appear here.</p>
+    </div>
+  </div>
+
   <script>
     function calculateRisk() {
       let score = 0;
 
-      if (document.getElementById("personalData").checked) {
-        score++;
-      }
+      if (document.getElementById("personalData").checked) score++;
+      if (document.getElementById("customerFacing").checked) score++;
+      if (document.getElementById("autoDecision").checked) score++;
 
-      if (document.getElementById("customerFacing").checked) {
-        score++;
-      }
-
-      if (document.getElementById("autoDecision").checked) {
-        score++;
-      }
-
-      const result = document.getElementById("riskResult");
+      const riskResult = document.getElementById("riskResult");
+      const reviewResult = document.getElementById("reviewResult");
 
       if (score === 0) {
-        result.innerText = "Risk Level: Low";
-        result.className = "result-box low-risk";
+        riskResult.innerText = "Risk Level: Low";
+        riskResult.className = "result-box low-risk";
+        reviewResult.innerHTML = "Required Reviews:<br>✓ Product Owner Review";
       } else if (score === 1 || score === 2) {
-        result.innerText = "Risk Level: Medium";
-        result.className = "result-box medium-risk";
+        riskResult.innerText = "Risk Level: Medium";
+        riskResult.className = "result-box medium-risk";
+        reviewResult.innerHTML = "Required Reviews:<br>✓ Security Review<br>✓ Privacy Review";
       } else {
-        result.innerText = "Risk Level: High";
-        result.className = "result-box high-risk";
+        riskResult.innerText = "Risk Level: High";
+        riskResult.className = "result-box high-risk";
+        reviewResult.innerHTML = "Required Reviews:<br>✓ Security Review<br>✓ Privacy Review<br>✓ Responsible AI Review<br>✓ Legal Review";
+      }
+    }
+
+    function openModal(title, text, status) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalText").innerText = text;
+      document.getElementById("modalStatus").innerText = status;
+      document.getElementById("featureModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("featureModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("featureModal");
+      if (event.target === modal) {
+        closeModal();
       }
     }
   </script>
