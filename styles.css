@@ -233,7 +233,8 @@ body {
   color: #334155;
 }
 
-.feature-card label {
+.feature-card label,
+.jira-demo-card label {
   display: block;
   margin: 10px 0;
   font-size: 15px;
@@ -268,7 +269,8 @@ body {
 }
 
 .result-box,
-.review-box {
+.review-box,
+.jira-ticket-output {
   background: #f8fafc;
   color: #0f172a;
   padding: 12px;
@@ -307,6 +309,30 @@ body {
   text-align: center;
   padding: 8px;
   font-weight: 700;
+}
+
+.jira-demo-card {
+  max-width: 720px;
+  margin: 35px auto;
+  background: #f8fafc;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.10);
+}
+
+.jira-demo-card h3 {
+  margin: 15px 0;
+  color: #0f172a;
+}
+
+.jira-demo-card input,
+.jira-demo-card select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
 }
 
 .workflow {
