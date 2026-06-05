@@ -1,129 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Governance Hub for Jira</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-<body>
-  <header class="hero">
-    <nav class="nav">
-      <div class="logo">🛡️ AI Governance Hub</div>
-      <a href="#features">Features</a>
-      <a href="#frameworks">Frameworks</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#contact">Contact</a>
-    </nav>
+body{
+  font-family:Arial, sans-serif;
+  line-height:1.6;
+  color:#333;
+}
 
-    <div class="hero-content">
-      <h1>Enterprise AI Governance for Jira</h1>
-      <p>
-        Manage AI reviews, risk assessments, compliance workflows, model registry,
-        vendor governance, SLA monitoring, and audit-ready reporting directly inside Jira.
-      </p>
-      <div class="hero-buttons">
-        <a class="primary-btn" href="mailto:support@aigovernancehub.ai">Request Demo</a>
-        <a class="secondary-btn" href="#features">View Features</a>
-      </div>
-    </div>
-  </header>
+.hero{
+  background:linear-gradient(135deg,#0f172a,#2563eb);
+  color:white;
+  padding:80px 20px;
+}
 
-  <section class="section" id="features">
-    <h2>Platform Capabilities</h2>
-    <div class="grid">
-      <div class="card">AI Review Management</div>
-      <div class="card">Risk Classification & Heatmaps</div>
-      <div class="card">Model Registry</div>
-      <div class="card">AI Asset Inventory</div>
-      <div class="card">Vendor Governance</div>
-      <div class="card">Evidence Repository</div>
-      <div class="card">SLA Monitoring</div>
-      <div class="card">Executive Reporting</div>
-      <div class="card">Audit Activity Tracking</div>
-    </div>
-  </section>
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1200px;
+  margin:auto;
+  margin-bottom:60px;
+}
 
-  <section class="section dark" id="frameworks">
-    <h2>Governance Framework Mapping</h2>
-    <p>
-      Designed to support governance alignment and framework mapping across enterprise AI initiatives.
-    </p>
-    <div class="badges">
-      <span>EU AI Act</span>
-      <span>NIST AI RMF</span>
-      <span>ISO 42001</span>
-      <span>ISO 27001</span>
-      <span>GDPR</span>
-      <span>HIPAA</span>
-      <span>SOC 2</span>
-      <span>PCI DSS</span>
-    </div>
-  </section>
+.nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+}
 
-  <section class="section" id="screenshots">
-    <h2>Built for Jira Teams</h2>
-    <p>
-      AI Governance Hub brings governance workflows, review queues, risk dashboards,
-      evidence tracking, and reporting into the Jira experience.
-    </p>
-    <div class="screenshot-placeholder">
-      <div class="screenshots-grid">
-  <div class="screenshot-card">
-    <img src="images/dashboard.png.png" alt="AI Governance Dashboard">
-    <h3>AI Governance Dashboard</h3>
-  </div>
+.hero-content{
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
+}
 
-  <div class="screenshot-card">
-    <img src="images/Review-workflow.png.png" alt="Review Queue Workflow">
-    <h3>Review Queue Workflow</h3>
-  </div>
+.hero h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
 
-  <div class="screenshot-card">
-    <img src="images/risk-assessment.png.png" alt="AI Risk Assessment">
-    <h3>AI Risk Assessment</h3>
-  </div>
+.hero p{
+  font-size:20px;
+  margin-bottom:30px;
+}
 
-  <div class="screenshot-card">
-    <img src="images/model-registry.png.png" alt="Model Registry">
-    <h3>Model Registry</h3>
-  </div>
+.primary-btn,
+.secondary-btn{
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:8px;
+  text-decoration:none;
+  margin:10px;
+}
 
-  <div class="screenshot-card">
-    <img src="images/evidence-repository.png.png" alt="Evidence Repository">
-    <h3>Evidence Repository</h3>
-  </div>
+.primary-btn{
+  background:white;
+  color:#2563eb;
+}
 
-  <div class="screenshot-card">
-    <img src="images/vendor-governance.png.png" alt="Vendor Governance">
-    <h3>Vendor Governance</h3>
-  </div>
+.secondary-btn{
+  border:1px solid white;
+  color:white;
+}
 
-  <div class="screenshot-card">
-    <img src="images/analytics.png.png" alt="Governance Analytics">
-    <h3>Governance Analytics</h3>
-  </div>
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
 
-  <div class="screenshot-card">
-    <img src="images/validation-reporting.png.png" alt="Validation Reporting">
-    <h3>Validation Reporting</h3>
-  </div>
-</div>
-    </div>
-  </section>
+.section h2{
+  text-align:center;
+  margin-bottom:40px;
+}
 
-  <section class="section" id="contact">
-    <h2>Contact</h2>
-    <p>
-      For demos, feedback, or early access, contact:
-    </p>
-    <a class="email" href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a>
-  </section>
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-  <footer>
-    <p>AI Governance Hub™ — Enterprise AI Governance for Jira</p>
-    <p>© 2026 AI Governance Hub. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+.card{
+  background:#f8fafc;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.dark{
+  background:#0f172a;
+  color:white;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:25px;
+}
+
+.badges span{
+  background:#2563eb;
+  padding:10px 15px;
+  border-radius:20px;
+}
+
+.screenshot-placeholder{
+  border:2px dashed #cbd5e1;
+  padding:80px;
+  text-align:center;
+  margin-top:20px;
+}
+
+.email{
+  color:#2563eb;
+  text-decoration:none;
+  font-size:18px;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  background:#f8fafc;
+}
+
+/* Screenshot Gallery */
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.screenshot-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.screenshot-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+.screenshot-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.screenshot-card h3 {
+  padding: 18px;
+  text-align: center;
+  font-size: 18px;
+  color: #0f172a;
+}
