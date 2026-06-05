@@ -45,6 +45,17 @@ body {
   text-align: center;
 }
 
+.preview-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700;
+}
+
 .hero h1 {
   font-size: 64px;
   line-height: 1.1;
@@ -66,7 +77,8 @@ body {
 
 .primary-btn,
 .secondary-btn,
-.small-btn {
+.small-btn,
+.primary-blue-btn {
   display: inline-block;
   padding: 14px 28px;
   border-radius: 8px;
@@ -87,11 +99,10 @@ body {
   color: white;
 }
 
-.small-btn {
+.small-btn,
+.primary-blue-btn {
   background: #2563eb;
   color: white;
-  font-size: 14px;
-  margin-left: 0;
 }
 
 .section {
@@ -129,6 +140,16 @@ body {
   font-weight: 600;
 }
 
+.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+}
+
 .dark {
   background: #0f172a;
   color: white;
@@ -154,47 +175,6 @@ body {
   padding: 10px 16px;
   border-radius: 22px;
   font-weight: 700;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.feature-card {
-  background: #ffffff;
-  color: #1e293b;
-  padding: 24px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-  transition: all 0.3s ease;
-  text-align: left;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-.feature-card h3 {
-  color: #0f172a;
-  margin-bottom: 12px;
-  font-size: 20px;
-}
-
-.feature-card p {
-  text-align: left;
-  font-size: 15px;
-  margin-bottom: 10px;
-  color: #334155;
-}
-
-.feature-card label {
-  display: block;
-  margin: 10px 0;
-  font-size: 15px;
-  color: #334155;
 }
 
 .metrics-grid {
@@ -223,7 +203,72 @@ body {
   color: #334155;
 }
 
-.result-box {
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: #ffffff;
+  color: #1e293b;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.feature-card h3 {
+  color: #0f172a;
+  margin: 12px 0;
+  font-size: 20px;
+}
+
+.feature-card p {
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #334155;
+}
+
+.feature-card label {
+  display: block;
+  margin: 10px 0;
+  font-size: 15px;
+  color: #334155;
+}
+
+.live-card {
+  border: 2px solid #22c55e;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.live {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.preview {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.roadmap {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.result-box,
+.review-box {
   background: #f8fafc;
   color: #0f172a;
   padding: 12px;
@@ -262,6 +307,31 @@ body {
   text-align: center;
   padding: 8px;
   font-weight: 700;
+}
+
+.workflow {
+  max-width: 520px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.workflow div {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  font-weight: 700;
+}
+
+.workflow span {
+  display: block;
+  font-size: 26px;
+  color: #2563eb;
+  margin: 8px;
+}
+
+.jira-grid {
+  margin-top: 35px;
 }
 
 .screenshots-grid {
@@ -313,6 +383,47 @@ footer {
   color: #334155;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  max-width: 620px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.3);
+}
+
+.modal-content h2 {
+  margin: 18px 0 12px;
+  color: #0f172a;
+}
+
+.modal-content p {
+  text-align: left;
+  font-size: 17px;
+  color: #334155;
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #334155;
+}
+
 @media (max-width: 900px) {
   .hero {
     padding: 80px 20px 100px;
@@ -333,9 +444,8 @@ footer {
   }
 
   .nav-links a {
-    margin: 0 10px;
+    margin: 0 10px 10px;
     display: inline-block;
-    margin-bottom: 10px;
   }
 
   .screenshots-grid {
