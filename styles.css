@@ -1,4 +1,3 @@
-```css
 * {
   margin: 0;
   padding: 0;
@@ -9,53 +8,63 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
+  background: #ffffff;
 }
 
 .hero {
   background: linear-gradient(135deg, #0f172a, #2563eb);
   color: white;
-  padding: 80px 20px;
+  padding: 120px 20px 140px;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  margin-bottom: 60px;
+  max-width: 1400px;
+  width: 95%;
+  margin: 0 auto 70px;
   flex-wrap: wrap;
 }
 
-.nav a {
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nav-links a {
   color: white;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 24px;
+  font-weight: 600;
 }
 
 .hero-content {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 24px;
 }
 
 .hero p {
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 24px;
+  max-width: 950px;
+  margin: 0 auto 36px;
 }
 
 .primary-btn,
 .secondary-btn {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: 8px;
   text-decoration: none;
   margin: 10px;
+  font-weight: 700;
 }
 
 .primary-btn {
@@ -69,87 +78,85 @@ body {
 }
 
 .section {
-  max-width: 1200px;
+  max-width: 1400px;
+  width: 95%;
   margin: auto;
-  padding: 80px 20px;
+  padding: 90px 20px;
 }
 
 .section h2 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  font-size: 36px;
+  color: #0f172a;
 }
 
 .section p {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+  font-size: 18px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
 }
 
 .card {
   background: #f8fafc;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 32px;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  font-weight: 600;
 }
 
 .dark {
   background: #0f172a;
   color: white;
-  border-radius: 12px;
+  border-radius: 16px;
+  max-width: 1100px;
+}
+
+.dark h2,
+.dark p {
+  color: white;
 }
 
 .badges {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 14px;
   margin-top: 25px;
 }
 
 .badges span {
   background: #2563eb;
-  padding: 10px 15px;
-  border-radius: 20px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  font-weight: 700;
 }
-
-.email {
-  color: #2563eb;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-footer {
-  text-align: center;
-  padding: 40px;
-  background: #f8fafc;
-}
-
-/* Screenshot Gallery */
 
 .screenshots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  gap: 35px;
-  margin-top: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 34px;
+  margin-top: 50px;
 }
 
 .screenshot-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
   transition: all 0.3s ease;
 }
 
 .screenshot-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
 }
 
 .screenshot-card img {
@@ -161,17 +168,33 @@ footer {
 }
 
 .screenshot-card h3 {
-  padding: 18px;
+  padding: 20px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   color: #0f172a;
 }
 
-/* Responsive */
+.email {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
 
-@media (max-width: 768px) {
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  background: #f8fafc;
+  color: #334155;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 80px 20px 100px;
+  }
+
   .hero h1 {
-    font-size: 34px;
+    font-size: 38px;
   }
 
   .hero p {
@@ -180,11 +203,19 @@ footer {
 
   .nav {
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .nav-links a {
+    margin: 0 10px;
   }
 
   .screenshots-grid {
     grid-template-columns: 1fr;
   }
+
+  .section h2 {
+    font-size: 30px;
+  }
 }
-```
