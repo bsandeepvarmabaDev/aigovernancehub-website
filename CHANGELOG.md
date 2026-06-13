@@ -1,32 +1,31 @@
 # CHANGELOG
 
-## 2026.06.12-platform-vision-v1
+## 2026.06.13-enterprise-platform-v2
 
 ### Added
-- P0 to P10 website roadmap sections.
-- Platform Vision section.
-- AI Governance Challenges section.
-- Deployment Options section.
-- Industries section.
-- AI Governance Agent coming-soon section.
-- Product Roadmap section.
+- P13 Customer Outcomes section.
+- P14 Why AI Governance Hub comparison table.
+- P15 Enterprise Ready Foundation section.
+- P16 Marketplace CTA placeholder.
+- Lead capture fields for AI Governance Assessment.
+- Locked premium report preview sections.
+- Introductory pricing banner.
+- Pricing tiers: ₹99, ₹299, ₹999.
 
 ### Changed
-- Hero title changed to “AI Governance Hub”.
-- Positioning changed to “Enterprise AI Governance Platform”.
-- Jira Cloud repositioned as current deployment channel instead of product identity.
-- Footer updated to platform-first positioning.
+- Assessment CTA changed from free-first wording to high-level preview and paid detailed review flow.
+- Pricing changed from ₹0 / ₹99 / Custom to ₹99 / ₹299 / ₹999.
+- Assessment output now shows only high-level summary and locks detailed content.
 - Version comments updated in HTML/CSS files.
 
 ### Preserved
-- Privacy Policy page.
-- Terms of Use page.
-- Security Policy page.
+- Existing platform vision sections.
 - Existing demo JavaScript functionality.
 - Existing screenshot gallery image paths.
-- Original files in /original_versions/.
+- Privacy Policy, Terms of Use, and Security Policy pages.
 
 ### Not changed
 - Forge app code.
 - Marketplace app version.
 - Marketplace submission.
+- Razorpay live payment links.
