@@ -1,9 +1,9 @@
 # AI Governance Hub Website
 
-Version: 2026.06.13-enterprise-platform-v2
+Version: 2026.06.14-security-hardening-v1
 
 ## Purpose
-This release completes the Phase 1/2 website monetization polish while keeping the Jira Marketplace app separate and unchanged.
+Security hardening and launch polish for the public AI Governance Hub website.
 
 ## Included files
 - index.html
@@ -11,21 +11,17 @@ This release completes the Phase 1/2 website monetization polish while keeping t
 - privacy.html
 - terms.html
 - security-policy.html
-- images/
 - original_versions/
 
-## Added in this version
-- Lead capture fields: name, email, company.
-- High-level AI governance assessment preview.
-- Locked premium report sections.
-- Introductory launch pricing: ₹99, ₹299, ₹999.
-- Customer Outcomes section.
-- Why AI Governance Hub comparison table.
-- Enterprise Ready Foundation section.
-- Marketplace CTA placeholder.
+## Key updates
+- Fixed DOM XSS risk in the AI Governance Assessment output by escaping user-supplied values.
+- Fixed HTML injection risk in the Jira ticket preview by escaping user-supplied values.
+- Added basic CSP meta tag suitable for the current static GitHub Pages site.
+- Added sales/support/security contact blocks.
+- Updated pricing to ₹99 / ₹299 / ₹999 introductory launch packages.
+- Added locked premium insight sections.
+- Removed customer-visible P0/P1/P11 style internal labels from headings.
+- Added customer outcomes, comparison table and enterprise readiness sections.
 
-## Payment status
-Razorpay links are not hardcoded yet. Pricing buttons currently use email fallback. Replace them with Razorpay payment links after payment links are created and tested.
-
-## Marketplace note
-No Forge app code is included or modified. Marketplace app version 4.1.0 remains separate and under review.
+## Deployment note
+Upload these files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
