@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.13-enterprise-platform-v2 -->
+  <!-- AI Governance Hub Website Version: 2026.06.14-security-hardening-v1
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
   <meta name="description" content="AI Governance Hub is an enterprise AI governance platform for AI reviews, risk assessments, vendor governance, audit readiness and compliance reporting. Available today on Jira Cloud." />
   <title>AI Governance Hub | Enterprise AI Governance Platform</title>
   <link rel="stylesheet" href="styles.css" />
@@ -48,13 +49,13 @@
 
     <div class="hero-buttons">
       <a class="primary-btn" href="#assessment">Run AI Governance Assessment</a>
-      <a class="secondary-btn" href="mailto:support@aigovernancehub.ai">Request Demo</a>
+      <a class="secondary-btn" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Hub Demo Request">Request Demo</a>
     </div>
   </div>
 </header>
 
 <section class="section" id="platform">
-  <h2>P0 — Platform Vision</h2>
+  <h2>Platform Vision</h2>
   <p>
     Companies are adopting AI faster than they can govern it. AI Governance Hub gives organizations a single source of truth for AI reviews, AI risk, vendor governance, policy evidence, audit readiness, and compliance reporting.
   </p>
@@ -71,7 +72,7 @@
 </section>
 
 <section class="section dark">
-  <h2>P1 — Core Governance Challenges</h2>
+  <h2>Core Governance Challenges</h2>
   <p>AI Governance Hub is designed around the real problems organizations face when AI adoption grows faster than oversight.</p>
   <div class="grid dark-grid">
     <div class="card">Shadow AI</div>
@@ -86,7 +87,7 @@
 </section>
 
 <section class="section" id="features">
-  <h2>P2 — Platform Capabilities</h2>
+  <h2>Platform Capabilities</h2>
   <p>Operationalize AI governance with workflows, reviews, risk scoring, evidence, reporting, and controls.</p>
   <div class="grid">
     <div class="card clickable" onclick="openModal('AI Review Management', 'Manage AI intake, review assignments, approvals, audit status and review lifecycle from one governance queue.', 'Demo Preview')">AI Review Management</div>
@@ -105,7 +106,7 @@
 </section>
 
 <section class="section" id="deployment">
-  <h2>P3 — Deployment Options</h2>
+  <h2>Deployment Options</h2>
   <p>AI Governance Hub is a platform vision. Jira Cloud is the first deployment channel, with additional enterprise platform integrations planned.</p>
   <div class="deployment-grid">
     <div class="deployment-card available"><span>Available Today</span><h3>Jira Cloud</h3><p>AI governance reviews, risk assessment, audit evidence, reporting and workflow controls inside Jira Cloud.</p></div>
@@ -119,8 +120,8 @@
 </section>
 
 <section class="section dark" id="demo">
-  <h2>P4 — Live Product Preview</h2>
-  <p>This section gives visitors a real glimpse of how AI Governance Hub can work.</p>
+  <h2>Live Product Preview</h2>
+  <p>This section gives visitors a real glimpse of how AI Governance Hub can work. <strong>All metrics shown here are sample demo data.</strong></p>
   <div class="metrics-grid">
     <div class="metric-card"><h3>42</h3><p>AI Assets</p></div>
     <div class="metric-card"><h3>12</h3><p>Open Reviews</p></div>
@@ -169,28 +170,28 @@
 
 
 <section class="section" id="assessment">
-  <h2>P11 — AI Governance Assessment</h2>
+  <h2>AI Governance Assessment</h2>
   <p>
-    Get an instant high-level AI governance score for your AI use case. The preview shows risk level, risk score and required reviews. Detailed findings, compliance mapping, governance recommendations and downloadable reports are available through introductory paid review packages.
+    Complete a short AI governance assessment to see a high-level risk score and required reviews. Detailed findings, compliance mapping, vendor assessment and audit readiness insights are available through introductory paid review packages.
   </p>
 
   <div class="assessment-layout">
     <div class="assessment-card">
-      <h3>Step 1 — Tell Us About Your AI Use Case</h3>
+      <h3>Describe Your AI Use Case</h3>
 
-      <label>Your Name</label>
-      <input type="text" id="assessmentName" placeholder="Example: Sandeep Balthi">
+      <label for="assessmentName">Your Name</label>
+      <input type="text" id="assessmentName" maxlength="120" placeholder="Example: Sandeep Balthi">
 
-      <label>Email</label>
-      <input type="email" id="assessmentEmail" placeholder="Example: name@company.com">
+      <label for="assessmentEmail">Work Email</label>
+      <input type="email" id="assessmentEmail" maxlength="180" placeholder="Example: name@company.com">
 
-      <label>Company / Organization</label>
-      <input type="text" id="assessmentCompany" placeholder="Example: Acme Healthcare Pvt Ltd">
+      <label for="assessmentCompany">Company Name</label>
+      <input type="text" id="assessmentCompany" maxlength="160" placeholder="Example: Sandeep AI Labs">
 
-      <label>AI Use Case Name</label>
-      <input type="text" id="assessmentUseCase" placeholder="Example: Customer Support AI Chatbot">
+      <label for="assessmentUseCase">AI Use Case Name</label>
+      <input type="text" id="assessmentUseCase" maxlength="180" placeholder="Example: Customer Support AI Chatbot">
 
-      <label>Business Function</label>
+      <label for="assessmentFunction">Business Function</label>
       <select id="assessmentFunction">
         <option>Customer Support</option>
         <option>Sales & Marketing</option>
@@ -201,8 +202,8 @@
         <option>Technology / Engineering</option>
       </select>
 
-      <label>AI Vendor / Tool</label>
-      <input type="text" id="assessmentVendor" placeholder="Example: OpenAI, Microsoft Copilot, Internal Model">
+      <label for="assessmentVendor">AI Vendor / Tool</label>
+      <input type="text" id="assessmentVendor" maxlength="180" placeholder="Example: OpenAI, Microsoft Copilot, Internal Model">
 
       <label><input type="checkbox" id="assessPersonalData"> Uses personal or sensitive data</label>
       <label><input type="checkbox" id="assessCustomerFacing"> Customer-facing or user-facing AI</label>
@@ -214,71 +215,60 @@
     </div>
 
     <div class="assessment-card report-card">
-      <span class="status live">High-Level Preview</span>
-      <h3>Step 2 — Governance Assessment Result</h3>
+      <span class="status live">Free Preview</span>
+      <h3>Governance Assessment Result</h3>
       <div id="assessmentOutput" class="assessment-output">
-        Complete the form and generate your high-level summary to view risk level, risk score and required reviews.
+        Complete the form and run the assessment to see risk level, required reviews and governance recommendations.
       </div>
-
-      <div class="locked-insights">
-        <h4>Unlock Full Governance Insights</h4>
-        <div class="locked-item">🔒 Executive Summary</div>
-        <div class="locked-item">🔒 Detailed Risk Breakdown</div>
-        <div class="locked-item">🔒 Compliance Mapping: EU AI Act, NIST AI RMF, ISO 42001</div>
-        <div class="locked-item">🔒 Vendor Risk Assessment</div>
-        <div class="locked-item">🔒 Audit Readiness Score</div>
-        <div class="locked-item">🔒 Governance Recommendations and 30/90-Day Action Plan</div>
-      </div>
-
       <div class="paid-report-box">
-        <h4>Introductory Launch Pricing</h4>
-        <p>Choose a detailed governance review package after viewing your high-level summary.</p>
-        <a class="payment-btn" href="#pricing">View Report Options</a>
-        <p class="payment-note">Razorpay payment links can be connected to each package once payment links are generated.</p>
+        <h4>Unlock Detailed Governance Assessment</h4>
+        <p>
+          Choose from ₹99, ₹299 and ₹999 introductory launch packages to unlock detailed governance findings, compliance mapping, vendor assessment and audit readiness recommendations.
+        </p>
+        <a class="payment-btn" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Assessment Request&body=Hello AI Governance Hub Team,%0D%0A%0D%0AI would like to request an AI Governance Assessment.%0D%0A%0D%0APlease share the Razorpay payment link and next steps.%0D%0A" target="_blank">
+          Contact Sales to Unlock
+        </a>
+        <p class="payment-note">Introductory launch pricing is available for a limited time. Razorpay payment links will be connected once approval is complete.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="section" id="pricing">
-  <h2>P12 — Introductory Launch Pricing</h2>
-  <p>Limited-time launch pricing for AI governance assessments and detailed governance review reports.</p>
-
-  <div class="pricing-banner">
-    🚀 Introductory Launch Pricing — ₹99 • ₹299 • ₹999 — Available for a limited time
-  </div>
+  <h2>Introductory Launch Pricing</h2>
+  <p class="launch-pricing-note">🚀 Limited-time launch pricing for early AI governance assessments.</p>
 
   <div class="pricing-grid">
     <div class="pricing-card">
       <span class="status live">Starter</span>
       <h3>Governance Assessment</h3>
       <div class="price">₹99</div>
-      <p>High-level AI risk score, required reviews, governance summary, compliance impact overview and downloadable assessment summary.</p>
-      <a class="primary-blue-btn" href="mailto:support@aigovernancehub.ai?subject=AI Governance Assessment Request - INR 99">Unlock ₹99 Report</a>
+      <p>High-level AI risk score, required reviews, governance summary and downloadable assessment request.</p>
+      <a class="primary-blue-btn" href="mailto:sales@aigovernancehub.ai?subject=Governance Assessment Request - INR 99">Unlock ₹99 Assessment</a>
     </div>
 
     <div class="pricing-card featured-price">
       <span class="status preview">Popular</span>
       <h3>Professional Governance Review</h3>
       <div class="price">₹299</div>
-      <p>Detailed risk breakdown, compliance mapping, governance recommendations, control suggestions, executive summary and PDF report.</p>
-      <a class="primary-blue-btn" href="mailto:support@aigovernancehub.ai?subject=Professional Governance Review Request - INR 299">Unlock ₹299 Review</a>
+      <p>Detailed risk breakdown, governance recommendations, compliance mapping, control guidance and executive summary.</p>
+      <a class="primary-blue-btn" href="mailto:sales@aigovernancehub.ai?subject=Professional Governance Review Request - INR 299">Unlock ₹299 Review</a>
     </div>
 
     <div class="pricing-card">
       <span class="status roadmap">Enterprise</span>
       <h3>Enterprise Governance Review</h3>
       <div class="price">₹999</div>
-      <p>Vendor risk review, AI governance readiness assessment, policy recommendations, audit readiness analysis and executive governance report.</p>
-      <a class="primary-blue-btn" href="mailto:support@aigovernancehub.ai?subject=Enterprise Governance Review Request - INR 999">Unlock ₹999 Review</a>
+      <p>Vendor risk assessment, AI governance readiness review, policy recommendations, audit readiness analysis and executive governance report.</p>
+      <a class="primary-blue-btn" href="mailto:sales@aigovernancehub.ai?subject=Enterprise Governance Review Request - INR 999">Unlock ₹999 Review</a>
     </div>
   </div>
 </section>
 
 <section class="section" id="outcomes">
-  <h2>P13 — Customer Outcomes</h2>
-  <p>AI Governance Hub helps organizations convert AI risk into structured governance decisions, evidence and executive visibility.</p>
-  <div class="grid outcome-grid">
+  <h2>Customer Outcomes</h2>
+  <p>AI Governance Hub helps teams move from ad-hoc AI decisions to structured governance, evidence and reporting.</p>
+  <div class="grid">
     <div class="card">Reduce AI Review Time</div>
     <div class="card">Improve Audit Readiness</div>
     <div class="card">Centralize AI Governance</div>
@@ -289,9 +279,9 @@
 </section>
 
 <section class="section" id="why">
-  <h2>P14 — Why AI Governance Hub</h2>
-  <p>Move beyond spreadsheets and generic tickets with purpose-built AI governance workflows.</p>
-  <div class="comparison-table-wrapper">
+  <h2>Why AI Governance Hub</h2>
+  <p>Move beyond spreadsheets and generic ticketing with a purpose-built AI governance workflow.</p>
+  <div class="comparison-table-wrap">
     <table class="comparison-table">
       <thead>
         <tr><th>Capability</th><th>Spreadsheet</th><th>Generic Ticketing</th><th>AI Governance Hub</th></tr>
@@ -308,8 +298,8 @@
 </section>
 
 <section class="section dark" id="enterprise-ready">
-  <h2>P15 — Enterprise Ready Foundation</h2>
-  <p>Designed to support enterprise governance, audit readiness and responsible AI operating models.</p>
+  <h2>Enterprise Ready</h2>
+  <p>Built for governance teams that need structure, evidence and accountability around AI adoption.</p>
   <div class="grid dark-grid">
     <div class="card">Built on Atlassian Forge</div>
     <div class="card">Role-Based Access</div>
@@ -320,18 +310,9 @@
   </div>
 </section>
 
-<section class="section" id="marketplace">
-  <h2>P16 — Jira Cloud Marketplace App</h2>
-  <p>AI Governance Hub is available today as a Jira Cloud deployment channel and is currently under Atlassian Marketplace review.</p>
-  <div class="marketplace-cta-card">
-    <h3>Install on Jira Cloud</h3>
-    <p>Marketplace listing is under review. Once approved, this section can link directly to the Atlassian Marketplace listing.</p>
-    <a class="primary-blue-btn disabled-link" href="#contact">Marketplace Approval Pending</a>
-  </div>
-</section>
 
 <section class="section" id="industries">
-  <h2>P5 — Built For Regulated and AI-Forward Teams</h2>
+  <h2>Built For Regulated and AI-Forward Teams</h2>
   <p>AI Governance Hub is designed for teams that need responsible AI adoption, governance visibility and evidence-backed decision making.</p>
   <div class="grid">
     <div class="card">Startups & SMBs</div><div class="card">Healthcare</div><div class="card">Insurance</div><div class="card">Banking & Financial Services</div><div class="card">Life Sciences & Pharma</div><div class="card">Logistics</div><div class="card">Government & Public Sector</div><div class="card">Technology Teams</div>
@@ -339,7 +320,7 @@
 </section>
 
 <section class="section" id="jira">
-  <h2>P6 — Available Today on Jira Cloud</h2>
+  <h2>Available Today on Jira Cloud</h2>
   <p>
     AI Governance Hub uses Jira Cloud as its first deployment platform. Teams can manage AI governance reviews, risk assessments, approval workflows, evidence collection, audit readiness and executive reporting without leaving Jira.
   </p>
@@ -360,13 +341,13 @@
 </section>
 
 <section class="section dark" id="frameworks">
-  <h2>P7 — Governance Framework Mapping</h2>
+  <h2>Governance Framework Mapping</h2>
   <p>Designed to support governance alignment and framework mapping across enterprise AI initiatives.</p>
   <div class="badges"><span>EU AI Act</span><span>NIST AI RMF</span><span>ISO 42001</span><span>ISO 27001</span><span>GDPR</span><span>HIPAA</span><span>SOC 2</span><span>PCI DSS</span></div>
 </section>
 
 <section class="section" id="agent">
-  <h2>P8 — AI Governance Agent <span class="coming-soon">Coming Soon</span></h2>
+  <h2>AI Governance Agent <span class="coming-soon">Coming Soon</span></h2>
   <p>AI Governance Hub is evolving toward an intelligent governance assistant that helps teams make faster, more consistent governance decisions.</p>
   <div class="grid">
     <div class="card">AI Risk Classification</div>
@@ -381,7 +362,7 @@
 </section>
 
 <section class="section" id="roadmap">
-  <h2>P9 — Product Roadmap</h2>
+  <h2>Product Roadmap</h2>
   <p>AI Governance Hub is starting with Jira Cloud and expanding toward a multi-platform enterprise AI governance platform.</p>
   <div class="roadmap-grid">
     <div class="roadmap-card"><span>V1 · Available Today</span><h3>Jira Cloud Governance</h3><p>Reviews, risk assessment, governance workflows, audit trail, evidence repository and compliance reporting.</p></div>
@@ -391,7 +372,7 @@
 </section>
 
 <section class="section" id="screenshots">
-  <h2>P10 — Platform Screenshots</h2>
+  <h2>Platform Screenshots</h2>
   <p>Enterprise AI Governance workflows across reviews, risk, evidence, vendors, analytics and reporting.</p>
   <div class="screenshots-grid">
     <div class="screenshot-card"><img src="images/dashboard.png.png" alt="AI Governance Dashboard"><h3>AI Governance Dashboard</h3></div>
@@ -406,9 +387,13 @@
 </section>
 
 <section class="section" id="contact">
-  <h2>Request a Demo</h2>
-  <p>Learn how AI Governance Hub helps organizations manage AI risk, governance reviews, compliance evidence, audit readiness, vendor oversight and executive reporting.</p>
-  <p><a class="email" href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></p>
+  <h2>Contact AI Governance Hub</h2>
+  <p>For sales, support, security or enterprise demo requests, contact the right team below.</p>
+  <div class="contact-grid">
+    <div class="contact-card"><h3>Sales</h3><p><a class="email" href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a></p></div>
+    <div class="contact-card"><h3>Support</h3><p><a class="email" href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></p></div>
+    <div class="contact-card"><h3>Security</h3><p><a class="email" href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a></p></div>
+  </div>
 </section>
 
 <footer>
@@ -416,6 +401,7 @@
   <p>Enterprise AI Governance Platform<br>Available Today on Jira Cloud</p>
   <p>Built on Atlassian Forge | © 2026 AI Governance Hub. All rights reserved.</p>
   <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a> | <a href="security-policy.html">Security Policy</a></p>
+  <p>Sales: <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> | Support: <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> | Security: <a href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a></p>
 </footer>
 
 <div id="featureModal" class="modal">
@@ -428,6 +414,22 @@
 </div>
 
 <script>
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function(character) {
+      return ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[character];
+    });
+  }
+
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+  }
+
   function calculateRisk() {
     let score = 0;
     if (document.getElementById("personalData").checked) score++;
@@ -465,9 +467,9 @@
   }
 
   function createJiraTicket() {
-    const title = document.getElementById("jiraTitle").value || "Customer Support AI Chatbot";
-    const owner = document.getElementById("jiraOwner").value || "Product Team";
-    const risk = document.getElementById("jiraRisk").value;
+    const title = escapeHtml(document.getElementById("jiraTitle").value.trim() || "Customer Support AI Chatbot");
+    const owner = escapeHtml(document.getElementById("jiraOwner").value.trim() || "Product Team");
+    const risk = escapeHtml(document.getElementById("jiraRisk").value);
     let reviews = "Product Owner Review";
     if (risk === "Medium") reviews = "Security Review, Privacy Review";
     if (risk === "High") reviews = "Security Review, Privacy Review, Responsible AI Review, Legal Review";
@@ -500,20 +502,29 @@
 
   function runWebsiteAssessment() {
     let score = 0;
-    const name = document.getElementById("assessmentName").value.trim();
-    const email = document.getElementById("assessmentEmail").value.trim();
-    const company = document.getElementById("assessmentCompany").value.trim();
-    const useCase = document.getElementById("assessmentUseCase").value || "AI Use Case";
-    const businessFunction = document.getElementById("assessmentFunction").value;
-    const vendor = document.getElementById("assessmentVendor").value || "Not specified";
-    const output = document.getElementById("assessmentOutput");
+    const nameRaw = document.getElementById("assessmentName").value.trim();
+    const emailRaw = document.getElementById("assessmentEmail").value.trim();
+    const companyRaw = document.getElementById("assessmentCompany").value.trim();
+    const useCaseRaw = document.getElementById("assessmentUseCase").value.trim();
 
-    if (!name || !email || !company) {
-      output.innerHTML = `
-        <div class="result-box high-risk">Please enter your name, email and company to generate the high-level summary.</div>
-      `;
+    const assessmentOutput = document.getElementById("assessmentOutput");
+
+    if (!nameRaw || !emailRaw || !companyRaw || !useCaseRaw) {
+      assessmentOutput.innerHTML = `<div class="result-box medium-risk">Please enter your name, work email, company and AI use case before generating the assessment summary.</div>`;
       return;
     }
+
+    if (!isValidEmail(emailRaw)) {
+      assessmentOutput.innerHTML = `<div class="result-box medium-risk">Please enter a valid work email address.</div>`;
+      return;
+    }
+
+    const name = escapeHtml(nameRaw);
+    const email = escapeHtml(emailRaw);
+    const company = escapeHtml(companyRaw);
+    const useCase = escapeHtml(useCaseRaw);
+    const businessFunction = escapeHtml(document.getElementById("assessmentFunction").value);
+    const vendor = escapeHtml(document.getElementById("assessmentVendor").value.trim() || "Not specified");
 
     if (document.getElementById("assessPersonalData").checked) score += 2;
     if (document.getElementById("assessCustomerFacing").checked) score += 2;
@@ -537,19 +548,20 @@
       riskClass = "high-risk";
     }
 
-    output.innerHTML = `
+    assessmentOutput.innerHTML = `
       <div class="result-box ${riskClass}">Risk Level: ${riskLevel}</div>
       <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
       <p><strong>Company:</strong> ${company}</p>
       <p><strong>Use Case:</strong> ${useCase}</p>
       <p><strong>Business Function:</strong> ${businessFunction}</p>
       <p><strong>Vendor / Tool:</strong> ${vendor}</p>
       <p><strong>Risk Score:</strong> ${score}/10</p>
       <p><strong>Required Reviews:</strong> ${reviews}</p>
-      <div class="locked-preview">
-        <p><strong>Locked Premium Sections:</strong></p>
+      <div class="locked-insights">
+        <h4>Locked Detailed Insights</h4>
         <p>🔒 Executive Summary</p>
-        <p>🔒 Detailed Governance Recommendation</p>
+        <p>🔒 Detailed Governance Recommendations</p>
         <p>🔒 Compliance Mapping</p>
         <p>🔒 Vendor Risk Assessment</p>
         <p>🔒 Audit Readiness Score</p>
