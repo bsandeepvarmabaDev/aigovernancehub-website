@@ -1,4 +1,4 @@
-/* AI Governance Hub Website Version: 2026.06.13-enterprise-platform-v2 */
+/* AI Governance Hub Website Version: 2026.06.14-security-hardening-v1 */
 .announcement-bar {
   background: #0f172a;
   color: white;
@@ -653,7 +653,7 @@ footer a {
 }
 
 
-/* Assessment + Razorpay-ready pricing additions - 2026.06.13-enterprise-platform-v2 */
+/* Assessment + Razorpay-ready pricing additions - 2026.06.12-assessment-razorpay-v1 */
 .assessment-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -781,130 +781,79 @@ footer a {
 }
 
 
-/* Enterprise Platform v2 additions - 2026.06.13-enterprise-platform-v2 */
-.assessment-card input[type="email"] {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 15px;
-  margin-bottom: 10px;
+/* Security hardening + launch polish - 2026.06.14-security-hardening-v1 */
+.launch-pricing-note {
+  font-weight: 800;
+  color: #1d4ed8;
 }
 
 .locked-insights {
   background: #f8fafc;
   border: 1px dashed #94a3b8;
   border-radius: 12px;
-  padding: 18px;
-  margin: 18px 0;
+  padding: 16px;
+  margin-top: 16px;
 }
 
 .locked-insights h4 {
   color: #0f172a;
-  margin-bottom: 12px;
-  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.locked-item {
-  background: rgba(15, 23, 42, 0.06);
-  border-radius: 8px;
-  padding: 10px 12px;
+.locked-insights p {
+  text-align: left;
   margin-bottom: 8px;
   color: #334155;
-  font-weight: 700;
 }
 
-.locked-preview {
-  background: #fff7ed;
-  border-left: 5px solid #f97316;
-  border-radius: 10px;
-  padding: 14px;
-  margin-top: 16px;
-}
-
-.locked-preview p {
-  text-align: left;
-  margin-bottom: 6px;
-  font-size: 15px;
-}
-
-.pricing-banner {
-  background: linear-gradient(135deg, #0f172a, #2563eb);
-  color: #ffffff;
-  text-align: center;
-  border-radius: 16px;
-  padding: 18px 24px;
-  font-weight: 900;
-  margin: 25px auto 10px;
-  max-width: 900px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-}
-
-.outcome-grid .card {
-  border-top: 4px solid #22c55e;
-}
-
-.comparison-table-wrapper {
+.comparison-table-wrap {
   overflow-x: auto;
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
 .comparison-table th,
 .comparison-table td {
-  padding: 18px;
+  padding: 16px;
   border-bottom: 1px solid #e2e8f0;
   text-align: center;
-  color: #334155;
 }
 
 .comparison-table th {
   background: #0f172a;
   color: #ffffff;
-  font-size: 15px;
 }
 
 .comparison-table td:first-child,
 .comparison-table th:first-child {
   text-align: left;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.comparison-table td:last-child {
-  color: #166534;
-  font-weight: 900;
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
 }
 
-.marketplace-cta-card {
-  max-width: 760px;
-  margin: 35px auto 0;
+.contact-card {
   background: #f8fafc;
-  border: 1px solid #dbe3ef;
-  border-radius: 16px;
-  padding: 30px;
+  border-radius: 14px;
+  padding: 26px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-.marketplace-cta-card h3 {
+.contact-card h3 {
   color: #0f172a;
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.marketplace-cta-card p {
-  font-size: 16px;
-  margin-bottom: 18px;
-}
-
-.disabled-link {
-  opacity: 0.75;
+  margin-bottom: 10px;
 }
