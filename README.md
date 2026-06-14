@@ -1,8 +1,8 @@
 # AI Governance Hub Website
 
-Version: 2026.06.25-revenue-launch-v6
+Version: 2026.06.25-revenue-trust-launch-v7
 
-AI Governance Hub is an enterprise AI governance platform for Jira Cloud. This static website is designed for product positioning, demo requests, free assessment, introductory package requests, legal pages and security transparency.
+AI Governance Hub is an enterprise AI governance platform for Jira Cloud. This static website supports product positioning, demo requests, free assessment, introductory package requests, legal pages and security transparency.
 
 ## Security notes
 
@@ -13,13 +13,10 @@ AI Governance Hub is an enterprise AI governance platform for Jira Cloud. This s
 
 ## Release summary
 
-- Launch-ready enterprise SaaS trust and conversion polish.
-- Consistent premium header and footer across legal/support pages.
-- Trust panel updated with Marketplace submission messaging.
-- Pricing copy improved for assisted secure payment instructions.
-- CTA reassurance added for assessment/demo conversion.
-- Dashboard preview visually enlarged on desktop while preserving mobile layout.
-
-## Asset note
-
-The current live project references `images/dashboard.png.png`. Rename the asset to `dashboard.png` only when the repository image file is also renamed in the same commit.
+- Revenue and trust launch polish inspired by enterprise SaaS patterns.
+- Public placeholder name changed to a shorter neutral example.
+- Added Trust Center summary section.
+- Added governance workflow section.
+- Improved pricing and CTA language.
+- Unified legal/support page navigation and footer.
+- Preserved security-first static website constraints.

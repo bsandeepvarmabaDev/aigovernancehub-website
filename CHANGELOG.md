@@ -1,18 +1,22 @@
 # Changelog
 
-## 2026.06.25-revenue-launch-v6
+## 2026.06.25-revenue-trust-launch-v7
 
 ### Changed
-- Added launch-ready enterprise trust and conversion polish.
-- Updated homepage trust panel to include Marketplace submission messaging.
-- Improved pricing wording to support introductory revenue generation while keeping assisted secure payment instructions.
-- Added CTA reassurance for free assessment and demo request conversion.
-- Increased desktop product dashboard preview visibility.
-- Unified legal/support page navigation and footer branding across Privacy, Terms, Security, Sample Report, Roadmap, Thank You and Payment Pending pages.
+- Updated homepage hero messaging for stronger enterprise SaaS positioning.
+- Changed public assessment placeholder from a full personal name to a short neutral example.
+- Added enterprise Trust Center summary section inspired by leading trust/compliance SaaS websites.
+- Added AI governance workflow section: Capture, Assess, Approve, Evidence, Report.
+- Improved trust panel language, including Marketplace Submission in Progress.
+- Improved pricing copy to support revenue generation without implying automated checkout.
+- Added CTA reassurance for no-credit-card assessment and target response window.
+- Unified legal, payment, thank-you, sample report and roadmap page headers and footers.
+- Strengthened secure payment instruction language.
 
 ### Security
 - No API keys, Razorpay secrets, passwords, backend credentials, cookies or browser storage were added.
-- Static public website remains security-first. Payment verification must remain hosted or backend-verified when enabled.
+- The public website remains static and does not store customer payment or password data.
+
 
 ## 2026.06.16-enterprise-saas-polish-v3
 
