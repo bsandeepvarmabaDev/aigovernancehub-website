@@ -1,4 +1,4 @@
-/* AI Governance Hub Website Version: 2026.06.16-enterprise-saas-polish-v3 */
+/* AI Governance Hub Website Version: 2026.06.25-revenue-launch-v6 */
 :root {
   --bg: #06111f;
   --bg-2: #0b1f3a;
@@ -158,7 +158,7 @@ a { color: inherit; }
 .hero-reassurance { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 22px; color: rgba(255,255,255,.84); font-size: 14px; }
 .hero-reassurance span::before { content: "✓"; color: #38bdf8; margin-right: 6px; }
 
-.hero-visual { position: relative; margin-top: -22px; }
+.hero-visual { position: relative; margin-top: -34px; transform: scale(1.04); transform-origin: top right; }
 .dashboard-frame {
   border: 1px solid rgba(96, 165, 250, .32);
   border-radius: 22px;
@@ -410,6 +410,26 @@ li { margin: 8px 0; }
 .footer-links a:hover { color: #fff; }
 .footer-note { color: rgba(255,255,255,.62); font-size: 14px; }
 
+.cta-reassurance {
+  width: 100%;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+  font-weight: 750;
+  margin-top: 14px;
+}
+.primary-blue-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 850;
+}
+
 /* Existing legal and document pages */
 .legal-page { background: #f8fafc; }
 .legal-hero { background: linear-gradient(135deg, #071226, #172554); color: #fff; padding: 28px 0; }
@@ -417,6 +437,7 @@ li { margin: 8px 0; }
 .legal-hero .logo { font-weight: 900; font-size: 20px; }
 .legal-hero .nav-links { display: flex; flex-wrap: wrap; gap: 18px; }
 .legal-hero .nav-links a { color: #fff; text-decoration: none; font-weight: 750; }
+.legal-hero .nav-links .nav-cta { border: 1px solid rgba(96,165,250,.42); background: rgba(37,99,235,.22); padding: 9px 13px; border-radius: 999px; }
 .legal-container {
   width: min(980px, 92%);
   margin: 48px auto;
@@ -436,7 +457,7 @@ li { margin: 8px 0; }
 
 @media (max-width: 1100px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { margin-top: 12px; }
+  .hero-visual { margin-top: 12px; transform: none; }
   .trust-panel { grid-template-columns: repeat(3, 1fr); }
   .impact-band { grid-template-columns: 1fr; }
   .impact-metrics { grid-template-columns: repeat(2, 1fr); }

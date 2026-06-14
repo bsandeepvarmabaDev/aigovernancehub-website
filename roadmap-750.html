@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.16-enterprise-saas-redesign-v1 -->
+  <!-- AI Governance Hub Website Version: 2026.06.25-revenue-launch-v6 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -12,13 +12,15 @@
 </head>
 <body class="legal-page">
   <header class="legal-hero">
-    <nav class="nav">
+    <nav class="nav" aria-label="Main navigation">
       <div class="logo">🛡️ AI Governance Hub</div>
       <div class="nav-links">
         <a href="index.html">Home</a>
+        <a href="index.html#platform">Platform</a>
         <a href="index.html#assessment">Assessment</a>
-        <a href="sample-report.html">Sample Report</a>
+        <a href="index.html#pricing">Pricing</a>
         <a href="security-policy.html">Security</a>
+        <a class="nav-cta" href="index.html#contact">Book Demo</a>
       </div>
     </nav>
   </header>
@@ -65,8 +67,21 @@
     <h2>Implementation Rule</h2>
     <p>Every batch must preserve CSP, XSS escaping, privacy controls, legal pages, no-secret-in-source rule, and read-only testing before release. Backend, login, payment verification, and report generation must not be implemented inside static GitHub Pages without a secure backend design.</p>
   </main>
-  <footer>
-    <p>AI Governance Hub™ | <a href="index.html">Home</a> | <a href="security-policy.html">Security Policy</a></p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>AI Governance Hub™</strong>
+        <span>Enterprise AI Governance Platform for Jira Cloud</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="security-policy.html">Security Policy</a>
+        <a href="sample-report.html">Sample Report</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub. Available on Jira Cloud. Built on Atlassian Forge.</p>
+    </div>
   </footer>
 </body>
 </html>
