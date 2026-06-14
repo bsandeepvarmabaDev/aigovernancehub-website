@@ -1,6 +1,18 @@
 # Changelog
 
-## 2026.06.25-revenue-trust-launch-v7
+## 2026.06.25-enterprise-launch-candidate-v9
+
+### Changed
+- Removed personal-name examples from public assessment form placeholders.
+- Replaced individual/person-specific placeholders with enterprise-safe examples.
+- Kept revenue launch sections: trust center, governance workflow, pricing, demo, assessment, legal pages and security messaging.
+- Preserved unified header/footer across homepage and legal/support pages.
+
+### Security
+- No API keys, Razorpay secrets, passwords, backend credentials, cookies or customer-data browser storage were added.
+- Payment remains assisted/secure-instruction based until live hosted payment links are enabled and verified.
+
+## 2026.06.25-enterprise-launch-candidate-v9
 
 ### Changed
 - Updated homepage hero messaging for stronger enterprise SaaS positioning.
