@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bsandeepvarmabadev.github.io/aigovernancehub-website/sitemap.xml
+Sitemap: https://aigovernancehub.ai/sitemap.xml

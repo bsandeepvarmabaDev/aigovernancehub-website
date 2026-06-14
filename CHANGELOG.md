@@ -1,27 +1,28 @@
 # CHANGELOG
 
-## 2026.06.16-commercialization-v1
+## 2026.06.16-enterprise-homepage-redesign-v1
 
-### Security
+### Enterprise launch polish
+- Removed internal development/commercial status language from the announcement bar.
+- Simplified top navigation to Platform, Assessment, Pricing, Security and Contact.
+- Removed Batch 750 from the homepage and primary navigation.
+- Cleaned trust strip to focus on customer-facing security and governance proof.
+- Improved hero hierarchy and made the dashboard screenshot more prominent.
+- Renamed pricing CTAs from “Unlock” to “Request” until live Razorpay checkout is available.
+- Added metric disclaimer text for business-value claims.
+- Cleared hidden modal placeholder text.
+
+### Domain readiness
+- Updated canonical, robots.txt and sitemap.xml references to https://aigovernancehub.ai.
+- Kept all links relative where possible for safe GitHub Pages hosting and custom-domain cutover.
+
+### Security preserved
 - Preserved CSP meta policy with YouTube frame allowances.
-- Preserved `escapeHtml()` protection for user-controlled fields.
+- Preserved escapeHtml() protection for user-controlled fields.
 - Preserved privacy acknowledgement requirement before assessment generation.
 - No secrets, API keys, or Razorpay secret keys added to frontend.
-
-### Commercialization
-- Added ROI calculator for estimated monthly governance review savings.
-- Added AI Governance Maturity Assessment levels.
-- Added enterprise trust strip under the hero section.
-- Added enterprise architecture view.
-- Added commercial comparison section: current state vs AI Governance Hub.
-- Added stronger enterprise CTA section.
-
-### Launch polish
-- Updated version to `2026.06.16-commercialization-v1`.
-- Updated README and release documentation.
-- Retained Batch 750 roadmap page and existing legal/support pages.
 
 ### Not changed
 - Forge app code.
 - Marketplace submission.
-- Razorpay API integration. Payment links should be added only as hosted Razorpay URLs when ready.
+- Razorpay API integration.

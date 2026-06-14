@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/privacy.html</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/terms.html</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/security-policy.html</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/sample-report.html</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/roadmap-750.html</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/thank-you.html</loc></url>
-  <url><loc>https://bsandeepvarmabadev.github.io/aigovernancehub-website/payment-pending.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/</loc></url>
+  <url><loc>https://aigovernancehub.ai/privacy.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/terms.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/security-policy.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/sample-report.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/thank-you.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/payment-pending.html</loc></url>
 </urlset>

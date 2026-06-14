@@ -1,33 +1,20 @@
 # AI Governance Hub Website
 
-Version: 2026.06.16-commercialization-v1
+Version: 2026.06.16-enterprise-homepage-redesign-v1
 
 ## Purpose
-Commercialization foundation release for AI Governance Hub public website.
-
-## Included files
-- index.html
-- styles.css
-- privacy.html
-- terms.html
-- security-policy.html
-- sample-report.html
-- thank-you.html
-- payment-pending.html
-- robots.txt
-- sitemap.xml
-- favicon.svg
-- roadmap-750.html
+Enterprise homepage redesign and launch polish for the AI Governance Hub public website.
 
 ## Key updates
-- Added enterprise trust strip under hero.
-- Strengthened homepage positioning for enterprise buyers.
-- Added ROI calculator for governance review savings.
-- Added AI governance maturity model.
-- Added enterprise architecture view.
-- Added commercial comparison section showing before/after value.
-- Added enterprise CTA section.
-- Preserved security hardening, CSP, XSS protections, privacy acknowledgement, robots.txt and sitemap.xml.
+- Removed internal launch/build status language from the announcement bar.
+- Simplified homepage navigation to core buyer actions.
+- Removed Batch 750 from homepage navigation and homepage body.
+- Kept roadmap-750.html available as a separate roadmap page, but not as a primary buyer path.
+- Cleaned trust strip to focus on enterprise trust signals.
+- Made dashboard preview more prominent in the hero section.
+- Renamed pricing CTAs from “Unlock” to “Request” until Razorpay hosted payment links are live.
+- Updated canonical, sitemap and robots references to https://aigovernancehub.ai.
+- Preserved security hardening, CSP, XSS protections, privacy acknowledgement and legal pages.
 
 ## Security note
 No API keys, payment secrets, or backend credentials are included. Razorpay must continue to use hosted Payment Links until a backend is implemented.
