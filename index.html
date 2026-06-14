@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.16-enterprise-saas-redesign-v2 -->
+  <!-- AI Governance Hub Website Version: 2026.06.16-enterprise-saas-polish-v3 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="top-strip">Available today on Jira Cloud • Built on Atlassian Forge • Security-first AI governance</div>
+  <div class="top-strip">Available on Jira Cloud • Built on Atlassian Forge • Security-first AI governance workflows</div>
 
   <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
@@ -187,12 +187,26 @@
       <div class="section-heading">
         <span class="section-kicker">Introductory pricing</span>
         <h2>Start with a focused governance review</h2>
-        <p>Hosted checkout will be enabled once payment links are ready. Until then, sales will share next steps.</p>
+        <p>Introductory launch packages are available now. Select your preferred currency and request the package; assisted payment confirmation will be shared by email.</p>
+      </div>
+      <div class="pricing-toolbar" aria-label="Pricing currency selector">
+        <div>
+          <strong>Introductory pricing display</strong>
+          <span>Base pricing is INR. International currency display is approximate for buyer convenience.</span>
+        </div>
+        <label for="currencySelect">Currency
+          <select id="currencySelect" onchange="updatePricingCurrency()" aria-label="Select pricing currency">
+            <option value="INR">INR ₹</option>
+            <option value="USD">USD $</option>
+            <option value="EUR">EUR €</option>
+            <option value="GBP">GBP £</option>
+          </select>
+        </label>
       </div>
       <div class="pricing-grid">
-        <article class="pricing-card"><span class="plan-badge">Starter</span><h3>Governance Assessment</h3><div class="price">₹99</div><ul><li>High-level risk score</li><li>Required review chain</li><li>Governance summary</li><li>Email follow-up</li></ul><a class="btn btn-primary wide" href="mailto:sales@aigovernancehub.ai?subject=₹99 Governance Assessment Request">Request Package</a></article>
-        <article class="pricing-card popular"><span class="plan-badge">Popular</span><h3>Professional Review</h3><div class="price">₹299</div><ul><li>Detailed risk breakdown</li><li>Compliance mapping preview</li><li>Vendor risk notes</li><li>30-day action plan</li></ul><a class="btn btn-primary wide" href="mailto:sales@aigovernancehub.ai?subject=₹299 Professional Governance Review Request">Request Package</a></article>
-        <article class="pricing-card"><span class="plan-badge">Enterprise</span><h3>Enterprise Governance Review</h3><div class="price">₹999</div><ul><li>Executive governance summary</li><li>Audit readiness recommendations</li><li>Policy improvement notes</li><li>Enterprise demo option</li></ul><a class="btn btn-primary wide" href="mailto:sales@aigovernancehub.ai?subject=₹999 Enterprise Governance Review Request">Request Package</a></article>
+        <article class="pricing-card" data-plan="Governance Assessment" data-inr="99"><span class="plan-badge">Starter</span><h3>Governance Assessment</h3><div class="price" data-price>₹99</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>High-level risk score</li><li>Required review chain</li><li>Governance summary</li><li>Email follow-up</li></ul><a class="btn btn-primary wide" data-package-link href="mailto:sales@aigovernancehub.ai?subject=₹99 Governance Assessment Request">Request Package</a></article>
+        <article class="pricing-card popular" data-plan="Professional Governance Review" data-inr="299"><span class="plan-badge">Popular</span><h3>Professional Review</h3><div class="price" data-price>₹299</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>Detailed risk breakdown</li><li>Compliance mapping preview</li><li>Vendor risk notes</li><li>30-day action plan</li></ul><a class="btn btn-primary wide" data-package-link href="mailto:sales@aigovernancehub.ai?subject=₹299 Professional Governance Review Request">Request Package</a></article>
+        <article class="pricing-card" data-plan="Enterprise Governance Review" data-inr="999"><span class="plan-badge">Enterprise</span><h3>Enterprise Governance Review</h3><div class="price" data-price>₹999</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>Executive governance summary</li><li>Audit readiness recommendations</li><li>Policy improvement notes</li><li>Enterprise demo option</li></ul><a class="btn btn-primary wide" data-package-link href="mailto:sales@aigovernancehub.ai?subject=₹999 Enterprise Governance Review Request">Request Package</a></article>
       </div>
     </section>
 
@@ -238,10 +252,21 @@
     </section>
   </main>
 
-  <footer>
-    <p><strong>AI Governance Hub™</strong> — Enterprise AI Governance for Jira Cloud</p>
-    <p><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security-policy.html">Security</a> · <a href="sample-report.html">Sample Report</a> · <a href="roadmap-750.html">Roadmap</a></p>
-    <p>Assessment runs in-browser on the public website. No backend storage is used for the free preview.</p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>AI Governance Hub™</strong>
+        <span>Enterprise AI Governance Platform for Jira Cloud</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="security-policy.html">Security Policy</a>
+        <a href="sample-report.html">Sample Report</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub. Available on Jira Cloud. Built on Atlassian Forge.</p>
+    </div>
   </footer>
 
   <script>
@@ -258,64 +283,63 @@
       });
     }
 
-
-    const pricingRates = {
-      INR: { symbol: "₹", rate: 1, decimals: 0, label: "India introductory price" },
-      USD: { symbol: "$", rate: 0.012, decimals: 2, label: "Estimated USD equivalent" },
-      EUR: { symbol: "€", rate: 0.011, decimals: 2, label: "Estimated EUR equivalent" },
-      GBP: { symbol: "£", rate: 0.0095, decimals: 2, label: "Estimated GBP equivalent" }
-    };
-
-    function detectPreferredCurrency() {
-      const locale = `${navigator.language || ""} ${(Intl.DateTimeFormat().resolvedOptions().timeZone || "")}`.toLowerCase();
-      if (locale.includes("india") || locale.includes("in")) return "INR";
-      if (locale.includes("gb") || locale.includes("london")) return "GBP";
-      if (locale.includes("de") || locale.includes("fr") || locale.includes("es") || locale.includes("it") || locale.includes("nl") || locale.includes("europe")) return "EUR";
-      if (locale.includes("us") || locale.includes("america") || locale.includes("new_york") || locale.includes("los_angeles") || locale.includes("chicago")) return "USD";
-      return "INR";
-    }
-
-    function formatPricingAmount(inrAmount, currency) {
-      const selected = pricingRates[currency] || pricingRates.INR;
-      const converted = Number(inrAmount) * selected.rate;
-      return `${selected.symbol}${converted.toLocaleString(undefined, { minimumFractionDigits: selected.decimals, maximumFractionDigits: selected.decimals })}`;
-    }
-
-    function updatePricingCurrency() {
-      const currencySelect = document.getElementById("pricingCurrency");
-      if (!currencySelect) return;
-      const currency = currencySelect.value || "INR";
-      const selected = pricingRates[currency] || pricingRates.INR;
-
-      document.querySelectorAll(".price[data-inr]").forEach((priceEl) => {
-        priceEl.textContent = formatPricingAmount(priceEl.dataset.inr, currency);
-      });
-
-      document.querySelectorAll(".price-note").forEach((noteEl) => {
-        noteEl.textContent = currency === "INR" ? "India introductory price" : `${selected.label}. Final billing is confirmed before payment.`;
-      });
-
-      document.querySelectorAll(".pricing-request").forEach((link) => {
-        const plan = link.dataset.plan || "Governance Package";
-        const amount = formatPricingAmount(link.dataset.inr, currency);
-        link.href = `mailto:sales@aigovernancehub.ai?subject=${encodeURIComponent(`${amount} ${plan} Request`)}&body=${encodeURIComponent(`Hello AI Governance Hub team,
-
-I am interested in the ${plan} package shown as ${amount} (${currency}). Please share the next steps for payment and delivery.
-
-Thanks.`)}`;
-      });
-    }
-
-    function initializePricingCurrency() {
-      const currencySelect = document.getElementById("pricingCurrency");
-      if (!currencySelect) return;
-      currencySelect.value = detectPreferredCurrency();
-      updatePricingCurrency();
-    }
-
     function isValidEmail(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
     }
+
+    const pricingCurrencyConfig = {
+      INR: { symbol: "₹", rate: 1, decimals: 0, label: "INR introductory pricing" },
+      USD: { symbol: "$", rate: 0.012, decimals: 2, label: "Approx. USD display" },
+      EUR: { symbol: "€", rate: 0.011, decimals: 2, label: "Approx. EUR display" },
+      GBP: { symbol: "£", rate: 0.0095, decimals: 2, label: "Approx. GBP display" }
+    };
+
+    function detectPreferredCurrency() {
+      const locale = (navigator.language || "").toUpperCase();
+      if (locale.includes("GB")) return "GBP";
+      if (locale.includes("US")) return "USD";
+      if (locale.includes("DE") || locale.includes("FR") || locale.includes("NL") || locale.includes("ES") || locale.includes("IT") || locale.includes("IE")) return "EUR";
+      return "INR";
+    }
+
+    function formatPrice(amount, config) {
+      const value = amount * config.rate;
+      return `${config.symbol}${value.toFixed(config.decimals)}`;
+    }
+
+    function updatePricingCurrency() {
+      const selector = document.getElementById("currencySelect");
+      if (!selector) return;
+      const currency = selector.value;
+      const config = pricingCurrencyConfig[currency] || pricingCurrencyConfig.INR;
+      document.querySelectorAll(".pricing-card[data-inr]").forEach(function(card) {
+        const inrAmount = Number(card.getAttribute("data-inr"));
+        const plan = card.getAttribute("data-plan") || "AI Governance Assessment";
+        const displayPrice = formatPrice(inrAmount, config);
+        const priceElement = card.querySelector("[data-price]");
+        const noteElement = card.querySelector("[data-price-note]");
+        const linkElement = card.querySelector("[data-package-link]");
+        if (priceElement) priceElement.textContent = displayPrice;
+        if (noteElement) noteElement.textContent = config.label;
+        if (linkElement) {
+          const subject = encodeURIComponent(`${displayPrice} ${plan} Request`);
+          const body = encodeURIComponent(`Hello AI Governance Hub Team,
+
+I would like to request the ${plan} package.
+Displayed price: ${displayPrice} ${currency}.
+Base INR price: ₹${inrAmount}.
+
+Please share the assisted payment confirmation and next steps.`);
+          linkElement.href = `mailto:sales@aigovernancehub.ai?subject=${subject}&body=${body}`;
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const selector = document.getElementById("currencySelect");
+      if (selector) selector.value = detectPreferredCurrency();
+      updatePricingCurrency();
+    });
 
     function runWebsiteAssessment() {
       let score = 0;
@@ -381,8 +405,6 @@ Thanks.`)}`;
         <p><strong>Required Reviews:</strong> ${reviews}</p>
         <div class="locked-insights"><h4>Detailed paid report can include</h4><p>Executive summary, compliance mapping, vendor risk notes, audit readiness and recommended next actions.</p></div>`;
     }
-
-    initializePricingCurrency();
   </script>
 </body>
 </html>

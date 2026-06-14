@@ -1,27 +1,19 @@
 # AI Governance Hub Website
 
-Version: 2026.06.16-enterprise-saas-redesign-v1
+Version: 2026.06.16-enterprise-saas-polish-v3
 
-## Purpose
-Enterprise SaaS visual redesign for the AI Governance Hub public website.
+AI Governance Hub is an enterprise AI governance platform for Jira Cloud. This static website is designed for product positioning, demo requests, free assessment, introductory package requests, legal pages and security transparency.
 
-## Key updates
-- Rebuilt homepage into a short, premium SaaS-style landing page.
-- Removed internal launch/status language from the customer-facing surface.
-- Removed Batch 750 from homepage navigation and moved roadmap access to the footer.
-- Simplified navigation to Platform, Assessment, Pricing, Security and Contact.
-- Added large product dashboard hero visual.
-- Added transparent trust indicators without fake customer logos.
-- Preserved assessment flow, pricing, sample report, legal pages, security page and roadmap page.
-- Updated canonical, robots and sitemap URLs for aigovernancehub.ai.
+## Security notes
 
-## Security note
-No API keys, payment secrets, Razorpay secret keys or backend credentials are included. Use hosted Razorpay Payment Links only until a backend is implemented.
+- Do not store passwords in this static website.
+- Do not store Razorpay secrets or API keys in frontend code.
+- Do not store customer records in browser-only storage.
+- Use hosted payment links or backend-verified payment flows when checkout is enabled.
 
-## Deployment note
-Upload files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
+## Release summary
 
-
-## Version 2026.06.16-enterprise-saas-redesign-v2
-
-This release improves the current website look and feel while preserving the existing introductory pricing model. Currency display is handled client-side for presentation only and does not store payment secrets or customer data. Final billing should be confirmed through the payment/checkout process.
+- Premium SaaS footer polish.
+- Currency selector for INR, USD, EUR and GBP.
+- Browser-locale preferred currency selection.
+- Improved pricing and demo request experience.

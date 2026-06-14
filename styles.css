@@ -1,4 +1,4 @@
-/* AI Governance Hub Website Version: 2026.06.16-enterprise-saas-redesign-v2 */
+/* AI Governance Hub Website Version: 2026.06.16-enterprise-saas-polish-v3 */
 :root {
   --bg: #06111f;
   --bg-2: #0b1f3a;
@@ -355,6 +355,7 @@ input:focus, select:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37
 .pricing-toolbar label { font-weight: 850; color: #334155; }
 .pricing-toolbar select { max-width: 260px; }
 .pricing-card { position: relative; }
+.pricing-card:hover, .feature-card:hover, .contact-card:hover { transform: translateY(-3px); transition: transform .2s ease, box-shadow .2s ease; box-shadow: 0 18px 45px rgba(15, 23, 42, .12); }
 .pricing-card.popular { border-color: #2563eb; box-shadow: 0 18px 45px rgba(37,99,235,.16); }
 .price { font-size: 54px; line-height: 1; letter-spacing: -0.05em; color: #2563eb; font-weight: 950; margin: 18px 0; }
 ul { padding-left: 18px; color: #334155; margin: 18px 0 24px; }
@@ -385,14 +386,29 @@ li { margin: 8px 0; }
 .contact-card { text-align: center; }
 .contact-card a { color: #2563eb; font-weight: 850; text-decoration: none; }
 
-footer {
-  background: #f1f5f9;
-  text-align: center;
-  padding: 36px 20px;
-  color: #475569;
+.site-footer {
+  background: linear-gradient(135deg, #071226, #0f172a);
+  color: rgba(255,255,255,.82);
+  padding: 44px 20px;
 }
-footer p { margin: 8px 0; }
-footer a { color: #2563eb; text-decoration: none; font-weight: 800; }
+.footer-inner {
+  width: min(1180px, 92%);
+  margin: auto;
+  display: grid;
+  gap: 18px;
+  text-align: center;
+}
+.footer-brand { display: grid; gap: 6px; }
+.footer-brand strong { color: #fff; font-size: 22px; letter-spacing: -0.02em; }
+.footer-brand span { color: rgba(255,255,255,.72); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; }
+.footer-links a {
+  color: #bfdbfe;
+  text-decoration: none;
+  font-weight: 850;
+}
+.footer-links a:hover { color: #fff; }
+.footer-note { color: rgba(255,255,255,.62); font-size: 14px; }
 
 /* Existing legal and document pages */
 .legal-page { background: #f8fafc; }
@@ -462,4 +478,5 @@ footer a { color: #2563eb; text-decoration: none; font-weight: 800; }
   .trust-panel { grid-template-columns: 1fr; }
   .section-heading h2, .impact-copy h2, .cta-card h2, .security-layout h2 { font-size: 32px; }
   .impact-band, .cta-card, .legal-container { padding: 26px; }
+  .footer-links { flex-direction: column; gap: 10px; }
 }
