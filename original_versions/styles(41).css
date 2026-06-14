@@ -1,4 +1,4 @@
-/* AI Governance Hub Website Version: 2026.06.14-launch-hardening-v2 */
+/* AI Governance Hub Website Version: 2026.06.14-security-hardening-v1 */
 .announcement-bar {
   background: #0f172a;
   color: white;
@@ -781,7 +781,7 @@ footer a {
 }
 
 
-/* Security hardening + launch polish - 2026.06.14-launch-hardening-v2 */
+/* Security hardening + launch polish - 2026.06.14-security-hardening-v1 */
 .launch-pricing-note {
   font-weight: 800;
   color: #1d4ed8;
@@ -856,117 +856,4 @@ footer a {
 .contact-card h3 {
   color: #0f172a;
   margin-bottom: 10px;
-}
-
-
-
-/* Launch hardening v2 - mobile navigation, consent, sample report */
-.nav-toggle {
-  display: none;
-  background: rgba(255,255,255,0.14);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 8px;
-  padding: 9px 13px;
-  font-size: 22px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.consent-label {
-  background: #f8fafc;
-  border: 1px solid #dbe3ef;
-  border-radius: 10px;
-  padding: 12px;
-  line-height: 1.45;
-}
-
-.consent-label a {
-  color: #2563eb;
-  font-weight: 800;
-}
-
-.sample-report-card {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: center;
-  background: #f8fafc;
-  border: 1px solid #dbe3ef;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  margin-top: 30px;
-}
-
-.sample-report-card h3 {
-  color: #0f172a;
-  font-size: 24px;
-  margin: 12px 0 8px;
-}
-
-.sample-report-card p {
-  text-align: left;
-  margin-bottom: 0;
-}
-
-.sample-report {
-  max-width: 1000px;
-}
-
-.sample-report .score-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 18px;
-  margin: 28px 0;
-}
-
-.sample-report .score-box div {
-  background: #eff6ff;
-  border-left: 4px solid #2563eb;
-  border-radius: 12px;
-  padding: 18px;
-  font-weight: 800;
-}
-
-@media (max-width: 900px) {
-  .nav {
-    align-items: flex-start;
-  }
-
-  .nav-toggle {
-    display: inline-block;
-    align-self: center;
-  }
-
-  .nav-links {
-    display: none;
-    width: 100%;
-    margin-top: 12px;
-    background: rgba(15, 23, 42, 0.96);
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 12px;
-    padding: 12px;
-  }
-
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .nav-links a {
-    margin: 0;
-    padding: 10px;
-    border-radius: 8px;
-  }
-
-  .nav-links a:hover {
-    background: rgba(255,255,255,0.12);
-  }
-
-  .sample-report-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }

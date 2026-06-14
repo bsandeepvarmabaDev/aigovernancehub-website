@@ -1,9 +1,9 @@
 # AI Governance Hub Website
 
-Version: 2026.06.14-security-hardening-v1
+Version: 2026.06.14-launch-hardening-v2
 
 ## Purpose
-Security hardening and launch polish for the public AI Governance Hub website.
+Launch hardening release for the public AI Governance Hub website.
 
 ## Included files
 - index.html
@@ -11,17 +11,24 @@ Security hardening and launch polish for the public AI Governance Hub website.
 - privacy.html
 - terms.html
 - security-policy.html
+- sample-report.html
+- thank-you.html
+- payment-pending.html
+- robots.txt
+- sitemap.xml
+- favicon.svg
 - original_versions/
 
 ## Key updates
-- Fixed DOM XSS risk in the AI Governance Assessment output by escaping user-supplied values.
-- Fixed HTML injection risk in the Jira ticket preview by escaping user-supplied values.
-- Added basic CSP meta tag suitable for the current static GitHub Pages site.
-- Added sales/support/security contact blocks.
-- Updated pricing to ₹99 / ₹299 / ₹999 introductory launch packages.
-- Added locked premium insight sections.
-- Removed customer-visible P0/P1/P11 style internal labels from headings.
-- Added customer outcomes, comparison table and enterprise readiness sections.
+- Fixed malformed HTML version comments across HTML pages.
+- Preserved XSS protection and input escaping.
+- Added mobile hamburger navigation.
+- Added privacy acknowledgement checkbox near assessment lead capture.
+- Added canonical, Open Graph, Twitter Card and favicon metadata.
+- Added sample governance report page and CTA section.
+- Added robots.txt and sitemap.xml.
+- Added industry-weighted scoring for Healthcare / Life Sciences and Finance / Banking.
+- Kept Razorpay flow email-based until payment links are approved.
 
 ## Deployment note
 Upload these files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.

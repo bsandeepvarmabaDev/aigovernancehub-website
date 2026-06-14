@@ -1,22 +1,22 @@
 # CHANGELOG
 
-## 2026.06.14-security-hardening-v1
+## 2026.06.14-launch-hardening-v2
 
 ### Security
-- Added HTML escaping helper for user-controlled form values.
-- Applied escaping to `runWebsiteAssessment()` values before rendering output.
-- Applied escaping to `createJiraTicket()` values before rendering output.
-- Added email validation for assessment lead capture.
-- Added Content Security Policy meta tag with `frame-ancestors 'none'`.
+- Fixed malformed HTML comments in index, privacy, terms and security-policy pages.
+- Preserved `escapeHtml()` protection for user-controlled fields.
+- Preserved email validation and CSP meta policy.
+- Added privacy acknowledgement checkbox before generating assessment results.
 
-### Launch polish
-- Added sales, support and security contact blocks.
-- Updated commercial CTAs to use `sales@aigovernancehub.ai`.
-- Removed internal P-section prefixes from public headings.
-- Added locked premium results and launch pricing structure.
-- Added customer outcomes, comparison table and enterprise readiness sections.
+### Launch hardening
+- Added mobile hamburger navigation for smaller screens.
+- Added favicon, canonical URL, Open Graph and Twitter metadata.
+- Added sample governance report page and homepage CTA.
+- Added robots.txt and sitemap.xml.
+- Added thank-you and payment-pending support pages.
+- Added regulated industry scoring adjustment for Healthcare / Life Sciences and Finance / Banking.
 
 ### Not changed
 - Forge app code.
 - Marketplace submission.
-- Razorpay links are still pending until payment links are generated/approved.
+- Razorpay checkout remains pending until live payment links are approved.

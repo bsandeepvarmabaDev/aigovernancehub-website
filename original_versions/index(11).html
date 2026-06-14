@@ -2,21 +2,11 @@
 <html lang="en">
 
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.14-launch-hardening-v2 -->
+  <!-- AI Governance Hub Website Version: 2026.06.14-security-hardening-v1
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
   <meta name="description" content="AI Governance Hub is an enterprise AI governance platform for AI reviews, risk assessments, vendor governance, audit readiness and compliance reporting. Available today on Jira Cloud." />
-  <link rel="canonical" href="https://bsandeepvarmabadev.github.io/aigovernancehub-website/" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <meta property="og:title" content="AI Governance Hub | Enterprise AI Governance Platform" />
-  <meta property="og:description" content="Discover AI systems, assess risk, manage vendors, track approvals, maintain audit trails, and demonstrate compliance." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://bsandeepvarmabadev.github.io/aigovernancehub-website/" />
-  <meta property="og:image" content="https://bsandeepvarmabadev.github.io/aigovernancehub-website/images/dashboard.png.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AI Governance Hub | Enterprise AI Governance Platform" />
-  <meta name="twitter:description" content="Enterprise AI governance, risk assessment, vendor oversight, audit readiness, and compliance reporting." />
   <title>AI Governance Hub | Enterprise AI Governance Platform</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -30,13 +20,11 @@
 <header class="hero">
   <nav class="nav">
     <div class="logo">🛡️ AI Governance Hub</div>
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
-    <div class="nav-links" id="navLinks">
+    <div class="nav-links">
       <a href="#platform">Platform</a>
       <a href="#features">Features</a>
       <a href="#assessment">AI Assessment</a>
       <a href="#pricing">Pricing</a>
-      <a href="sample-report.html">Sample Report</a>
       <a href="#demo">Live Preview</a>
       <a href="#jira">Jira Cloud</a>
       <a href="#roadmap">Roadmap</a>
@@ -222,7 +210,6 @@
       <label><input type="checkbox" id="assessAutomatedDecision"> Makes or recommends automated decisions</label>
       <label><input type="checkbox" id="assessThirdPartyVendor"> Uses third-party AI vendor or external model</label>
       <label><input type="checkbox" id="assessRegulatedDomain"> Used in a regulated domain</label>
-      <label class="consent-label"><input type="checkbox" id="assessmentConsent"> I agree to the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and understand this browser-based assessment provides a high-level governance preview.</label>
 
       <button class="primary-blue-btn" onclick="runWebsiteAssessment()">Generate High-Level Summary</button>
     </div>
@@ -241,23 +228,9 @@
         <a class="payment-btn" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Assessment Request&body=Hello AI Governance Hub Team,%0D%0A%0D%0AI would like to request an AI Governance Assessment.%0D%0A%0D%0APlease share the Razorpay payment link and next steps.%0D%0A" target="_blank">
           Contact Sales to Unlock
         </a>
-        <p class="payment-note">Introductory launch pricing is available for a limited time. Online checkout will be enabled after payment verification is complete; until then, sales will share the next steps.</p>
+        <p class="payment-note">Introductory launch pricing is available for a limited time. Razorpay payment links will be connected once approval is complete.</p>
       </div>
     </div>
-  </div>
-</section>
-
-
-<section class="section" id="sample-report">
-  <h2>Sample Governance Report</h2>
-  <p>Preview what a paid AI Governance Assessment can include before requesting a detailed review.</p>
-  <div class="sample-report-card">
-    <div>
-      <span class="status preview">Sample Report</span>
-      <h3>AI Governance Assessment Report Preview</h3>
-      <p>This sample shows the structure of a governance report: executive summary, risk score, required reviews, compliance mapping, vendor risk, and audit readiness recommendations.</p>
-    </div>
-    <a class="primary-blue-btn" href="sample-report.html">View Sample Report</a>
   </div>
 </section>
 
@@ -441,13 +414,6 @@
 </div>
 
 <script>
-  function toggleNavigation() {
-    const navLinks = document.getElementById("navLinks");
-    const navToggle = document.querySelector(".nav-toggle");
-    const isOpen = navLinks.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  }
-
   function escapeHtml(value) {
     return String(value || "").replace(/[&<>"']/g, function(character) {
       return ({
@@ -553,11 +519,6 @@
       return;
     }
 
-    if (!document.getElementById("assessmentConsent").checked) {
-      assessmentOutput.innerHTML = `<div class="result-box medium-risk">Please accept the Privacy Policy acknowledgement before generating the assessment summary.</div>`;
-      return;
-    }
-
     const name = escapeHtml(nameRaw);
     const email = escapeHtml(emailRaw);
     const company = escapeHtml(companyRaw);
@@ -570,10 +531,6 @@
     if (document.getElementById("assessAutomatedDecision").checked) score += 3;
     if (document.getElementById("assessThirdPartyVendor").checked) score += 1;
     if (document.getElementById("assessRegulatedDomain").checked) score += 2;
-
-    const regulatedFunctions = ["Healthcare / Life Sciences", "Finance / Banking"];
-    if (regulatedFunctions.includes(document.getElementById("assessmentFunction").value)) score += 1;
-    if (score > 10) score = 10;
 
     let riskLevel = "Low";
     let reviews = "Product Owner Review";
