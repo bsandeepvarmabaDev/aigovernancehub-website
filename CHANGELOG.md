@@ -1,24 +1,27 @@
 # CHANGELOG
 
-## 2026.06.15-batch750-enterprise-scale-v1
+## 2026.06.16-commercialization-v1
 
-### Added
-- Added Batch 101-750 enterprise scale roadmap summary to the homepage.
-- Added `roadmap-750.html` detailed roadmap page.
-- Added navigation link to the Batch 750 roadmap.
-- Added release language clarifying that Batch 101-750 items are roadmap capabilities, not production features.
+### Security
+- Preserved CSP meta policy with YouTube frame allowances.
+- Preserved `escapeHtml()` protection for user-controlled fields.
+- Preserved privacy acknowledgement requirement before assessment generation.
+- No secrets, API keys, or Razorpay secret keys added to frontend.
 
-### Preserved
-- Security hardening and XSS escaping.
-- Content Security Policy meta policy.
-- Privacy acknowledgement checkbox.
-- Legal pages: Privacy, Terms and Security Policy.
-- Sample report, thank-you page, payment-pending page, robots.txt and sitemap.xml.
+### Commercialization
+- Added ROI calculator for estimated monthly governance review savings.
+- Added AI Governance Maturity Assessment levels.
+- Added enterprise trust strip under the hero section.
+- Added enterprise architecture view.
+- Added commercial comparison section: current state vs AI Governance Hub.
+- Added stronger enterprise CTA section.
+
+### Launch polish
+- Updated version to `2026.06.16-commercialization-v1`.
+- Updated README and release documentation.
+- Retained Batch 750 roadmap page and existing legal/support pages.
 
 ### Not changed
 - Forge app code.
 - Marketplace submission.
-- Razorpay payment links are still pending until live checkout links are connected.
-
-## 2026.06.14-batch100-conversion-v2
-- Baseline conversion, security and launch hardening release.
+- Razorpay API integration. Payment links should be added only as hosted Razorpay URLs when ready.

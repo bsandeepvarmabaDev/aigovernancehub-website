@@ -1,9 +1,9 @@
 # AI Governance Hub Website
 
-Version: 2026.06.15-batch750-enterprise-scale-v1
+Version: 2026.06.16-commercialization-v1
 
 ## Purpose
-Enterprise scale roadmap release for the public AI Governance Hub website. This release preserves the Batch 100 conversion baseline and adds a public Batch 101-750 roadmap section and detailed roadmap page.
+Commercialization foundation release for AI Governance Hub public website.
 
 ## Included files
 - index.html
@@ -14,20 +14,23 @@ Enterprise scale roadmap release for the public AI Governance Hub website. This 
 - sample-report.html
 - thank-you.html
 - payment-pending.html
-- roadmap-750.html
 - robots.txt
 - sitemap.xml
 - favicon.svg
+- roadmap-750.html
 
 ## Key updates
-- Updated version to `2026.06.15-batch750-enterprise-scale-v1`.
-- Added Batch 750 roadmap navigation link.
-- Added homepage Batch 101-750 enterprise scale roadmap summary.
-- Added detailed `roadmap-750.html` page.
-- Preserved XSS protection, CSP, privacy acknowledgement, legal pages, sitemap, robots, sample report and payment-pending flow.
+- Added enterprise trust strip under hero.
+- Strengthened homepage positioning for enterprise buyers.
+- Added ROI calculator for governance review savings.
+- Added AI governance maturity model.
+- Added enterprise architecture view.
+- Added commercial comparison section showing before/after value.
+- Added enterprise CTA section.
+- Preserved security hardening, CSP, XSS protections, privacy acknowledgement, robots.txt and sitemap.xml.
 
-## Important note
-Batch 101-750 is published as a roadmap and enterprise product vision. These roadmap capabilities are not claimed as production features until implemented, tested and released in future versioned packages.
+## Security note
+No API keys, payment secrets, or backend credentials are included. Razorpay must continue to use hosted Payment Links until a backend is implemented.
 
 ## Deployment note
-Upload these files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
+Upload files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
