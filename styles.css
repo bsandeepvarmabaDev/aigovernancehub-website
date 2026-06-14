@@ -1,4 +1,4 @@
-/* AI Governance Hub Website Version: 2026.06.14-batch100-conversion-v2 */
+/* AI Governance Hub Website Version: 2026.06.15-batch750-enterprise-scale-v1 */
 .announcement-bar {
   background: #0f172a;
   color: white;
@@ -781,7 +781,7 @@ footer a {
 }
 
 
-/* Security hardening + launch polish - 2026.06.14-batch100-conversion-v2 */
+/* Security hardening + launch polish - 2026.06.15-batch750-enterprise-scale-v1 */
 .launch-pricing-note {
   font-weight: 800;
   color: #1d4ed8;
@@ -972,7 +972,7 @@ footer a {
 }
 
 
-/* Batch 100 conversion release - 2026.06.14-batch100-conversion-v2 */
+/* Batch 100 conversion release - 2026.06.15-batch750-enterprise-scale-v1 */
 .hero-proof-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -1114,4 +1114,18 @@ footer a {
   .hero-proof-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* Batch 750 enterprise scale release */
+.centered-cta {
+  text-align: center;
+  margin-top: 28px;
+}
+.roadmap-document h2 {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 24px;
+}
+.roadmap-document ul {
+  margin-bottom: 20px;
 }

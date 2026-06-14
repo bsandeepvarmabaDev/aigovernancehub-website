@@ -1,9 +1,9 @@
 # AI Governance Hub Website
 
-Version: 2026.06.14-batch100-conversion-v2
+Version: 2026.06.15-batch750-enterprise-scale-v1
 
 ## Purpose
-Conversion, trust and enterprise-positioning release for the AI Governance Hub public website.
+Enterprise scale roadmap release for the public AI Governance Hub website. This release preserves the Batch 100 conversion baseline and adds a public Batch 101-750 roadmap section and detailed roadmap page.
 
 ## Included files
 - index.html
@@ -14,26 +14,20 @@ Conversion, trust and enterprise-positioning release for the AI Governance Hub p
 - sample-report.html
 - thank-you.html
 - payment-pending.html
+- roadmap-750.html
 - robots.txt
 - sitemap.xml
 - favicon.svg
-- CHANGELOG.md
-- README.md
 
 ## Key updates
-- Added YouTube demo video embed.
-- Added dashboard screenshot preview to the hero section.
-- Added trust/proof metrics.
-- Added governance journey.
-- Added enterprise audience section.
-- Added business value section.
-- Added FAQ section.
-- Added 100-capability product roadmap grouped into secure batches.
-- Preserved security hardening from prior release.
+- Updated version to `2026.06.15-batch750-enterprise-scale-v1`.
+- Added Batch 750 roadmap navigation link.
+- Added homepage Batch 101-750 enterprise scale roadmap summary.
+- Added detailed `roadmap-750.html` page.
+- Preserved XSS protection, CSP, privacy acknowledgement, legal pages, sitemap, robots, sample report and payment-pending flow.
+
+## Important note
+Batch 101-750 is published as a roadmap and enterprise product vision. These roadmap capabilities are not claimed as production features until implemented, tested and released in future versioned packages.
 
 ## Deployment note
 Upload these files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
-
-
-## Batch 40-100 note
-This release adds public website conversion, enterprise positioning, demo video, trust, FAQ, roadmap, and 100-capability roadmap sections. It does not add backend SaaS capabilities such as user login, database, automated report generation, or subscription billing. Those require a later backend release.
