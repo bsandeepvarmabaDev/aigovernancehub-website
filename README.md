@@ -1,6 +1,6 @@
 # AI Governance Hub Website
 
-Version: 2026.06.14-batch100-conversion-v1
+Version: 2026.06.14-batch100-conversion-v2
 
 ## Purpose
 Conversion, trust and enterprise-positioning release for the AI Governance Hub public website.
@@ -33,3 +33,7 @@ Conversion, trust and enterprise-positioning release for the AI Governance Hub p
 
 ## Deployment note
 Upload these files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
+
+
+## Batch 40-100 note
+This release adds public website conversion, enterprise positioning, demo video, trust, FAQ, roadmap, and 100-capability roadmap sections. It does not add backend SaaS capabilities such as user login, database, automated report generation, or subscription billing. Those require a later backend release.

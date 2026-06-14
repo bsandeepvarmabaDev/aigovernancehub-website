@@ -1,6 +1,25 @@
 # CHANGELOG
 
-## 2026.06.14-batch100-conversion-v1
+## 2026.06.14-batch100-conversion-v2
+
+### Versioning
+- Created a unique v2 release package so GitHub Desktop shows file changes clearly.
+- Preserved Batch 40-100 conversion and enterprise roadmap content from the prior package.
+
+### Included Batch 40-100 public website additions
+- Enterprise conversion-focused hero experience.
+- Demo video integration using the AI Governance Hub YouTube demo.
+- Trust metrics and dashboard preview.
+- Governance lifecycle journey section.
+- Enterprise audience and buyer persona positioning.
+- Business value / ROI messaging.
+- FAQ and adoption guidance.
+- 100-capability roadmap grouped across secure delivery batches.
+
+### Security
+- Preserved XSS escaping, email validation, privacy consent, CSP, robots.txt, sitemap.xml, legal pages, and security policy.
+
+## 2026.06.14-batch100-conversion-v2
 
 ### Security
 - Preserved XSS protections, input escaping, email validation, privacy acknowledgement and CSP meta policy.
