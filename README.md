@@ -1,9 +1,9 @@
 # AI Governance Hub Website
 
-Version: 2026.06.14-launch-hardening-v2
+Version: 2026.06.14-batch100-conversion-v1
 
 ## Purpose
-Launch hardening release for the public AI Governance Hub website.
+Conversion, trust and enterprise-positioning release for the AI Governance Hub public website.
 
 ## Included files
 - index.html
@@ -17,18 +17,19 @@ Launch hardening release for the public AI Governance Hub website.
 - robots.txt
 - sitemap.xml
 - favicon.svg
-- original_versions/
+- CHANGELOG.md
+- README.md
 
 ## Key updates
-- Fixed malformed HTML version comments across HTML pages.
-- Preserved XSS protection and input escaping.
-- Added mobile hamburger navigation.
-- Added privacy acknowledgement checkbox near assessment lead capture.
-- Added canonical, Open Graph, Twitter Card and favicon metadata.
-- Added sample governance report page and CTA section.
-- Added robots.txt and sitemap.xml.
-- Added industry-weighted scoring for Healthcare / Life Sciences and Finance / Banking.
-- Kept Razorpay flow email-based until payment links are approved.
+- Added YouTube demo video embed.
+- Added dashboard screenshot preview to the hero section.
+- Added trust/proof metrics.
+- Added governance journey.
+- Added enterprise audience section.
+- Added business value section.
+- Added FAQ section.
+- Added 100-capability product roadmap grouped into secure batches.
+- Preserved security hardening from prior release.
 
 ## Deployment note
 Upload these files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.

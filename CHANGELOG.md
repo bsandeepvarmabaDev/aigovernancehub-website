@@ -1,22 +1,30 @@
 # CHANGELOG
 
-## 2026.06.14-launch-hardening-v2
+## 2026.06.14-batch100-conversion-v1
 
 ### Security
-- Fixed malformed HTML comments in index, privacy, terms and security-policy pages.
-- Preserved `escapeHtml()` protection for user-controlled fields.
-- Preserved email validation and CSP meta policy.
-- Added privacy acknowledgement checkbox before generating assessment results.
+- Preserved XSS protections, input escaping, email validation, privacy acknowledgement and CSP meta policy.
+- Updated CSP to allow the embedded YouTube demo frame while keeping object blocking and frame-ancestor protection.
 
-### Launch hardening
-- Added mobile hamburger navigation for smaller screens.
-- Added favicon, canonical URL, Open Graph and Twitter metadata.
-- Added sample governance report page and homepage CTA.
-- Added robots.txt and sitemap.xml.
-- Added thank-you and payment-pending support pages.
-- Added regulated industry scoring adjustment for Healthcare / Life Sciences and Finance / Banking.
+### Conversion and trust
+- Added product dashboard preview directly inside the hero section.
+- Added YouTube demo video section using https://youtu.be/HnOL91oc2xY.
+- Added proof metrics row with platform modules, security-first positioning and 100+ capability roadmap.
+- Added governance journey section: Discover → Assess → Review → Approve → Monitor → Audit.
+- Added enterprise audience section for CIO, governance, risk, security, privacy, audit, PMO and product teams.
+- Added business value section.
+- Added FAQ section.
+- Added public 100-capability roadmap grouped into secure delivery batches.
+
+### Preserved from previous version
+- Mobile hamburger navigation.
+- Sample governance report page.
+- robots.txt and sitemap.xml.
+- favicon and SEO metadata.
+- Privacy, Terms and Security Policy pages.
+- Email-based Razorpay placeholder flow until live payment links are finalized.
 
 ### Not changed
 - Forge app code.
 - Marketplace submission.
-- Razorpay checkout remains pending until live payment links are approved.
+- Existing images folder.
