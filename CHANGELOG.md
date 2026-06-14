@@ -28,3 +28,15 @@
 ### SEO / launch
 - Updated canonical, robots and sitemap references to https://aigovernancehub.ai/.
 - Kept legal pages, sample report, payment pending, thank-you and roadmap pages.
+
+
+## 2026.06.16-enterprise-saas-redesign-v2
+
+- Improved homepage polish without changing the existing introductory pricing strategy.
+- Fixed duplicate hero “Reduce Risk” rendering issue.
+- Added display currency selector for INR, USD, EUR and GBP with automatic browser-region initialization.
+- Updated pricing mailto subjects/bodies based on selected currency.
+- Improved navigation CTA from Contact to Book Demo.
+- Moved mobile hero priority back to headline and CTA before dashboard preview.
+- Replaced special-character reassurance bullets with CSS-generated checkmarks for safer rendering.
+- Kept security-first static implementation: no payment secrets, no API keys and no customer data storage added.

@@ -20,3 +20,8 @@ No API keys, payment secrets, Razorpay secret keys or backend credentials are in
 
 ## Deployment note
 Upload files to the GitHub Pages repository root. Keep the existing images/ folder unchanged.
+
+
+## Version 2026.06.16-enterprise-saas-redesign-v2
+
+This release improves the current website look and feel while preserving the existing introductory pricing model. Currency display is handled client-side for presentation only and does not store payment secrets or customer data. Final billing should be confirmed through the payment/checkout process.

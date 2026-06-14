@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.16-enterprise-saas-redesign-v1 -->
+  <!-- AI Governance Hub Website Version: 2026.06.16-enterprise-saas-redesign-v2 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="top-strip">Available today on Jira Cloud • Built on Atlassian Forge • Free AI governance assessment</div>
+  <div class="top-strip">Available today on Jira Cloud • Built on Atlassian Forge • Security-first AI governance</div>
 
   <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
@@ -29,7 +29,7 @@
         <a href="#assessment">Assessment</a>
         <a href="#pricing">Pricing</a>
         <a href="security-policy.html">Security</a>
-        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Book Demo</a>
       </div>
     </nav>
   </header>
@@ -56,9 +56,9 @@
           </div>
 
           <div class="hero-reassurance">
-            <span>✓ No credit card required</span>
-            <span>✓ Takes under 5 minutes</span>
-            <span>✓ Instant governance insights</span>
+            <span>No credit card required</span>
+            <span>Takes under 5 minutes</span>
+            <span>Instant governance insights</span>
           </div>
         </div>
 
@@ -258,6 +258,61 @@
       });
     }
 
+
+    const pricingRates = {
+      INR: { symbol: "₹", rate: 1, decimals: 0, label: "India introductory price" },
+      USD: { symbol: "$", rate: 0.012, decimals: 2, label: "Estimated USD equivalent" },
+      EUR: { symbol: "€", rate: 0.011, decimals: 2, label: "Estimated EUR equivalent" },
+      GBP: { symbol: "£", rate: 0.0095, decimals: 2, label: "Estimated GBP equivalent" }
+    };
+
+    function detectPreferredCurrency() {
+      const locale = `${navigator.language || ""} ${(Intl.DateTimeFormat().resolvedOptions().timeZone || "")}`.toLowerCase();
+      if (locale.includes("india") || locale.includes("in")) return "INR";
+      if (locale.includes("gb") || locale.includes("london")) return "GBP";
+      if (locale.includes("de") || locale.includes("fr") || locale.includes("es") || locale.includes("it") || locale.includes("nl") || locale.includes("europe")) return "EUR";
+      if (locale.includes("us") || locale.includes("america") || locale.includes("new_york") || locale.includes("los_angeles") || locale.includes("chicago")) return "USD";
+      return "INR";
+    }
+
+    function formatPricingAmount(inrAmount, currency) {
+      const selected = pricingRates[currency] || pricingRates.INR;
+      const converted = Number(inrAmount) * selected.rate;
+      return `${selected.symbol}${converted.toLocaleString(undefined, { minimumFractionDigits: selected.decimals, maximumFractionDigits: selected.decimals })}`;
+    }
+
+    function updatePricingCurrency() {
+      const currencySelect = document.getElementById("pricingCurrency");
+      if (!currencySelect) return;
+      const currency = currencySelect.value || "INR";
+      const selected = pricingRates[currency] || pricingRates.INR;
+
+      document.querySelectorAll(".price[data-inr]").forEach((priceEl) => {
+        priceEl.textContent = formatPricingAmount(priceEl.dataset.inr, currency);
+      });
+
+      document.querySelectorAll(".price-note").forEach((noteEl) => {
+        noteEl.textContent = currency === "INR" ? "India introductory price" : `${selected.label}. Final billing is confirmed before payment.`;
+      });
+
+      document.querySelectorAll(".pricing-request").forEach((link) => {
+        const plan = link.dataset.plan || "Governance Package";
+        const amount = formatPricingAmount(link.dataset.inr, currency);
+        link.href = `mailto:sales@aigovernancehub.ai?subject=${encodeURIComponent(`${amount} ${plan} Request`)}&body=${encodeURIComponent(`Hello AI Governance Hub team,
+
+I am interested in the ${plan} package shown as ${amount} (${currency}). Please share the next steps for payment and delivery.
+
+Thanks.`)}`;
+      });
+    }
+
+    function initializePricingCurrency() {
+      const currencySelect = document.getElementById("pricingCurrency");
+      if (!currencySelect) return;
+      currencySelect.value = detectPreferredCurrency();
+      updatePricingCurrency();
+    }
+
     function isValidEmail(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
     }
@@ -326,6 +381,8 @@
         <p><strong>Required Reviews:</strong> ${reviews}</p>
         <div class="locked-insights"><h4>Detailed paid report can include</h4><p>Executive summary, compliance mapping, vendor risk notes, audit readiness and recommended next actions.</p></div>`;
     }
+
+    initializePricingCurrency();
   </script>
 </body>
 </html>
