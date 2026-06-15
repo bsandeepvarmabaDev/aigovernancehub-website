@@ -1,24 +1,17 @@
 # AI Governance Hub Website
 
-Version: 2026.06.26-marketplace-approval-v15
+Version: 2026.06.26-framework-seo-v16
 
-AI Governance Hub is an enterprise AI governance platform for Jira Cloud. This website supports Marketplace listing quality, product positioning, demo requests, free high-level assessment, introductory package requests, customer support, documentation, legal pages and security transparency.
+## Added in this package
 
-## Marketplace approval updates
+- EU AI Act landing page: `eu-ai-act-jira.html`
+- ISO 42001 landing page: `iso-42001-jira.html`
+- NIST AI RMF landing page: `nist-ai-rmf-jira.html`
+- Homepage framework section linking to all three pages
+- Updated `sitemap.xml` with the three new SEO pages
+- Fixed homepage meta charset extra `>` cleanup
+- Standardized dashboard image path references to `images/dashboard.png`
 
-- Added dedicated `support.html` page for Marketplace support link.
-- Added documentation center under `docs/` with setup, user, admin and security documentation.
-- Added expanded Marketplace overview description in `marketplace-overview-description.txt`.
-- Added distinctive AGH shield logo assets: `app-logo.svg` and `app-logo-512.png`.
-- Preserved security-first static website constraints.
+## Deployment
 
-## Recommended Marketplace support URL
-
-https://aigovernancehub.ai/support.html
-
-## Security notes
-
-- Do not store passwords in this static website.
-- Do not store Razorpay secrets or API keys in frontend code.
-- Do not store customer records in browser-only storage.
-- Use hosted payment links or backend-verified payment flows when checkout is enabled.
+Upload all files to the GitHub Pages repository root and commit. After deployment, request Google indexing for the three new framework URLs.
