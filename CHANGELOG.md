@@ -1,6 +1,21 @@
 # Changelog
 
-## 2026.06.25-enterprise-launch-candidate-v9
+## 2026.06.26-conversion-optimization-v10
+
+### Changed
+- Shortened the homepage to reduce scrolling and improve conversion flow.
+- Moved the full free high-level AI governance assessment form to a dedicated `assessment.html` page.
+- Added a homepage assessment preview card with clear free-to-paid report upgrade path.
+- Added paid detailed governance report messaging for executive summary, risk heatmap, compliance mapping, vendor assessment and audit readiness recommendations.
+- Updated assessment placeholders to enterprise-safe “For e.g.” examples, including “For e.g. XYZ Corporation”.
+- Updated navigation links to route Assessment menu items to the dedicated assessment page.
+- Added `assessment.html` to the sitemap.
+
+### Security
+- No API keys, Razorpay secrets, passwords, backend credentials, cookies or customer-data browser storage were added.
+- The public website remains static; secure payment instructions remain assisted until hosted checkout is enabled and verified.
+
+## 2026.06.26-conversion-optimization-v10
 
 ### Changed
 - Removed personal-name examples from public assessment form placeholders.
@@ -12,7 +27,7 @@
 - No API keys, Razorpay secrets, passwords, backend credentials, cookies or customer-data browser storage were added.
 - Payment remains assisted/secure-instruction based until live hosted payment links are enabled and verified.
 
-## 2026.06.25-enterprise-launch-candidate-v9
+## 2026.06.26-conversion-optimization-v10
 
 ### Changed
 - Updated homepage hero messaging for stronger enterprise SaaS positioning.

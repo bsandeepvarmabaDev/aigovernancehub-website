@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- AI Governance Hub Website Version: 2026.06.26-conversion-optimization-v10 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta name="description" content="Run a free high-level AI governance assessment and request a detailed paid governance report from AI Governance Hub." />
+  <link rel="canonical" href="https://aigovernancehub.ai/assessment.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="AI Governance Hub | Enterprise AI Governance for Jira Cloud" />
+  <meta property="og:description" content="Govern AI reviews, risk, approvals and audit evidence in one Jira Cloud workspace." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aigovernancehub.ai/" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/dashboard.png.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Free AI Governance Assessment | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="top-strip">Available today on Jira Cloud • Built on Atlassian Forge • Security-first AI governance</div>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="AI Governance Hub home"><span class="brand-mark">🛡️</span><span>AI Governance Hub</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#platform">Platform</a>
+        <a href="assessment.html">Assessment</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="security-policy.html">Security</a>
+        <a class="nav-cta" href="index.html#contact">Book Demo</a>
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="top">
+    <section class="section light-section assessment-page-hero" id="assessment">
+      <div class="section-heading">
+        <span class="section-kicker">Free high-level assessment</span>
+        <h1>Run your AI governance assessment</h1>
+        <p>Get a high-level risk score, required reviews and governance recommendations. For detailed executive-ready reports, select a paid package after reviewing your result.</p>
+      </div>
+      <div class="assessment-layout">
+        <div class="assessment-card form-card">
+          <h3>Describe your AI use case</h3>
+          <label for="assessmentName">Your Name</label>
+          <input type="text" id="assessmentName" maxlength="120" placeholder="For e.g. Governance Lead">
+
+          <label for="assessmentEmail">Work Email</label>
+          <input type="email" id="assessmentEmail" maxlength="180" placeholder="For e.g. name@company.com">
+
+          <label for="assessmentCompany">Company Name</label>
+          <input type="text" id="assessmentCompany" maxlength="160" placeholder="For e.g. XYZ Corporation">
+
+          <label for="assessmentUseCase">AI Use Case Name</label>
+          <input type="text" id="assessmentUseCase" maxlength="180" placeholder="For e.g. Customer Support AI Assistant">
+
+          <label for="assessmentFunction">Business Function</label>
+          <select id="assessmentFunction">
+            <option>Customer Support</option>
+            <option>Sales & Marketing</option>
+            <option>Healthcare / Life Sciences</option>
+            <option>Finance / Banking</option>
+            <option>HR / People Operations</option>
+            <option>Operations / Logistics</option>
+            <option>Technology / Engineering</option>
+          </select>
+
+          <label for="assessmentVendor">AI Vendor / Tool</label>
+          <input type="text" id="assessmentVendor" maxlength="180" placeholder="For e.g. OpenAI GPT-5, Microsoft Copilot, Claude, Internal Model">
+
+          <div class="check-list">
+            <label><input type="checkbox" id="assessPersonalData"> Uses personal or sensitive data</label>
+            <label><input type="checkbox" id="assessCustomerFacing"> Customer-facing or user-facing AI</label>
+            <label><input type="checkbox" id="assessAutomatedDecision"> Makes or recommends automated decisions</label>
+            <label><input type="checkbox" id="assessThirdPartyVendor"> Uses third-party AI vendor or external model</label>
+            <label><input type="checkbox" id="assessRegulatedDomain"> Used in a regulated domain</label>
+            <label class="consent-label"><input type="checkbox" id="assessmentConsent"> I agree to the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and understand this browser-based assessment provides a high-level governance preview.</label>
+          </div>
+
+          <button class="btn btn-primary wide" onclick="runWebsiteAssessment()">Generate High-Level Summary</button>
+        </div>
+
+        <div class="assessment-card result-card">
+          <span class="status-pill">Free Preview</span>
+          <h3>Governance assessment result</h3>
+          <div id="assessmentOutput" class="assessment-output">Complete the form and run the assessment to see risk level, required reviews and governance recommendations.</div>
+          <div class="upgrade-box">
+            <h4>Need a detailed report?</h4>
+            <p>Request a paid governance review for executive summary, compliance mapping, vendor assessment and audit readiness recommendations.</p>
+            <a class="btn btn-primary" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Assessment Request&body=Hello AI Governance Hub Team,%0D%0A%0D%0AI would like to request an AI Governance Assessment package.%0D%0A">Request Package</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>AI Governance Hub™</strong>
+        <span>Enterprise AI Governance Platform for Jira Cloud</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="security-policy.html">Security Policy</a>
+        <a href="sample-report.html">Sample Report</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub. Available on Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNavigation() {
+      const navLinks = document.getElementById("navLinks");
+      const navToggle = document.querySelector(".nav-toggle");
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, function(character) {
+        return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[character];
+      });
+    }
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+    }
+
+    const pricingCurrencyConfig = {
+      INR: { symbol: "₹", rate: 1, decimals: 0, label: "INR introductory pricing" },
+      USD: { symbol: "$", rate: 0.012, decimals: 2, label: "Approx. USD display" },
+      EUR: { symbol: "€", rate: 0.011, decimals: 2, label: "Approx. EUR display" },
+      GBP: { symbol: "£", rate: 0.0095, decimals: 2, label: "Approx. GBP display" }
+    };
+
+    function detectPreferredCurrency() {
+      const locale = (navigator.language || "").toUpperCase();
+      if (locale.includes("GB")) return "GBP";
+      if (locale.includes("US")) return "USD";
+      if (locale.includes("DE") || locale.includes("FR") || locale.includes("NL") || locale.includes("ES") || locale.includes("IT") || locale.includes("IE")) return "EUR";
+      return "INR";
+    }
+
+    function formatPrice(amount, config) {
+      const value = amount * config.rate;
+      return `${config.symbol}${value.toFixed(config.decimals)}`;
+    }
+
+    function updatePricingCurrency() {
+      const selector = document.getElementById("currencySelect");
+      if (!selector) return;
+      const currency = selector.value;
+      const config = pricingCurrencyConfig[currency] || pricingCurrencyConfig.INR;
+      document.querySelectorAll(".pricing-card[data-inr]").forEach(function(card) {
+        const inrAmount = Number(card.getAttribute("data-inr"));
+        const plan = card.getAttribute("data-plan") || "AI Governance Assessment";
+        const displayPrice = formatPrice(inrAmount, config);
+        const priceElement = card.querySelector("[data-price]");
+        const noteElement = card.querySelector("[data-price-note]");
+        const linkElement = card.querySelector("[data-package-link]");
+        if (priceElement) priceElement.textContent = displayPrice;
+        if (noteElement) noteElement.textContent = config.label;
+        if (linkElement) {
+          const subject = encodeURIComponent(`${displayPrice} ${plan} Request`);
+          const body = encodeURIComponent(`Hello AI Governance Hub Team,
+
+I would like to request the ${plan} package.
+Displayed price: ${displayPrice} ${currency}.
+Base INR price: ₹${inrAmount}.
+
+Please share secure payment instructions and next steps.`);
+          linkElement.href = `mailto:sales@aigovernancehub.ai?subject=${subject}&body=${body}`;
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const selector = document.getElementById("currencySelect");
+      if (selector) selector.value = detectPreferredCurrency();
+      updatePricingCurrency();
+    });
+
+    function runWebsiteAssessment() {
+      let score = 0;
+      const nameRaw = document.getElementById("assessmentName").value.trim();
+      const emailRaw = document.getElementById("assessmentEmail").value.trim();
+      const companyRaw = document.getElementById("assessmentCompany").value.trim();
+      const useCaseRaw = document.getElementById("assessmentUseCase").value.trim();
+      const assessmentOutput = document.getElementById("assessmentOutput");
+
+      if (!nameRaw || !emailRaw || !companyRaw || !useCaseRaw) {
+        assessmentOutput.innerHTML = `<div class="result-box medium-risk">Please enter your name, work email, company and AI use case before generating the assessment summary.</div>`;
+        return;
+      }
+
+      if (!isValidEmail(emailRaw)) {
+        assessmentOutput.innerHTML = `<div class="result-box medium-risk">Please enter a valid work email address.</div>`;
+        return;
+      }
+
+      if (!document.getElementById("assessmentConsent").checked) {
+        assessmentOutput.innerHTML = `<div class="result-box medium-risk">Please accept the Privacy Policy acknowledgement before generating the assessment summary.</div>`;
+        return;
+      }
+
+      const name = escapeHtml(nameRaw);
+      const email = escapeHtml(emailRaw);
+      const company = escapeHtml(companyRaw);
+      const useCase = escapeHtml(useCaseRaw);
+      const businessFunction = escapeHtml(document.getElementById("assessmentFunction").value);
+      const vendor = escapeHtml(document.getElementById("assessmentVendor").value.trim() || "Not specified");
+
+      if (document.getElementById("assessPersonalData").checked) score += 2;
+      if (document.getElementById("assessCustomerFacing").checked) score += 2;
+      if (document.getElementById("assessAutomatedDecision").checked) score += 3;
+      if (document.getElementById("assessThirdPartyVendor").checked) score += 1;
+      if (document.getElementById("assessRegulatedDomain").checked) score += 2;
+      if (["Healthcare / Life Sciences", "Finance / Banking"].includes(document.getElementById("assessmentFunction").value)) score += 1;
+      if (score > 10) score = 10;
+
+      let riskLevel = "Low";
+      let reviews = "Product Owner Review";
+      let riskClass = "low-risk";
+      if (score >= 3 && score <= 6) {
+        riskLevel = "Medium";
+        reviews = "Security Review, Privacy Review, Product Owner Review";
+        riskClass = "medium-risk";
+      }
+      if (score >= 7) {
+        riskLevel = "High";
+        reviews = "Security Review, Privacy Review, Responsible AI Review, Legal Review, Business Owner Approval";
+        riskClass = "high-risk";
+      }
+
+      assessmentOutput.innerHTML = `
+        <div class="result-box ${riskClass}">Risk Level: ${riskLevel}</div>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Company:</strong> ${company}</p>
+        <p><strong>Use Case:</strong> ${useCase}</p>
+        <p><strong>Business Function:</strong> ${businessFunction}</p>
+        <p><strong>Vendor / Tool:</strong> ${vendor}</p>
+        <p><strong>Risk Score:</strong> ${score}/10</p>
+        <p><strong>Required Reviews:</strong> ${reviews}</p>
+        <div class="locked-insights"><h4>Detailed paid report can include</h4><p>Executive summary, compliance mapping, vendor risk notes, audit readiness and recommended next actions.</p></div>`;
+    }
+  </script>
+</body>
+</html>

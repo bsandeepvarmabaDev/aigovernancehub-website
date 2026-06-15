@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.25-enterprise-launch-candidate-v9 -->
+  <!-- AI Governance Hub Website Version: 2026.06.26-conversion-optimization-v10 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -26,7 +26,7 @@
       <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
       <div class="nav-links" id="navLinks">
         <a href="#platform">Platform</a>
-        <a href="#assessment">Assessment</a>
+        <a href="assessment.html">Assessment</a>
         <a href="#pricing">Pricing</a>
         <a href="security-policy.html">Security</a>
         <a class="nav-cta" href="#contact">Book Demo</a>
@@ -51,7 +51,7 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#assessment">Run Free Assessment <span aria-hidden="true">→</span></a>
+            <a class="btn btn-primary" href="assessment.html">Run Free Assessment <span aria-hidden="true">→</span></a>
             <a class="btn btn-secondary" href="#video">Book Demo</a>
           </div>
 
@@ -154,62 +154,35 @@
 
     <section class="section light-section" id="assessment">
       <div class="section-heading">
-        <span class="section-kicker">Free assessment</span>
-        <h2>Run a quick AI governance assessment</h2>
-        <p>Get a high-level risk score, required reviews and governance recommendations in minutes.</p>
+        <span class="section-kicker">Free high-level assessment</span>
+        <h2>Get a quick AI governance risk preview</h2>
+        <p>Keep the homepage focused. Start the free assessment from here and unlock a detailed paid report when you need executive-ready guidance.</p>
       </div>
-
-      <div class="assessment-layout">
-        <div class="assessment-card form-card">
-          <h3>Describe your AI use case</h3>
-          <label for="assessmentName">Your Name</label>
-          <input type="text" id="assessmentName" maxlength="120" placeholder="Enter your name">
-
-          <label for="assessmentEmail">Work Email</label>
-          <input type="email" id="assessmentEmail" maxlength="180" placeholder="name@company.com">
-
-          <label for="assessmentCompany">Company Name</label>
-          <input type="text" id="assessmentCompany" maxlength="160" placeholder="Acme Corporation">
-
-          <label for="assessmentUseCase">AI Use Case Name</label>
-          <input type="text" id="assessmentUseCase" maxlength="180" placeholder="Customer Support AI Chatbot">
-
-          <label for="assessmentFunction">Business Function</label>
-          <select id="assessmentFunction">
-            <option>Customer Support</option>
-            <option>Sales & Marketing</option>
-            <option>Healthcare / Life Sciences</option>
-            <option>Finance / Banking</option>
-            <option>HR / People Operations</option>
-            <option>Operations / Logistics</option>
-            <option>Technology / Engineering</option>
-          </select>
-
-          <label for="assessmentVendor">AI Vendor / Tool</label>
-          <input type="text" id="assessmentVendor" maxlength="180" placeholder="OpenAI, Microsoft Copilot, Claude, Internal Model">
-
-          <div class="check-list">
-            <label><input type="checkbox" id="assessPersonalData"> Uses personal or sensitive data</label>
-            <label><input type="checkbox" id="assessCustomerFacing"> Customer-facing or user-facing AI</label>
-            <label><input type="checkbox" id="assessAutomatedDecision"> Makes or recommends automated decisions</label>
-            <label><input type="checkbox" id="assessThirdPartyVendor"> Uses third-party AI vendor or external model</label>
-            <label><input type="checkbox" id="assessRegulatedDomain"> Used in a regulated domain</label>
-            <label class="consent-label"><input type="checkbox" id="assessmentConsent"> I agree to the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and understand this browser-based assessment provides a high-level governance preview.</label>
-          </div>
-
-          <button class="btn btn-primary wide" onclick="runWebsiteAssessment()">Generate High-Level Summary</button>
-        </div>
-
-        <div class="assessment-card result-card">
+      <div class="assessment-promo-grid">
+        <article class="assessment-promo-card">
           <span class="status-pill">Free Preview</span>
-          <h3>Governance assessment result</h3>
-          <div id="assessmentOutput" class="assessment-output">Complete the form and run the assessment to see risk level, required reviews and governance recommendations.</div>
-          <div class="upgrade-box">
-            <h4>Need a detailed report?</h4>
-            <p>Request a paid governance review for executive summary, compliance mapping, vendor assessment and audit readiness recommendations.</p>
-            <a class="btn btn-primary" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Assessment Request&body=Hello AI Governance Hub Team,%0D%0A%0D%0AI would like to request an AI Governance Assessment package.%0D%0A">Request Package</a>
-          </div>
-        </div>
+          <h3>Free High-Level AI Governance Assessment</h3>
+          <p>Answer a few questions and receive a high-level risk level, required review chain and governance recommendations in minutes.</p>
+          <ul>
+            <li>High-level AI risk score</li>
+            <li>Required review chain</li>
+            <li>Initial governance recommendations</li>
+            <li>No credit card required</li>
+          </ul>
+          <a class="btn btn-primary" href="assessment.html">Start Free Assessment <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="assessment-promo-card paid-report-card">
+          <span class="plan-badge">Paid Report</span>
+          <h3>Need a detailed governance report?</h3>
+          <p>Request a paid governance review for executive summary, compliance mapping, vendor risk assessment, audit readiness recommendations and a 30-day action plan.</p>
+          <ul>
+            <li>Executive-ready report</li>
+            <li>Risk heatmap and control recommendations</li>
+            <li>Vendor and compliance mapping preview</li>
+            <li>Secure payment instructions after confirmation</li>
+          </ul>
+          <a class="btn btn-secondary" href="#pricing">View Introductory Pricing</a>
+        </article>
       </div>
     </section>
 
@@ -270,7 +243,7 @@
         </div>
         <div class="cta-side">
           <div class="cta-actions">
-            <a class="btn btn-primary" href="#assessment">Run Free Assessment</a>
+            <a class="btn btn-primary" href="assessment.html">Run Free Assessment</a>
             <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Hub Demo Request">Request Demo</a>
           </div>
           <div class="cta-reassurance"><span>No credit card required</span><span>Target response within 24 hours</span></div>
