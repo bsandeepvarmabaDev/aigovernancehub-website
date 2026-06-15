@@ -741,3 +741,54 @@ body.legal-page {
   padding: 18px !important;
   margin: 24px 0 !important;
 }
+
+/* Framework SEO landing pages v16 */
+.framework-grid {
+  width: min(1180px, 92%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.framework-card {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, .08);
+}
+.framework-card h3 { color: #081325; font-size: 24px; letter-spacing: -.03em; margin: 16px 0 10px; }
+.framework-card p { color: #475569; margin-bottom: 18px; }
+.framework-hero-note {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 24px 0;
+  color: #334155;
+}
+.framework-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 24px 0;
+}
+.framework-list-grid article {
+  border: 1px solid #dbeafe;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 20px;
+}
+.framework-list-grid h3 { color: #081325; margin-bottom: 8px; }
+.framework-cta-box {
+  background: linear-gradient(135deg, #071226, #172554);
+  color: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  margin: 32px 0 10px;
+}
+.framework-cta-box p { color: rgba(255,255,255,.82); }
+.framework-cta-box .primary-blue-btn { margin-top: 14px; }
+@media (max-width: 860px) {
+  .framework-grid, .framework-list-grid { grid-template-columns: 1fr; }
+}
