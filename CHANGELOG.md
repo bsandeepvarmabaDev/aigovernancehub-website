@@ -60,3 +60,8 @@
 ### Security
 - No API keys, Razorpay secrets, passwords, backend credentials, cookies or browser storage were added.
 - Pricing conversion is static client-side display only; payment confirmation remains assisted until hosted payment links are enabled.
+
+
+## 2026.06.26-trustbar-navigation-v11
+- Made trust bar items clickable.
+- Added hover effects and navigation links.
