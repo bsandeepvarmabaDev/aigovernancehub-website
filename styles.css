@@ -820,3 +820,24 @@ body.legal-page {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Framework CTA fix */
+.framework-cta {
+  background: linear-gradient(135deg, #02122d, #182c6b);
+  color: #ffffff;
+  padding: 48px;
+  border-radius: 24px;
+}
+
+.framework-cta h2 {
+  color: #ffffff !important;
+}
+
+.framework-cta p {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.framework-cta a,
+.framework-cta .btn {
+  color: #ffffff;
+}
