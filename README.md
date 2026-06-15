@@ -1,17 +1,11 @@
-# AI Governance Hub Website
+AI Governance Hub Website Hotfix v16.4
 
-Version: 2026.06.26-framework-seo-v16
+Files included:
+- styles.css
 
-## Added in this package
+Change:
+- Removed unresolved Git merge conflict markers from styles.css.
+- Preserved framework SEO CSS, framework layout hotfix, and CTA readability CSS.
 
-- EU AI Act landing page: `eu-ai-act-jira.html`
-- ISO 42001 landing page: `iso-42001-jira.html`
-- NIST AI RMF landing page: `nist-ai-rmf-jira.html`
-- Homepage framework section linking to all three pages
-- Updated `sitemap.xml` with the three new SEO pages
-- Fixed homepage meta charset extra `>` cleanup
-- Standardized dashboard image path references to `images/dashboard.png`
-
-## Deployment
-
-Upload all files to the GitHub Pages repository root and commit. After deployment, request Google indexing for the three new framework URLs.
+Deployment:
+Replace the existing styles.css in the website repo, then commit and push.

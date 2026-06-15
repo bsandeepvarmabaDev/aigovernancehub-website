@@ -741,10 +741,6 @@ body.legal-page {
   padding: 18px !important;
   margin: 24px 0 !important;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4db3e65ce6a132acf7fe2a9145f6ff0825fc9bc6
 
 /* Framework SEO landing pages v16 */
 .framework-grid {
@@ -796,8 +792,43 @@ body.legal-page {
 @media (max-width: 860px) {
   .framework-grid, .framework-list-grid { grid-template-columns: 1fr; }
 }
-<<<<<<< HEAD
-=======
->>>>>>> aa423901fea9bb17de955b31a27d1ff299f4278b
-=======
->>>>>>> 4db3e65ce6a132acf7fe2a9145f6ff0825fc9bc6
+
+/* Framework section layout hotfix v16.1 */
+.framework-grid {
+  width: min(1180px, 92%) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+}
+
+.framework-card {
+  min-width: 0 !important;
+}
+
+@media (max-width: 860px) {
+  .framework-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Framework CTA fix */
+.framework-cta {
+  background: linear-gradient(135deg, #02122d, #182c6b);
+  color: #ffffff;
+  padding: 48px;
+  border-radius: 24px;
+}
+
+.framework-cta h2 {
+  color: #ffffff !important;
+}
+
+.framework-cta p {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.framework-cta a,
+.framework-cta .btn {
+  color: #ffffff;
+}
