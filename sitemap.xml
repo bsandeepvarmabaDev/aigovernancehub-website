@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aigovernancehub.ai/</loc></url>
-  <url><loc>https://aigovernancehub.ai/eu-ai-act-jira.html</loc></url>
-  <url><loc>https://aigovernancehub.ai/iso-42001-jira.html</loc></url>
-  <url><loc>https://aigovernancehub.ai/nist-ai-rmf-jira.html</loc></url>
   <url><loc>https://aigovernancehub.ai/assessment.html</loc></url>
   <url><loc>https://aigovernancehub.ai/support.html</loc></url>
   <url><loc>https://aigovernancehub.ai/docs/index.html</loc></url>
@@ -18,4 +15,7 @@
   <url><loc>https://aigovernancehub.ai/roadmap-750.html</loc></url>
   <url><loc>https://aigovernancehub.ai/thank-you.html</loc></url>
   <url><loc>https://aigovernancehub.ai/payment-pending.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/eu-ai-act-jira.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/iso-42001-jira.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/nist-ai-rmf-jira.html</loc></url>
 </urlset>

@@ -741,6 +741,7 @@ body.legal-page {
   padding: 18px !important;
   margin: 24px 0 !important;
 }
+<<<<<<< HEAD
 
 /* Framework SEO landing pages v16 */
 .framework-grid {
@@ -792,3 +793,5 @@ body.legal-page {
 @media (max-width: 860px) {
   .framework-grid, .framework-list-grid { grid-template-columns: 1fr; }
 }
+=======
+>>>>>>> aa423901fea9bb17de955b31a27d1ff299f4278b
