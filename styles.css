@@ -741,10 +741,6 @@ body.legal-page {
   padding: 18px !important;
   margin: 24px 0 !important;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4db3e65ce6a132acf7fe2a9145f6ff0825fc9bc6
 
 /* Framework SEO landing pages v16 */
 .framework-grid {
@@ -796,11 +792,6 @@ body.legal-page {
 @media (max-width: 860px) {
   .framework-grid, .framework-list-grid { grid-template-columns: 1fr; }
 }
-<<<<<<< HEAD
-=======
->>>>>>> aa423901fea9bb17de955b31a27d1ff299f4278b
-=======
->>>>>>> 4db3e65ce6a132acf7fe2a9145f6ff0825fc9bc6
 
 /* Framework section layout hotfix v16.1 */
 .framework-grid {
