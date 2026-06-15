@@ -1,0 +1,19 @@
+AI Governance Hub is an enterprise AI governance platform for Jira Cloud that helps organizations manage AI reviews, risk assessments, approvals, vendor governance, evidence collection, compliance readiness, and audit reporting within a centralized workflow.
+
+As organizations adopt AI technologies across business functions, governance activities often become fragmented across spreadsheets, emails, documents, and disconnected review processes. AI Governance Hub provides a structured governance framework that enables teams to evaluate, review, approve, monitor, and report on AI initiatives using Jira Cloud.
+
+Key capabilities include:
+
+• AI Use Case Registration and Inventory Management
+• AI Risk and Impact Assessments
+• Security, Privacy, Legal, Responsible AI and Business Reviews
+• Governance Approval Workflows
+• Vendor Governance and Third-Party AI Assessments
+• Evidence Repository and Audit Trail Management
+• Compliance Readiness Reporting
+• Executive Governance Dashboards and Reporting
+• Governance Documentation and Review Tracking
+
+Built on Atlassian Forge, AI Governance Hub leverages Jira Cloud to provide a secure and scalable governance experience while helping organizations improve transparency, accountability, and AI risk management practices.
+
+The platform is designed for governance teams, risk managers, compliance teams, security teams, privacy teams, audit functions, and business stakeholders responsible for managing AI initiatives throughout their lifecycle.

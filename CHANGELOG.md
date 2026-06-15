@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026.06.26-marketplace-approval-v15
+
+### Changed
+- Added dedicated support page for Atlassian Marketplace support link requirements.
+- Added documentation center with Getting Started, User Guide, Administration Guide, and Security & Data Handling pages.
+- Added expanded Marketplace overview description text for listing update.
+- Added distinctive AGH shield logo assets for Marketplace branding.
+- Updated sitemap to include support and documentation pages.
+- Preserved conversion-focused homepage, assessment page, trust navigation, pricing, legal pages and security messaging.
+
+### Security
+- No API keys, Razorpay secrets, passwords, backend credentials, cookies or customer-data browser storage were added.
+- Public website remains static; payments remain assisted/secure-instruction based until hosted payment links are enabled and verified.
+
+
 ## 2026.06.26-conversion-optimization-v10
 
 ### Changed
