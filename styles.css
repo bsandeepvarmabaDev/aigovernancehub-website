@@ -855,3 +855,9 @@ body.legal-page {
   .report-action-row { flex-direction: column; }
   .report-action-row .btn { width: 100%; }
 }
+
+
+/* v11 revenue engine support page */
+.compact-hero{padding:56px 24px}
+.code-block{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:18px;overflow:auto;font-size:14px;line-height:1.6}
+.muted-note{color:#64748b;font-size:14px}
