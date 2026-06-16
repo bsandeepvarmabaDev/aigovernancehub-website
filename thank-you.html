@@ -1,33 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.29-day100-instant-report-v1 -->
+  <!-- AI Governance Hub Website Version: 2026.06.26-marketplace-approval-v15 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <title>Instant Report | AI Governance Hub</title>
+  <title>Thank You | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="legal-page">
-  <header class="legal-hero"><nav class="nav"><a class="logo" href="index.html">🛡️ AI Governance Hub</a><div class="nav-links"><a href="index.html#platform">Platform</a><a href="assessment.html">Assessment</a><a href="index.html#pricing">Pricing</a><a href="docs/index.html">Documentation</a><a href="support.html">Support</a><a href="security-policy.html">Security</a><a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Try Free on Marketplace</a></div></nav></header>
-  <main class="legal-container payment-success-page">
-    <span class="status-pill">Payment / Report</span>
-    <h1>Download Your AI Governance Report</h1>
-    <p>Your assessment details are saved in this browser. Click below to generate your instant PDF report.</p>
-    <div class="legal-note"><p><strong>Note:</strong> This static website uses browser-based report generation. Razorpay API payment verification backend will be added in the next platform release.</p></div>
-    <p><button class="btn btn-primary" onclick="downloadAssessmentReport()">Download Instant PDF Report</button></p>
-    <p><a class="btn btn-secondary" href="assessment.html">Back to Assessment</a></p>
+  <header class="legal-hero">
+    <nav class="nav">
+      <a class="logo" href="index.html">🛡️ AI Governance Hub</a>
+      <div class="nav-links">
+        <a href="index.html#platform">Platform</a>
+        <a href="assessment.html">Assessment</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="support.html">Support</a>
+        <a href="security-policy.html">Security</a>
+        <a class="nav-cta" href="index.html#contact">Book Demo</a>
+      </div>
+    </nav>
+  </header>
+  <main class="legal-container">
+    <h1>Payment Complete</h1>
+    <div class="legal-note">
+      <p><strong>Next step:</strong> Return to the assessment page and click <strong>Generate Instant PDF Report</strong>. Your report is generated immediately from the assessment details stored in your browser.</p>
+    </div>
+    <p>If you already completed the assessment on this device, you can also generate the report from here.</p>
+    <p class="payment-buttons">
+      <a class="btn btn-primary" href="assessment.html">Back to Assessment</a>
+      <button class="btn btn-secondary" type="button" onclick="generateInstantReportFromStorage()">Generate Instant PDF Report</button>
+    </p>
+    <p class="report-warning">If the report does not open, please return to the assessment page, generate the high-level summary again, then click the report button.</p>
   </main>
-  <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><strong>AI Governance Hub™</strong><span>Enterprise AI Governance Platform for Jira Cloud</span></div><div class="footer-links" aria-label="Footer navigation"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="security-policy.html">Security Policy</a><a href="sample-report.html">Sample Report</a><a href="support.html">Support</a></div><p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p></div></footer>
-  <script>
-    function escapeHtml(value) { return String(value || '').replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-    function buildReportHtml(data) {
-      const flags = data.flags || {};
-      const selectedFlags = [flags.personalData ? 'Uses personal or sensitive data' : '', flags.customerFacing ? 'Customer-facing or user-facing AI' : '', flags.automatedDecision ? 'Makes or recommends automated decisions' : '', flags.thirdPartyVendor ? 'Uses third-party AI vendor or external model' : '', flags.regulatedDomain ? 'Used in a regulated domain' : ''].filter(Boolean);
-      const recommendations = data.riskLevel === 'High' ? ['Run Security, Privacy, Legal and AI Governance reviews before production use.', 'Maintain explicit evidence for human oversight, transparency and risk acceptance.', 'Create Jira governance tasks for each required review owner.'] : data.riskLevel === 'Medium' ? ['Run Security and AI Governance review before wider deployment.', 'Confirm vendor controls, access management and monitoring ownership.', 'Track evidence and approval status in Jira.'] : ['Product Owner review may be sufficient for initial usage.', 'Document owner, purpose, data inputs and approval decision.', 'Reassess if customer impact, personal data or automation increases.'];
-      return `<!DOCTYPE html><html><head><title>AI Governance Report</title><style>body{font-family:Arial,sans-serif;color:#172B4D;line-height:1.55;margin:32px}.header{background:#071833;color:#fff;padding:24px;border-radius:14px;margin-bottom:20px}.badge{display:inline-block;background:#E9F2FF;color:#0C66E4;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.card{border:1px solid #DCDFE4;border-radius:12px;padding:16px;background:#fff}h1,h2,h3{margin:0 0 10px}table{width:100%;border-collapse:collapse;margin-top:8px}td,th{border:1px solid #DCDFE4;padding:8px;text-align:left}.risk{font-size:28px;font-weight:900}.footer{font-size:12px;color:#626F86;margin-top:24px}@media print{button{display:none}body{margin:18px}}</style></head><body><div class="header"><h1>AI Governance Hub™</h1><p>Instant AI Governance Assessment Report</p><p>Available on Atlassian Marketplace for Jira Cloud</p></div><span class="badge">Generated: ${new Date(data.generatedAt || Date.now()).toLocaleString()}</span><div class="grid"><div class="card"><h2>Executive Summary</h2><p><strong>${escapeHtml(data.company)}</strong> assessed the AI use case <strong>${escapeHtml(data.useCase)}</strong>. Current risk level is <span class="risk">${escapeHtml(data.riskLevel)}</span> with score <strong>${data.riskScore}/10</strong>.</p></div><div class="card"><h2>Required Review Path</h2><p>${escapeHtml(data.reviews)}</p></div></div><div class="card"><h2>Assessment Details</h2><table><tr><th>Name</th><td>${escapeHtml(data.name)}</td></tr><tr><th>Email</th><td>${escapeHtml(data.email)}</td></tr><tr><th>Company</th><td>${escapeHtml(data.company)}</td></tr><tr><th>Business Function</th><td>${escapeHtml(data.businessFunction)}</td></tr><tr><th>AI Vendor / Tool</th><td>${escapeHtml(data.vendor)}</td></tr></table></div><div class="card"><h2>Risk Signals</h2><ul>${selectedFlags.length ? selectedFlags.map(item => `<li>${escapeHtml(item)}</li>`).join('') : '<li>No major risk flags selected.</li>'}</ul></div><div class="card"><h2>Framework Mapping Preview</h2><ul><li><strong>EU AI Act:</strong> Maintain risk classification, human oversight and transparency evidence.</li><li><strong>ISO 42001:</strong> Track ownership, AI management controls, review evidence and continual improvement.</li><li><strong>NIST AI RMF:</strong> Map, measure, manage and govern AI risks through documented review workflow.</li></ul></div><div class="card"><h2>Recommended Next Actions</h2><ol>${recommendations.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ol></div><p class="footer">This browser-generated report is based on user-provided assessment inputs and is intended as a governance starting point, not legal advice.</p><script>window.onload=function(){setTimeout(function(){window.print();},400);}<\/script></body></html>`;
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>AI Governance Hub™</strong>
+        <span>Enterprise AI Governance Platform for Jira Cloud</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="security-policy.html">Security Policy</a>
+        <a href="sample-report.html">Sample Report</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub. Available on Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
+    </div>
+  </footer>
+<script>
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, function(character) {
+        return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[character];
+      });
     }
-    function downloadAssessmentReport() { const raw=localStorage.getItem('aghAssessmentReport'); if(!raw){ alert('Please complete the assessment first.'); location.href='assessment.html'; return; } const data=JSON.parse(raw); const win=window.open('', '_blank', 'noopener,noreferrer,width=960,height=720'); if(!win){ alert('Please allow popups to generate the PDF report.'); return; } win.document.open(); win.document.write(buildReportHtml(data)); win.document.close(); }
+    function generateInstantReportFromStorage() {
+      let report = null;
+      try { report = JSON.parse(localStorage.getItem("aghAssessmentReport") || "null"); } catch (e) { report = null; }
+      if (!report) { alert("No assessment report found on this device. Please complete the assessment first."); return; }
+      const recommendations = (report.recommendations || []).map(function(item) { return `<li>${escapeHtml(item)}</li>`; }).join("");
+      const reportWindow = window.open("", "_blank");
+      if (!reportWindow) { alert("Please allow popups to generate the report."); return; }
+      const generatedAt = new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
+      reportWindow.document.open();
+      reportWindow.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>AI Governance Report</title><style>body{font-family:Arial,sans-serif;background:#f8fafc;color:#0f172a}.page{max-width:900px;margin:24px auto;background:#fff;padding:42px;border-radius:18px}h1{font-size:34px}h2{font-size:22px;margin-top:28px}p,li{line-height:1.6;color:#334155}.box{border:1px solid #dbeafe;background:#f8fafc;border-radius:12px;padding:14px;margin:8px 0}.risk{display:inline-block;padding:8px 14px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-weight:800}button{border:0;border-radius:10px;padding:12px 16px;font-weight:800;background:#2563eb;color:#fff}@media print{button{display:none}.page{margin:0}}</style></head><body><main class="page"><div style="color:#1d4ed8;font-weight:800;text-transform:uppercase;font-size:13px">AI Governance Hub™</div><h1>AI Governance Assessment Report</h1><p>Generated instantly from the assessment details entered on AI Governance Hub.</p><div class="box"><strong>Name:</strong> ${escapeHtml(report.name)}<br><strong>Email:</strong> ${escapeHtml(report.email)}<br><strong>Company:</strong> ${escapeHtml(report.company)}<br><strong>Generated:</strong> ${generatedAt}</div><h2>Risk Summary</h2><p><span class="risk">${escapeHtml(report.riskLevel)} Risk · Score ${escapeHtml(String(report.score))}/10</span></p><p><strong>AI Use Case:</strong> ${escapeHtml(report.useCase)}</p><p><strong>Business Function:</strong> ${escapeHtml(report.businessFunction)}</p><p><strong>Vendor / Tool:</strong> ${escapeHtml(report.vendor)}</p><p><strong>Required Reviews:</strong> ${escapeHtml(report.reviews)}</p><h2>Governance Recommendations</h2><ul>${recommendations}</ul><h2>Framework Alignment Preview</h2><ul><li><strong>EU AI Act:</strong> Maintain use case registration, risk classification, evidence and accountable review records.</li><li><strong>ISO 42001:</strong> Track ownership, governance controls, lifecycle evidence and continuous improvement actions.</li><li><strong>NIST AI RMF:</strong> Map governance activity to Govern, Map, Measure and Manage practices.</li></ul><p><strong>Note:</strong> This instant report is a browser-generated governance preview. It is not legal advice, certification, or a replacement for formal compliance review.</p><button onclick="window.print()">Save / Print as PDF</button></main></body></html>`);
+      reportWindow.document.close();
+      setTimeout(function(){ reportWindow.focus(); reportWindow.print(); }, 350);
+    }
   </script>
 </body>
 </html>

@@ -834,24 +834,43 @@ body.legal-page {
 }
 
 
-/* Day 100 Marketplace + Instant Report additions v1 */
-.report-action-row {
+/* Instant Razorpay report delivery v1 */
+.payment-action {
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border: 1px solid #bfdbfe;
+  border-radius: 18px;
+  padding: 20px;
+  margin: 20px 0 0;
+}
+.payment-action h4 {
+  color: #081325;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.payment-action p {
+  color: #475569;
+  margin: 8px 0;
+}
+.payment-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  align-items: center;
   margin-top: 14px;
 }
-.payment-success-page .btn {
-  margin-right: 10px;
-  margin-top: 10px;
-}
-.pricing-toolbar {
-  align-items: center;
-}
-.paid-report-card .btn-secondary {
+.report-download-btn {
+  background: #0f172a !important;
   color: #ffffff !important;
+  border-color: #0f172a !important;
 }
-@media (max-width: 720px) {
-  .report-action-row { flex-direction: column; }
-  .report-action-row .btn { width: 100%; }
+.report-warning {
+  font-size: 13px !important;
+  color: #64748b !important;
+  margin-top: 12px !important;
+}
+@media (max-width: 520px) {
+  .payment-buttons .btn,
+  .payment-buttons button {
+    width: 100%;
+  }
 }
