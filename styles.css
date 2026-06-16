@@ -832,3 +832,26 @@ body.legal-page {
 .framework-cta .btn {
   color: #ffffff;
 }
+
+
+/* Day 100 Marketplace + Instant Report additions v1 */
+.report-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+.payment-success-page .btn {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.pricing-toolbar {
+  align-items: center;
+}
+.paid-report-card .btn-secondary {
+  color: #ffffff !important;
+}
+@media (max-width: 720px) {
+  .report-action-row { flex-direction: column; }
+  .report-action-row .btn { width: 100%; }
+}

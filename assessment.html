@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.26-marketplace-approval-v15 -->
+  <!-- AI Governance Hub Website Version: 2026.06.29-day100-instant-report-v1 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -12,13 +12,13 @@
   <meta property="og:description" content="Govern AI reviews, risk, approvals and audit evidence in one Jira Cloud workspace." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aigovernancehub.ai/" />
-  <meta property="og:image" content="https://aigovernancehub.ai/images/dashboard.png.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>Free AI Governance Assessment | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="top-strip">Available today on Jira Cloud • Built on Atlassian Forge • Security-first AI governance</div>
+  <div class="top-strip">Now available on Atlassian Marketplace • Runs on Atlassian • Built on Atlassian Forge</div>
 
   <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
@@ -31,7 +31,7 @@
         <a href="docs/index.html">Documentation</a>
         <a href="support.html">Support</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="index.html#contact">Book Demo</a>
+        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Try Free on Marketplace</a>
       </div>
     </nav>
   </header>
@@ -42,7 +42,7 @@
       <div class="section-heading">
         <span class="section-kicker">Free high-level assessment</span>
         <h1>Run your AI governance assessment</h1>
-        <p>Get a high-level risk score, required reviews and governance recommendations. For detailed executive-ready reports, select a paid package after reviewing your result.</p>
+        <p>Get a high-level risk score, required reviews and governance recommendations. Generate your free preview first. Then unlock the instant ₹99 browser-generated PDF report with risk summary, review chain and framework mapping.</p>
       </div>
       <div class="assessment-layout">
         <div class="assessment-card form-card">
@@ -82,7 +82,7 @@
             <label class="consent-label"><input type="checkbox" id="assessmentConsent"> I agree to the <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and understand this browser-based assessment provides a high-level governance preview.</label>
           </div>
 
-          <button class="btn btn-primary wide" onclick="runWebsiteAssessment()">Generate High-Level Summary</button>
+          <button class="btn btn-primary wide" onclick="runWebsiteAssessment()">Generate Assessment Summary</button>
         </div>
 
         <div class="assessment-card result-card">
@@ -90,9 +90,10 @@
           <h3>Governance assessment result</h3>
           <div id="assessmentOutput" class="assessment-output">Complete the form and run the assessment to see risk level, required reviews and governance recommendations.</div>
           <div class="upgrade-box">
-            <h4>Need a detailed report?</h4>
-            <p>Request a paid governance review for executive summary, compliance mapping, vendor assessment and audit readiness recommendations.</p>
-            <a class="btn btn-primary" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Assessment Request&body=Hello AI Governance Hub Team,%0D%0A%0D%0AI would like to request an AI Governance Assessment package.%0D%0A">Request Package</a>
+            <h4>Unlock instant PDF report</h4>
+            <p>After generating your assessment summary, pay ₹99 and download your AI Governance PDF report instantly from this browser.</p>
+            <a class="btn btn-primary" href="https://razorpay.me/@balthisandeep?amount=CVDUr6Uxp2FOGZGwAHntNg%3D%3D" target="_blank" rel="noopener noreferrer" onclick="markPaymentStarted()">Pay ₹99 Securely</a>
+            <button class="btn btn-secondary" type="button" onclick="downloadAssessmentReport()">Download Instant PDF Report</button>
           </div>
         </div>
       </div>
@@ -113,7 +114,7 @@
         <a href="sample-report.html">Sample Report</a>
         <a href="mailto:sales@aigovernancehub.ai">Contact</a>
       </div>
-      <p class="footer-note">© 2026 AI Governance Hub. Available on Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
+      <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
 
@@ -241,6 +242,27 @@ Please share secure payment instructions and next steps.`);
         riskClass = "high-risk";
       }
 
+      const reportData = {
+        name: nameRaw,
+        email: emailRaw,
+        company: companyRaw,
+        useCase: useCaseRaw,
+        businessFunction: document.getElementById("assessmentFunction").value,
+        vendor: document.getElementById("assessmentVendor").value.trim() || "Not specified",
+        riskLevel,
+        riskScore: score,
+        reviews,
+        generatedAt: new Date().toISOString(),
+        flags: {
+          personalData: document.getElementById("assessPersonalData").checked,
+          customerFacing: document.getElementById("assessCustomerFacing").checked,
+          automatedDecision: document.getElementById("assessAutomatedDecision").checked,
+          thirdPartyVendor: document.getElementById("assessThirdPartyVendor").checked,
+          regulatedDomain: document.getElementById("assessRegulatedDomain").checked
+        }
+      };
+      localStorage.setItem("aghAssessmentReport", JSON.stringify(reportData));
+
       assessmentOutput.innerHTML = `
         <div class="result-box ${riskClass}">Risk Level: ${riskLevel}</div>
         <p><strong>Name:</strong> ${name}</p>
@@ -251,7 +273,75 @@ Please share secure payment instructions and next steps.`);
         <p><strong>Vendor / Tool:</strong> ${vendor}</p>
         <p><strong>Risk Score:</strong> ${score}/10</p>
         <p><strong>Required Reviews:</strong> ${reviews}</p>
-        <div class="locked-insights"><h4>Detailed paid report can include</h4><p>Executive summary, compliance mapping, vendor risk notes, audit readiness and recommended next actions.</p></div>`;
+        <div class="locked-insights">
+          <h4>Instant PDF Report</h4>
+          <p>Your assessment has been prepared. Pay ₹99 securely through Razorpay, then download your browser-generated AI Governance Report instantly.</p>
+          <div class="report-action-row">
+            <a class="btn btn-primary" href="https://razorpay.me/@balthisandeep?amount=CVDUr6Uxp2FOGZGwAHntNg%3D%3D" target="_blank" rel="noopener noreferrer" onclick="markPaymentStarted()">Pay ₹99 Securely</a>
+            <button class="btn btn-secondary" type="button" onclick="downloadAssessmentReport()">Download PDF Report</button>
+          </div>
+          <p class="small-text">No Razorpay API secret keys are stored in this public website. API verification backend will be added in the next release.</p>
+        </div>`;
+    }
+
+    function markPaymentStarted() {
+      localStorage.setItem("aghPaymentStarted", new Date().toISOString());
+    }
+
+    function buildReportHtml(data) {
+      const flags = data.flags || {};
+      const selectedFlags = [
+        flags.personalData ? "Uses personal or sensitive data" : "",
+        flags.customerFacing ? "Customer-facing or user-facing AI" : "",
+        flags.automatedDecision ? "Makes or recommends automated decisions" : "",
+        flags.thirdPartyVendor ? "Uses third-party AI vendor or external model" : "",
+        flags.regulatedDomain ? "Used in a regulated domain" : ""
+      ].filter(Boolean);
+      const recommendations = data.riskLevel === "High"
+        ? ["Run Security, Privacy, Legal and AI Governance reviews before production use.", "Maintain explicit evidence for human oversight, transparency and risk acceptance.", "Create Jira governance tasks for each required review owner."]
+        : data.riskLevel === "Medium"
+          ? ["Run Security and AI Governance review before wider deployment.", "Confirm vendor controls, access management and monitoring ownership.", "Track evidence and approval status in Jira."]
+          : ["Product Owner review may be sufficient for initial usage.", "Document owner, purpose, data inputs and approval decision.", "Reassess if customer impact, personal data or automation increases."];
+      return `<!DOCTYPE html><html><head><title>AI Governance Report</title><style>
+        body{font-family:Arial,sans-serif;color:#172B4D;line-height:1.55;margin:32px}
+        .header{background:#071833;color:#fff;padding:24px;border-radius:14px;margin-bottom:20px}
+        .badge{display:inline-block;background:#E9F2FF;color:#0C66E4;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+        .card{border:1px solid #DCDFE4;border-radius:12px;padding:16px;background:#fff}
+        h1,h2,h3{margin:0 0 10px} table{width:100%;border-collapse:collapse;margin-top:8px}td,th{border:1px solid #DCDFE4;padding:8px;text-align:left}
+        .risk{font-size:28px;font-weight:900} .footer{font-size:12px;color:#626F86;margin-top:24px}
+        @media print{button{display:none} body{margin:18px}}
+      </style></head><body>
+        <div class="header"><h1>AI Governance Hub™</h1><p>Instant AI Governance Assessment Report</p><p>Available on Atlassian Marketplace for Jira Cloud</p></div>
+        <span class="badge">Generated: ${new Date(data.generatedAt || Date.now()).toLocaleString()}</span>
+        <div class="grid">
+          <div class="card"><h2>Executive Summary</h2><p><strong>${escapeHtml(data.company)}</strong> assessed the AI use case <strong>${escapeHtml(data.useCase)}</strong>. Current risk level is <span class="risk">${escapeHtml(data.riskLevel)}</span> with score <strong>${data.riskScore}/10</strong>.</p></div>
+          <div class="card"><h2>Required Review Path</h2><p>${escapeHtml(data.reviews)}</p></div>
+        </div>
+        <div class="card"><h2>Assessment Details</h2><table><tr><th>Name</th><td>${escapeHtml(data.name)}</td></tr><tr><th>Email</th><td>${escapeHtml(data.email)}</td></tr><tr><th>Company</th><td>${escapeHtml(data.company)}</td></tr><tr><th>Business Function</th><td>${escapeHtml(data.businessFunction)}</td></tr><tr><th>AI Vendor / Tool</th><td>${escapeHtml(data.vendor)}</td></tr></table></div>
+        <div class="card"><h2>Risk Signals</h2><ul>${selectedFlags.length ? selectedFlags.map(item => `<li>${escapeHtml(item)}</li>`).join("") : "<li>No major risk flags selected.</li>"}</ul></div>
+        <div class="card"><h2>Framework Mapping Preview</h2><ul><li><strong>EU AI Act:</strong> Maintain risk classification, human oversight and transparency evidence.</li><li><strong>ISO 42001:</strong> Track ownership, AI management controls, review evidence and continual improvement.</li><li><strong>NIST AI RMF:</strong> Map, measure, manage and govern AI risks through documented review workflow.</li></ul></div>
+        <div class="card"><h2>Recommended Next Actions</h2><ol>${recommendations.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ol></div>
+        <p class="footer">This browser-generated report is based on user-provided assessment inputs and is intended as a governance starting point, not legal advice.</p>
+        <script>window.onload=function(){setTimeout(function(){window.print();},400);}<\/script>
+      </body></html>`;
+    }
+
+    function downloadAssessmentReport() {
+      const raw = localStorage.getItem("aghAssessmentReport");
+      if (!raw) {
+        alert("Please complete the assessment first before downloading the report.");
+        return;
+      }
+      const data = JSON.parse(raw);
+      const win = window.open("", "_blank", "noopener,noreferrer,width=960,height=720");
+      if (!win) {
+        alert("Please allow popups to generate the PDF report.");
+        return;
+      }
+      win.document.open();
+      win.document.write(buildReportHtml(data));
+      win.document.close();
     }
   </script>
 </body>
