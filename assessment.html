@@ -4,7 +4,7 @@
   <!-- AI Governance Hub Website Version: 2026.06.29-day100-instant-report-v1 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://*.razorpay.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://api.razorpay.com https://checkout.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
   <meta name="description" content="Run a free high-level AI governance assessment and request a detailed paid governance report from AI Governance Hub." />
   <link rel="canonical" href="https://aigovernancehub.ai/assessment.html" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -42,7 +42,7 @@
       <div class="section-heading">
         <span class="section-kicker">Free high-level assessment</span>
         <h1>Run your AI governance assessment</h1>
-        <p>Get a high-level risk score, required reviews and governance recommendations. Generate your free preview first. Then unlock the instant ₹99 browser-generated PDF report with risk summary, review chain and framework mapping.</p>
+        <p>Get a high-level risk score, required reviews and governance recommendations. Generate your free preview first. Then unlock the instant ₹99 PDF report through secure Razorpay payment with risk summary, review chain and framework mapping.</p>
       </div>
       <div class="assessment-layout">
         <div class="assessment-card form-card">
@@ -91,9 +91,11 @@
           <div id="assessmentOutput" class="assessment-output">Complete the form and run the assessment to see risk level, required reviews and governance recommendations.</div>
           <div class="upgrade-box">
             <h4>Unlock instant PDF report</h4>
-            <p>After generating your assessment summary, pay ₹99 and download your AI Governance PDF report instantly from this browser.</p>
-            <a class="btn btn-primary" href="https://razorpay.me/@balthisandeep?amount=CVDUr6Uxp2FOGZGwAHntNg%3D%3D" target="_blank" rel="noopener noreferrer" onclick="markPaymentStarted()">Pay ₹99 Securely</a>
+            <p>After generating your assessment summary, pay ₹99 securely through Razorpay and download your AI Governance PDF report instantly from this browser.</p>
+            <button class="btn btn-primary" type="button" onclick="return startAghRazorpayPayment('assessment', event)">Pay ₹99 Securely with Razorpay</button>
+            <a class="btn btn-secondary" href="payment-pending.html">Payment Help</a>
             <button class="btn btn-secondary" type="button" onclick="downloadAssessmentReport()">Download Instant PDF Report</button>
+            <p class="microcopy">Production fulfilment should verify Razorpay payment signature on the backend before automated report delivery.</p>
           </div>
         </div>
       </div>
@@ -118,6 +120,7 @@
     </div>
   </footer>
 
+  <script src="razorpay-checkout.js"></script>
   <script>
     function toggleNavigation() {
       const navLinks = document.getElementById("navLinks");

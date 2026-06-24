@@ -4,7 +4,7 @@
   <!-- AI Governance Hub Website Version: 2026.06.29-day100-marketplace-payment-v1 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://*.razorpay.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://api.razorpay.com https://checkout.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
   <meta name="description" content="AI Governance Hub is an enterprise AI governance platform for Jira Cloud that helps teams manage AI reviews, risk assessments, approvals, evidence and audit readiness." />
   <link rel="canonical" href="https://aigovernancehub.ai/" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -233,8 +233,8 @@
       </div>
       <div class="pricing-grid">
         <article class="pricing-card" data-plan="Governance Assessment" data-inr="99"><span class="plan-badge">Starter</span><h3>Governance Assessment</h3><div class="price" data-price>₹99</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>High-level risk score</li><li>Required review chain</li><li>Governance summary</li><li>Email follow-up</li></ul><a class="btn btn-primary wide" href="assessment.html">Start Assessment</a></article>
-        <article class="pricing-card popular" data-plan="Professional Governance Review" data-inr="299"><span class="plan-badge">Popular</span><h3>Professional Review</h3><div class="price" data-price>₹299</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>Detailed risk breakdown</li><li>Compliance mapping preview</li><li>Vendor risk notes</li><li>30-day action plan</li></ul><a class="btn btn-primary wide" data-package-link href="mailto:sales@aigovernancehub.ai?subject=₹299 Professional Governance Review Request">Request Professional</a></article>
-        <article class="pricing-card" data-plan="Enterprise Governance Review" data-inr="999"><span class="plan-badge">Enterprise</span><h3>Enterprise Governance Review</h3><div class="price" data-price>₹999</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>Executive governance summary</li><li>Audit readiness recommendations</li><li>Policy improvement notes</li><li>Enterprise demo option</li></ul><a class="btn btn-primary wide" data-package-link href="mailto:sales@aigovernancehub.ai?subject=₹999 Enterprise Governance Review Request">Request Enterprise</a></article>
+        <article class="pricing-card popular" data-plan="Professional Governance Review" data-inr="299"><span class="plan-badge">Popular</span><h3>Professional Review</h3><div class="price" data-price>₹299</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>Detailed risk breakdown</li><li>Compliance mapping preview</li><li>Vendor risk notes</li><li>30-day action plan</li></ul><button class="btn btn-primary wide" type="button" data-package-link onclick="return startAghRazorpayPayment('professional', event)">Pay ₹299 with Razorpay</button></article>
+        <article class="pricing-card" data-plan="Enterprise Governance Review" data-inr="999"><span class="plan-badge">Enterprise</span><h3>Enterprise Governance Review</h3><div class="price" data-price>₹999</div><p class="price-note" data-price-note>INR introductory pricing</p><ul><li>Executive governance summary</li><li>Audit readiness recommendations</li><li>Policy improvement notes</li><li>Enterprise demo option</li></ul><button class="btn btn-primary wide" type="button" data-package-link onclick="return startAghRazorpayPayment('enterprise', event)">Pay ₹999 with Razorpay</button></article>
       </div>
     </section>
 
@@ -254,7 +254,7 @@
         <div class="security-card">
           <h3>Public website data handling</h3>
           <p>Assessment runs in the browser. No API keys, payment secrets or backend credentials are stored in the public website.</p>
-          <p>₹99 report payment currently uses a hosted Razorpay payment link. No Razorpay secret keys are stored in this static website.</p>
+          <p>Payments use Razorpay Checkout or hosted Razorpay payment links. No Razorpay secret keys are stored in this static website; backend order creation and signature verification are required before automated fulfilment.</p>
         </div>
       </div>
     </section>
@@ -438,5 +438,6 @@ Please share secure payment instructions and next steps.`);
         <div class="locked-insights"><h4>Detailed paid report can include</h4><p>Executive summary, compliance mapping, vendor risk notes, audit readiness and recommended next actions.</p></div>`;
     }
   </script>
+  <script src="razorpay-checkout.js"></script>
 </body>
 </html>

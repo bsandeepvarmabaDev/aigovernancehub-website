@@ -861,3 +861,22 @@ body.legal-page {
 .compact-hero{padding:56px 24px}
 .code-block{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:18px;overflow:auto;font-size:14px;line-height:1.6}
 .muted-note{color:#64748b;font-size:14px}
+
+/* v16.0.1 Razorpay integration */
+.microcopy {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+button.btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+button.btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+.payment-status-page .legal-note p + p {
+  margin-top: 10px;
+}
