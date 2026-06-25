@@ -4,13 +4,15 @@
   <!-- AI Governance Hub Website Version: 2026.06.29-day100-instant-report-v1 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <title>Instant Report | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
   <meta name="robots" content="noindex,nofollow">
 </head>
 <body class="legal-page">
-  <header class="legal-hero"><nav class="nav"><a class="logo" href="index.html">🛡️ AI Governance Hub</a><div class="nav-links"><a href="index.html#platform">Platform</a><a href="assessment.html">Assessment</a><a href="index.html#pricing">Pricing</a><a href="docs/index.html">Documentation</a><a href="support.html">Support</a><a href="security-policy.html">Security</a><a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Try Free on Marketplace</a></div></nav></header>
+  <header class="legal-hero"><nav class="nav"><a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a><div class="nav-links"><a href="index.html#platform">Platform</a><a href="assessment.html">Assessment</a><a href="index.html#pricing">Pricing</a><a href="docs/index.html">Documentation</a><a href="support.html">Support</a><a href="security-policy.html">Security</a><a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Try Free on Marketplace</a></div></nav></header>
   <main class="legal-container payment-success-page">
     <span class="status-pill">Razorpay Payment / Report</span>
     <h1>Download Your AI Governance Report</h1>
@@ -19,7 +21,8 @@
     <p><button class="btn btn-primary" onclick="downloadAssessmentReport()">Download Instant PDF Report</button></p>
     <p><a class="btn btn-secondary" href="assessment.html">Back to Assessment</a></p>
   </main>
-  <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><strong>AI Governance Hub™</strong><span>Enterprise AI Governance Platform for Jira Cloud</span></div><div class="footer-links" aria-label="Footer navigation"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="security-policy.html">Security Policy</a><a href="sample-report.html">Sample Report</a><a href="support.html">Support</a></div><p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <strong>AI Governance Hub™</strong><span>Enterprise AI Governance Platform for Jira Cloud</span></div><div class="footer-links" aria-label="Footer navigation"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="security-policy.html">Security Policy</a><a href="sample-report.html">Sample Report</a><a href="support.html">Support</a></div><p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p></div></footer>
   <script>
     function escapeHtml(value) { return String(value || '').replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
     function buildReportHtml(data) {

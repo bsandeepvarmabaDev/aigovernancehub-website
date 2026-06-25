@@ -880,3 +880,37 @@ button.btn:disabled {
 .payment-status-page .legal-note p + p {
   margin-top: 10px;
 }
+
+
+/* v16.1 brand rollout: official AI Governance Hub H+A logo */
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  object-fit: cover;
+  display: inline-block;
+  flex: 0 0 auto;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.22);
+  vertical-align: middle;
+}
+.logo-with-icon,
+.footer-logo-line {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.logo-with-icon .brand-icon,
+.footer-logo-line .brand-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+.footer-logo-line {
+  color: #fff;
+  font-weight: 850;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+@media (max-width: 720px) {
+  .brand-icon { width: 30px; height: 30px; border-radius: 8px; }
+}

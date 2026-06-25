@@ -1,20 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AI Governance Hub AGH logo">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#38bdf8"/>
-      <stop offset="0.45" stop-color="#2563eb"/>
-      <stop offset="1" stop-color="#7c3aed"/>
-    </linearGradient>
-    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020617" flood-opacity="0.35"/>
-    </filter>
-  </defs>
-  <rect width="512" height="512" rx="112" fill="#071226"/>
-  <path d="M256 62 398 118v112c0 94-56 171-142 220-86-49-142-126-142-220V118L256 62Z" fill="url(#g)" filter="url(#s)"/>
-  <path d="M256 105 360 146v86c0 68-39 125-104 165-65-40-104-97-104-165v-86l104-41Z" fill="#071226" opacity="0.9"/>
-  <circle cx="188" cy="202" r="18" fill="#38bdf8"/>
-  <circle cx="324" cy="202" r="18" fill="#a78bfa"/>
-  <circle cx="256" cy="284" r="20" fill="#ffffff"/>
-  <path d="M206 214 242 268M306 214 270 268M206 202h100" stroke="#dbeafe" stroke-width="16" stroke-linecap="round" opacity="0.9"/>
-  <text x="256" y="377" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" fill="#ffffff" letter-spacing="-5">AGH</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AI Governance Hub logo">
+  <rect width="512" height="512" rx="92" fill="#0757d8"/>
+  <path d="M145 112h75v132h72V112h75v288h-75V303h-72v97h-75z" fill="#fff"/>
+  <path d="M256 145l54 127-54-38-54 38z" fill="#fff"/>
 </svg>
