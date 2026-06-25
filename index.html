@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.29-day100-marketplace-payment-v1 -->
+  <!-- AI Governance Hub Website Version: 2026.06.25-marketplace-first-v16.1 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://*.razorpay.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://api.razorpay.com https://checkout.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
   <meta name="description" content="AI Governance Hub is an enterprise AI governance platform for Jira Cloud that helps teams manage AI reviews, risk assessments, approvals, evidence and audit readiness." />
   <link rel="canonical" href="https://aigovernancehub.ai/" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -16,6 +16,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <title>AI Governance Hub | Enterprise AI Governance for Jira Cloud</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* v16.1 Marketplace-first launch: assessment/payment conversion is intentionally paused. */
+    #assessment, #pricing { display:none !important; }
+  </style>
 </head>
 <body>
   <div class="top-strip">Now available on Atlassian Marketplace • Runs on Atlassian • Built on Atlassian Forge</div>
@@ -27,12 +32,12 @@
       <div class="nav-links" id="navLinks">
         <a href="#platform">Platform</a>
         <a href="#frameworks">Frameworks</a>
-        <a href="assessment.html">Assessment</a>
-        <a href="#pricing">Pricing</a>
+        
+        
         <a href="docs/index.html">Documentation</a>
         <a href="support.html">Support</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Try Free on Marketplace</a>
+        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
       </div>
     </nav>
   </header>
@@ -54,8 +59,8 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Try Free on Atlassian Marketplace <span aria-hidden="true">→</span></a>
-            <a class="btn btn-secondary" href="assessment.html">Run Governance Assessment</a>
+            <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="#video">Watch Product Overview</a>
           </div>
 
           <div class="hero-reassurance">
@@ -202,7 +207,7 @@
             <li>Initial governance recommendations</li>
             <li>No credit card required</li>
           </ul>
-          <a class="btn btn-primary" href="assessment.html">Start Governance Assessment <span aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="assessment.html">Install from Atlassian Marketplace <span aria-hidden="true">→</span></a>
         </article>
         <article class="assessment-promo-card paid-report-card">
           <span class="plan-badge">Paid Report</span>
@@ -214,7 +219,7 @@
             <li>Vendor and compliance mapping preview</li>
             <li>Instant PDF download after assessment</li>
           </ul>
-          <a class="btn btn-secondary" href="assessment.html">Generate Report</a>
+          <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai">Request Enterprise Demo</a>
         </article>
       </div>
     </section>
@@ -268,7 +273,7 @@
         </div>
         <div class="cta-side">
           <div class="cta-actions">
-            <a class="btn btn-primary" href="assessment.html">Run Governance Assessment</a>
+            <a class="btn btn-primary" href="#video">Watch Product Overview</a>
             <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Hub Demo Request">Request Demo</a>
           </div>
           <div class="cta-reassurance"><span>No credit card required</span><span>Target response within 24 hours</span></div>
@@ -438,6 +443,6 @@ Please share secure payment instructions and next steps.`);
         <div class="locked-insights"><h4>Detailed paid report can include</h4><p>Executive summary, compliance mapping, vendor risk notes, audit readiness and recommended next actions.</p></div>`;
     }
   </script>
-  <script src="razorpay-checkout.js"></script>
+
 </body>
 </html>
