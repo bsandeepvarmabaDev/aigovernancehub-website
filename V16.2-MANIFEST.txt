@@ -1,0 +1,60 @@
+AI Governance Hub Website v16.2 — Security & Marketplace Alignment
+================================================================
+
+Release: 2026.06.25-marketplace-alignment-v16.2
+Purpose: Address P0 QA findings before Marketplace listing traffic.
+
+P0 FIXES APPLIED
+----------------
+1. thank-you.html — Removed PDF download / localStorage report generation. Replaced with neutral assessment-finalization message and sales contact. Kept noindex,nofollow.
+2. razorpay-integration.html — DELETED from package (remove from production deploy).
+3. roadmap-750.html — DELETED from package (remove from production deploy).
+4. sample-report.html — Replaced with unavailable page (noindex). Removed all public links.
+5. payment-pending.html — Replaced with unavailable page (noindex). Removed all public links.
+6. index.html — Removed #assessment and #pricing sections entirely (not CSS-hidden). Removed Razorpay buttons, payment copy, Sample Report links, and assessment-first closing CTA.
+
+P1 FIXES APPLIED
+----------------
+1. Unified v16.2 navigation (Platform, Frameworks, Documentation, Support, Security, Install from Marketplace) across all public pages.
+2. Removed Sample Report links from homepage, footer, docs, and framework pages.
+3. Mobile hero clipping fix at 390px in styles.css.
+4. Framework landing page CTAs now point to Atlassian Marketplace.
+5. support.html sales copy no longer references paid reports.
+
+MODIFIED FILES
+--------------
+index.html
+assessment.html
+thank-you.html
+sample-report.html
+payment-pending.html
+support.html
+privacy.html
+terms.html
+security-policy.html
+eu-ai-act-jira.html
+iso-42001-jira.html
+nist-ai-rmf-jira.html
+styles.css
+docs/index.html
+docs/getting-started.html
+docs/user-guide.html
+docs/admin-guide.html
+docs/security.html
+
+DELETED FILES (remove from production on deploy)
+------------------------------------------------
+razorpay-integration.html
+roadmap-750.html
+
+UNCHANGED (verify still correct after deploy)
+---------------------------------------------
+robots.txt
+sitemap.xml
+
+DEPLOY INSTRUCTIONS
+-------------------
+1. Copy modified files to the aigovernancehub-website GitHub Pages repository root.
+2. Delete razorpay-integration.html and roadmap-750.html from the live repo.
+3. Hard-refresh https://aigovernancehub.ai/ and re-run website QA.
+4. Publish Marketplace listing after QA passes.

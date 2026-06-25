@@ -1,0 +1,5 @@
+DELETE THESE FILES FROM PRODUCTION ON DEPLOY:
+- razorpay-integration.html
+- roadmap-750.html
+
+These files are intentionally omitted from the v16.2 modified-files ZIP.

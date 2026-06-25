@@ -1,63 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.26-marketplace-approval-v15 -->
+  <!-- AI Governance Hub Website Version: 2026.06.25-marketplace-alignment-v16.2 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
-  <link rel="canonical" href="https://aigovernancehub.ai/sample-report.html" />
+  <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <title>Sample Governance Report | AI Governance Hub</title>
+  <title>Page Unavailable | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
-  <meta name="robots" content="noindex,nofollow">
 </head>
-<body class="legal-page">
-  <header class="legal-hero">
-    <nav class="nav">
-      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <div class="nav-links">
+<body>
+  <div class="top-strip">Now available on Atlassian Marketplace • Runs on Atlassian • Built on Atlassian Forge</div>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
+      <div class="nav-links" id="navLinks">
         <a href="index.html#platform">Platform</a>
-        <a href="assessment.html">Assessment</a>
-        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#frameworks">Frameworks</a>
         <a href="docs/index.html">Documentation</a>
         <a href="support.html">Support</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="index.html#contact">Book Demo</a>
+        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
       </div>
     </nav>
   </header>
-  <main class="legal-container sample-report">
-    <h1>Sample AI Governance Assessment Report</h1>
-    <p><strong>Sample Only:</strong> This page previews the type of output available in paid governance assessment packages.</p>
-    <div class="score-box">
-      <div>Risk Level<br>High</div>
-      <div>Risk Score<br>8 / 10</div>
-      <div>Audit Readiness<br>65%</div>
-      <div>Required Reviews<br>5</div>
-    </div>
-    <h2>Executive Summary</h2>
-    <p>The assessed AI use case may involve sensitive data, third-party AI services, customer impact, and regulated-domain considerations. A structured governance review is recommended before production use.</p>
-    <h2>Required Reviews</h2>
-    <ul>
-      <li>Security Review</li>
-      <li>Privacy Review</li>
-      <li>Responsible AI Review</li>
-      <li>Legal / Compliance Review</li>
-      <li>Business Owner Approval</li>
-    </ul>
-    <h2>Compliance Mapping Preview</h2>
-    <p>Potential mapping areas include EU AI Act readiness, NIST AI RMF, ISO 42001, GDPR, SOC 2, and internal AI governance controls.</p>
-    <h2>Locked Paid Sections</h2>
-    <div class="locked-insights">
-      <p>🔒 Detailed Risk Breakdown</p>
-      <p>🔒 Vendor Risk Assessment</p>
-      <p>🔒 Control Recommendations</p>
-      <p>🔒 30 / 60 / 90 Day Governance Action Plan</p>
-      <p>🔒 Executive Governance Summary</p>
-    </div>
-    <p><a class="btn btn-primary" href="mailto:sales@aigovernancehub.ai?subject=AI Governance Report Request">Request Full Report</a></p>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Unavailable</span>
+        <h1>This page is not available</h1>
+        <p class="hero-lead">This content has been removed from the public website. Install AI Governance Hub from the Atlassian Marketplace or contact our team for enterprise requests.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace</a>
+          <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai">Contact Sales</a>
+        </div>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <div class="footer-inner">
@@ -70,11 +51,19 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
         <a href="security-policy.html">Security Policy</a>
-        <a href="sample-report.html">Sample Report</a>
-        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="support.html">Support</a>
       </div>
-      <p class="footer-note">© 2026 AI Governance Hub. Available on Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
+      <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
+  <script>
+    function toggleNavigation() {
+      const navLinks = document.getElementById("navLinks");
+      const navToggle = document.querySelector(".nav-toggle");
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    }
+  </script>
 </body>
 </html>
