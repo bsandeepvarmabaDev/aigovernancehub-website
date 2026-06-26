@@ -22,7 +22,7 @@
     return {
       name: getField("starter-buyer-name"),
       email: getField("starter-buyer-email"),
-      jiraSite: getField("starter-jira-site"),
+      company: getField("starter-company"),
     };
   }
 
@@ -33,7 +33,7 @@
   function validateCheckoutDetails(details) {
     if (!details.name) return "Please enter your name.";
     if (!details.email || !isValidEmail(details.email)) return "Please enter a valid email address.";
-    if (!details.jiraSite) return "Please enter your Jira Cloud site URL.";
+    
     return "";
   }
 
@@ -88,7 +88,7 @@
         razorpay_signature: paymentResponse.razorpay_signature,
         name: details.name,
         email: details.email,
-        jiraSite: details.jiraSite
+        company: details.company
       })
     });
 
