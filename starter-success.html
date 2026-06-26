@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.26-vercel-razorpay-v16.4 -->
+  <!-- AI Governance Hub Website Version: 2026.06.27-production-remediation-v16.5.2 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
-  <title>Starter Request Received | AI Governance Hub</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <title>Starter Report Status | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="legal-page">
@@ -23,24 +23,25 @@
   </header>
 
   <main class="legal-container payment-status-page">
-    <h1>Payment verification received</h1>
-    <p>Thank you for purchasing the AI Governance Hub Starter Launch Edition.</p>
-
-    <div class="legal-note">
-      <p><strong>Next steps</strong></p>
-      <ol>
-        <li>Check your email for the Razorpay payment confirmation.</li>
-        <li>Our team will contact you with Starter onboarding instructions.</li>
-        <li>For production team rollout, install from Atlassian Marketplace.</li>
-      </ol>
+    <div id="success-unverified">
+      <h1>Payment status could not be verified</h1>
+      <p>Payment status could not be verified. Please contact <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> if money was deducted.</p>
+      <div class="report-action-row">
+        <a class="btn btn-primary" href="pricing.html#starter-checkout-form">Retry Payment</a>
+        <a class="btn btn-secondary" href="index.html">Return Home</a>
+        <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Starter%20Report%20Payment%20Help">Contact Support</a>
+      </div>
     </div>
 
-    <p class="microcopy">Starter activation is handled through email-assisted onboarding. Automated license provisioning is not yet available.</p>
-
-    <div class="report-action-row">
-      <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace</a>
-      <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Starter%20Launch%20Edition%20Support">Contact Support</a>
-      <a class="btn btn-secondary" href="index.html">Return Home</a>
+    <div id="success-verified" hidden>
+      <h1>Payment Verified</h1>
+      <p>Your AI Governance Starter Report request has been received. You'll receive an email shortly.</p>
+      <p class="microcopy">For production Jira team rollout, install from Atlassian Marketplace.</p>
+      <div class="report-action-row">
+        <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace</a>
+        <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Starter%20Report%20Support">Contact Support</a>
+        <a class="btn btn-secondary" href="index.html">Return Home</a>
+      </div>
     </div>
   </main>
 
@@ -54,5 +55,41 @@
       <p class="footer-note">© 2026 AI Governance Hub. Security-first by design.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get("confirmation");
+      var unverified = document.getElementById("success-unverified");
+      var verified = document.getElementById("success-verified");
+
+      if (!token) {
+        return;
+      }
+
+      fetch("/api/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ confirmationToken: token }),
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data && result.data.valid === true) {
+            unverified.hidden = true;
+            verified.hidden = false;
+            document.title = "Payment Verified | AI Governance Hub";
+          }
+        })
+        .catch(function () {
+          /* Keep unverified state */
+        });
+    })();
+  </script>
 </body>
 </html>
