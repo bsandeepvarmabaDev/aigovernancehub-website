@@ -1017,6 +1017,27 @@ button.btn:disabled {
   color: #334155;
   font-size: 14px;
 }
+.starter-checkout-fields {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+}
+.starter-checkout-fields label {
+  display: grid;
+  gap: 8px;
+  font-weight: 750;
+  color: #334155;
+  font-size: 14px;
+}
+.starter-verify-note {
+  margin-top: 4px;
+  color: #1d4ed8;
+  font-weight: 750;
+}
 .pricing-table-wrap {
   width: min(1180px, 92%);
   margin: auto;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.26-starter-launch-v16.3 -->
+  <!-- AI Governance Hub Website Version: 2026.06.26-vercel-razorpay-v16.4 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.razorpay.com; frame-src https://api.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -66,6 +66,21 @@
             <li>Email support</li>
             <li>Upgrade path to Marketplace</li>
           </ul>
+          <div class="starter-checkout-fields" id="starter-checkout-form">
+            <label>
+              Name
+              <input type="text" id="starter-buyer-name" name="name" autocomplete="name" placeholder="Your name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" id="starter-buyer-email" name="email" autocomplete="email" placeholder="you@company.com" required />
+            </label>
+            <label>
+              Jira Cloud site URL
+              <input type="url" id="starter-jira-site" name="jiraSite" autocomplete="url" placeholder="https://yourorg.atlassian.net" required />
+            </label>
+            <p class="microcopy starter-verify-note">Your payment is securely verified before onboarding.</p>
+          </div>
           <button type="button" class="btn btn-primary wide" data-starter-checkout>Buy Starter — ₹499</button>
           <p class="microcopy pricing-card-note">Starter is a website-only launch offer for evaluation. Production team usage is recommended through Atlassian Marketplace.</p>
           <p class="microcopy">Payments are processed securely by Razorpay. AI Governance Hub does not store card details. Starter onboarding is confirmed by email.</p>
@@ -104,21 +119,6 @@
           <a class="btn btn-primary wide" href="mailto:sales@aigovernancehub.ai?subject=AI%20Governance%20Hub%20Enterprise%20Pricing">Contact Sales</a>
           <p class="microcopy pricing-card-note">Contact Sales for rollout support.</p>
         </article>
-      </div>
-
-      <div class="starter-prefill-card">
-        <h3>Optional details for checkout</h3>
-        <p class="microcopy">Name and email are optional and used only to prefill Razorpay checkout if you choose to enter them.</p>
-        <div class="starter-prefill-grid">
-          <label>
-            Name (optional)
-            <input type="text" id="starter-buyer-name" name="name" autocomplete="name" placeholder="Your name" />
-          </label>
-          <label>
-            Email (optional)
-            <input type="email" id="starter-buyer-email" name="email" autocomplete="email" placeholder="you@company.com" />
-          </label>
-        </div>
       </div>
     </section>
 
@@ -161,7 +161,7 @@
       <div class="activation-steps">
         <article><span>01</span><h3>Pay securely with Razorpay</h3><p>Complete checkout on this page using Razorpay.</p></article>
         <article><span>02</span><h3>Receive confirmation</h3><p>Razorpay sends a payment confirmation to your email.</p></article>
-        <article><span>03</span><h3>Share Jira site details</h3><p>Email your Jira Cloud site URL to support@aigovernancehub.ai.</p></article>
+        <article><span>03</span><h3>Share Jira site details</h3><p>Your Jira Cloud site URL is collected at checkout for onboarding.</p></article>
         <article><span>04</span><h3>Get onboarding instructions</h3><p>Our team shares Starter onboarding steps for your site.</p></article>
         <article><span>05</span><h3>Upgrade to Marketplace when ready</h3><p>Move to full production usage through Atlassian Marketplace.</p></article>
       </div>
