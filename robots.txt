@@ -6,5 +6,7 @@ Disallow: /payment-pending.html
 Disallow: /razorpay-integration.html
 Disallow: /roadmap-750.html
 Disallow: /sample-report.html
+Disallow: /starter-success.html
+Disallow: /starter-pending.html
 
 Sitemap: https://aigovernancehub.ai/sitemap.xml
