@@ -1,100 +1,174 @@
-/**
+﻿/**
  * AI Governance Hub — Starter Launch Edition checkout (pricing.html only).
- * TODO: Replace placeholder with Razorpay Key ID only. Never add key_secret to frontend.
+ * v16.4: order creation and payment verification via Vercel serverless APIs.
+ * Never add Razorpay key_secret or Key ID constants to this file.
  */
 (function () {
   "use strict";
 
-  const RAZORPAY_KEY_ID = "RZP_KEY_ID_PLACEHOLDER";
-  const STARTER_AMOUNT_PAISE = 49900;
-  const CURRENCY = "INR";
+  const CREATE_ORDER_URL = "/api/create-order";
+  const VERIFY_PAYMENT_URL = "/api/verify-payment";
   const PRODUCT_NAME = "AI Governance Hub";
-  const PRODUCT_DESCRIPTION = "Starter Launch Edition — 30 days";
+  const PRODUCT_DESCRIPTION = "Starter Launch Edition";
   const SUCCESS_URL = "starter-success.html";
   const PENDING_URL = "starter-pending.html";
 
-  function getPrefill() {
-    const nameInput = document.getElementById("starter-buyer-name");
-    const emailInput = document.getElementById("starter-buyer-email");
-    const prefill = {};
+  function getField(id) {
+    const element = document.getElementById(id);
+    return element ? element.value.trim() : "";
+  }
 
-    if (nameInput && nameInput.value.trim()) {
-      prefill.name = nameInput.value.trim();
-    }
-    if (emailInput && emailInput.value.trim()) {
-      prefill.email = emailInput.value.trim();
-    }
+  function getCheckoutDetails() {
+    return {
+      name: getField("starter-buyer-name"),
+      email: getField("starter-buyer-email"),
+      jiraSite: getField("starter-jira-site"),
+    };
+  }
 
-    return Object.keys(prefill).length ? prefill : undefined;
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateCheckoutDetails(details) {
+    if (!details.name) return "Please enter your name.";
+    if (!details.email || !isValidEmail(details.email)) return "Please enter a valid email address.";
+    if (!details.jiraSite) return "Please enter your Jira Cloud site URL.";
+    return "";
   }
 
   function redirectTo(url) {
     window.location.href = url;
   }
 
-  function openCheckout(trigger) {
-    if (typeof Razorpay === "undefined") {
-      alert("Payment service is temporarily unavailable. Please try again or contact support@aigovernancehub.ai.");
-      return;
-    }
-
-    if (RAZORPAY_KEY_ID === "RZP_KEY_ID_PLACEHOLDER") {
-      alert("Checkout is not yet configured. Please contact support@aigovernancehub.ai to complete your Starter purchase.");
-      return;
-    }
-
-    const buttons = document.querySelectorAll("[data-starter-checkout]");
-    buttons.forEach(function (btn) {
-      btn.disabled = true;
+  function setButtonsLoading(isLoading) {
+    document.querySelectorAll("[data-starter-checkout]").forEach(function (btn) {
+      btn.disabled = isLoading;
+      if (isLoading) btn.setAttribute("aria-busy", "true");
+      else btn.removeAttribute("aria-busy");
     });
-    if (trigger) {
-      trigger.setAttribute("aria-busy", "true");
+  }
+
+  function showSafeError(message) {
+    window.alert(message || "Payment could not be completed. Please try again or contact support@aigovernancehub.ai.");
+  }
+
+  function handleFailure(message) {
+    setButtonsLoading(false);
+    showSafeError(message);
+    redirectTo(PENDING_URL);
+  }
+
+  async function createOrder() {
+    const response = await fetch(CREATE_ORDER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    const data = await response.json().catch(function () { return {}; });
+
+    if (!response.ok) {
+      throw new Error(data.error || "Unable to start checkout.");
+    }
+
+    if (!data || !data.keyId || !data.orderId || !data.amount || !data.currency) {
+      throw new Error("Invalid checkout response from server.");
+    }
+
+    return data;
+  }
+
+  async function verifyPayment(paymentResponse, details) {
+    const response = await fetch(VERIFY_PAYMENT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        razorpay_order_id: paymentResponse.razorpay_order_id,
+        razorpay_payment_id: paymentResponse.razorpay_payment_id,
+        razorpay_signature: paymentResponse.razorpay_signature,
+        name: details.name,
+        email: details.email,
+        jiraSite: details.jiraSite
+      })
+    });
+
+    const data = await response.json().catch(function () { return {}; });
+
+    if (!response.ok || data.success !== true) {
+      throw new Error(data.error || "Payment verification failed.");
+    }
+
+    return data;
+  }
+
+  async function openCheckout() {
+    if (typeof Razorpay === "undefined") {
+      showSafeError("Payment service is temporarily unavailable. Please try again or contact support@aigovernancehub.ai.");
+      return;
+    }
+
+    const details = getCheckoutDetails();
+    const validationError = validateCheckoutDetails(details);
+
+    if (validationError) {
+      showSafeError(validationError);
+      const form = document.getElementById("starter-checkout-form");
+      if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    setButtonsLoading(true);
+
+    let order;
+    try {
+      order = await createOrder();
+    } catch (error) {
+      handleFailure(error.message);
+      return;
     }
 
     const options = {
-      key: RAZORPAY_KEY_ID,
-      amount: STARTER_AMOUNT_PAISE,
-      currency: CURRENCY,
+      key: order.keyId,
+      amount: order.amount,
+      currency: order.currency,
       name: PRODUCT_NAME,
       description: PRODUCT_DESCRIPTION,
-      handler: function () {
-        redirectTo(SUCCESS_URL);
+      order_id: order.orderId,
+      prefill: {
+        name: details.name,
+        email: details.email
+      },
+      handler: function (paymentResponse) {
+        verifyPayment(paymentResponse, details)
+          .then(function () {
+            redirectTo(SUCCESS_URL);
+          })
+          .catch(function (error) {
+            handleFailure(error.message);
+          });
       },
       modal: {
         ondismiss: function () {
-          redirectTo(PENDING_URL);
-        },
+          handleFailure("Payment was not completed.");
+        }
       },
-      theme: {
-        color: "#2563eb",
-      },
+      theme: { color: "#2563eb" }
     };
 
-    const prefill = getPrefill();
-    if (prefill) {
-      options.prefill = prefill;
-    }
-
     const rzp = new Razorpay(options);
+
     rzp.on("payment.failed", function () {
-      redirectTo(PENDING_URL);
+      handleFailure("Payment could not be completed.");
     });
 
     rzp.open();
-
-    buttons.forEach(function (btn) {
-      btn.disabled = false;
-    });
-    if (trigger) {
-      trigger.removeAttribute("aria-busy");
-    }
   }
 
   function bindCheckoutButtons() {
     document.querySelectorAll("[data-starter-checkout]").forEach(function (button) {
       button.addEventListener("click", function (event) {
         event.preventDefault();
-        openCheckout(button);
+        openCheckout();
       });
     });
   }
