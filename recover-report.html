@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
+  <!-- AI Governance Hub Website Version: 2026.06.27-enterprise-launch-v23.0 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <title>Recover My Report | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/starter-experience.css" />
+  <link rel="stylesheet" href="assets/css/product-maturity.css" />
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="legal-hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <div class="nav-links">
+        <a href="pricing.html">Pricing</a>
+        <a href="login.html">My Reports</a>
+        <a href="support.html">Support</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="legal-container payment-status-page" id="main-content">
+    <div class="page-intro">
+      <span class="section-kicker">Report Recovery</span>
+      <h1>Recover your executive assessment</h1>
+      <p><strong>What:</strong> Retrieve purchased assessments using your checkout email.</p>
+      <p><strong>Why:</strong> Email verification protects your governance data from unauthorized access.</p>
+      <p><strong>Next step:</strong> Enter the email you used at checkout. We will send a secure sign-in link.</p>
+    </div>
+
+    <div class="pm-customer-success" aria-label="Recovery scenarios">
+      <h2>If something went wrong</h2>
+      <ul>
+        <li><strong>Closed browser after payment</strong> — Use this page or <a href="login.html">My Reports</a> with checkout email (90 days)</li>
+        <li><strong>Payment verified, no download</strong> — Wait a few minutes; generation may still be running</li>
+        <li><strong>Email delayed</strong> — Report is not email-only; recover here or sign in</li>
+        <li><strong>Different device</strong> — Same checkout email works on any browser</li>
+        <li><strong>Link expired</strong> — Request a new magic link below</li>
+      </ul>
+    </div>
+
+    <div class="sx-auth-card">
+    <form id="recover-form" class="starter-checkout-fields recover-form">
+      <label for="recover-email">
+        Checkout email
+        <input type="email" id="recover-email" name="email" autocomplete="email" placeholder="you@company.com" required />
+      </label>
+      <button type="submit" class="btn btn-primary" id="recover-submit">Send secure sign-in link</button>
+    </form>
+
+    <p class="microcopy starter-recover-status" id="recover-status" role="status" aria-live="polite"></p>
+
+    <div id="recover-results" hidden>
+      <h2>Check your email</h2>
+      <div id="recover-list" class="recover-report-list"></div>
+    </div>
+    </div>
+
+    <div class="agh-trust-strip" role="note">
+      <span>Email verification required</span>
+      <span>No password required</span>
+      <span><a href="security-policy.html">Security Policy</a></span>
+    </div>
+
+    <div class="report-action-row">
+      <a class="btn btn-primary" href="pricing.html#assessment-wizard">Start new assessment</a>
+      <a class="btn btn-secondary" href="login.html">Sign in to My Reports</a>
+      <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Report%20Recovery%20Help">Contact support</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></div>
+        <strong>AI Governance Hub™</strong>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub. Security-first by design.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/enterprise-ux.js" defer></script>
+  <script src="assets/js/recover-report.js" defer></script>
+</body>
+</html>

@@ -1,46 +1,119 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.27-production-remediation-v16.5.2 -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
-  <title>Starter Report Status | AI Governance Hub</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <title>Assessment Ready | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/starter-experience.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
+  <link rel="stylesheet" href="assets/css/product-maturity.css" />
+  <link rel="stylesheet" href="assets/css/premium-experience.css" />
+  <link rel="stylesheet" href="assets/css/business-excellence.css" />
 </head>
 <body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div id="sx-celebration" hidden aria-hidden="true"></div>
   <header class="legal-hero">
-    <nav class="nav">
-      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
       <div class="nav-links">
         <a href="pricing.html">Pricing</a>
-        <a href="docs/index.html">Documentation</a>
+        <a href="login.html">My Reports</a>
         <a href="support.html">Support</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
       </div>
     </nav>
   </header>
 
-  <main class="legal-container payment-status-page">
+  <main class="legal-container payment-status-page" id="main-content">
     <div id="success-unverified">
-      <h1>Payment status could not be verified</h1>
-      <p>Payment status could not be verified. Please contact <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> if money was deducted.</p>
+      <div class="agh-alert agh-alert-warning" role="alert">
+        <h1>Payment could not be verified</h1>
+        <p><strong>What happened:</strong> We could not confirm your payment with our payment provider.</p>
+        <p><strong>Why:</strong> The checkout may have been interrupted, or verification timed out.</p>
+        <p><strong>How to fix:</strong> If funds were deducted, use Recover My Report with your checkout email. Otherwise, retry payment from the assessment wizard.</p>
+      </div>
       <div class="report-action-row">
-        <a class="btn btn-primary" href="pricing.html#starter-checkout-form">Retry Payment</a>
-        <a class="btn btn-secondary" href="index.html">Return Home</a>
-        <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Starter%20Report%20Payment%20Help">Contact Support</a>
+        <a class="btn btn-primary" href="pricing.html#assessment-wizard">Return to assessment</a>
+        <a class="btn btn-secondary" href="recover-report.html">Recover my report</a>
+        <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai">Contact support</a>
       </div>
     </div>
 
     <div id="success-verified" hidden>
-      <h1>Payment Verified</h1>
-      <p>Your AI Governance Starter Report request has been received. You'll receive an email shortly.</p>
-      <p class="microcopy">For production Jira team rollout, install from Atlassian Marketplace.</p>
+      <div class="sx-success-hero" role="status">
+        <span class="sx-success-badge" aria-hidden="true">✓</span>
+        <h1 id="success-verified-heading">Your executive assessment is ready</h1>
+        <p id="success-verified-lead">Payment verified. Your full AI governance report has been generated — board-ready formats, delivered securely.</p>
+      </div>
+
+      <p class="microcopy" id="email-status-line">Checking email delivery status…</p>
+
+      <div class="sx-deliverable-grid" aria-label="Available report formats">
+        <div class="sx-deliverable-tile"><em>📄</em>HTML Report</div>
+        <div class="sx-deliverable-tile"><em>📕</em>PDF</div>
+        <div class="sx-deliverable-tile"><em>📝</em>Word</div>
+        <div class="sx-deliverable-tile"><em>📊</em>PowerPoint</div>
+        <div class="sx-deliverable-tile"><em>📋</em>Text Summary</div>
+      </div>
+
+      <div class="agh-trust-strip" role="note">
+        <span>Server-side generation</span>
+        <span>Signed downloads</span>
+        <span><a href="login.html">Save to My Reports</a></span>
+      </div>
+
+      <h2>Download your assessment</h2>
+      <p class="microcopy">Choose a format below — HTML, PDF, Word (DOCX), PowerPoint (PPTX), or plain text. Downloads require server-verified payment; links are signed and expire for your security.</p>
+      <div class="report-action-row" id="download-actions"></div>
+      <p class="microcopy starter-download-status" id="download-status" role="status" aria-live="polite"></p>
+
+      <div class="pm-customer-success" aria-label="Customer success">
+        <h2>Your purchase includes</h2>
+        <ul>
+          <li><strong>Reports</strong> — HTML, PDF, Word, PowerPoint (90-day dashboard access)</li>
+          <li><strong>Invoice</strong> — Download from <a href="login.html">My Reports</a> after sign-in (self-serve)</li>
+          <li><strong>Recovery</strong> — <a href="recover-report.html">Recover My Report</a> with checkout email</li>
+          <li><strong>Support</strong> — <a href="support.html">Support</a> · <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></li>
+          <li><strong>Re-assess</strong> — <a href="pricing.html#assessment-wizard">Run a new assessment</a> when your portfolio changes</li>
+          <li><strong>Upgrade</strong> — <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer">Marketplace app</a> for continuous AI governance in Jira</li>
+        </ul>
+      </div>
+
+      <div class="px-worth-it px-animate-in" aria-label="Why this assessment is worth it">
+        <h2>Worth every rupee — and worth coming back</h2>
+        <p>You now have a board-ready governance baseline from your actual portfolio — not a generic template.</p>
+        <ul>
+          <li>Re-run in 30–90 days to measure governance improvement</li>
+          <li>Share PDF/PPT with leadership; Word with compliance</li>
+          <li>Install the Marketplace app when you are ready for ongoing Jira governance</li>
+        </ul>
+      </div>
+
+      <p class="px-share-note"><strong>Recommend to a colleague?</strong> Share the assessment wizard — they get the same free preview before they pay. No referral codes, no gimmicks.</p>
+
+      <div class="page-intro agh-next-steps">
+        <h2>What to do next</h2>
+        <ol>
+          <li><strong>Executive briefing</strong> — Download PDF or PowerPoint for your leadership team.</li>
+          <li><strong>Secure access</strong> — Sign in to My Reports for ongoing dashboard access.</li>
+          <li><strong>Governance handoff</strong> — Share the Word version with compliance and legal.</li>
+          <li><strong>Repeat assessment</strong> — Run a new assessment when your portfolio changes.</li>
+        </ol>
+      </div>
       <div class="report-action-row">
-        <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace</a>
-        <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Starter%20Report%20Support">Contact Support</a>
-        <a class="btn btn-secondary" href="index.html">Return Home</a>
+        <a class="btn btn-primary" href="login.html">Open My Reports</a>
+        <a class="btn btn-secondary" href="pricing.html#assessment-wizard">Run another assessment</a>
+        <a class="btn btn-secondary" href="index.html">Return home</a>
       </div>
     </div>
   </main>
@@ -48,48 +121,16 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
-        <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Security-first by design.</p>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      "use strict";
-
-      var params = new URLSearchParams(window.location.search);
-      var token = params.get("confirmation");
-      var unverified = document.getElementById("success-unverified");
-      var verified = document.getElementById("success-verified");
-
-      if (!token) {
-        return;
-      }
-
-      fetch("/api/verify-payment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ confirmationToken: token }),
-      })
-        .then(function (response) {
-          return response.json().then(function (data) {
-            return { ok: response.ok, data: data };
-          });
-        })
-        .then(function (result) {
-          if (result.ok && result.data && result.data.valid === true) {
-            unverified.hidden = true;
-            verified.hidden = false;
-            document.title = "Payment Verified | AI Governance Hub";
-          }
-        })
-        .catch(function () {
-          /* Keep unverified state */
-        });
-    })();
-  </script>
+  <script src="assets/js/enterprise-ux.js" defer></script>
+  <script src="assets/js/starter-experience.js" defer></script>
+  <script src="assets/js/starter-success.js" defer></script>
+  <script src="assets/js/site-trust-footer.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /login.html
+Disallow: /dashboard.html
 Disallow: /assessment.html
 Disallow: /thank-you.html
 Disallow: /payment-pending.html
@@ -8,5 +11,6 @@ Disallow: /roadmap-750.html
 Disallow: /sample-report.html
 Disallow: /starter-success.html
 Disallow: /starter-pending.html
+Disallow: /recover-report.html
 
 Sitemap: https://aigovernancehub.ai/sitemap.xml

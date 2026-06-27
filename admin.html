@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <title>Admin Portal | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <main class="legal-container payment-status-page" id="main-content">
+    <h1>Admin Portal</h1>
+    <p class="microcopy">Internal use only. Requires ADMIN_API_KEY. Monitor <code>/api/health</code> · set <code>ALERT_WEBHOOK_URL</code> for ops alerts.</p>
+    <form id="admin-key-form" class="recover-form starter-checkout-fields">
+      <label for="admin-key">Admin API Key<input type="password" id="admin-key" autocomplete="off" required /></label>
+      <button type="submit" class="btn btn-primary">Unlock Admin</button>
+    </form>
+    <div id="admin-panel" hidden>
+      <h2>Operations Dashboard</h2>
+      <button type="button" class="btn btn-secondary" id="admin-load-ops">Refresh operations</button>
+      <pre id="admin-ops-dashboard" class="admin-pre"></pre>
+
+      <h2>Diagnostics</h2>
+      <button type="button" class="btn btn-secondary" id="admin-load-diagnostics">Run diagnostics</button>
+      <pre id="admin-diagnostics" class="admin-pre" aria-live="polite"></pre>
+
+      <h2>Enterprise Requests</h2>
+      <button type="button" class="btn btn-secondary" id="admin-load-enterprise">Refresh enterprise queue</button>
+      <div id="admin-enterprise-list" class="recover-report-list"></div>
+
+      <h2>Analytics (14 days)</h2>
+      <pre id="admin-analytics" class="admin-pre"></pre>
+      <h2>Search Reports</h2>
+      <form id="admin-search-form" class="recover-form starter-checkout-fields">
+        <label for="admin-query">Email, Order ID, Payment ID, or Session ID<input type="text" id="admin-query" required /></label>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <p id="admin-status" class="microcopy starter-recover-status" aria-live="polite"></p>
+      <div id="admin-results" class="recover-report-list"></div>
+    </div>
+  </main>
+  <script src="assets/js/admin-portal.js" defer></script>
+</body>
+</html>

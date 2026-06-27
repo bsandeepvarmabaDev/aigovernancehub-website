@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.27-production-remediation-v16.5.2 -->
+  <!-- AI Governance Hub Website Version: v25.23-production-readiness -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
-  <meta name="description" content="AI Governance Hub is an enterprise AI governance platform for Jira Cloud that helps teams manage AI reviews, risk assessments, approvals, evidence and audit readiness." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <meta name="description" content="AI Governance Hub turns project exports into executive AI governance assessments — governance scores, risk analysis, and board-ready reports. No Jira expertise required." />
   <link rel="canonical" href="https://aigovernancehub.ai/" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <meta property="og:title" content="AI Governance Hub | Enterprise AI Governance for Jira Cloud" />
-  <meta property="og:description" content="Govern AI reviews, risk, approvals and audit evidence in one Jira Cloud workspace." />
+  <meta property="og:title" content="AI Governance Hub | Executive AI Governance Assessments" />
+  <meta property="og:description" content="Upload a project export. Receive a board-ready Executive Assessment with governance scores, risk analysis, and framework alignment — in minutes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aigovernancehub.ai/" />
   <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <title>AI Governance Hub | Enterprise AI Governance for Jira Cloud</title>
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:description" content="Upload a project export. Receive a board-ready Executive Assessment with governance scores and risk analysis — no Jira expertise required." />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"AI Governance Hub","url":"https://aigovernancehub.ai","logo":"https://aigovernancehub.ai/images/agh-logo-primary.png"}</script>
+  <title>AI Governance Hub | Executive AI Governance Assessments</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/starter-experience.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
+  <link rel="stylesheet" href="assets/css/product-maturity.css" />
+  <link rel="stylesheet" href="assets/css/premium-experience.css" />
+  <link rel="stylesheet" href="assets/css/business-excellence.css" />
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="top-strip">Now available on Atlassian Marketplace • Runs on Atlassian • Built on Atlassian Forge</div>
 
   <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="AI Governance Hub home"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
+      <a class="brand" href="#top" aria-label="AI Governance Hub home"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       <div class="nav-links" id="navLinks">
-        <a href="#platform">Platform</a>
-        <a href="#frameworks">Frameworks</a>
+        <a href="features.html">Features</a>
         <a href="pricing.html">Pricing</a>
-        <a href="docs/index.html">Documentation</a>
-        <a href="support.html">Support</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
+        <a href="login.html">My Reports</a>
+        <a class="nav-cta" href="pricing.html#assessment-wizard">Start Assessment</a>
       </div>
     </nav>
   </header>
@@ -42,9 +55,24 @@
     <section class="hero hero-saas">
       <div class="hero-inner">
         <div class="hero-copy">
-          <span class="eyebrow">Now available on Atlassian Marketplace</span>
-          <h1>Discover AI. Assess Risk. Govern with Confidence.</h1>
-          <p class="hero-lead">Bring practical AI governance directly into Jira. Discover AI-related work, create accountable governance reviews, map compliance evidence, and generate executive-ready reports.</p>
+          <span class="eyebrow">Enterprise AI Governance Platform</span>
+          <div class="pm-value-strip" aria-label="Why AI Governance Hub">
+            <span>Not consulting decks</span>
+            <span>Not spreadsheet tracking</span>
+            <span>Not generic templates</span>
+            <span>Board-ready assessments in minutes</span>
+          </div>
+          <h1>Understand your AI portfolio in minutes</h1>
+          <p class="hero-lead"><strong>Upload</strong> a spreadsheet export from your project tools. <strong>We analyze</strong> every work item for AI, automation, and governance risk. <strong>You receive</strong> a board-ready Executive Assessment — PDF, Word, PowerPoint, and dashboard access after verified payment.</p>
+
+          <ul class="et-clarity-grid et-clarity-strip" aria-label="What you need to know in minutes">
+            <li><strong>Upload</strong>A CSV or Excel export from Jira, Azure DevOps, or any compatible project tool — no admin access required</li>
+            <li><strong>We analyze</strong>Work item counts, AI-related activity, risk levels, ownership gaps, and framework alignment</li>
+            <li><strong>You receive</strong>Executive Assessment in HTML, PDF, Word, PowerPoint + secure dashboard recovery</li>
+            <li><strong>Trust</strong>Server-validated · encrypted in transit · payment verified before release · <a href="trust-center.html" style="color:#93c5fd">Trust Center</a></li>
+            <li><strong>Who</strong>CEOs, CIOs, PMOs, auditors, and governance leads — not Jira administrators</li>
+            <li><strong>Website vs Marketplace</strong>This site assesses exports; the <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Marketplace app</a> governs Jira projects continuously</li>
+          </ul>
 
           <div class="capability-row" aria-label="Core capabilities">
             <span>AI Inventory</span>
@@ -55,22 +83,32 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace <span aria-hidden="true">→</span></a>
-            <a class="btn btn-secondary" href="#video">Watch Product Overview</a>
-            <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=AI%20Governance%20Hub%20Enterprise%20Demo%20Request">Request Enterprise Demo</a>
+            <a class="btn btn-primary" href="pricing.html">Start Your Assessment</a>
+            <a class="btn btn-secondary" href="trust-center.html">Trust Center</a>
+            <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Demo%20Request">Book Enterprise Demo</a>
           </div>
 
           <div class="hero-reassurance">
+            <span>Server-validated uploads</span>
+            <span>Encrypted in transit</span>
             <span>Marketplace approved</span>
-            <span>Runs on Atlassian</span>
             <span>Jira Cloud ready</span>
+          </div>
+
+          <div class="sx-home-journey" aria-label="Assessment journey in six steps">
+            <article class="sx-home-step"><span class="sx-home-step-num">1</span><strong>Upload</strong><span>Your project export file</span></article>
+            <article class="sx-home-step"><span class="sx-home-step-num">2</span><strong>Validate</strong><span>Server-side checks</span></article>
+            <article class="sx-home-step"><span class="sx-home-step-num">3</span><strong>Preview</strong><span>Free AI governance snapshot</span></article>
+            <article class="sx-home-step"><span class="sx-home-step-num">4</span><strong>Checkout</strong><span>Verified total, then pay</span></article>
+            <article class="sx-home-step"><span class="sx-home-step-num">5</span><strong>Reports</strong><span>PDF, Word, PowerPoint</span></article>
+            <article class="sx-home-step"><span class="sx-home-step-num">6</span><strong>Dashboard</strong><span>Secure ongoing access</span></article>
           </div>
         </div>
 
         <div class="hero-visual" aria-label="AI Governance Hub product dashboard preview">
           <div class="dashboard-frame">
             <div class="dashboard-top"><span>AI Governance Hub</span><span class="dash-pill">Last 30 Days</span></div>
-            <img src="images/dashboard.png" alt="AI Governance Hub Jira Cloud dashboard showing governance metrics, risk distribution, review status and compliance mapping" />
+            <img src="images/dashboard.svg" alt="AI Governance Hub dashboard preview showing governance score, work items, AI-related count, and risk distribution" loading="lazy" width="640" height="360" />
           </div>
         </div>
       </div>
@@ -81,6 +119,178 @@
         <a href="security-policy.html">✓ Security Policy</a>
         <a href="privacy.html">✓ Privacy Policy</a>
         <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">✓ Atlassian Marketplace</a>
+      </div>
+    </section>
+
+    <section class="section be-product-split-section" aria-labelledby="be-products-heading">
+      <div class="section-heading">
+        <span class="section-kicker">Two products, one mission</span>
+        <h2 id="be-products-heading">Website vs Marketplace — why both exist</h2>
+        <p>Every visitor should know which product fits their stage: evaluate with an export first, then govern continuously in Jira when ready.</p>
+      </div>
+      <div class="be-product-split">
+        <article class="be-product-card be-product-website">
+          <span class="be-product-label">This website</span>
+          <h3>Executive Governance Assessment</h3>
+          <p>Upload a project export (CSV or Excel). Preview your governance score free. Pay via Razorpay Secure Checkout. Receive HTML, PDF, Word, and PowerPoint — plus dashboard recovery for 90 days.</p>
+          <a class="btn btn-primary" href="pricing.html#assessment-wizard">Start assessment</a>
+        </article>
+        <article class="be-product-card be-product-marketplace">
+          <span class="be-product-label">Atlassian Marketplace</span>
+          <h3>Continuous AI Governance inside Jira</h3>
+          <p>Production teams govern AI work inside Jira Cloud — reviews, approvals, audit evidence, and executive reporting. Atlassian billing; data stays in your tenant via Forge.</p>
+          <a class="btn btn-secondary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer">View Marketplace app</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section white-section" id="executive-buyers" aria-labelledby="executive-buyers-heading">
+      <div class="section-heading">
+        <span class="section-kicker">For enterprise buyers</span>
+        <h2 id="executive-buyers-heading">Understand the offer in 30 seconds</h2>
+        <p>Upload a project export (CSV or Excel). We analyze work items for AI and governance risk. You receive a server-validated governance score and Executive Assessment after verified payment — no Jira expertise required.</p>
+      </div>
+      <div class="company-grid et-diff-grid">
+        <article class="feature-card">
+          <h3>vs. governance consulting</h3>
+          <p>Repeatable, self-service entry from ₹199 with board-ready deliverables in minutes — not weeks of discovery. Enterprise portfolios above 1,000 work items receive dedicated scoping and custom quotes.</p>
+        </article>
+        <article class="feature-card">
+          <h3>vs. static report tools</h3>
+          <p>Uploads validated server-side. Pricing and plan tiers computed on the server — never from the browser. Reports released only after Razorpay payment verification, with signed downloads and audit logging.</p>
+        </article>
+        <article class="feature-card">
+          <h3>vs. Atlassian Marketplace app</h3>
+          <p><strong>This website</strong> — assess exported work items before you buy: Razorpay checkout, Executive Assessment in HTML/PDF/DOCX/PPTX. <strong>Marketplace app</strong> — govern Jira projects continuously with reviews, approvals, and Atlassian billing. Separate products.</p>
+        </article>
+        <article class="feature-card">
+          <h3>vs. spreadsheets &amp; manual audits</h3>
+          <p>Replace one-off spreadsheets and email threads with a validated governance score, AI-related work item inventory, risk signals, and executive formats — generated consistently from your export.</p>
+        </article>
+        <article class="feature-card">
+          <h3>vs. generic AI tools</h3>
+          <p>Purpose-built for AI governance evidence — framework mapping, risk heatmaps, and board-ready language. We analyze your export on our servers; we do not use your upload to train third-party AI models.</p>
+        </article>
+        <article class="feature-card">
+          <h3>vs. PDF templates</h3>
+          <p>Every metric is computed from your actual work items — not fill-in-the-blank templates. Preview before you pay; unlock the full executive package after verified payment.</p>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content:center;margin-top:1.25rem">
+        <a class="btn btn-primary" href="pricing.html#assessment-wizard">Start Guided Assessment</a>
+        <a class="btn btn-secondary" href="trust-center.html">Trust Center</a>
+        <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Procurement%20Brief">Request procurement brief</a>
+      </div>
+    </section>
+
+    <section class="section light-section" id="consulting-alternative" aria-labelledby="consulting-alt-heading">
+      <div class="section-heading">
+        <span class="section-kicker">Commercial alternative</span>
+        <h2 id="consulting-alt-heading">Why enterprises choose this over a $250,000 consulting engagement</h2>
+        <p>Large consulting firms deliver valuable discovery — but many organizations need repeatable, evidence-based governance analysis from their own systems first. AI Governance Hub complements or replaces the assessment phase — not legal certification or board sign-off.</p>
+      </div>
+      <div class="et-consulting-compare" role="region" aria-label="Consulting engagement comparison">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Dimension</th>
+              <th scope="col">Typical consulting engagement</th>
+              <th scope="col">AI Governance Hub</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Time to first insight</td>
+              <td>Weeks of interviews and workshops</td>
+              <td class="et-win">Minutes — upload, validate, free preview</td>
+            </tr>
+            <tr>
+              <td>Evidence source</td>
+              <td>Stakeholder interviews and sampled documents</td>
+              <td class="et-win">Your actual Jira / ADO / CSV export — every work item scanned</td>
+            </tr>
+            <tr>
+              <td>Repeatability</td>
+              <td>One-time engagement; re-scope for updates</td>
+              <td class="et-win">Re-run when portfolio changes; consistent methodology</td>
+            </tr>
+            <tr>
+              <td>Entry cost</td>
+              <td>Six-figure discovery common</td>
+              <td class="et-win">From ₹199 self-serve; enterprise quote above 1,000 work items</td>
+            </tr>
+            <tr>
+              <td>Deliverables</td>
+              <td>Slide deck, workshop notes, roadmap</td>
+              <td class="et-win">HTML, PDF, Word, PowerPoint + dashboard recovery</td>
+            </tr>
+            <tr>
+              <td>Operational workflow</td>
+              <td>Often ends at recommendations</td>
+              <td>Marketplace app continues governance in Jira Cloud (separate product)</td>
+            </tr>
+            <tr>
+              <td>What neither replaces</td>
+              <td colspan="2">Legal opinion, regulatory certification, or board accountability — your governance committee retains ownership</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="microcopy" style="text-align:center;margin-top:1rem">Many enterprises use AI Governance Hub for the assessment phase, then engage consulting for change management — or skip six-figure discovery when their export already contains the evidence.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:1rem">
+        <a class="btn btn-primary" href="samples/sample-governance-report.html" target="_blank" rel="noopener">View sample report</a>
+        <a class="btn btn-secondary" href="pricing.html#assessment-wizard">Start assessment</a>
+      </div>
+    </section>
+
+    <section class="section white-section" id="product-overview">
+      <div class="section-heading">
+        <span class="section-kicker">What we do</span>
+        <h2>Enterprise AI Governance Assessment — not a PDF generator</h2>
+        <p>Upload project data. Receive an executive AI governance assessment. No guesswork.</p>
+      </div>
+      <div class="capability-grid">
+        <article class="feature-card"><h3>What is AI Governance Hub?</h3><p>An enterprise platform that analyzes your project exports and produces Executive Assessments with governance scores, AI-related work items, risks, and framework coverage.</p></article>
+        <article class="feature-card"><h3>Who is it for?</h3><p>Project Managers, PMOs, Delivery Managers, AI Governance Teams, Enterprise Architects, CIOs, and CTOs responsible for AI oversight.</p></article>
+        <article class="feature-card"><h3>What problems does it solve?</h3><p>Discover hidden AI work, prioritize governance reviews, quantify risk, and produce executive-ready evidence for stakeholders and auditors.</p></article>
+        <article class="feature-card"><h3>What do we analyze?</h3><p>Work items from Jira Cloud, Azure DevOps, Excel, or CSV — scanning summaries, descriptions, and labels for AI and automation signals.</p></article>
+        <article class="feature-card"><h3>How long does it take?</h3><p>Upload and compatibility check in seconds. Free preview immediately. Full assessment available after secure payment verification.</p></article>
+        <article class="feature-card"><h3>Is my data handled securely?</h3><p>Uploads are validated and analyzed on our servers — never trusted from the browser. Work item counts, pricing, and plan tiers are computed server-side. Payment is verified before any report is released. See our <a href="trust-center.html">Trust Center</a>.</p></article>
+        <article class="feature-card"><h3>What do you receive?</h3><p>Interactive HTML, PDF, Word, and PowerPoint executive reports plus a text summary — with secure dashboard access and email delivery.</p></article>
+      </div>
+      <div class="hero-actions" style="justify-content:center;margin-top:1.5rem">
+        <a class="btn btn-primary" href="pricing.html">Start Guided Assessment</a>
+        <a class="btn btn-secondary" href="faq.html">Read FAQ</a>
+      </div>
+    </section>
+
+    <section class="section white-section" id="company">
+      <div class="section-heading">
+        <span class="section-kicker">About AI Governance Hub</span>
+        <h2>An enterprise governance platform — not a side project</h2>
+        <p>We build operational AI governance for organizations that must demonstrate control, evidence, and executive accountability.</p>
+      </div>
+      <div class="company-grid">
+        <article class="feature-card">
+          <h3>Who we are</h3>
+          <p>AI Governance Hub is an enterprise software company focused on AI governance operations — assessment, review workflows, audit evidence, and executive reporting. Production teams deploy via Atlassian Marketplace; evaluation teams use our guided assessment on this website.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Who this is for</h3>
+          <p>CIOs, CISOs, PMOs, AI governance leads, enterprise architects, compliance officers, and delivery leaders responsible for AI oversight in regulated or high-accountability environments.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Who this is not for</h3>
+          <p>Individual hobby projects, non-governance use cases, or teams seeking legal certification or regulatory approval through a software report alone. We provide governance evidence and executive analysis — not legal opinions.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Industries we support</h3>
+          <p>Financial services, healthcare, insurance, technology, manufacturing, retail, and public sector — with industry-aware report framing when selected during upload.</p>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content:center;margin-top:1.25rem">
+        <a class="btn btn-primary" href="trust-center.html">Review Trust Center</a>
+        <a class="btn btn-secondary" href="sample-files.html">Sample files &amp; validation guide</a>
       </div>
     </section>
 
@@ -177,18 +387,18 @@
       <div class="section-heading">
         <span class="section-kicker">Introductory Offer</span>
         <h2>Evaluate AI governance before your full rollout</h2>
-        <p>Get One AI Governance Starter Report at ₹199 for low-friction evaluation, or install the full app from Atlassian Marketplace for production Jira usage.</p>
+        <p>Start with a guided assessment on this website, or install the full platform from Atlassian Marketplace for production Jira teams. Pricing is determined by your upload — see the order summary before you pay.</p>
       </div>
       <div class="starter-promo-card">
         <div class="starter-promo-copy">
-          <span class="launch-badge">Introductory Offer</span>
-          <h3>One AI Governance Starter Report</h3>
-          <p class="starter-price">₹199</p>
-          <p>Introductory website offer for evaluation. Framework-aligned governance snapshot, executive-ready summary format, and email delivery — with a clear upgrade path to Atlassian Marketplace.</p>
+          <span class="launch-badge">Self-service evaluation</span>
+          <h3>Guided AI Governance Assessment</h3>
+          <p class="starter-price">From <span data-pricing-display="starter">₹199</span></p>
+          <p>Upload your project export, review a free preview, then unlock the full executive assessment. Plan and total are calculated server-side based on portfolio size — you confirm before Secure Checkout.</p>
           <ul class="starter-feature-list">
-            <li>One AI Governance Starter Report</li>
+            <li>One Executive AI Governance Assessment</li>
             <li>Framework-aligned governance snapshot</li>
-            <li>GDPR, HIPAA, SOC 2, ISO 27001 mapping context</li>
+            <li>Framework mapping (EU AI Act, ISO 42001, NIST AI RMF)</li>
             <li>Email delivery</li>
           </ul>
         </div>
@@ -224,9 +434,10 @@
           </div>
         </div>
         <div class="security-card">
-          <h3>Public website data handling</h3>
-          <p>This static marketing website does not store API keys, payment secrets or backend credentials. Governance workflows run inside your Jira Cloud environment through the Atlassian Forge app.</p>
-          <p>For security questions or responsible disclosure, contact <a href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>.</p>
+          <h3>How we handle your assessment data</h3>
+          <p>Assessment uploads are transmitted over TLS and processed on secure infrastructure. We validate file structure, scan for threats, and compute all metrics server-side — the browser never sets price or work item counts.</p>
+          <p>Reports are released only after verified payment. Signed download links, audit logging, and rate limiting protect every step. For production Jira governance workflows, data remains in your Atlassian environment via the Forge app.</p>
+          <p>Security questions or responsible disclosure: <a href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a> · <a href="trust-center.html">Trust Center</a></p>
         </div>
       </div>
     </section>
@@ -259,29 +470,31 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
         <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="security-policy.html">Security Policy</a>
+        <a href="features.html">Features</a>
         <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="enterprise-procurement.html">Procurement</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
         <a href="docs/index.html">Documentation</a>
         <a href="support.html">Support</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
 
-  <script>
-    function toggleNavigation() {
-      const navLinks = document.getElementById("navLinks");
-      const navToggle = document.querySelector(".nav-toggle");
-      const isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    }
-  </script>
+  <script src="assets/js/pricing-i18n.js" defer></script>
+  <script src="assets/js/starter-experience.js" defer></script>
+  <script src="assets/js/site-nav.js" defer></script>
+  <script src="assets/js/site-trust-footer.js" defer></script>
 </body>
 </html>

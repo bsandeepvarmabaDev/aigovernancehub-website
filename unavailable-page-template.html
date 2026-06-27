@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- AI Governance Hub Website Version: 2026.06.25-marketplace-alignment-v16.2 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
   <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -15,8 +16,8 @@
   <div class="top-strip">Now available on Atlassian Marketplace • Runs on Atlassian • Built on Atlassian Forge</div>
   <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
-      <a class="brand" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
+      <a class="brand" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       <div class="nav-links" id="navLinks">
         <a href="index.html#platform">Platform</a>
         <a href="index.html#frameworks">Frameworks</a>
@@ -43,7 +44,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
         <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
@@ -57,13 +58,6 @@
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
-  <script>
-    function toggleNavigation() {
-      const navLinks = document.getElementById("navLinks");
-      const navToggle = document.querySelector(".nav-toggle");
-      const isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    }
-  </script>
+    <script src="assets/js/site-nav.js" defer></script>
 </body>
 </html>

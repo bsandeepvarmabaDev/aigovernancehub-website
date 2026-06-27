@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <meta name="description" content="Sample export files and validation guide for Jira, Azure DevOps, Excel, and CSV uploads to AI Governance Hub." />
+  <link rel="canonical" href="https://aigovernancehub.ai/sample-files.html" />
+  <title>Sample Files Guide | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
+  <link rel="stylesheet" href="assets/css/product-maturity.css" />
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="legal-hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html" aria-current="page">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="enterprise-procurement.html">Procurement</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
+      </div>
+    </nav>
+  </header>
+  <main class="legal-container" id="main-content">
+    <h1>Sample files &amp; validation guide</h1>
+    <p class="microcopy">Use these samples to verify your export format before uploading real project data. Every assessment validates your file server-side — samples help you get it right the first time.</p>
+
+    <section>
+      <h2>Jira Cloud</h2>
+      <p><a class="btn btn-secondary" href="samples/sample-jira-export.csv" download>Download Jira sample CSV</a>
+      <a class="btn btn-secondary" href="samples/sample-governance-report.html" target="_blank" rel="noopener">View example report</a></p>
+      <h3>Required columns</h3>
+      <p>Issue Key, Summary, Description, Issue Type, Status, Project</p>
+      <h3>Optional columns (recommended)</h3>
+      <p>Priority, Labels, Components, Assignee, Reporter, Story Points, Sprint</p>
+      <h3>How to export</h3>
+      <ol>
+        <li>Open your Jira Cloud project</li>
+        <li>Issues → Search for issues (JQL) or backlog</li>
+        <li>Export → CSV (All fields)</li>
+        <li>Upload in the <a href="pricing.html#assessment-wizard">assessment wizard</a></li>
+      </ol>
+      <h3>Validation expectations</h3>
+      <p>UTF-8 CSV up to 5 MB. At least one data row. Duplicate Issue Keys are flagged. Work items counted server-side for plan detection.</p>
+    </section>
+
+    <section>
+      <h2>Azure DevOps</h2>
+      <p><a class="btn btn-secondary" href="samples/sample-azure-devops.csv" download>Download Azure DevOps sample</a></p>
+      <h3>Required columns</h3>
+      <p>ID (or Issue Key), Title (Summary), Description, Work Item Type, State (Status), Area Path or Project</p>
+      <h3>How to export</h3>
+      <ol>
+        <li>Boards → Queries → run backlog query</li>
+        <li>Export to CSV</li>
+        <li>Upload in the assessment wizard</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Excel / CSV template</h2>
+      <p><a class="btn btn-secondary" href="samples/sample-governance-template.csv" download>Download template</a></p>
+      <p>Generic template with Jira-compatible headers. Row 2 contains placeholder guidance. Save as .xlsx or UTF-8 CSV.</p>
+    </section>
+
+    <section>
+      <h2>What you receive after payment</h2>
+      <ul>
+        <li>Interactive HTML report</li>
+        <li>PDF executive report</li>
+        <li>Word (DOCX) document</li>
+        <li>PowerPoint presentation</li>
+        <li>Text summary</li>
+      </ul>
+      <p><a class="btn btn-primary" href="pricing.html#assessment-wizard">Start guided assessment</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="enterprise-procurement.html">Procurement</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub · support@aigovernancehub.ai</p>
+    </div>
+  </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
+  <script src="assets/js/product-maturity.js" defer></script>
+  <script src="assets/js/site-trust-footer.js" defer></script>
+</body>
+</html>

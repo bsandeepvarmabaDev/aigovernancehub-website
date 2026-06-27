@@ -1,0 +1,7 @@
+# Hobby plan: max 12 Serverless Functions. Overflow routes live in _hobby-excluded/.
+_hobby-excluded
+node_modules
+*.zip
+.v25.*-staging
+certification-v25
+certification-final-v25

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://checkout.razorpay.com; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.razorpay.com; frame-src https://api.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <title>Enterprise Checkout | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="legal-hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <div class="nav-links">
+        <a href="pricing.html">Pricing</a>
+        <a href="support.html">Support</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="legal-container payment-status-page" id="main-content">
+    <div id="checkout-loading">
+      <h1>Loading secure checkout…</h1>
+      <p class="microcopy">Verifying your enterprise payment link.</p>
+    </div>
+    <div id="checkout-invalid" hidden>
+      <div class="agh-alert agh-alert-warning" role="alert">
+        <h1>Payment link unavailable</h1>
+        <p id="checkout-invalid-message">This link is invalid or has expired.</p>
+        <p class="microcopy">Contact <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> for a new link.</p>
+      </div>
+    </div>
+    <div id="checkout-paid" hidden>
+      <div class="agh-alert agh-alert-success" role="status">
+        <h1>Payment already completed</h1>
+        <p>Your enterprise assessment payment has been verified.</p>
+      </div>
+      <a class="btn btn-primary" href="login.html">Open My Reports</a>
+    </div>
+    <div id="checkout-ready" hidden>
+      <h1>Enterprise Assessment — Secure Payment</h1>
+      <p class="microcopy" id="checkout-reference"></p>
+      <div class="order-summary-box">
+        <table class="order-summary-table">
+          <tbody>
+            <tr><th scope="row">Assessment</th><td id="checkout-plan">Enterprise Assessment</td></tr>
+            <tr><th scope="row">Work items</th><td id="checkout-work-items">—</td></tr>
+            <tr><th scope="row">Amount</th><td id="checkout-amount"><strong>—</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="microcopy">Amount verified server-side. Reports include HTML, PDF, Word, and PowerPoint. <a href="refund-policy.html">Refund policy</a> · <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></p>
+      <button type="button" class="btn btn-primary wide" id="enterprise-pay-btn">Secure Checkout</button>
+      <p class="microcopy starter-upload-status" id="checkout-status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></div>
+        <strong>AI Governance Hub™</strong>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub. Security-first by design.</p>
+    </div>
+  </footer>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <script src="assets/js/enterprise-ux.js" defer></script>
+  <script src="assets/js/enterprise-checkout.js" defer></script>
+</body>
+</html>

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- AI Governance Hub Website Version: 2026.06.25-marketplace-alignment-v16.2 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
   <link rel="canonical" href="https://aigovernancehub.ai/security-policy.html" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -15,21 +15,26 @@
 </head>
 
 <body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="legal-hero">
-    <nav class="nav">
-      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <div class="nav-links">
-        <a href="index.html#platform">Platform</a>
-        <a href="index.html#frameworks">Frameworks</a>
-        <a href="docs/index.html">Documentation</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="security-policy.html" aria-current="page">Security</a>
+        <a href="privacy.html">Privacy</a>
         <a href="support.html">Support</a>
-        <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
       </div>
     </nav>
   </header>
 
-  <main class="legal-container">
+  <main class="legal-container" id="main-content">
     <h1>Security Policy</h1>
     <p><strong>Effective Date:</strong> June 2026</p>
 
@@ -38,53 +43,70 @@
     </div>
 
     <h2>1. Security Contact</h2>
-    <p>Customers, researchers, and Atlassian may report security concerns to <a class="email" href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>.</p>
-    <p>Security inquiries should be submitted to <a class="email" href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>.</p>
+    <p>Report security concerns to <a class="email" href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>. Critical issues are prioritized for same-business-day triage where possible.</p>
 
-    <h2>2. Responsible Disclosure</h2>
+    <h2>2. Website Assessment Security</h2>
+    <p>For guided assessments on this website:</p>
+    <ul>
+      <li>All uploads validated server-side; work item counts and pricing never accepted from the browser</li>
+      <li>Payment verified via Razorpay HMAC before report generation</li>
+      <li>Signed download and recovery tokens with expiry</li>
+      <li>Rate limiting, correlation IDs, and structured audit logging on API routes</li>
+      <li>No payment card, UPI, or banking data stored by AI Governance Hub</li>
+    </ul>
+
+    <h2>3. Responsible Disclosure</h2>
     <p>If you believe you have discovered a vulnerability in AI Governance Hub, please report it with sufficient detail to reproduce and assess the issue. We request that researchers avoid accessing, modifying, deleting, or sharing customer data and avoid actions that could disrupt customer environments.</p>
 
-    <h2>3. Forge-Hosted Architecture</h2>
+    <h2>4. Forge-Hosted Architecture</h2>
     <p>AI Governance Hub is built on Atlassian Forge for Jira Cloud. App functionality primarily uses Atlassian-hosted services, Forge storage, Jira APIs, and customer Jira project data required to provide AI governance, review workflow, risk assessment, evidence tracking, audit readiness, and reporting capabilities.</p>
 
-    <h2>4. Data Handling</h2>
+    <h2>5. Data Handling</h2>
     <p>The app is designed to store and process End-User Data within Atlassian apps and services. The app does not require customers to provide Atlassian passwords, Personal Access Tokens, or shared secrets for normal operation.</p>
 
-    <h2>5. Access Control</h2>
+    <h2>6. Access Control</h2>
     <p>AI Governance Hub applies role-based access controls for governance actions and validates permissions for user-triggered actions before performing privileged operations where required by Atlassian Marketplace security requirements.</p>
 
-    <h2>6. Logging and Audit Activity</h2>
+    <h2>7. Logging and Audit Activity</h2>
     <p>The app maintains application-level audit activity for governance workflow events, approval actions, evidence updates, risk ticket activity, administrative actions, and configuration changes. Sensitive information such as passwords, API tokens, and credentials should not be logged.</p>
 
-    <h2>7. Vulnerability Management</h2>
+    <h2>8. Vulnerability Management</h2>
     <p>Security issues are reviewed based on severity and impact. Critical and high-severity issues are prioritized for remediation and communication in accordance with Atlassian Marketplace vulnerability and incident notification expectations.</p>
 
-    <h2>8. Incident Response</h2>
+    <h2>9. Incident Response</h2>
     <p>When a confirmed security incident or critical vulnerability affects the app, we will investigate, remediate, and notify Atlassian and affected customers as appropriate.</p>
 
-    <h2>9. Security Updates</h2>
+    <h2>10. Security Updates</h2>
     <p>Security fixes may be released as app updates through Atlassian Marketplace and Forge deployment processes. Customers should keep the app updated to the latest approved version.</p>
 
-    <h2>10. Contact</h2>
+    <h2>11. Contact</h2>
     <p>For security questions, vulnerability reports, or responsible disclosure, contact <a class="email" href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>.</p>
+    <p id="responsible-disclosure"><strong>Responsible disclosure:</strong> We welcome good-faith security reports. Do not include live customer data in vulnerability submissions.</p>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
         <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="security-policy.html">Security Policy</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
         <a href="docs/index.html">Documentation</a>
+        <a href="support.html">Support</a>
         <a href="mailto:sales@aigovernancehub.ai">Contact</a>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
 </body>
 </html>

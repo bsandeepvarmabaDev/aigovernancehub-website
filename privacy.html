@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- AI Governance Hub Website Version: 2026.06.25-marketplace-alignment-v16.2 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
   <link rel="canonical" href="https://aigovernancehub.ai/privacy.html" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -15,21 +15,26 @@
 </head>
 
 <body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="legal-hero">
-    <nav class="nav">
-      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <div class="nav-links">
-        <a href="index.html#platform">Platform</a>
-        <a href="index.html#frameworks">Frameworks</a>
-        <a href="docs/index.html">Documentation</a>
-        <a href="support.html">Support</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
       </div>
     </nav>
   </header>
 
-  <main class="legal-container">
+  <main class="legal-container" id="main-content">
     <h1>Privacy Policy</h1>
     <p><strong>Effective Date:</strong> June 9, 2026</p>
 
@@ -63,28 +68,46 @@
     <p>Customers are responsible for ensuring that information entered into AI Governance Hub complies with their internal policies, applicable laws, and data governance requirements.</p>
 
     <h2>7. Data Retention</h2>
+    <p><strong>Website assessments:</strong> We process uploaded project exports solely to deliver your assessment and reports. <strong>We do not use your assessment upload to train third-party AI models.</strong></p>
+    <p><strong>Website assessments — retention:</strong> Upload sessions expire within 24 hours (typically one day) if checkout is not completed. Generated reports remain recoverable for 90 days via signed recovery tokens unless you request earlier deletion.</p>
+    <p><strong>Jira Marketplace app:</strong> Retention follows your Atlassian workspace configuration and our product data handling practices.</p>
     <p>Information is retained only as long as needed for product functionality, support, legal, security, audit, or operational purposes, unless a longer retention period is required or permitted by law.</p>
 
-    <h2>8. Contact</h2>
+    <h2>8. Our Responsibilities</h2>
+    <ul>
+      <li>Protect data with reasonable administrative, technical, and organizational safeguards</li>
+      <li>Process assessment data solely to deliver the service you requested</li>
+      <li>Verify payments server-side before releasing reports</li>
+      <li>Respond to privacy and deletion requests in a timely manner</li>
+    </ul>
+
+    <h2>9. Contact</h2>
     <p>For privacy questions or requests, contact us at <a class="email" href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a>.</p>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
         <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="security-policy.html">Security Policy</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
         <a href="docs/index.html">Documentation</a>
+        <a href="support.html">Support</a>
         <a href="mailto:sales@aigovernancehub.ai">Contact</a>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
 </body>
 </html>

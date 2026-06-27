@@ -1,0 +1,144 @@
+/* AI Governance Hub — Product Maturity UX (v25.17) */
+
+.pm-breadcrumb {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem 0;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.pm-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-breadcrumb li + li::before {
+  content: "›";
+  margin-right: 0.35rem;
+  color: #94a3b8;
+}
+
+.pm-breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.pm-breadcrumb a:hover { text-decoration: underline; }
+
+.pm-next-step {
+  max-width: 1120px;
+  margin: 0 auto 1rem;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  font-size: 0.875rem;
+  color: #14532d;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.pm-next-step strong { color: #166534; }
+
+.pm-next-step a {
+  color: #15803d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pm-next-step a:hover { text-decoration: underline; }
+
+.pm-value-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: #cbd5e1;
+}
+
+.pm-value-strip span {
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pm-context-help {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.pm-context-help strong { color: #0f172a; }
+
+.legal-container .pm-breadcrumb,
+.legal-container + .pm-breadcrumb { padding-left: 0; }
+
+.pm-customer-success {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.pm-customer-success h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+  color: #0f172a;
+}
+
+.pm-customer-success ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.pm-procurement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.pm-procurement-grid article {
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.pm-procurement-grid h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.pm-procurement-grid p {
+  font-size: 0.875rem;
+  color: #475569;
+  margin: 0;
+}
+
+.cover .board-badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.35);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

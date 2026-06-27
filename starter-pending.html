@@ -1,44 +1,110 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.27-production-remediation-v16.5.2 -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
-  <title>Payment Pending | AI Governance Hub</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <title>Payment Status | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/starter-experience.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
 </head>
 <body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="legal-hero">
-    <nav class="nav">
-      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
       <div class="nav-links">
         <a href="pricing.html">Pricing</a>
+        <a href="recover-report.html">Recover My Report</a>
         <a href="support.html">Support</a>
       </div>
     </nav>
   </header>
 
-  <main class="legal-container payment-status-page">
-    <h1>Payment could not be verified or was not completed</h1>
-    <p>Your Starter Report purchase was not confirmed. You can try again or contact <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> for help.</p>
+  <main class="legal-container payment-status-page" id="main-content">
+    <div id="pending-unpaid">
+      <div class="agh-alert agh-alert-warning" role="alert">
+        <h1>Payment was not completed</h1>
+        <p><strong>What happened:</strong> Checkout did not finish with a verified payment.</p>
+        <p><strong>What to do next:</strong> Return to the assessment wizard and complete Razorpay Secure Checkout.</p>
+      </div>
+    </div>
+
+    <div id="pending-failed" hidden>
+      <div class="agh-alert agh-alert-warning" role="alert">
+        <h1>Payment failed</h1>
+        <p><strong>What happened:</strong> Razorpay could not complete your payment. No charge was verified on our side.</p>
+        <p><strong>What to do next:</strong> Return to the assessment wizard and try again, or use a different payment method.</p>
+      </div>
+    </div>
+
+    <div id="pending-cancelled" hidden>
+      <div class="agh-alert agh-alert-warning" role="alert">
+        <h1>Checkout cancelled</h1>
+        <p><strong>What happened:</strong> You closed Razorpay checkout before payment completed.</p>
+        <p><strong>What to do next:</strong> No charge was made. Return to the wizard when you are ready to pay.</p>
+      </div>
+    </div>
+
+    <div id="pending-paid" hidden>
+      <div class="agh-alert agh-alert-warning sx-paid-pending-alert" role="alert">
+        <h1>Payment received — assessment processing</h1>
+        <p id="pending-paid-lead"><strong>What happened:</strong> Razorpay captured your payment. Server verification or report generation is still in progress.</p>
+        <p><strong>Your payment is safe.</strong> Reports unlock only after server-side Razorpay verification — we never grant access without it.</p>
+        <ol class="sx-paid-steps">
+          <li>Wait 2–3 minutes, then open <a href="recover-report.html">Recover My Report</a> with your checkout email.</li>
+          <li>Keep your Razorpay payment reference below for support.</li>
+          <li>Email <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> if processing exceeds 15 minutes.</li>
+        </ol>
+      </div>
+      <div class="sx-payment-ref-box" aria-label="Payment references">
+        <p class="microcopy"><strong>Checkout email:</strong> <span id="pending-email">—</span></p>
+        <p class="microcopy"><strong>Razorpay payment ID:</strong> <span id="pending-payment-id">—</span></p>
+        <p class="microcopy"><strong>Razorpay order ID:</strong> <span id="pending-order-id">—</span></p>
+      </div>
+    </div>
+
+    <div id="pending-generation-failed" hidden>
+      <div class="agh-alert agh-alert-warning" role="alert">
+        <h1>Generation failed</h1>
+        <p><strong>What happened:</strong> Your payment was verified, but report generation encountered an error.</p>
+        <p><strong>What to do next:</strong> Use <a href="recover-report.html">Recover My Report</a> with your checkout email to sign in and retry from My Reports, or contact <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a>.</p>
+      </div>
+    </div>
+
+    <div class="agh-trust-strip" role="note">
+      <span>Razorpay Secure Checkout</span>
+      <span>Server-side verification</span>
+      <span>Signed downloads</span>
+    </div>
+
+    <p class="microcopy" id="pending-extra-msg" hidden></p>
 
     <div class="report-action-row">
-      <a class="btn btn-primary" href="pricing.html#starter-checkout-form">Retry Payment</a>
-      <a class="btn btn-secondary" href="index.html">Return Home</a>
-      <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai?subject=Starter%20Report%20Payment%20Help">Contact Support</a>
+      <a class="btn btn-primary" href="recover-report.html">Recover my report</a>
+      <a class="btn btn-secondary" href="pricing.html#assessment-wizard">Return to assessment</a>
+      <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai">Contact support</a>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Security-first by design.</p>
     </div>
   </footer>
+  <script src="assets/js/starter-pending.js" defer></script>
 </body>
 </html>

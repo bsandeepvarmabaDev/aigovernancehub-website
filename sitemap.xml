@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aigovernancehub.ai/</loc></url>
+  <url><loc>https://aigovernancehub.ai/features.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/trust-center.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/faq.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/case-study.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/blog/index.html</loc></url>
   <url><loc>https://aigovernancehub.ai/support.html</loc></url>
   <url><loc>https://aigovernancehub.ai/docs/index.html</loc></url>
   <url><loc>https://aigovernancehub.ai/docs/getting-started.html</loc></url>
@@ -9,6 +14,8 @@
   <url><loc>https://aigovernancehub.ai/docs/security.html</loc></url>
   <url><loc>https://aigovernancehub.ai/privacy.html</loc></url>
   <url><loc>https://aigovernancehub.ai/terms.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/refund-policy.html</loc></url>
+  <url><loc>https://aigovernancehub.ai/cookie-policy.html</loc></url>
   <url><loc>https://aigovernancehub.ai/security-policy.html</loc></url>
   <url><loc>https://aigovernancehub.ai/eu-ai-act-jira.html</loc></url>
   <url><loc>https://aigovernancehub.ai/iso-42001-jira.html</loc></url>

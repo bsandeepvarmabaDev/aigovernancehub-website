@@ -1,0 +1,5 @@
+ID,Title,Description,Work Item Type,State,Area Path,Priority,Tags,Assigned To,Created By,Story Points,Iteration Path
+12345,AI triage assistant,Prototype Azure OpenAI triage for incident routing,User Story,Active,Contoso\Platform,2,ai;azure-openai,Platform,alex@contoso.com,alex@contoso.com,5,Contoso\Sprint 12
+12346,Model monitoring dashboard,Track drift metrics for production ML models,Feature,New,Contoso\ML Ops,2,ml;monitoring,ML Ops,jordan@contoso.com,jordan@contoso.com,8,Contoso\Sprint 12
+12347,Governance evidence export,Export audit evidence for ISO 42001 reviews,Task,Resolved,Contoso\Compliance,3,governance,Compliance,riley@contoso.com,pat@contoso.com,3,Contoso\Sprint 11
+12348,Prompt library standards,Document approved prompt patterns for internal tools,User Story,Active,Contoso\Engineering,2,prompt;genai,Engineering,casey@contoso.com,pat@contoso.com,5,Contoso\Sprint 12

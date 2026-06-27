@@ -1,9 +1,36 @@
 {
   "version": 2,
-  "functions": {
-    "api/*.js": {
-      "memory": 128,
-      "maxDuration": 10
+  "rewrites": [
+    { "source": "/api/auth-verify", "destination": "/api/auth-core" },
+    { "source": "/api/auth-session", "destination": "/api/auth-core" },
+    { "source": "/api/auth-magic-link", "destination": "/api/customer-email?kind=magic" },
+    { "source": "/images/dashboard.png", "destination": "/images/dashboard.svg" },
+    { "source": "/api/recover-reports", "destination": "/api/customer-email?kind=recover" },
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/features", "destination": "/features.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/recover-report", "destination": "/recover-report.html" },
+    { "source": "/trust-center", "destination": "/trust-center.html" },
+    { "source": "/enterprise-procurement", "destination": "/enterprise-procurement.html" },
+    { "source": "/sample-files", "destination": "/sample-files.html" },
+    { "source": "/app-logo-512.png", "destination": "/app-logo.svg" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "interest-cohort=(), geolocation=(), microphone=(), camera=()" },
+        { "key": "X-Permitted-Cross-Domain-Policies", "value": "none" },
+        { "key": "Cross-Origin-Resource-Policy", "value": "same-site" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-XSS-Protection", "value": "0" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" }
+      ]
     }
-  }
+  ]
 }

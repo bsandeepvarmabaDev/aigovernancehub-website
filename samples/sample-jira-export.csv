@@ -1,0 +1,6 @@
+Issue Key,Summary,Description,Issue Type,Status,Project,Priority,Labels,Components,Assignee,Reporter,Story Points,Sprint
+PROJ-101,Customer chatbot POC,Evaluate LLM-powered support chatbot for tier-1 queries,Story,In Progress,Customer Portal,High,ai;genai,Support,alex@company.com,sam@company.com,5,Sprint 12
+PROJ-102,Invoice OCR pipeline,Automate invoice extraction using machine learning model,Story,Open,Finance Ops,Medium,ml;automation,Accounts,jordan@company.com,sam@company.com,8,Sprint 12
+PROJ-103,Security review checklist,Standard governance checklist for new AI features,Task,Done,Platform,Low,governance,Security,riley@company.com,pat@company.com,3,Sprint 11
+PROJ-104,Copilot rollout policy,Define acceptable use for GitHub Copilot across engineering,Epic,In Review,Engineering,High,copilot;policy,DevTools,casey@company.com,pat@company.com,13,Sprint 12
+PROJ-105,Data retention for embeddings,Review vector store retention for RAG knowledge base,Story,Open,Data Platform,High,rag;embedding,Data,devon@company.com,sam@company.com,5,Sprint 13

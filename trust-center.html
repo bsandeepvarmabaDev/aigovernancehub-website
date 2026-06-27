@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <meta name="description" content="AI Governance Hub Trust Center — security architecture, data handling, payment verification, audit logging, and enterprise compliance posture." />
+  <link rel="canonical" href="https://aigovernancehub.ai/trust-center.html" />
+  <title>Trust Center | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="legal-hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html" aria-current="page">Trust Center</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
+      </div>
+    </nav>
+  </header>
+  <main class="legal-container" id="main">
+    <h1>Trust Center</h1>
+    <p class="microcopy">Documentation for security, procurement, and compliance reviewers evaluating AI Governance Hub.</p>
+
+    <section>
+      <h2>Security architecture</h2>
+      <p>AI Governance Hub follows a fail-closed security model. Payment verification, work item counting, plan detection, and report generation run exclusively on the server. The browser never authorizes downloads or sets commercial terms.</p>
+      <ul>
+        <li>HMAC-verified Razorpay payments before report release</li>
+        <li>Signed download and recovery tokens with expiry</li>
+        <li>Rate limiting and correlation IDs on API routes</li>
+        <li>Structured audit logging for payments, uploads, and admin actions</li>
+        <li>No payment card, UPI, or banking data stored by AI Governance Hub</li>
+      </ul>
+      <p><a href="security-policy.html">Full Security Policy</a> · <a href="docs/security.html">Technical security documentation</a></p>
+    </section>
+
+    <section>
+      <h2>Security review package (for CISO &amp; security architects)</h2>
+      <p>Documents available today for vendor review — we do not claim certifications we have not earned.</p>
+      <div class="et-ciso-pack">
+        <h3>Available for download / review</h3>
+        <ul>
+          <li><a href="security-policy.html">Security Policy</a> — architecture, auth, payments, uploads, responsible disclosure</li>
+          <li><a href="privacy.html">Privacy Policy</a> — retention (90-day reports, ~24-hour upload sessions), no third-party AI training on uploads</li>
+          <li><a href="trust-center.html">Trust Center</a> (this page) — data lifecycle, payment integrity, SLAs</li>
+          <li><a href="docs/security.html">Technical security documentation</a></li>
+          <li><a href="enterprise-procurement.html">Enterprise Procurement Guide</a> — pricing, invoice/PO process, deliverables</li>
+          <li><a href="refund-policy.html">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="et-ciso-pack">
+        <h3>Sub-processors (website assessment flow)</h3>
+        <ul>
+          <li><strong>Razorpay</strong> — payment processing (PCI handled by Razorpay; we do not store card/UPI data)</li>
+          <li><strong>Hosting provider</strong> — serverless API and static site delivery (TLS, HSTS in production)</li>
+          <li><strong>Atlassian Forge</strong> — Marketplace app runs in your Jira Cloud tenant (separate from website uploads)</li>
+        </ul>
+        <p class="microcopy">For sub-processor questionnaires or custom DPAs, contact <a href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>.</p>
+      </div>
+      <div class="et-ciso-pack">
+        <h3>What we do not claim</h3>
+        <ul>
+          <li>SOC 2 Type II, ISO 27001 certification, or FedRAMP authorization (unless separately contracted and documented)</li>
+          <li>HIPAA BAA or banking regulatory approval through software alone</li>
+          <li>That a report constitutes legal certification or regulatory sign-off</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Deployment scale (honest limits)</h2>
+      <div class="et-scale-limits">
+        <article>
+          <strong>Website assessment</strong>
+          Self-serve up to 1,000 work items per upload. Single purchaser email per assessment. Not multi-tenant SSO on this flow.
+        </article>
+        <article>
+          <strong>Enterprise assessment (1,001+ items)</strong>
+          Sales-scoped quote, secure payment link, dedicated handling. Contact <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a>.
+        </article>
+        <article>
+          <strong>Production Jira teams (100–5,000+ users)</strong>
+          Atlassian Marketplace app with Forge tenant isolation — the path for ongoing governance workflows, not the website upload flow.
+        </article>
+        <article>
+          <strong>Global deployment</strong>
+          Website assessments are server-processed; production governance runs in your Atlassian cloud region via Marketplace install.
+        </article>
+      </div>
+    </section>
+
+    <section id="regulated-industries">
+      <h2>Regulated industry buyers</h2>
+      <p>Industry selection during upload adjusts report framing — it does not create compliance certification.</p>
+      <ul>
+        <li><strong>Healthcare:</strong> Do not upload PHI. Use redacted or synthetic exports. Reports support governance evidence — not HIPAA attestation.</li>
+        <li><strong>Banking &amp; financial services:</strong> Redact account numbers, customer PII, and confidential deal data before export. Useful for AI initiative inventory — not regulatory filing.</li>
+        <li><strong>Government:</strong> Confirm export policy with your information security office. Enterprise quote available for large portfolios and procurement coordination.</li>
+        <li><strong>Manufacturing / technology:</strong> Standard export workflows; ideal for PMO and architecture-led AI governance baselines.</li>
+      </ul>
+      <p class="et-industry-note"><strong>Customer responsibility:</strong> You control what leaves your environment. We process what you upload solely to deliver your assessment.</p>
+    </section>
+
+    <section>
+      <h2 id="responsible-disclosure">Assessment data &amp; AI processing</h2>
+      <p>Website assessment uploads are processed on our servers solely to generate your governance report and deliver it to you. <strong>We do not use your upload to train third-party AI models.</strong> Analysis uses governance-weighted rules and portfolio metrics — not public redistribution of your export.</p>
+      <p>Deletion requests: <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></p>
+    </section>
+
+    <section>
+      <h2>Support SLAs</h2>
+      <ul>
+        <li><strong>General support:</strong> support@aigovernancehub.ai — within 1 business day</li>
+        <li><strong>Enterprise sales:</strong> sales@aigovernancehub.ai — within 1–2 business days</li>
+        <li><strong>Security:</strong> security@aigovernancehub.ai — responsible disclosure welcome</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Confidential upload handling</h2>
+      <p>Assessment uploads may contain sensitive project metadata. We treat every upload accordingly:</p>
+      <ul>
+        <li>TLS encryption for all transfers</li>
+        <li>Server-side validation, malware pattern scanning, and file hash logging</li>
+        <li>Work item metrics computed from parsed content — never accepted from the client</li>
+        <li>Enterprise portfolios over 1,000 work items route to a dedicated sales workflow — no self-service checkout bypass</li>
+      </ul>
+      <p>Deletion requests: <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></p>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+      <p>We process uploaded project data solely to generate your assessment and deliver reports. Payment details are handled exclusively by Razorpay.</p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="cookie-policy.html">Cookie Policy</a></p>
+    </section>
+
+    <section>
+      <h2>Infrastructure</h2>
+      <p>Persistent encrypted object storage, serverless API routes, and environment-isolated secrets. Production Jira governance workflows run on Atlassian Forge within your tenant boundary.</p>
+    </section>
+
+    <section>
+      <h2>Encryption</h2>
+      <ul>
+        <li>TLS/SSL for all traffic; HSTS in production</li>
+        <li>HttpOnly session cookies for authenticated dashboard access</li>
+        <li>HMAC-signed download and recovery tokens</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Payment integrity</h2>
+      <p>Order amounts are calculated server-side from detected plan and portfolio size. The total shown in your order summary must match the Razorpay checkout amount exactly. Reports generate only after cryptographic payment verification.</p>
+      <p><a href="refund-policy.html">Refund Policy</a></p>
+    </section>
+
+    <section>
+      <h2>Data lifecycle &amp; retention</h2>
+      <p>Upload → validation → analysis → verified payment → report generation → secure delivery → dashboard recovery. Upload sessions expire. Recovery tokens remain valid for 90 days unless deletion is requested.</p>
+    </section>
+
+    <section>
+      <h2>Customer &amp; vendor responsibilities</h2>
+      <p><strong>Your responsibilities:</strong> Ensure uploads comply with internal data policies; provide accurate contact details; retain payment references for support.</p>
+      <p><strong>Our responsibilities:</strong> Secure processing, server-side validation, verified payment before delivery, audit logging, and timely support response per published SLAs.</p>
+    </section>
+
+    <section>
+      <h2>Compliance posture</h2>
+      <p>Framework mapping supports EU AI Act, ISO 42001, and NIST AI RMF evidence workflows. Reports assist governance review and board reporting — they do not constitute legal certification or regulatory approval.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Security: <a href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a><br />
+      Support: <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a><br />
+      Enterprise sales: <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a></p>
+      <p><a href="faq.html">Frequently asked questions</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html" aria-current="page">Trust Center</a>
+        <a href="enterprise-procurement.html">Procurement</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="support.html">Support</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub</p>
+    </div>
+  </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
+  <script src="assets/js/site-trust-footer.js" defer></script>
+</body>
+</html>

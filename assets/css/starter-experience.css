@@ -1,0 +1,474 @@
+/* AI Governance Hub — Starter Experience (customer-visible journey polish) */
+
+@keyframes sx-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sx-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@keyframes sx-confetti-fall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(80px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes sx-score-fill {
+  from { stroke-dashoffset: 283; }
+}
+
+@keyframes sx-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.pricing-hero-starter {
+  background: linear-gradient(180deg, #f0f9ff 0%, #fff 70%);
+  border-bottom: 1px solid #e0f2fe;
+  padding: 2.25rem 0 1.5rem;
+}
+
+.pricing-hero-starter .section-heading {
+  margin-bottom: 1rem;
+}
+
+.pricing-hero-starter.pricing-hero .section-heading h1 {
+  color: #0f172a;
+  text-shadow: none;
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.pricing-hero-starter.pricing-hero .section-heading p {
+  color: #475569;
+  font-size: 1.05rem;
+}
+.pricing-hero-starter.pricing-hero .section-kicker {
+  color: #1d4ed8;
+  border-color: rgba(37, 99, 235, 0.28);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.sx-journey-banner {
+  margin: 0 0 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 55%, #f0fdf4 100%);
+  border: 1px solid #bfdbfe;
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
+  min-height: 5.5rem;
+}
+
+.sx-banner-animate .sx-banner-inner {
+  animation: sx-banner-in 0.28s ease-out;
+}
+
+@keyframes sx-banner-in {
+  from { opacity: 0.96; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sx-banner-step {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: #fff;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.sx-journey-banner h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.sx-banner-now, .sx-banner-next {
+  margin: 0.2rem 0 0;
+  font-size: 0.875rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.sx-banner-next { color: #64748b; }
+
+/* ——— Progress bar ——— */
+.sx-progress-wrap {
+  margin-bottom: 0.65rem;
+}
+
+.sx-progress-track {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.sx-progress-bar {
+  height: 100%;
+  width: 16%;
+  background: linear-gradient(90deg, #2563eb, #06b6d4, #2563eb);
+  background-size: 200% 100%;
+  animation: sx-shimmer 2.5s linear infinite;
+  border-radius: 999px;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sx-progress-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* ——— Wizard card polish ——— */
+.assessment-wizard-card {
+  transition: box-shadow 0.25s ease;
+  min-height: 11rem;
+}
+
+.sx-card-pulse {
+  animation: none;
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.1);
+}
+
+.wizard-step.sx-step-current {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.source-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.source-card.selected {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.18);
+  border-color: #2563eb;
+}
+
+/* ——— Upload drop zone ——— */
+.sx-dropzone {
+  margin: 0.75rem 0;
+  padding: 1.5rem 1rem;
+  border: 2px dashed #94a3b8;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.sx-dropzone:hover, .sx-dropzone-active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: scale(1.01);
+}
+
+.sx-dropzone-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.sx-dropzone-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 0.35rem;
+  color: #0f172a;
+}
+
+.sx-dropzone-hint {
+  margin: 0 0 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* ——— Score ring ——— */
+.sx-score-ring-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  border-radius: 16px;
+  color: #fff;
+}
+
+.sx-score-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.sx-score-ring svg {
+  transform: rotate(-90deg);
+  width: 120px;
+  height: 120px;
+}
+
+.sx-score-ring circle.bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 10;
+}
+
+.sx-score-ring circle.fill {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: calc(283 - (283 * var(--sx-score, 0) / 100));
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sx-score-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.sx-score-caption h4 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.sx-score-caption p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.9rem;
+  max-width: 28rem;
+}
+
+/* ——— Preview stats ——— */
+.starter-preview-stat {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sx-preview-reveal .starter-preview-stat {
+  animation: sx-fade-up 0.5s ease-out backwards;
+}
+
+.sx-preview-reveal .starter-preview-stat:nth-child(1) { animation-delay: 0.05s; }
+.sx-preview-reveal .starter-preview-stat:nth-child(2) { animation-delay: 0.1s; }
+.sx-preview-reveal .starter-preview-stat:nth-child(3) { animation-delay: 0.15s; }
+.sx-preview-reveal .starter-preview-stat:nth-child(4) { animation-delay: 0.2s; }
+.sx-preview-reveal .starter-preview-stat:nth-child(5) { animation-delay: 0.25s; }
+.sx-preview-reveal .starter-preview-stat:nth-child(6) { animation-delay: 0.3s; }
+
+.starter-preview-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.sx-compat-success {
+  animation: sx-fade-up 0.5s ease-out;
+  border-left: 4px solid #22c55e;
+}
+
+/* ——— Checkout CTA ——— */
+[data-starter-checkout]:not(:disabled) {
+  animation: sx-pulse-ring 2s ease-in-out infinite;
+  font-size: 1.05rem;
+  padding: 0.85rem 1.25rem;
+}
+
+.order-summary-box {
+  border: 2px solid #2563eb;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
+}
+
+/* ——— Celebration ——— */
+.sx-celebration {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.sx-confetti {
+  position: absolute;
+  top: 20%;
+  left: calc(10% + (var(--sx-i) * 3.5%));
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: hsl(calc(var(--sx-i) * 15), 80%, 55%);
+  animation: sx-confetti-fall 1.8s ease-out forwards;
+  animation-delay: calc(var(--sx-i) * 0.03s);
+}
+
+/* ——— Homepage journey strip ——— */
+.sx-home-journey {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.sx-home-step {
+  opacity: 0;
+  transform: translateY(16px);
+  padding: 1rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.sx-home-step-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sx-home-step-num {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.sx-home-step strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #0f172a;
+}
+
+.sx-home-step span {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* ——— Success page ——— */
+.sx-success-page .payment-status-page {
+  max-width: 720px;
+}
+
+.sx-success-hero {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #eff6ff 100%);
+  border: 1px solid #86efac;
+  animation: sx-fade-up 0.6s ease-out;
+}
+
+.sx-success-badge {
+  display: inline-block;
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.sx-success-hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  color: #065f46;
+}
+
+.sx-deliverable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.sx-deliverable-tile {
+  padding: 1rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.sx-deliverable-tile em {
+  display: block;
+  font-style: normal;
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+#download-actions .btn-primary {
+  min-width: 160px;
+}
+
+/* ——— Login / recover polish ——— */
+.sx-auth-card {
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 640px) {
+  .sx-score-ring-wrap { flex-direction: column; text-align: center; }
+  .wizard-steps-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  #assessment-wizard { padding: 2rem 0 2.5rem; }
+  .pricing-hero-starter.pricing-hero { padding-top: 1.75rem; }
+}
+
+.sx-paid-pending-alert {
+  border-left: 4px solid #2563eb;
+}
+
+.sx-paid-steps {
+  margin: 0.75rem 0 0 1.25rem;
+  padding: 0;
+}
+
+.sx-paid-steps li {
+  margin-bottom: 0.5rem;
+}
+
+.sx-payment-ref-box {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wizard-panel:not([hidden]), .sx-banner-animate .sx-banner-inner {
+    animation: none !important;
+  }
+  .sx-progress-bar, .sx-card-pulse, .sx-preview-reveal .starter-preview-stat,
+  [data-starter-checkout]:not(:disabled), .sx-confetti, .sx-banner-animate .sx-banner-inner {
+    animation: none !important;
+    transition: none !important;
+  }
+}

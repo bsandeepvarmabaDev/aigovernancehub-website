@@ -1,92 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.27-production-remediation-v16.5.2 -->
+  <!-- AI Governance Hub Website Version: v25.20-customer-delight -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.razorpay.com; frame-src https://api.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
-  <meta name="description" content="Simple pricing for AI Governance Hub. Get One AI Governance Starter Report at ₹199 or install the full app from Atlassian Marketplace." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://checkout.razorpay.com; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.razorpay.com; frame-src https://api.razorpay.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <meta name="description" content="Enterprise AI governance assessment for Jira, Azure DevOps, Excel, and CSV. Guided upload, validation, preview, and executive reports in HTML, PDF, Word, and PowerPoint." />
   <link rel="canonical" href="https://aigovernancehub.ai/pricing.html" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta property="og:title" content="Pricing | AI Governance Hub" />
-  <meta property="og:description" content="One AI Governance Starter Report at ₹199 — Introductory Offer. Or install the full app from Atlassian Marketplace." />
+  <meta property="og:description" content="Guided enterprise AI governance assessment — upload, validate, preview, and unlock executive reports. Install the full platform from Atlassian Marketplace." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aigovernancehub.ai/pricing.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pricing | AI Governance Hub" />
+  <meta name="twitter:description" content="Enterprise AI governance assessment with multi-format executive reports. Secure checkout via Razorpay." />
   <title>Pricing | AI Governance Hub</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"AI Governance Executive Assessment","description":"Guided enterprise AI governance assessment with multi-format executive reports","offers":{"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock"}}</script>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/starter-experience.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
+  <link rel="stylesheet" href="assets/css/product-maturity.css" />
+  <link rel="stylesheet" href="assets/css/premium-experience.css" />
+  <link rel="stylesheet" href="assets/css/business-excellence.css" />
+  <link rel="preconnect" href="https://checkout.razorpay.com" crossorigin />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="top-strip">Now available on Atlassian Marketplace • Runs on Atlassian • Built on Atlassian Forge</div>
 
   <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
-      <a class="brand" href="index.html" aria-label="AI Governance Hub home"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleNavigation()">☰</button>
+      <a class="brand" href="index.html" aria-label="AI Governance Hub home"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       <div class="nav-links" id="navLinks">
-        <a href="index.html#platform">Platform</a>
-        <a href="index.html#frameworks">Frameworks</a>
+        <a href="features.html">Features</a>
         <a href="pricing.html" aria-current="page">Pricing</a>
-        <a href="docs/index.html">Documentation</a>
-        <a href="support.html">Support</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
+        <a href="login.html">My Reports</a>
+        <a class="nav-cta" href="#assessment-wizard">Start Assessment</a>
       </div>
     </nav>
   </header>
 
-  <main>
-    <section class="section pricing-hero">
+  <main id="main-content">
+    <section class="section pricing-hero pricing-hero-starter">
       <div class="section-heading">
-        <span class="section-kicker">Pricing</span>
-        <h1>Simple pricing for AI governance in Jira</h1>
-        <p>Get One AI Governance Starter Report at ₹199 or install the full app from Atlassian Marketplace.</p>
+        <span class="section-kicker">Guided Assessment · Live preview before you pay</span>
+        <h1>From export to executive report — guided every step</h1>
+        <p>Upload a project export (CSV or Excel). See a free governance preview, then unlock your Executive Assessment after verified payment — no Jira administrator required.</p>
         <div class="hero-actions pricing-hero-actions">
-          <button type="button" class="btn btn-primary" data-starter-scroll-checkout>Buy Starter — ₹199</button>
+          <button type="button" class="btn btn-primary" data-starter-scroll-checkout>Start Guided Assessment</button>
           <a class="btn btn-secondary pricing-hero-secondary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Atlassian Marketplace</a>
         </div>
       </div>
     </section>
 
-    <section class="section white-section" id="plans">
+    <section class="section white-section" id="assessment-wizard">
+      <div class="section-heading">
+        <span class="section-kicker">Assessment wizard</span>
+        <h2>Your guided path to an AI governance report</h2>
+        <p>Every step answers what to upload, why fields matter, and what you receive after payment.</p>
+      </div>
+
+      <nav class="wizard-steps" aria-label="Assessment steps">
+        <div class="sx-progress-wrap" aria-hidden="false">
+          <div class="sx-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="16">
+            <div class="sx-progress-bar" id="sx-progress-bar"></div>
+          </div>
+          <span class="sx-progress-label" id="sx-progress-label">Step 1 of 6 · 17% complete</span>
+        </div>
+        <div class="sx-journey-banner" id="sx-journey-banner" aria-live="polite"></div>
+        <ol class="wizard-steps-list">
+          <li data-wizard-step="1" class="wizard-step active" aria-current="step">1. Source</li>
+          <li data-wizard-step="2" class="wizard-step">2. Export</li>
+          <li data-wizard-step="3" class="wizard-step">3. Upload</li>
+          <li data-wizard-step="4" class="wizard-step">4. Validate</li>
+          <li data-wizard-step="5" class="wizard-step">5. Preview</li>
+          <li data-wizard-step="6" class="wizard-step">6. Secure Checkout</li>
+        </ol>
+      </nav>
+
+      <div class="assessment-wizard-card">
+        <div id="wizard-step-source" data-wizard-panel class="wizard-panel">
+          <h3>Step 1 — Choose your project source</h3>
+          <p class="microcopy">Select where your work items come from. We validate the export format automatically.</p>
+          <div class="source-grid">
+            <button type="button" class="source-card" data-source="jira" aria-pressed="false"><strong>Jira Cloud</strong><span>CSV export</span></button>
+            <button type="button" class="source-card" data-source="azure-devops" aria-pressed="false"><strong>Azure DevOps</strong><span>Query CSV</span></button>
+            <button type="button" class="source-card" data-source="excel" aria-pressed="false"><strong>Excel</strong><span>.xlsx / .csv</span></button>
+            <button type="button" class="source-card" data-source="csv" aria-pressed="false"><strong>CSV</strong><span>UTF-8 file</span></button>
+          </div>
+          <p class="microcopy coming-soon-label">Coming soon: GitHub · ServiceNow · Monday.com · Asana · ClickUp</p>
+        </div>
+
+        <div id="wizard-step-export" data-wizard-panel class="wizard-panel" hidden>
+          <div id="source-instructions"></div>
+          <h4>Download sample files</h4>
+          <p class="microcopy">Each sample matches the column layout we validate. Use it to test your workflow before uploading real data.</p>
+          <div class="sample-downloads">
+            <a class="btn btn-secondary" data-source-sample="jira" href="samples/sample-jira-export.csv" download>Sample Jira CSV</a>
+            <a class="btn btn-secondary" data-source-sample="azure-devops" href="samples/sample-azure-devops.csv" download>Sample Azure DevOps CSV</a>
+            <a class="btn btn-secondary" data-source-sample="excel" href="samples/sample-governance-template.csv" download>Excel / CSV Template</a>
+            <a class="btn btn-secondary" data-source-sample="csv" href="samples/sample-governance-template.csv" download>CSV Template</a>
+            <a class="btn btn-secondary" data-source-sample="all" href="samples/sample-governance-report.html" target="_blank" rel="noopener">Example Governance Report</a>
+            <a class="btn btn-secondary" data-source-sample="all" href="sample-files.html">Sample file guide</a>
+          </div>
+          <h4>Required fields</h4>
+          <div id="required-fields-list" class="field-requirements-grid"></div>
+          <details class="faq-item"><summary>Recommended &amp; optional fields</summary>
+            <p><strong>Recommended:</strong> Priority, Labels, Components, Assignee, Reporter — improve risk scoring and ownership insights.</p>
+            <p><strong>Optional:</strong> Story Points, Sprint, Epic Link, Resolution, Custom Fields — enrich portfolio analysis.</p>
+          </details>
+          <button type="button" class="btn btn-primary" id="wizard-continue-upload">Continue to upload</button>
+        </div>
+
+        <div id="wizard-step-upload" data-wizard-panel class="wizard-panel" hidden>
+          <h3>Step 3 — Upload your export</h3>
+          <p class="microcopy">Your file is validated server-side: format, encoding, required columns, duplicates, and security checks — before any analysis begins. We never trust counts or pricing from the browser.</p>
+          <p class="microcopy"><a href="trust-center.html">How we handle confidential uploads</a> · <a href="sample-files.html">Sample file guide</a></p>
+          <label for="assessment-industry" class="exec-industry-label">Industry (optional — adapts report framing)
+            <select id="assessment-industry" class="exec-industry-select">
+              <option value="general">General enterprise</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="banking">Banking &amp; financial services</option>
+              <option value="insurance">Insurance</option>
+              <option value="retail">Retail &amp; consumer</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="government">Government &amp; public sector</option>
+              <option value="technology">Technology</option>
+            </select>
+          </label>
+          <details class="et-data-confidence" open>
+            <summary>Your confidential export — answered before you upload</summary>
+            <ul>
+              <li><strong>Encrypted in transit:</strong> TLS for every upload and download.</li>
+              <li><strong>Who can see it:</strong> Automated server-side processing and authorized support for your account only — not public.</li>
+              <li><strong>AI model training:</strong> We do not use your assessment upload to train third-party AI models.</li>
+              <li><strong>Where stored:</strong> Secure persistent storage for report delivery and recovery (see <a href="trust-center.html">Trust Center</a>).</li>
+              <li><strong>When deleted:</strong> Upload sessions expire within ~24 hours if checkout is not completed. Reports recoverable for 90 days; request earlier deletion via <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a>.</li>
+              <li><strong>Regulated industries:</strong> Redact PHI, account numbers, and customer PII before upload. See <a href="trust-center.html#regulated-industries">industry guidance</a>.</li>
+              <li><strong>Recover &amp; re-download:</strong> <a href="recover-report.html">Recover My Report</a> or sign in at <a href="login.html">My Reports</a> after payment.</li>
+              <li><strong>Support:</strong> <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> — response within 1 business day.</li>
+              <li><strong>CISO review:</strong> <a href="trust-center.html">Security review package</a> — policies, retention, sub-processors, honest limits.</li>
+            </ul>
+          </details>
+          <input type="file" id="starter-report-file" accept=".csv,.txt,.tsv,.xlsx,.xls" hidden />
+          <div class="sx-dropzone" id="sx-dropzone" role="button" tabindex="0" aria-label="Upload export file">
+            <div class="sx-dropzone-icon" aria-hidden="true">📂</div>
+            <p class="sx-dropzone-title">Drop your export here</p>
+            <p class="sx-dropzone-hint">CSV, Excel, or TSV · validated server-side · up to 5 MB</p>
+            <button type="button" class="btn btn-primary" id="starter-upload-btn">Browse files</button>
+          </div>
+          <p class="microcopy starter-upload-status" id="assessment-upload-status" aria-live="polite"></p>
+        </div>
+
+        <div id="wizard-step-preview" data-wizard-panel class="wizard-panel" hidden>
+          <div id="compatibility-panel" class="compatibility-panel" hidden>
+            <h3>Compatibility check</h3>
+            <p class="compat-score" id="compat-score">—</p>
+            <div id="compat-details"></div>
+          </div>
+          <div id="enterprise-gate" class="enterprise-gate" hidden>
+            <h3 id="enterprise-gate-title">Enterprise Assessment</h3>
+            <p id="enterprise-gate-reason"></p>
+            <div id="enterprise-gate-metrics" class="enterprise-gate-metrics" hidden></div>
+            <p class="microcopy" id="enterprise-gate-status" hidden aria-live="polite"></p>
+            <div id="enterprise-gate-benefits"></div>
+            <p class="microcopy">Self-service Secure Checkout supports up to 1,000 work items. Larger portfolios receive a dedicated Enterprise Assessment with custom scoping — submit your details below.</p>
+            <form id="enterprise-contact-form" class="enterprise-contact-form" novalidate>
+              <h4>Start your Enterprise Assessment</h4>
+              <label>Name<input type="text" id="enterprise-contact-name" autocomplete="name" required /></label>
+              <label>Work email<input type="email" id="enterprise-contact-email" autocomplete="email" required /></label>
+              <label>Company <span class="microcopy">(optional)</span><input type="text" id="enterprise-contact-company" autocomplete="organization" /></label>
+              <p class="microcopy" id="enterprise-contact-ref" hidden></p>
+              <p class="microcopy starter-upload-status" id="enterprise-contact-status" aria-live="polite"></p>
+              <button type="submit" class="btn btn-primary" id="enterprise-contact-submit">Submit enterprise request</button>
+            </form>
+            <div class="hero-actions">
+              <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Assessment%20Request">Email sales directly</a>
+            </div>
+          </div>
+          <div class="starter-preview-panel" id="starter-preview-panel">
+            <div class="sx-score-ring-wrap" id="preview-score-ring" hidden>
+              <div class="sx-score-ring" aria-hidden="true">
+                <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"></circle><circle class="fill" cx="50" cy="50" r="45"></circle></svg>
+                <span class="sx-score-value">—</span>
+              </div>
+              <div class="sx-score-caption">
+                <h4>Your governance score</h4>
+                <p id="preview-governance-rating">Live preview from your upload — unlock the full executive report after verified payment.</p>
+              </div>
+            </div>
+            <h3>Step 5 — Assessment preview <span class="preview-locked-badge">Detailed report locked</span></h3>
+            <p class="microcopy">Here is what our AI analyzed from your export. Unlock to receive the full report.</p>
+            <div class="starter-preview-grid">
+              <div class="starter-preview-stat"><span data-label-work-items>Work items scanned</span><strong id="preview-total-records">—</strong></div>
+              <div class="starter-preview-stat"><span data-label-ai-related>AI-related items</span><strong id="preview-ai-related-count">—</strong></div>
+              <div class="starter-preview-stat"><span>High risk</span><strong id="preview-risk-high">—</strong></div>
+              <div class="starter-preview-stat"><span>Medium risk</span><strong id="preview-risk-medium">—</strong></div>
+              <div class="starter-preview-stat"><span>Low risk</span><strong id="preview-risk-low">—</strong></div>
+              <div class="starter-preview-stat"><span>Governance score</span><strong id="preview-governance-score">—</strong></div>
+            </div>
+            <h4>Executive summary</h4>
+            <p id="preview-executive-summary" class="preview-text-block"></p>
+            <h4>Top opportunities</h4>
+            <ul id="preview-opportunities"></ul>
+            <h4>Framework mapping</h4>
+            <ul id="preview-frameworks"></ul>
+            <div class="locked-features">
+              <div class="et-report-value">
+                <h4>Full report — consulting-grade executive package</h4>
+                <p class="microcopy" style="color:#cbd5e1;margin-bottom:0.5rem">Designed for board briefings, procurement evidence, and CISO review — not a one-page summary.</p>
+                <ul>
+                  <li>Executive summary with governance score methodology</li>
+                  <li>Risk heatmap and business impact analysis</li>
+                  <li>Prioritized recommendations with rationale</li>
+                  <li>30 / 60 / 90-day executive roadmap</li>
+                  <li>Board-ready PDF, Word, and PowerPoint formats</li>
+                  <li>Framework mapping (EU AI Act, ISO 42001, NIST AI RMF)</li>
+                </ul>
+              </div>
+              <h4>Premium insights — unlock after payment</h4>
+              <p class="microcopy">Preview shows a snapshot. Payment verifies your identity and unlocks the complete analysis below.</p>
+              <ul>
+                <li class="locked-item">Actionable recommendations with business impact</li>
+                <li class="locked-item">Risk heatmaps and department views</li>
+                <li class="locked-item">Detailed AI-related work item analysis</li>
+                <li class="locked-item">Executive PDF, DOCX, and PPTX</li>
+                <li class="locked-item">Department-level governance breakdown</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="checkout-section">
+            <h3 class="wizard-checkout-heading">Step 6 — Secure Checkout</h3>
+            <p class="microcopy wizard-checkout-lead">Review your server-calculated total, confirm your details, then pay securely via Razorpay. Your card details never touch our servers.</p>
+            <div class="currency-row">
+              <label for="currency-select">Currency</label>
+              <select id="currency-select" aria-label="Select currency"></select>
+            </div>
+            <div id="order-summary" class="order-summary-box" hidden></div>
+            <div class="starter-checkout-fields">
+              <h4>Your details</h4>
+              <p class="microcopy">Used for report delivery, invoice, and recovery. We never store payment card details.</p>
+              <label>Name<input type="text" id="starter-buyer-name" autocomplete="name" required /></label>
+              <label>Email<input type="email" id="starter-buyer-email" autocomplete="email" required /></label>
+              <label>Company / Team <span class="microcopy">(optional)</span><input type="text" id="starter-buyer-company" autocomplete="organization" /></label>
+            </div>
+
+            <div class="unlock-benefits">
+              <h4>Unlock Your Complete AI Governance Assessment</h4>
+              <p class="microcopy">Payment verifies your identity, generates your full report, and enables secure download and recovery.</p>
+              <ul>
+                <li>Executive PDF-ready assessment</li>
+                <li>Governance score with explanation</li>
+                <li>Complete AI-related work item inventory</li>
+                <li>Risk matrix and recommendations</li>
+                <li>Framework mapping (EU AI Act, ISO 42001, NIST AI RMF)</li>
+                <li>Email delivery and permanent recovery access</li>
+              </ul>
+            </div>
+
+            <div class="enterprise-trust-block" aria-label="Why enterprises trust AI Governance Hub">
+              <h4>Why enterprises trust AI Governance Hub</h4>
+              <ul class="trust-checklist">
+                <li>SSL encryption</li>
+                <li>Secure file upload and encrypted processing</li>
+                <li>Server-side payment verification only</li>
+                <li>No card or UPI data stored</li>
+                <li>Signed, protected downloads</li>
+                <li>Persistent storage with report recovery</li>
+                <li>Enterprise-grade architecture</li>
+              </ul>
+              <p class="microcopy"><a href="trust-center.html">Visit our Trust Center</a></p>
+            </div>
+
+            <div class="razorpay-trust-strip razorpay-trust-inline">
+              <span>Secure Checkout</span>
+              <span>No card data stored by AI Governance Hub</span>
+            </div>
+            <div class="px-checkout-confidence" aria-label="Purchase confidence">
+              <span>Free preview before you pay</span>
+              <span>Server-verified total</span>
+              <span>90-day report access</span>
+              <span>Board-ready formats included</span>
+            </div>
+            <button type="button" class="btn btn-primary wide" data-starter-checkout disabled>Secure Checkout</button>
+            <p class="microcopy">Already purchased? <a href="recover-report.html">Recover My Report</a> · <a href="login.html">My Reports</a></p>
+          </div>
+        </div>
+      </div>
+      <div id="sx-celebration" hidden aria-hidden="true"></div>
+    </section>
+
+    <section class="section white-section" id="commercial-clarity">
+      <div class="section-heading">
+        <span class="section-kicker">Commercial clarity</span>
+        <h2>What you receive — before you pay</h2>
+        <p>No surprises. Every amount is calculated server-side from your upload. You review the order summary before Secure Checkout opens.</p>
+      </div>
+      <div class="enterprise-commercial-panel">
+        <h3>Included deliverables (after verified payment)</h3>
+        <ul>
+          <li>Interactive HTML executive report</li>
+          <li>PDF board-ready report</li>
+          <li>Word (DOCX) document for compliance and legal review</li>
+          <li>PowerPoint presentation for leadership briefings</li>
+          <li>Text summary for operational teams</li>
+          <li>Secure dashboard access and email delivery</li>
+        </ul>
+        <h3>Self-service scope</h3>
+        <ul>
+          <li>Up to 1,000 work items per assessment via Secure Checkout</li>
+          <li>Portfolios above 1,000 work items: Enterprise Assessment with dedicated scoping and custom quote</li>
+          <li>Plan tier (Starter, Professional, Business) determined automatically from portfolio size</li>
+        </ul>
+        <h3>Website vs Atlassian Marketplace</h3>
+        <ul>
+          <li><strong>This website → Executive Governance Assessment</strong> — assess exported work items before you purchase the Marketplace app: guided upload, free preview, Razorpay checkout, board-ready deliverables, dashboard recovery</li>
+          <li><strong>Marketplace → Continuous AI Governance inside Jira</strong> — govern Jira projects continuously with reviews, approvals, audit evidence, and Atlassian billing (not Razorpay on this site)</li>
+          <li>Typical enterprise path: Executive Assessment here → leadership briefing → Marketplace install for ongoing governance</li>
+        </ul>
+        <h3>How to buy (enterprise)</h3>
+        <ul>
+          <li><strong>Purchase:</strong> Self-serve via Secure Checkout (≤1,000 work items) or submit an enterprise request in the wizard for a custom quote</li>
+          <li><strong>Invoice / PO:</strong> Enterprise assessments coordinated through <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> — see <a href="enterprise-procurement.html">Enterprise Procurement</a></li>
+          <li><strong>Upgrade:</strong> Run a new assessment when your portfolio grows, or install the Marketplace app for continuous Jira governance</li>
+          <li><strong>Company purchase:</strong> Use your corporate email at checkout; enterprise buyers email sales with procurement requirements</li>
+        </ul>
+        <h3>Support &amp; policies</h3>
+        <ul>
+          <li>General support: support@aigovernancehub.ai — response within 1 business day</li>
+          <li>Enterprise engagement: sales@aigovernancehub.ai — response within 1–2 business days</li>
+          <li><a href="refund-policy.html">Refund policy</a> · <a href="trust-center.html">Trust Center</a> · <a href="recover-report.html">Report recovery</a></li>
+        </ul>
+        <p class="enterprise-footer-note">Framework mapping supports governance evidence workflows. Reports do not constitute legal certification or regulatory approval.</p>
+      </div>
+    </section>
+
+    <section class="section light-section" id="enterprise-buying" aria-labelledby="enterprise-buying-heading">
+      <div class="section-heading">
+        <span class="section-kicker">Enterprise buying</span>
+        <h2 id="enterprise-buying-heading">Answers procurement asks before they ask</h2>
+      </div>
+      <div class="be-buying-grid">
+        <article>
+          <h3>How do I purchase?</h3>
+          <p>≤1,000 work items: complete the <a href="#assessment-wizard">guided assessment</a> and pay via Razorpay Secure Checkout. &gt;1,000 work items: submit an enterprise request — sales responds within 1–2 business days with a quote and payment link.</p>
+        </article>
+        <article>
+          <h3>How do I get an invoice?</h3>
+          <p>Self-serve: download your invoice from <a href="login.html">My Reports</a> after payment. Enterprise: invoice arrangements coordinated through sales with your order reference.</p>
+        </article>
+        <article>
+          <h3>Can I use a purchase order?</h3>
+          <p>Enterprise assessments support PO references case-by-case. Email <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> with your procurement template and Request ID.</p>
+        </article>
+        <article>
+          <h3>Who do I contact?</h3>
+          <p>Support: <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> (1 business day). Sales &amp; procurement: <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> (1–2 business days). Security: <a href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a>.</p>
+        </article>
+        <article>
+          <h3>How do I upgrade?</h3>
+          <p>Larger portfolio: run a new assessment (tier adjusts automatically). Ongoing governance: install the <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer">Marketplace app</a> for continuous AI governance inside Jira.</p>
+        </article>
+        <article>
+          <h3>How do I buy for my company?</h3>
+          <p>Use your corporate email at checkout for recovery and invoicing. For multi-team or procurement-led purchases, start at <a href="enterprise-procurement.html">Enterprise Procurement</a>.</p>
+        </article>
+      </div>
+      <p class="be-trust-callout">We do not use fake urgency, countdown timers, or dark patterns. Every total is calculated server-side and shown before you pay.</p>
+    </section>
+
+    <section class="section light-section" id="plans">
+      <div class="section-heading">
+        <span class="section-kicker">Transparent pricing</span>
+        <h2>Understand what you pay and why</h2>
+      </div>
+      <div class="et-plan-psychology">
+        <article>
+          <h3>Why from ₹199?</h3>
+          <p>Low-risk entry to evaluate AI governance across a small portfolio (up to 50 work items). You see a free preview before any payment.</p>
+        </article>
+        <article>
+          <h3>Why higher self-serve tiers?</h3>
+          <p>Larger exports require more analysis depth — Professional (up to 500 items) and Business (up to 1,000 items). Your upload determines the minimum tier automatically.</p>
+        </article>
+        <article>
+          <h3>What is always included?</h3>
+          <p>Server validation, governance preview, executive HTML/PDF/DOCX/PPTX after verified payment, dashboard access, and report recovery.</p>
+        </article>
+        <article>
+          <h3>What is not included?</h3>
+          <p>Legal certification, Jira production workflows (Marketplace app), or unlimited re-assessment — those are separate products or enterprise quotes.</p>
+        </article>
+        <article>
+          <h3>Why enterprise pricing is custom?</h3>
+          <p>Portfolios above 1,000 work items need dedicated scoping, priority processing, and procurement coordination — quoted by sales within 1–2 business days.</p>
+        </article>
+      </div>
       <div class="pricing-grid">
         <article class="pricing-card pricing-card-starter popular">
-          <span class="launch-badge">Introductory Offer</span>
-          <h3>One AI Governance Starter Report</h3>
-          <p class="pricing-tier-subtitle">Introductory Offer</p>
-          <p class="price">₹199</p>
+          <span class="launch-badge">Executive Assessment · Up to 50 work items</span>
+          <h3>Self-Serve Starter Assessment</h3>
+          <p class="price" data-pricing-display>From ₹199</p>
+          <p class="microcopy" data-pricing-note>Final plan and total are calculated server-side from your upload before Secure Checkout. Checkout in INR via Razorpay.</p>
           <ul>
-            <li>One AI Governance Starter Report</li>
-            <li>Framework-aligned governance snapshot</li>
-            <li>Executive-ready summary format</li>
-            <li>GDPR, HIPAA, SOC 2, ISO 27001 mapping context</li>
-            <li>Email delivery</li>
-            <li>Upgrade path to Atlassian Marketplace</li>
+            <li>Guided upload wizard</li>
+            <li>Compatibility validation</li>
+            <li>Free AI preview</li>
+            <li>Full report after verified payment</li>
           </ul>
-          <div class="starter-checkout-fields" id="starter-checkout-form">
-            <label>
-              Name
-              <input type="text" id="starter-buyer-name" name="name" autocomplete="name" placeholder="Your name" required />
-            </label>
-            <label>
-              Email
-              <input type="email" id="starter-buyer-email" name="email" autocomplete="email" placeholder="you@company.com" required />
-            </label>
-            <label>
-              Company / Team <span class="microcopy">(optional)</span>
-              <input type="text" id="starter-buyer-company" name="company" autocomplete="organization" placeholder="Your company or team" />
-            </label>
-          </div>
-          <div class="razorpay-trust-strip razorpay-trust-inline" aria-label="Payment security">
-            <span>Secured by Razorpay</span>
-            <span>100% Secure Payment</span>
-            <span>AI Governance Hub never stores card details</span>
-            <span>Cards, UPI, NetBanking, Wallets accepted via Razorpay</span>
-          </div>
-          <p class="microcopy starter-trust-note">Payments are processed securely by Razorpay. AI Governance Hub never stores card, UPI, or banking details.</p>
-          <button type="button" class="btn btn-primary wide" data-starter-checkout>Buy Starter Report — ₹199</button>
-          <p class="microcopy pricing-card-note">Introductory website offer for evaluation. Production team usage is recommended through Atlassian Marketplace.</p>
+          <button type="button" class="btn btn-primary wide" data-starter-scroll-checkout>Start Assessment</button>
         </article>
 
         <article class="pricing-card">
@@ -107,20 +441,23 @@
           <p class="microcopy pricing-card-note">Install from Atlassian Marketplace for production Jira usage.</p>
         </article>
 
-        <article class="pricing-card">
-          <h3>Enterprise</h3>
-          <p class="pricing-tier-subtitle">Contact Sales</p>
-          <p class="price pricing-price-enterprise">Custom</p>
-          <p class="price-note">Rollout support</p>
+        <article class="pricing-card et-enterprise-offer">
+          <span class="launch-badge">Custom Enterprise Assessment · More than 1,000 work items</span>
+          <h3>Enterprise AI Governance Assessment</h3>
+          <p class="pricing-tier-subtitle">Dedicated scoping · procurement-friendly</p>
+          <p class="price pricing-price-enterprise">Custom quote</p>
+          <p class="price-note">Sales response within 1–2 business days</p>
           <ul>
-            <li>Multi-team onboarding</li>
-            <li>Governance rollout support</li>
-            <li>Security and procurement support</li>
-            <li>Custom implementation discussion</li>
-            <li>Priority support</li>
+            <li>Dedicated sales consultant &amp; portfolio scoping</li>
+            <li>Large-portfolio processing (1,001+ work items)</li>
+            <li>Executive reports — HTML, PDF, Word, PowerPoint</li>
+            <li>Custom commercial quote &amp; payment link</li>
+            <li>Procurement &amp; invoice coordination via sales</li>
+            <li>Priority support &amp; security review assistance</li>
+            <li>Executive presentation-ready deliverables</li>
           </ul>
-          <a class="btn btn-primary wide" href="mailto:sales@aigovernancehub.ai?subject=AI%20Governance%20Hub%20Enterprise%20Pricing">Contact Sales</a>
-          <p class="microcopy pricing-card-note">Contact Sales for rollout support.</p>
+          <a class="btn btn-primary wide" href="pricing.html#assessment-wizard">Submit enterprise request</a>
+          <p class="microcopy pricing-card-note">Or email <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> with your Request ID.</p>
         </article>
       </div>
     </section>
@@ -142,10 +479,10 @@
           </thead>
           <tbody>
             <tr><th scope="row">Jira Cloud support</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">AI candidate discovery</th><td>Report snapshot</td><td>✓</td><td>✓</td></tr>
+            <tr><th scope="row">AI-related work item discovery</th><td>Report snapshot</td><td>✓</td><td>✓</td></tr>
             <tr><th scope="row">Governance reviews</th><td>Report snapshot</td><td>✓</td><td>✓</td></tr>
             <tr><th scope="row">Compliance frameworks</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">Executive reports</th><td>1 Starter Report</td><td>✓</td><td>✓</td></tr>
+            <tr><th scope="row">Executive reports</th><td>1 Executive Assessment</td><td>✓</td><td>✓</td></tr>
             <tr><th scope="row">Reviewer assignment</th><td>—</td><td>✓</td><td>✓</td></tr>
             <tr><th scope="row">Dashboard</th><td>Limited</td><td>✓</td><td>✓</td></tr>
             <tr><th scope="row">Support</th><td>Email</td><td>Marketplace</td><td>Priority</td></tr>
@@ -159,13 +496,13 @@
       <div class="section-heading">
         <span class="section-kicker">Starter activation</span>
         <h2>How Starter activation works</h2>
-        <p>Complete the form in the Starter plan above, then purchase your Introductory Offer Starter Report.</p>
+        <p>Upload your data, review the free preview, then unlock the full report with secure Razorpay checkout.</p>
       </div>
       <div class="activation-steps">
-        <article><span>01</span><h3>Pay securely with Razorpay</h3><p>Complete checkout on this page using Razorpay.</p></article>
-        <article><span>02</span><h3>Receive confirmation</h3><p>Razorpay sends a payment confirmation to your email.</p></article>
-        <article><span>03</span><h3>Report request received</h3><p>Your Starter Report request is recorded after payment verification.</p></article>
-        <article><span>04</span><h3>Receive your report by email</h3><p>You'll receive your AI Governance Starter Report by email shortly.</p></article>
+        <article><span>01</span><h3>Upload CSV/Excel/Jira export</h3><p>Upload your file before payment. We validate and scan it server-side.</p></article>
+        <article><span>02</span><h3>Review free preview</h3><p>See work item count, AI-related items, risk summary, and governance score.</p></article>
+        <article><span>03</span><h3>Secure Checkout</h3><p>Confirm your order summary — plan, work items, taxes, and total — then pay securely. Amount is verified server-side before checkout opens.</p></article>
+        <article><span>04</span><h3>Download your report</h3><p>After server-side payment verification, download your full report immediately.</p></article>
         <article><span>05</span><h3>Upgrade to Marketplace when ready</h3><p>Move to full production usage through Atlassian Marketplace.</p></article>
       </div>
     </section>
@@ -176,38 +513,19 @@
         <h2>Common questions</h2>
       </div>
       <div class="faq-list">
-        <details class="faq-item">
-          <summary>Is Starter different from Marketplace?</summary>
-          <p>Yes. Starter is a website-only evaluation offer. Atlassian Marketplace is recommended for production team usage with Jira-native install and Atlassian billing.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What happens after I pay ₹199?</summary>
-          <p>After server-side payment verification, you'll receive your AI Governance Starter Report by email. For production Jira usage, install from Atlassian Marketplace.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do I need Jira Cloud?</summary>
-          <p>Yes. AI Governance Hub is built for Jira Cloud. Starter and Marketplace plans both require a Jira Cloud site.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I upgrade later?</summary>
-          <p>Yes. Starter includes an upgrade path to Atlassian Marketplace when you are ready for production rollout.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is payment secure?</summary>
-          <p>Payments are processed by Razorpay. AI Governance Hub does not handle or store card details on this website.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do you store card details?</summary>
-          <p>No. Card details are handled by Razorpay. AI Governance Hub does not store payment card information.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is this legal/compliance certification?</summary>
-          <p>No. Framework mapping supports governance evidence and readiness workflows but does not certify legal compliance.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How do I contact support?</summary>
-          <p>Support: <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a>. Sales: <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a>.</p>
-        </details>
+        <details class="faq-item"><summary>What files are supported?</summary><p>Jira Cloud CSV, Azure DevOps CSV, Excel (.xlsx/.xls), and UTF-8 CSV. Use the guided wizard to choose your source and download a sample template.</p></details>
+        <details class="faq-item"><summary>How do I export from Jira?</summary><p>Open your project → Search issues → Export → CSV (All fields). Step-by-step instructions appear when you select Jira Cloud in the assessment wizard.</p></details>
+        <details class="faq-item"><summary>Do I need to modify my export?</summary><p>No manual edits required if required columns are present. Use our sample templates if your export is missing Issue Key, Summary, Description, Issue Type, Status, or Project.</p></details>
+        <details class="faq-item"><summary>Can I upload custom fields?</summary><p>Yes. Custom fields are optional and improve analysis depth. Required columns must still be present.</p></details>
+        <details class="faq-item"><summary>How are AI-related work items identified?</summary><p>We scan summaries, descriptions, and labels for AI, LLM, and automation signals using governance-weighted keyword and context analysis — no Jira expertise required.</p></details>
+        <details class="faq-item"><summary>How is Governance Score calculated?</summary><p>Score reflects high-risk ratio, AI-related work item coverage, and medium-risk volume across your upload — shown in your free preview before payment.</p></details>
+        <details class="faq-item"><summary>What happens after payment?</summary><p>After server-side Razorpay verification, your full report is generated immediately for download. Email delivery and recovery links are sent when SMTP is configured.</p></details>
+        <details class="faq-item"><summary>How long are files stored?</summary><p>Uploads and reports are stored in secure persistent storage for recovery within the retention period (90 days for recovery tokens). Contact support for deletion requests.</p></details>
+        <details class="faq-item"><summary>Can I recover my report?</summary><p>Yes — use <a href="recover-report.html">Recover My Report</a> or sign in at <a href="login.html">My Reports</a> with your checkout email.</p></details>
+        <details class="faq-item"><summary>How do Enterprise Assessments work?</summary><p>Self-service Secure Checkout supports up to 1,000 work items. Larger portfolios automatically receive an Enterprise Assessment — our sales team scopes dedicated processing, portfolio analysis, and a custom quote within 1–2 business days. Contact <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a>.</p></details>
+        <details class="faq-item"><summary>What plans are available for self-service?</summary><p>Starter (up to 50 items), Professional (up to 500), and Business (up to 1,000). Your upload determines the minimum required plan automatically.</p></details>
+        <details class="faq-item"><summary>Is payment secure?</summary><p>Payments are processed by Razorpay with server-side verification. AI Governance Hub never stores card or UPI details.</p></details>
+        <details class="faq-item"><summary>Is this legal/compliance certification?</summary><p>No. Framework mapping supports governance evidence but does not certify legal compliance.</p></details>
       </div>
     </section>
 
@@ -225,7 +543,7 @@
         <div>
           <span class="section-kicker dark-kicker">Next step</span>
           <h2>Choose your path</h2>
-          <p>Get your Starter Report or install from Marketplace for production Jira usage.</p>
+          <p>Get your Executive Assessment or install from Marketplace for production Jira usage.</p>
         </div>
         <div class="cta-side">
           <div class="cta-actions">
@@ -239,31 +557,37 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
         <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="security-policy.html">Security Policy</a>
+        <a href="features.html">Features</a>
         <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="enterprise-procurement.html">Procurement</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
         <a href="docs/index.html">Documentation</a>
         <a href="support.html">Support</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
-  <script src="assets/js/starter-checkout.js" defer></script>
-  <script>
-    function toggleNavigation() {
-      const navLinks = document.getElementById("navLinks");
-      const navToggle = document.querySelector(".nav-toggle");
-      const isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    }
-  </script>
+  <script src="assets/js/enterprise-ux.js" defer></script>
+  <script src="assets/js/business-terminology.js" defer></script>
+  <script src="assets/js/starter-experience.js" defer></script>
+  <script src="assets/js/analytics-client.js" defer></script>
+  <script src="assets/js/pricing-i18n.js" defer></script>
+  <script src="assets/js/guided-assessment.js" defer></script>
+  <script src="assets/js/site-nav.js" defer></script>
+  <script src="assets/js/product-maturity.js" defer></script>
+  <script src="assets/js/site-trust-footer.js" defer></script>
 </body>
 </html>

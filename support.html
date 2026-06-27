@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- AI Governance Hub Website Version: 2026.06.25-marketplace-alignment-v16.2 -->
+  <!-- AI Governance Hub Website Version: v25.20-customer-delight -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
   <meta name="description" content="AI Governance Hub support center with contact channels, response targets, documentation links and bug reporting instructions." />
   <link rel="canonical" href="https://aigovernancehub.ai/support.html" />
   <link rel="icon" href="favicon.ico" sizes="any" />
@@ -12,33 +12,61 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <title>Support | AI Governance Hub</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
+  <link rel="stylesheet" href="assets/css/premium-experience.css" />
+  <link rel="stylesheet" href="assets/css/business-excellence.css" />
 </head>
 <body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="legal-hero">
-    <nav class="nav">
-      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <div class="nav-links">
-        <a href="index.html#platform">Platform</a>
-        <a href="index.html#frameworks">Frameworks</a>
-        <a href="docs/index.html">Documentation</a>
-        <a href="support.html">Support</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
         <a href="security-policy.html">Security</a>
-        <a class="nav-cta" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html" aria-current="page">Support</a>
+        <a href="docs/index.html">Documentation</a>
+        <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
       </div>
     </nav>
   </header>
-  <main class="legal-container docs-container">
-    <h1>AI Governance Hub Support</h1>
-    <p><strong>Customer support page for Marketplace listing:</strong> Use this page as the Marketplace support URL.</p>
-    <div class="legal-note"><p>Need help with installation, usage, configuration, billing, security, or Marketplace questions? Contact the AI Governance Hub team using the channels below.</p></div>
+  <main class="legal-container docs-container" id="main-content">
+    <div class="px-support-hero">
+      <h1>Support</h1>
+      <p>Human help when you need it — clear answers, no runaround. Most customers resolve uploads, payments, and downloads in minutes using the guides below.</p>
+    </div>
+    <p class="microcopy">Enterprise-grade assistance for assessments, Marketplace installations, security questions, and commercial inquiries.</p>
+
+    <div class="be-customer-hub" aria-label="After you purchase">
+      <h2>After you purchase — nothing ambiguous</h2>
+      <ol>
+        <li><strong>What you bought:</strong> Executive Governance Assessment (formats listed on your success page) — or an enterprise package scoped in your sales quote</li>
+        <li><strong>Where reports are:</strong> Success page downloads, <a href="login.html">My Reports</a> dashboard, or <a href="recover-report.html">Recover My Report</a> (90 days)</li>
+        <li><strong>Invoice:</strong> Self-serve buyers download from My Reports after sign-in</li>
+        <li><strong>Re-assess:</strong> <a href="pricing.html#assessment-wizard">Run a new assessment</a> when your portfolio changes</li>
+        <li><strong>Upgrade:</strong> Install the <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer">Marketplace app</a> for continuous governance in Jira</li>
+        <li><strong>Support:</strong> <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> — include checkout email or Request ID</li>
+      </ol>
+    </div>
+
+    <div class="legal-note"><p>Include your order reference, checkout email, or Request ID (for enterprise assessments) so we can respond without delay.</p></div>
     <h2>Support Channels</h2>
     <div class="support-grid">
       <article><h3>General Support</h3><p><a class="email" href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></p><p>For installation, usage, configuration, bugs, and general questions.</p></article>
       <article><h3>Security Issues</h3><p><a class="email" href="mailto:security@aigovernancehub.ai">security@aigovernancehub.ai</a></p><p>For vulnerability reports, responsible disclosure, and security questions.</p></article>
       <article><h3>Sales &amp; Product</h3><p><a class="email" href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a></p><p>For demos, enterprise reviews, and commercial questions.</p></article>
     </div>
-    <h2>Response Targets</h2>
-    <ul><li>General support: target response within 1 business day.</li><li>Security issues: prioritized based on severity and impact.</li><li>Demo and package requests: target response within 24 hours.</li></ul>
+    <h2>Response commitments</h2>
+    <ul>
+      <li><strong>General support:</strong> within 1 business day</li>
+      <li><strong>Enterprise &amp; sales:</strong> within 1–2 business days</li>
+      <li><strong>Security issues:</strong> prioritized by severity — critical issues same business day where possible</li>
+    </ul>
     <h2>Helpful Links</h2>
     <ul>
       <li><a href="docs/index.html">Documentation Center</a></li>
@@ -46,8 +74,61 @@
       <li><a href="docs/user-guide.html">User Guide</a></li>
       <li><a href="docs/admin-guide.html">Administration Guide</a></li>
       <li><a href="security-policy.html">Security Policy</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="trust-center.html">Trust Center</a></li>
+      <li><a href="refund-policy.html">Refund Policy</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="recover-report.html">Recover My Report</a></li>
     </ul>
+    <h2>Enterprise engagement</h2>
+    <p>Portfolios over 1,000 work items, multi-team rollouts, and procurement reviews are handled by our enterprise team.</p>
+    <ul>
+      <li>Email <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a> with your Request ID if you have one</li>
+      <li>Response within 1–2 business days with scoping and next steps</li>
+      <li>Custom quotes and secure payment links for approved enterprise assessments</li>
+    </ul>
+
+    <h2>Payment &amp; refund assistance</h2>
+    <ul>
+      <li><strong>Payment not verified:</strong> Use <a href="recover-report.html">Recover My Report</a> with your checkout email</li>
+      <li><strong>Refund request:</strong> See <a href="refund-policy.html">Refund Policy</a> — email support@ with order reference</li>
+      <li><strong>Duplicate charge:</strong> Contact support immediately with both payment references</li>
+    </ul>
+
+    <h2>Report recovery</h2>
+    <p>Access verified reports via <a href="login.html">My Reports</a> or <a href="recover-report.html">Recover My Report</a>. Recovery tokens remain valid for 90 days.</p>
+
+    <h2>Operational troubleshooting</h2>
+    <p class="microcopy">Self-service recovery first. Include your checkout email and payment reference when contacting support.</p>
+    <div class="et-procurement-faq ops-troubleshoot">
+      <details open><summary>Payment failed or not verified</summary>
+        <p>Checkout may have been interrupted. If funds were deducted, go to <a href="recover-report.html">Recover My Report</a> with your checkout email. Otherwise return to <a href="pricing.html#assessment-wizard">assessment wizard</a> and complete Secure Checkout. Email <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> with Razorpay payment ID.</p>
+      </details>
+      <details><summary>Upload failed or validation error</summary>
+        <p>Check required columns in <a href="sample-files.html">Sample Files</a>. Re-export CSV with all fields. Sessions expire in ~24 hours — re-upload if checkout was not completed.</p>
+      </details>
+      <details><summary>Report not ready or download failed</summary>
+        <p>Large portfolios may take a few minutes after payment. Use <a href="login.html">My Reports</a> or <a href="recover-report.html">Recover My Report</a>. Downloads remain available for 90 days.</p>
+      </details>
+      <details><summary>Email not received</summary>
+        <p>Check spam. Delivery is optional — your report is available via success page downloads, My Reports, and Recover My Report. Request resend via support with order reference.</p>
+      </details>
+      <details><summary>Browser closed before download</summary>
+        <p>Payment is tied to your checkout email. Use <a href="recover-report.html">Recover My Report</a> or <a href="login.html">My Reports</a> from any device within 90 days.</p>
+      </details>
+      <details><summary>Duplicate purchase or double charge</summary>
+        <p>Contact <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> immediately with both payment references. See <a href="refund-policy.html">Refund Policy</a>.</p>
+      </details>
+      <details><summary>Refund request</summary>
+        <p>Email support@ with order reference per <a href="refund-policy.html">Refund Policy</a>. Refund may disable download access per policy terms.</p>
+      </details>
+      <details><summary>Enterprise quote or invoice</summary>
+        <p>Portfolios over 1,000 work items: submit via assessment wizard or email <a href="mailto:sales@aigovernancehub.ai">sales@aigovernancehub.ai</a>. See <a href="enterprise-procurement.html">Enterprise Procurement</a>.</p>
+      </details>
+      <details><summary>Recovery expired (after 90 days)</summary>
+        <p>Reports are retained for 90 days unless deletion requested. Contact support@ — we cannot guarantee recovery after expiry.</p>
+      </details>
+    </div>
+
     <h2>How to Report a Bug</h2>
     <p>Email <a class="email" href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> with your Jira site URL, app version, screenshots, steps to reproduce, expected behavior, and actual behavior.</p>
 
@@ -55,19 +136,26 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo-line"><img class="brand-icon" src="app-logo-512.png" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
+        <div class="footer-logo-line"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></div>
         <strong>AI Governance Hub™</strong>
         <span>Enterprise AI Governance Platform for Jira Cloud</span>
       </div>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="security-policy.html">Security Policy</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="sample-files.html">Sample Files</a>
+        <a href="trust-center.html">Trust Center</a>
+        <a href="security-policy.html">Security</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+        <a href="faq.html">FAQ</a>
         <a href="docs/index.html">Documentation</a>
         <a href="support.html">Support</a>
+        <a href="mailto:sales@aigovernancehub.ai">Contact</a>
       </div>
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- AI Governance Hub Website Version: 2026.06.27-governance-workspace-v25.0 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:">
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://aigovernancehub.ai/images/agh-logo-primary.png" />
+  <title>Governance Workspace | AI Governance Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/starter-experience.css" />
+  <link rel="stylesheet" href="assets/css/premium-experience.css" />
+  <link rel="stylesheet" href="assets/css/business-excellence.css" />
+</head>
+<body class="legal-page exec-dashboard-page ws-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="legal-hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <div class="nav-links">
+        <a class="btn btn-primary" href="pricing.html#assessment-wizard">Run new assessment</a>
+        <button type="button" class="btn btn-secondary" id="dashboard-logout">Sign out</button>
+      </div>
+    </nav>
+  </header>
+  <main class="legal-container exec-dashboard-main" id="main-content">
+    <div class="page-intro">
+      <span class="section-kicker">Continuous Governance Workspace</span>
+      <h1>Your governance workspace</h1>
+      <p>Access verified assessments, download executive reports, and track remediation — signed in as <strong id="dashboard-email">…</strong></p>
+    </div>
+
+    <div class="et-dashboard-welcome" id="dashboard-welcome">
+      <h2>You&apos;re in — here&apos;s what to do next</h2>
+      <p>Your verified assessments live here. Download reports again, track governance progress, or run a follow-up assessment to measure improvement.</p>
+      <div class="et-dashboard-actions">
+        <a class="btn btn-primary" href="pricing.html#assessment-wizard">Run another assessment</a>
+        <button type="button" class="btn btn-secondary" data-tab-jump="reports">Download reports</button>
+        <button type="button" class="btn btn-secondary" data-tab-jump="reassess">Compare re-assessment</button>
+        <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai">Contact support</a>
+        <a class="btn btn-secondary" href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Upgrade">Enterprise upgrade</a>
+      </div>
+    </div>
+
+    <div class="px-dashboard-value px-retention-grid" aria-label="Why return to AI Governance Hub">
+      <article class="px-retention-card"><em>📈</em><strong>Measure progress</strong><p>Re-assess when your portfolio changes and compare governance scores over time.</p></article>
+      <article class="px-retention-card"><em>📥</em><strong>Download again</strong><p>All formats remain in Reports for 90 days — no extra charge.</p></article>
+      <article class="px-retention-card"><em>🏢</em><strong>Scale in Jira</strong><p>Move from one-off assessment to continuous governance via Atlassian Marketplace.</p></article>
+    </div>
+
+    <div class="be-customer-hub" aria-label="Your customer success path">
+      <h2>Your customer success path</h2>
+      <ol>
+        <li><strong>Download</strong> your Executive Assessment from the Reports tab (all formats, 90 days)</li>
+        <li><strong>Invoice</strong> — use Download Invoice on each verified purchase (finance teams)</li>
+        <li><strong>Re-assess</strong> — compare scores over time in Re-assessment and Score history</li>
+        <li><strong>Upgrade</strong> — <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer">Install Marketplace app</a> for continuous governance in Jira</li>
+        <li><strong>Help</strong> — <a href="support.html">Support</a> · <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></li>
+      </ol>
+    </div>
+
+    <nav class="exec-tabs ws-tabs" aria-label="Workspace sections">
+      <button type="button" class="exec-tab active" data-tab="workspace">Workspace</button>
+      <button type="button" class="exec-tab" data-tab="health">Project health</button>
+      <button type="button" class="exec-tab" data-tab="reassess">Re-assessment</button>
+      <button type="button" class="exec-tab" data-tab="history">Score history</button>
+      <button type="button" class="exec-tab" data-tab="effectiveness">Effectiveness</button>
+      <button type="button" class="exec-tab" data-tab="reports">Reports</button>
+      <button type="button" class="exec-tab" data-tab="export">Export</button>
+    </nav>
+
+    <p class="microcopy starter-recover-status" id="dashboard-status" role="status" aria-live="polite"></p>
+
+    <div id="tab-workspace" class="exec-tab-panel" data-panel="workspace">
+      <div class="ws-view-switch">
+        <button type="button" class="btn btn-secondary active" data-ws-view="kanban">Kanban</button>
+        <button type="button" class="btn btn-secondary" data-ws-view="timeline">Timeline</button>
+        <button type="button" class="btn btn-secondary" data-ws-view="calendar">Calendar</button>
+        <button type="button" class="btn btn-secondary" data-ws-view="list">Task list</button>
+      </div>
+      <div id="ws-kanban" class="ws-kanban-board"></div>
+      <div id="ws-timeline" class="exec-card" hidden></div>
+      <div id="ws-calendar" class="exec-card" hidden></div>
+      <div id="ws-list" class="exec-card" hidden></div>
+      <section class="exec-card" id="ws-task-detail" hidden>
+        <h2>Task detail</h2>
+        <div id="ws-task-detail-body"></div>
+      </section>
+      <section class="exec-card" id="ws-activity"></section>
+    </div>
+
+    <div id="tab-health" class="exec-tab-panel" hidden data-panel="health">
+      <div class="exec-kpi-grid" id="health-kpis"></div>
+    </div>
+
+    <div id="tab-reassess" class="exec-tab-panel" hidden data-panel="reassess">
+      <section class="exec-card" id="reassess-panel"></section>
+    </div>
+
+    <div id="tab-history" class="exec-tab-panel" hidden data-panel="history">
+      <section class="exec-card" id="score-history-panel"></section>
+      <section class="exec-card" id="dept-progress-panel"></section>
+    </div>
+
+    <div id="tab-effectiveness" class="exec-tab-panel" hidden data-panel="effectiveness">
+      <section class="exec-card" id="effectiveness-panel"></section>
+    </div>
+
+    <div id="tab-reports" class="exec-tab-panel" hidden data-panel="reports">
+      <div class="report-action-row">
+        <a class="btn btn-secondary" href="/api/workspace-report?period=weekly&format=html">Weekly report</a>
+        <a class="btn btn-secondary" href="/api/workspace-report?period=monthly&format=html">Monthly report</a>
+        <a class="btn btn-secondary" href="/api/workspace-report?period=quarterly&format=html">Quarterly report</a>
+      </div>
+      <div id="dashboard-reports" class="recover-report-list" aria-live="polite"></div>
+    </div>
+
+    <div id="tab-export" class="exec-tab-panel" hidden data-panel="export">
+      <section class="exec-card">
+        <h2>Enterprise export</h2>
+        <p class="microcopy">Download workspace data for audit, planning, or integration.</p>
+        <div class="report-action-row ws-export-row">
+          <a class="btn btn-secondary" href="/api/workspace-export?format=csv">CSV</a>
+          <a class="btn btn-secondary" href="/api/workspace-export?format=xlsx">Excel</a>
+          <a class="btn btn-secondary" href="/api/workspace-export?format=json">JSON</a>
+          <a class="btn btn-secondary" href="/api/workspace-export?format=pdf">PDF</a>
+          <a class="btn btn-secondary" href="/api/workspace-export?format=pptx">PowerPoint</a>
+        </div>
+        <p class="microcopy"><a href="/api/v1-workspace?manifest=1" target="_blank" rel="noopener">REST API v1 manifest</a> — foundation for Jira, Azure DevOps, ServiceNow, GitHub.</p>
+      </section>
+    </div>
+  </main>
+  <script src="assets/js/enterprise-ux.js" defer></script>
+  <script src="assets/js/governance-workspace.js" defer></script>
+  <script src="assets/js/site-trust-footer.js" defer></script>
+</body>
+</html>
