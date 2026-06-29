@@ -36,6 +36,17 @@
 
   <main class="legal-container payment-status-page" id="main-content">
 
+    <nav class="sx-flow-steps" id="sx-flow-steps" aria-label="Payment progress" hidden>
+      <ol>
+        <li class="sx-flow-step" id="fstep-received"><span class="sx-flow-icon" aria-hidden="true">○</span><span>Payment Received</span></li>
+        <li class="sx-flow-step" id="fstep-verifying"><span class="sx-flow-icon" aria-hidden="true">○</span><span>Verifying</span></li>
+        <li class="sx-flow-step" id="fstep-generating"><span class="sx-flow-icon" aria-hidden="true">○</span><span>Generating Reports</span></li>
+        <li class="sx-flow-step" id="fstep-downloads"><span class="sx-flow-icon" aria-hidden="true">○</span><span>Preparing Downloads</span></li>
+        <li class="sx-flow-step" id="fstep-email"><span class="sx-flow-icon" aria-hidden="true">○</span><span>Sending Email</span></li>
+        <li class="sx-flow-step" id="fstep-complete"><span class="sx-flow-icon" aria-hidden="true">○</span><span>Complete</span></li>
+      </ol>
+    </nav>
+
     <div id="success-verifying" hidden>
       <div class="agh-alert agh-alert-success" role="status" aria-live="polite">
         <h1>Verifying payment — please wait</h1>

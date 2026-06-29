@@ -14,6 +14,27 @@
   var emailStatusLine = document.getElementById("email-status-line");
   var pollAttempts = 0;
   var MAX_POLL = 24;
+  var FLOW_STEP_IDS = ["received", "verifying", "generating", "downloads", "email", "complete"];
+
+  function setFlowStep(doneThrough, activeIdx) {
+    var stepsEl = document.getElementById("sx-flow-steps");
+    if (stepsEl) stepsEl.hidden = false;
+    FLOW_STEP_IDS.forEach(function (name, idx) {
+      var el = document.getElementById("fstep-" + name);
+      if (!el) return;
+      var icon = el.querySelector(".sx-flow-icon");
+      el.classList.remove("sx-step-done", "sx-step-active");
+      if (idx <= doneThrough) {
+        el.classList.add("sx-step-done");
+        if (icon) icon.textContent = "✓";
+      } else if (idx === activeIdx) {
+        el.classList.add("sx-step-active");
+        if (icon) icon.textContent = "●";
+      } else {
+        if (icon) icon.textContent = "○";
+      }
+    });
+  }
 
   var FORMATS = [
     { id: "html", label: "Download HTML", primary: true },
@@ -160,6 +181,17 @@
           : "Payment verified. Your full AI governance report has been generated — board-ready formats, delivered securely.";
     }
     focusVerifiedHeading();
+    if (isGenerationFailed) {
+      setFlowStep(1, 2);
+    } else if (isProcessing) {
+      setFlowStep(1, 2);
+    } else if (data.emailStatus === "sent") {
+      setFlowStep(4, 5);
+    } else if (data.emailStatus === "failed") {
+      setFlowStep(3, 5);
+    } else {
+      setFlowStep(3, 4);
+    }
     if (!isProcessing && !isGenerationFailed && window.AGHStarterExperience && typeof window.AGHStarterExperience.initSuccessCelebration === "function") {
       window.AGHStarterExperience.initSuccessCelebration();
     }
@@ -201,6 +233,8 @@
           if (pollAttempts >= MAX_POLL) {
             if (verifying) verifying.hidden = true;
             if (unverified) unverified.hidden = false;
+            var stepsEl = document.getElementById("sx-flow-steps");
+            if (stepsEl) stepsEl.hidden = true;
             setDownloadStatus(
               "Payment verified but your report is still preparing. Use Recover My Report or My Reports, or contact support@aigovernancehub.ai.",
               true
@@ -238,6 +272,7 @@
     return;
   }
 
+  setFlowStep(0, 1);
   if (verifying) verifying.hidden = false;
   pollUntilReady();
 })();

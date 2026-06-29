@@ -1433,6 +1433,7 @@ summary:focus-visible {
 .wizard-steps-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.35rem;
   margin: 0;
   padding: 0;

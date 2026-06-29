@@ -147,6 +147,8 @@
   font-size: 0.82rem;
   font-weight: 600;
   color: #475569;
+  text-align: center;
+  display: block;
 }
 
 /* ——— Wizard card polish ——— */
@@ -382,6 +384,66 @@
 .sx-home-step span {
   font-size: 0.75rem;
   color: #64748b;
+}
+
+/* ——— Payment flow step indicator ——— */
+.sx-flow-steps {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+}
+
+.sx-flow-steps ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  row-gap: 0.3rem;
+}
+
+.sx-flow-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.sx-flow-step + .sx-flow-step::before {
+  content: "→";
+  color: #cbd5e1;
+  margin: 0 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
+.sx-flow-icon { font-size: 0.85rem; line-height: 1; }
+
+.sx-flow-step.sx-step-done { color: #059669; }
+.sx-flow-step.sx-step-done .sx-flow-icon { color: #059669; }
+
+.sx-flow-step.sx-step-active { color: #1d4ed8; font-weight: 700; }
+.sx-flow-step.sx-step-active .sx-flow-icon {
+  display: inline-block;
+  color: #2563eb;
+  animation: sx-flow-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes sx-flow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 560px) {
+  .sx-flow-step { font-size: 0.73rem; }
+  .sx-flow-step + .sx-flow-step::before { margin: 0 0.25rem; }
 }
 
 /* ——— Success page ——— */

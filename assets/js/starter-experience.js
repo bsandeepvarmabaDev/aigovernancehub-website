@@ -169,12 +169,6 @@
       if (e.target === btn || (btn && btn.contains(e.target))) return;
       input.click();
     });
-    if (btn) {
-      btn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        input.click();
-      });
-    }
   }
 
   function onStepChange(step) {

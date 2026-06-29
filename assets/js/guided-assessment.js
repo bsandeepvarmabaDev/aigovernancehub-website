@@ -295,7 +295,7 @@
       "<tr><th scope='row'>Why this tier</th><td>" + (uploadSession?.plan?.reason || "Based on work items and project count in your upload.") + "</td></tr>" +
       "</tbody></table></div>" +
       "<p class='microcopy'><strong>What you're buying:</strong> A complete AI governance assessment for your uploaded portfolio, including executive-ready deliverables.</p>" +
-      "<p class='microcopy'><strong>Pricing note:</strong> Total is based on your plan tier (work items + project count), not a per-item fee.</p>" +
+      "<p class='microcopy'><strong>Pricing note:</strong> Total is based on your plan tier (work item count only), not a per-item fee.</p>" +
       "<p class='microcopy'><strong>" + brandNote + "</strong></p>" +
       "<table class='order-summary-table'><tbody>" +
       "<tr><th scope='row'>Plan</th><td>" + (detectedPlan?.label || quote.plan.label) + "</td></tr>" +
