@@ -604,16 +604,19 @@
 
   function init() {
     bindTabs();
-    setStatus("Loading governance workspace…", false);
-    Promise.all([reloadWorkspace(), loadReports()])
-      .then(function (results) {
-        $("dashboard-email").textContent = results[1].email;
-        reportsData = results[1].reports || [];
+    setStatus("Loading your reports…", false);
+    // Reports + downloads are the customer-critical path (served by /api/dashboard).
+    // Load them on their own so the dashboard still works even if the optional
+    // governance workspace API (/api/workspace) is not provisioned in this deployment.
+    loadReports()
+      .then(function (data) {
+        $("dashboard-email").textContent = data.email;
+        reportsData = data.reports || [];
         renderReports(reportsData);
         var latestReport = reportsData[0] || null;
         var latestScore = latestReport && latestReport.governanceScore != null
           ? latestReport.governanceScore
-          : (wsData && wsData.health ? wsData.health.healthScore : null);
+          : null;
         renderLatestAssessment(latestReport, latestScore);
         setStatus("", false);
       })
@@ -624,6 +627,9 @@
         }
         setStatus(e.message, true);
       });
+    // Governance workspace tabs (kanban, activity) are a secondary feature — load
+    // separately and degrade silently if the workspace API is unavailable.
+    reloadWorkspace().catch(function () { /* workspace tabs unavailable — non-critical */ });
     var logout = $("dashboard-logout");
     if (logout) {
       logout.addEventListener("click", function () {
