@@ -155,6 +155,37 @@ a { color: inherit; }
 }
 .btn-primary { color: #fff; background: linear-gradient(135deg, #2563eb, #7c3aed); box-shadow: 0 18px 38px rgba(37, 99, 235, .32); }
 .btn-secondary { color: #fff; background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.32); }
+/* The base .btn-secondary is white-on-transparent for the dark hero/footer.
+   On light sections that renders white-on-light (invisible). Restore contrast
+   for secondary buttons inside light containers — additive, so dark sections
+   (hero, footer, impact band, CTA bands) keep their white styling untouched. */
+.white-section .btn-secondary,
+.light-section .btn-secondary,
+.legal-container .btn-secondary,
+.sample-download-callout .btn-secondary,
+.assessment-wizard-card .btn-secondary,
+.starter-preview-panel .btn-secondary,
+.enterprise-gate .btn-secondary,
+.pm-customer-success .btn-secondary,
+.agh-next-steps .btn-secondary,
+.be-customer-hub .btn-secondary {
+  color: #1d4ed8;
+  background: #fff;
+  border-color: #bfdbfe;
+}
+.white-section .btn-secondary:hover:not(:disabled),
+.light-section .btn-secondary:hover:not(:disabled),
+.legal-container .btn-secondary:hover:not(:disabled),
+.sample-download-callout .btn-secondary:hover:not(:disabled),
+.assessment-wizard-card .btn-secondary:hover:not(:disabled),
+.starter-preview-panel .btn-secondary:hover:not(:disabled),
+.enterprise-gate .btn-secondary:hover:not(:disabled),
+.pm-customer-success .btn-secondary:hover:not(:disabled),
+.agh-next-steps .btn-secondary:hover:not(:disabled),
+.be-customer-hub .btn-secondary:hover:not(:disabled) {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
 .btn.wide { width: 100%; }
 .hero-reassurance { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 22px; color: rgba(255,255,255,.84); font-size: 14px; }
 .hero-reassurance span::before { content: "✓"; color: #38bdf8; margin-right: 6px; }
