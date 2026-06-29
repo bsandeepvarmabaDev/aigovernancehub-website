@@ -18,7 +18,65 @@
   <meta name="twitter:title" content="Pricing | AI Governance Hub" />
   <meta name="twitter:description" content="Enterprise AI governance assessment with multi-format executive reports. Secure checkout via Razorpay." />
   <title>Pricing | AI Governance Hub</title>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"AI Governance Executive Assessment","description":"Guided enterprise AI governance assessment with multi-format executive reports","offers":{"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock"}}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AI Governance Hub Executive Assessment",
+    "description": "Upload a Jira, Azure DevOps, or Excel export and receive an executive AI governance assessment with framework mapping, risk register, and board-ready reports in HTML, PDF, Word, and PowerPoint.",
+    "image": "https://aigovernancehub.ai/images/agh-logo-primary.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Governance Hub"
+    },
+    "sku": "AGH-STARTER-ASSESSMENT",
+    "mpn": "AGH-STARTER-ASSESSMENT",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://aigovernancehub.ai/pricing.html",
+      "priceCurrency": "INR",
+      "price": "199.00",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "d"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "d"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "url": "https://aigovernancehub.ai/refund-policy.html"
+      }
+    }
+  }
+  </script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/css/starter-experience.css" />
   <link rel="stylesheet" href="assets/css/enterprise-trust.css" />
@@ -38,12 +96,8 @@
       <div class="nav-links" id="navLinks">
         <a href="features.html">Features</a>
         <a href="pricing.html" aria-current="page">Pricing</a>
-        <a href="sample-files.html">Sample Files</a>
         <a href="trust-center.html">Trust Center</a>
         <a href="security-policy.html">Security</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="support.html">Support</a>
-        <a href="docs/index.html">Documentation</a>
         <a href="mailto:sales@aigovernancehub.ai?subject=Enterprise%20Engagement">Enterprise</a>
         <a href="login.html">My Reports</a>
         <a class="nav-cta" href="#assessment-wizard">Start Assessment</a>
@@ -54,7 +108,7 @@
   <main id="main-content">
     <section class="section pricing-hero pricing-hero-starter">
       <div class="section-heading">
-        <span class="section-kicker">Guided Assessment · Live preview before you pay</span>
+        <span class="section-kicker">Guided Assessment · Preview free · No card required to start</span>
         <h1>From export to executive report — guided every step</h1>
         <p>Upload a project export (CSV or Excel). See a free governance preview, then unlock your Executive Assessment after verified payment — no Jira administrator required.</p>
         <div class="hero-actions pricing-hero-actions">
@@ -69,6 +123,7 @@
         <span class="section-kicker">Assessment wizard</span>
         <h2>Your guided path to an AI governance report</h2>
         <p>Every step answers what to upload, why fields matter, and what you receive after payment.</p>
+        <p class="microcopy" style="margin-top:0.5rem">Pricing is calculated server-side from your upload: <strong>Starter ₹199</strong> (≤50 items) · <strong>Professional ₹599</strong> (51–500 items) · <strong>Business ₹999</strong> (501–1,000 items) · Enterprise: custom quote. Multiple projects in your file don't change your tier — pricing is based on work item count only. Preview is always free.</p>
       </div>
 
       <nav class="wizard-steps" aria-label="Assessment steps">
@@ -99,20 +154,23 @@
             <button type="button" class="source-card" data-source="excel" aria-pressed="false"><strong>Excel</strong><span>.xlsx / .csv</span></button>
             <button type="button" class="source-card" data-source="csv" aria-pressed="false"><strong>CSV</strong><span>UTF-8 file</span></button>
           </div>
-          <p class="microcopy coming-soon-label">Coming soon: GitHub · ServiceNow · Monday.com · Asana · ClickUp</p>
+          <p class="microcopy coming-soon-label">More sources available on request — <a href="mailto:support@aigovernancehub.ai?subject=Integration%20request">contact us</a></p>
+          <p class="microcopy" style="margin-top:0.85rem;color:#6b7280">You'll need your exported file at Step 3. Don't have one? <a href="sample-files.html">Download a sample file</a> to try first.</p>
         </div>
 
         <div id="wizard-step-export" data-wizard-panel class="wizard-panel" hidden>
           <div id="source-instructions"></div>
-          <h4>Download sample files</h4>
-          <p class="microcopy">Each sample matches the column layout we validate. Use it to test your workflow before uploading real data.</p>
-          <div class="sample-downloads">
-            <a class="btn btn-secondary" data-source-sample="jira" href="samples/sample-jira-export.csv" download>Sample Jira CSV</a>
-            <a class="btn btn-secondary" data-source-sample="azure-devops" href="samples/sample-azure-devops.csv" download>Sample Azure DevOps CSV</a>
-            <a class="btn btn-secondary" data-source-sample="excel" href="samples/sample-governance-template.csv" download>Excel / CSV Template</a>
-            <a class="btn btn-secondary" data-source-sample="csv" href="samples/sample-governance-template.csv" download>CSV Template</a>
-            <a class="btn btn-secondary" data-source-sample="all" href="samples/sample-governance-report.html" target="_blank" rel="noopener">Example Governance Report</a>
-            <a class="btn btn-secondary" data-source-sample="all" href="sample-files.html">Sample file guide</a>
+          <div class="sample-download-callout">
+            <h4>Download sample files</h4>
+            <p class="microcopy">Each sample matches the column layout we validate. Use it to test your upload before using real data.</p>
+            <div class="sample-downloads">
+              <a class="btn btn-secondary" data-source-sample="jira" href="samples/sample-jira-export.csv" download>Download Jira CSV sample</a>
+              <a class="btn btn-secondary" data-source-sample="azure-devops" href="samples/sample-azure-devops.csv" download>Download Azure DevOps CSV sample</a>
+              <a class="btn btn-secondary" data-source-sample="excel" href="samples/sample-governance-template.csv" download>Download Excel / CSV template</a>
+              <a class="btn btn-secondary" data-source-sample="csv" href="samples/sample-governance-template.csv" download>Download CSV template</a>
+              <a class="btn btn-secondary" data-source-sample="all" href="samples/sample-governance-report.html" target="_blank" rel="noopener">View example report</a>
+              <a class="btn btn-secondary" data-source-sample="all" href="sample-files.html">Sample file guide</a>
+            </div>
           </div>
           <h4>Required fields</h4>
           <div id="required-fields-list" class="field-requirements-grid"></div>
@@ -259,14 +317,15 @@
 
             <div class="unlock-benefits">
               <h4>Unlock Your Complete AI Governance Assessment</h4>
-              <p class="microcopy">Payment verifies your identity, generates your full report, and enables secure download and recovery.</p>
+              <p class="microcopy">Introductory launch price — the same complete report whether you upload 5 or 50 work items. Payment generates your full report and enables secure download and 90-day recovery.</p>
+              <p class="microcopy" style="margin-top:0.5rem;padding:0.6rem 0.85rem;background:#f0f9ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0"><strong>Free preview showed:</strong> governance score, risk category counts, framework alignment. <strong>Full report adds:</strong> complete risk register with per-item actions, executive narrative, 4 downloadable formats (HTML · PDF · Word · PPT).</p>
               <ul>
-                <li>Executive PDF-ready assessment</li>
-                <li>Governance score with explanation</li>
+                <li>Executive assessment in HTML, PDF, Word, and PowerPoint</li>
+                <li>Governance score with detailed explanation</li>
                 <li>Complete AI-related work item inventory</li>
-                <li>Risk matrix and recommendations</li>
+                <li>Risk matrix and actionable recommendations</li>
                 <li>Framework mapping (EU AI Act, ISO 42001, NIST AI RMF)</li>
-                <li>Email delivery and permanent recovery access</li>
+                <li>Email delivery and 90-day recovery access</li>
               </ul>
             </div>
 
@@ -547,7 +606,8 @@
         </div>
         <div class="cta-side">
           <div class="cta-actions">
-            <a class="btn btn-primary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
+            <button type="button" class="btn btn-primary" data-starter-scroll-checkout>Start Assessment</button>
+            <a class="btn btn-secondary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Install from Marketplace</a>
           </div>
         </div>
       </div>
