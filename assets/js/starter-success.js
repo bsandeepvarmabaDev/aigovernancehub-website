@@ -6,6 +6,7 @@
 
   var params = new URLSearchParams(window.location.search);
   var token = params.get("confirmation");
+  var verifying = document.getElementById("success-verifying");
   var unverified = document.getElementById("success-unverified");
   var verified = document.getElementById("success-verified");
   var downloadActions = document.getElementById("download-actions");
@@ -43,19 +44,19 @@
     if (!emailStatusLine || !data) return;
     if (data.emailStatus === "sent") {
       emailStatusLine.textContent =
-        "A confirmation email with download instructions has been sent to your checkout address.";
+        "We've also emailed your report to your checkout address.";
     } else if (data.emailStatus === "failed") {
       emailStatusLine.textContent =
-        "Email delivery is temporarily unavailable. Download below, use Recover My Report, or sign in to My Reports.";
+        "Email delivery is temporarily unavailable — download directly above, or use Recover My Report.";
     } else if (data.reportStatus === "generating") {
       emailStatusLine.textContent =
         "Payment verified. Your report is being prepared — downloads will appear automatically.";
     } else if (data.customerPaymentState === "generation_failed") {
       emailStatusLine.textContent =
-        "Payment verified. Report generation failed — use Recover My Report or sign in to My Reports to retry.";
+        "Payment verified. Report generation failed — use Recover My Report to retry.";
     } else {
       emailStatusLine.textContent =
-        "Download your assessment below. Sign in to My Reports for ongoing access (90 days).";
+        "No account needed — use Recover My Report anytime with your checkout email.";
     }
   }
 
@@ -129,6 +130,7 @@
   }
 
   function showVerified(data) {
+    if (verifying) verifying.hidden = true;
     if (unverified) unverified.hidden = true;
     if (verified) verified.hidden = false;
     var isGenerationFailed = data.customerPaymentState === "generation_failed";
@@ -197,6 +199,8 @@
       .then(function (result) {
         if (!(result.ok && result.data && result.data.valid === true)) {
           if (pollAttempts >= MAX_POLL) {
+            if (verifying) verifying.hidden = true;
+            if (unverified) unverified.hidden = false;
             setDownloadStatus(
               "Payment verified but your report is still preparing. Use Recover My Report or My Reports, or contact support@aigovernancehub.ai.",
               true
@@ -219,6 +223,8 @@
         if (pollAttempts < MAX_POLL) {
           setTimeout(pollUntilReady, 5000);
         } else {
+          if (verifying) verifying.hidden = true;
+          if (unverified) unverified.hidden = false;
           setDownloadStatus(
             "Connection interrupted. Your payment may be verified — try Recover My Report or contact support@aigovernancehub.ai.",
             true
@@ -227,8 +233,11 @@
       });
   }
 
-  if (!token) return;
+  if (!token) {
+    if (unverified) unverified.hidden = false;
+    return;
+  }
 
-  setDownloadStatus("Verifying payment and preparing your assessment…", false);
+  if (verifying) verifying.hidden = false;
   pollUntilReady();
 })();

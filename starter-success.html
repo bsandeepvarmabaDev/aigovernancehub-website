@@ -35,16 +35,25 @@
   </header>
 
   <main class="legal-container payment-status-page" id="main-content">
-    <div id="success-unverified">
+
+    <div id="success-verifying" hidden>
+      <div class="agh-alert agh-alert-success" role="status" aria-live="polite">
+        <h1>Verifying payment — please wait</h1>
+        <p>Your payment is being confirmed with Razorpay. Your executive assessment will appear automatically in a few seconds.</p>
+        <div class="agh-progress-bar-wrap" style="margin-top:0.75rem"><div class="agh-progress-bar-inner sx-verify-progress"></div></div>
+      </div>
+    </div>
+
+    <div id="success-unverified" hidden>
       <div class="agh-alert agh-alert-warning" role="alert">
         <h1>Payment could not be verified</h1>
         <p><strong>What happened:</strong> We could not confirm your payment with our payment provider.</p>
         <p><strong>Why:</strong> The checkout may have been interrupted, or verification timed out.</p>
-        <p><strong>How to fix:</strong> If funds were deducted, use Recover My Report with your checkout email. Otherwise, retry payment from the assessment wizard.</p>
+        <p><strong>If funds were deducted:</strong> Use Recover My Report with your checkout email — your report is safe and will be there once the webhook confirms payment.</p>
       </div>
       <div class="report-action-row">
-        <a class="btn btn-primary" href="pricing.html#assessment-wizard">Return to assessment</a>
-        <a class="btn btn-secondary" href="recover-report.html">Recover my report</a>
+        <a class="btn btn-primary" href="recover-report.html">Recover my report</a>
+        <a class="btn btn-secondary" href="pricing.html#assessment-wizard">Return to assessment</a>
         <a class="btn btn-secondary" href="mailto:support@aigovernancehub.ai">Contact support</a>
       </div>
     </div>
@@ -53,8 +62,12 @@
       <div class="sx-success-hero" role="status">
         <span class="sx-success-badge" aria-hidden="true">✓</span>
         <h1 id="success-verified-heading">Your executive assessment is ready</h1>
-        <p id="success-verified-lead">Payment verified. Your full AI governance report has been generated — board-ready formats, delivered securely.</p>
+        <p id="success-verified-lead">Payment verified. Your full AI governance report has been generated — download below in any format.</p>
       </div>
+
+      <h2>Download your assessment</h2>
+      <div class="report-action-row" id="download-actions"></div>
+      <p class="microcopy starter-download-status" id="download-status" role="status" aria-live="polite"></p>
 
       <p class="microcopy" id="email-status-line">Checking email delivery status…</p>
 
@@ -69,51 +82,35 @@
       <div class="agh-trust-strip" role="note">
         <span>Server-side generation</span>
         <span>Signed downloads</span>
-        <span><a href="login.html">Save to My Reports</a></span>
+        <span><a href="recover-report.html">Recover My Report</a></span>
       </div>
-
-      <h2>Download your assessment</h2>
-      <p class="microcopy">Choose a format below — HTML, PDF, Word (DOCX), PowerPoint (PPTX), or plain text. Downloads require server-verified payment; links are signed and expire for your security.</p>
-      <div class="report-action-row" id="download-actions"></div>
-      <p class="microcopy starter-download-status" id="download-status" role="status" aria-live="polite"></p>
 
       <div class="pm-customer-success" aria-label="Customer success">
         <h2>Your purchase includes</h2>
         <ul>
-          <li><strong>Reports</strong> — HTML, PDF, Word, PowerPoint (90-day dashboard access)</li>
-          <li><strong>Invoice</strong> — Download from <a href="login.html">My Reports</a> after sign-in (self-serve)</li>
-          <li><strong>Recovery</strong> — <a href="recover-report.html">Recover My Report</a> with checkout email</li>
+          <li><strong>Reports</strong> — HTML, PDF, Word, PowerPoint (available for 90 days)</li>
+          <li><strong>No account needed</strong> — <a href="recover-report.html">Recover My Report</a> anytime with your checkout email</li>
+          <li><strong>Optional dashboard</strong> — <a href="login.html">Sign in to My Reports</a> for 90-day history and invoice download</li>
           <li><strong>Support</strong> — <a href="support.html">Support</a> · <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a></li>
           <li><strong>Re-assess</strong> — <a href="pricing.html#assessment-wizard">Run a new assessment</a> when your portfolio changes</li>
           <li><strong>Upgrade</strong> — <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&amp;tab=overview" target="_blank" rel="noopener noreferrer">Marketplace app</a> for continuous AI governance in Jira</li>
         </ul>
       </div>
 
-      <div class="px-worth-it px-animate-in" aria-label="Why this assessment is worth it">
-        <h2>Worth every rupee — and worth coming back</h2>
-        <p>You now have a board-ready governance baseline from your actual portfolio — not a generic template.</p>
-        <ul>
-          <li>Re-run in 30–90 days to measure governance improvement</li>
-          <li>Share PDF/PPT with leadership; Word with compliance</li>
-          <li>Install the Marketplace app when you are ready for ongoing Jira governance</li>
-        </ul>
-      </div>
-
-      <p class="px-share-note"><strong>Recommend to a colleague?</strong> Share the assessment wizard — they get the same free preview before they pay. No referral codes, no gimmicks.</p>
-
       <div class="page-intro agh-next-steps">
         <h2>What to do next</h2>
         <ol>
-          <li><strong>Executive briefing</strong> — Download PDF or PowerPoint for your leadership team.</li>
-          <li><strong>Secure access</strong> — Sign in to My Reports for ongoing dashboard access.</li>
+          <li><strong>Download now</strong> — Choose HTML, PDF, Word, or PowerPoint above.</li>
+          <li><strong>Executive briefing</strong> — Share PDF or PowerPoint with your leadership team.</li>
           <li><strong>Governance handoff</strong> — Share the Word version with compliance and legal.</li>
-          <li><strong>Repeat assessment</strong> — Run a new assessment when your portfolio changes.</li>
+          <li><strong>Repeat assessment</strong> — Run a new assessment when your AI portfolio changes.</li>
         </ol>
       </div>
+
       <div class="report-action-row">
-        <a class="btn btn-primary" href="login.html">Open My Reports</a>
-        <a class="btn btn-secondary" href="pricing.html#assessment-wizard">Run another assessment</a>
-        <a class="btn btn-secondary" href="index.html">Return home</a>
+        <a class="btn btn-primary" href="pricing.html#assessment-wizard">Run another assessment</a>
+        <a class="btn btn-secondary" href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">Explore Marketplace app</a>
+        <a class="btn btn-secondary" href="login.html">My Reports (90-day access)</a>
       </div>
     </div>
   </main>
