@@ -260,6 +260,7 @@ export default async function handler(req, res) {
         checkout.currency
       );
       if (!amountCheck.ok) {
+        // API responded but amount/status doesn't match — genuine fraud signal, reject
         logEvent("warn", "payment_verify_rejected", {
           correlationId,
           requestId,
@@ -271,12 +272,23 @@ export default async function handler(req, res) {
         return sendError(res, 400, "Payment verification failed.");
       }
     } catch (error) {
-      logEvent("error", "razorpay_fetch_failed", {
+      // Razorpay API unreachable or timed out. HMAC verified above proves payment is real.
+      // Return verification_pending so the frontend redirects to the pending page.
+      // The Razorpay webhook (payment.captured) confirms and triggers fulfillment.
+      logEvent("warn", "razorpay_amount_check_pending", {
         correlationId,
+        requestId,
+        orderId,
         category: "reliability",
         message: error instanceof Error ? error.message : "unknown",
+        reason: "api_unavailable_returning_verification_pending",
       });
-      return sendError(res, 502, "Payment verification is temporarily unavailable.");
+      return sendJson(res, 202, {
+        verification_pending: true,
+        orderId,
+        message:
+          "Payment received. We are verifying it with Razorpay — this usually completes in under a minute. Check your inbox for your report, or use Recover My Report with your checkout email.",
+      });
     }
   } else if (salesRequest?.quoteAmountMinor && salesRequest?.quoteCurrency) {
     try {
@@ -289,12 +301,19 @@ export default async function handler(req, res) {
         return sendError(res, 400, "Payment verification failed.");
       }
     } catch (error) {
-      logEvent("error", "razorpay_fetch_failed", {
+      logEvent("warn", "razorpay_amount_check_pending", {
         correlationId,
+        orderId,
         category: "reliability",
         message: error instanceof Error ? error.message : "unknown",
+        reason: "enterprise_api_unavailable_returning_pending",
       });
-      return sendError(res, 502, "Payment verification is temporarily unavailable.");
+      return sendJson(res, 202, {
+        verification_pending: true,
+        orderId,
+        message:
+          "Payment received. We are verifying it with Razorpay — this usually completes in under a minute.",
+      });
     }
   }
 

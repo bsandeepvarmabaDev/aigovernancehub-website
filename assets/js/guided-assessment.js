@@ -725,6 +725,16 @@
     if (data.success === true && data.confirmationToken) {
       return data;
     }
+    if (data.verification_pending === true) {
+      // Razorpay amount API was unreachable — HMAC already proved payment.
+      // Signal caller to redirect to pending page (not an error state).
+      var pendingErr = new Error(
+        data.message || "Payment received — verifying with Razorpay. Check your inbox shortly."
+      );
+      pendingErr.verificationPending = true;
+      pendingErr.orderId = data.orderId;
+      throw pendingErr;
+    }
     if (!response.ok || data.success !== true || !data.confirmationToken) {
       var err = new Error(data.error || data.message || "Payment verification failed.");
       err.statusCode = response.status;
@@ -807,6 +817,12 @@
               SUCCESS_URL + "?confirmation=" + encodeURIComponent(result.confirmationToken);
           })
           .catch(function (e) {
+            if (e.verificationPending) {
+              // Amount API was unreachable — payment is real, webhook will confirm.
+              // Go straight to pending page without showing an error.
+              redirectToPendingState("paid", paymentResponse, details, e.message);
+              return;
+            }
             showSafeError(e.message);
             redirectToPendingState("processing", paymentResponse, details, e.message);
           });

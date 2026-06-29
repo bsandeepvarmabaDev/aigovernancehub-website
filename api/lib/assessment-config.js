@@ -152,6 +152,7 @@ export function getPlanById(planId) {
 }
 
 export function detectPlanTier(workItemCount, projectCount, byteLength) {
+  // Enterprise gates — kept for genuinely large portfolios
   if (workItemCount > ENTERPRISE_GATE_WORK_ITEMS) {
     return getPlanById("enterprise");
   }
@@ -161,13 +162,13 @@ export function detectPlanTier(workItemCount, projectCount, byteLength) {
   if (projectCount > 10 || workItemCount > 20000 || byteLength > ENTERPRISE_MAX_BYTES) {
     return getPlanById("enterprise");
   }
-  if (workItemCount > 1000 || projectCount > 10) {
-    return getPlanById("business_plus");
-  }
-  if (workItemCount > 500 || projectCount > 3) {
+  // Self-serve tiers: priced by work item count only.
+  // Project count does NOT affect self-serve pricing —
+  // 5 tasks across 5 projects costs the same as 5 tasks in 1 project.
+  if (workItemCount > 500) {
     return getPlanById("business");
   }
-  if (workItemCount > 50 || projectCount > 1) {
+  if (workItemCount > 50) {
     return getPlanById("professional");
   }
   return getPlanById("starter");
@@ -175,20 +176,23 @@ export function detectPlanTier(workItemCount, projectCount, byteLength) {
 
 export function planRecommendationReason(plan, workItemCount, projectCount, byteLength) {
   const reasons = [];
-  if (workItemCount > 50 && plan.id !== "starter") {
-    reasons.push(`Your upload contains ${workItemCount.toLocaleString()} work items, which exceeds the Starter limit of 50.`);
-  }
-  if (projectCount > 1 && plan.id !== "starter") {
-    reasons.push(`Your data spans ${projectCount} projects — ${plan.label} supports your portfolio size.`);
+  if (workItemCount > 50 && plan.selfServe && plan.id !== "starter") {
+    reasons.push(`Your upload contains ${workItemCount.toLocaleString()} work items (Starter limit: 50 items).`);
   }
   if (plan.id === "enterprise" || plan.id === "enterprise_plus") {
-    reasons.push("Enterprise assessments include dedicated processing, portfolio reporting, priority support, and SLA options.");
+    if (projectCount > 10) {
+      reasons.push(`Your upload spans ${projectCount} projects, which requires an Enterprise assessment.`);
+    } else if (workItemCount > ENTERPRISE_GATE_WORK_ITEMS) {
+      reasons.push(`Your upload contains ${workItemCount.toLocaleString()} work items, which requires an Enterprise assessment.`);
+    } else {
+      reasons.push("Enterprise assessments include dedicated processing, portfolio reporting, priority support, and SLA options.");
+    }
   }
   if (byteLength > UPLOAD_MAX_BYTES && plan.selfServe === false) {
     reasons.push("Large datasets require enterprise-grade processing and secure handling.");
   }
   if (!reasons.length) {
-    reasons.push(`${plan.label} is the right fit for ${workItemCount} work items across ${projectCount} project(s).`);
+    reasons.push(`${plan.label} covers your ${workItemCount.toLocaleString()} work items.`);
   }
   return reasons.join(" ");
 }
