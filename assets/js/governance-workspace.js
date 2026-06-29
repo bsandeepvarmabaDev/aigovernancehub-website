@@ -476,6 +476,63 @@
     });
   }
 
+  function renderLatestAssessment(report, score) {
+    var section = $("dashboard-latest-assessment");
+    var card = $("dashboard-latest-card");
+    if (!section || !card) return;
+    if (!report) { section.hidden = true; return; }
+    section.hidden = false;
+    var scoreHtml = score != null
+      ? '<div class="exec-kpi-card" style="display:inline-block;margin-right:1rem"><span class="exec-kpi-label">Governance score</span><span class="exec-kpi-value">' + esc(String(score)) + '/100</span></div>'
+      : "";
+    card.innerHTML =
+      '<div class="exec-latest-meta">' +
+      "<h3>" + esc(report.projectLabel || report.planLabel || "Executive Assessment") + "</h3>" +
+      '<p class="microcopy">Assessed ' + esc(report.uploadDate || report.purchasedAt || "—") +
+      " · " + (report.workItemCount != null ? report.workItemCount : "—") + " work items" +
+      " · Plan: " + esc(report.planLabel) + "</p>" +
+      scoreHtml + "</div>";
+    var actions = document.createElement("div");
+    actions.className = "report-action-row";
+    if (report.customerPaymentState === "generation_failed") {
+      actions.innerHTML =
+        '<p class="microcopy">Report generation failed. <a href="recover-report.html">Recover my report</a> or contact support@aigovernancehub.ai.</p>';
+    } else if (!report.downloadReady) {
+      actions.innerHTML =
+        '<p class="microcopy">Your report is being prepared — downloads will appear automatically when ready. <a href="recover-report.html">Recover my report</a> if not received.</p>';
+    } else if (!report.downloadDisabled && report.availableFormats) {
+      report.availableFormats.forEach(function (fmt) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = fmt === "html" ? "btn btn-primary" : "btn btn-secondary";
+        btn.textContent = "Download " + (FORMAT_LABELS[fmt] || fmt);
+        btn.addEventListener("click", function () {
+          fetch("/api/download-report", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ recoveryToken: report.recoveryToken, format: fmt }),
+          })
+            .then(function (r) {
+              if (!r.ok) throw new Error("Download failed.");
+              return r.blob();
+            })
+            .then(function (blob) {
+              var url = URL.createObjectURL(blob);
+              var a = document.createElement("a");
+              a.href = url;
+              a.download = "ai-governance-executive-report." + fmt;
+              a.click();
+              URL.revokeObjectURL(url);
+            })
+            .catch(function (e) { setStatus(e.message, true); });
+        });
+        actions.appendChild(btn);
+      });
+    }
+    card.appendChild(actions);
+  }
+
   function renderReports(reports) {
     var list = $("dashboard-reports");
     if (!list) return;
@@ -553,6 +610,11 @@
         $("dashboard-email").textContent = results[1].email;
         reportsData = results[1].reports || [];
         renderReports(reportsData);
+        var latestReport = reportsData[0] || null;
+        var latestScore = latestReport && latestReport.governanceScore != null
+          ? latestReport.governanceScore
+          : (wsData && wsData.health ? wsData.health.healthScore : null);
+        renderLatestAssessment(latestReport, latestScore);
         setStatus("", false);
       })
       .catch(function (e) {

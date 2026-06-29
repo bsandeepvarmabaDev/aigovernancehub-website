@@ -165,23 +165,25 @@ export async function sendPaymentEmails(meta) {
     ],
   });
 
+  const mailOptions = { from: config.from, to: meta.buyerEmail, subject, text, html };
   try {
-    await transport.sendMail({
-      from: config.from,
-      to: meta.buyerEmail,
-      subject,
-      text,
-      html,
-    });
+    await transport.sendMail(mailOptions);
     return { sent: true };
-  } catch (error) {
-    console.error("Email delivery failed", {
-      message: error instanceof Error ? error.message : "unknown",
-    });
-    return {
-      sent: false,
-      reason: error instanceof Error ? error.message : "Email delivery failed.",
-    };
+  } catch (firstError) {
+    // One immediate retry — covers transient SMTP connection resets
+    try {
+      const retryTransport = createTransport();
+      if (retryTransport) await retryTransport.sendMail(mailOptions);
+      return { sent: true };
+    } catch (error) {
+      console.error("Email delivery failed after retry", {
+        message: error instanceof Error ? error.message : "unknown",
+      });
+      return {
+        sent: false,
+        reason: error instanceof Error ? error.message : "Email delivery failed.",
+      };
+    }
   }
 }
 

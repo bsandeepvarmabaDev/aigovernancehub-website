@@ -73,15 +73,13 @@
         })
         .then(function (result) {
           if (!result.ok) throw new Error((result.data && result.data.error) || "We could not send the sign-in link.");
-          var msg =
-            result.data.message ||
-            "Check your inbox for a secure sign-in link. It expires in 15 minutes.";
-          if (result.data.emailDeliveryAvailable === false) {
-            msg =
-              result.data.message ||
-              "Email sign-in is temporarily unavailable. Use Recover My Report after purchase, or contact support@aigovernancehub.ai.";
-          }
-          setStatus(msg, false);
+          var deliveryFailed = result.data.emailDeliveryAvailable === false;
+          var msg = deliveryFailed
+            ? (result.data.message ||
+                "Email sign-in is temporarily unavailable. Use Recover My Report after purchase, or contact support@aigovernancehub.ai.")
+            : (result.data.message ||
+                "Check your inbox for a secure sign-in link. It expires in 15 minutes.");
+          setStatus(msg, deliveryFailed);
         })
         .catch(function (err) {
           setStatus(err.message, true);
