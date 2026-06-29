@@ -16,11 +16,37 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="legal-page">
-  <main class="legal-container">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="legal-hero">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" loading="lazy" /><span>AI Governance Hub</span></a>
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
+        <a href="pricing.html">Pricing</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="trust-center.html">Trust Center</a>
+      </div>
+    </nav>
+  </header>
+  <main class="legal-container" id="main-content">
     <h1>Cookie Policy</h1>
     <p>AI Governance Hub uses essential HttpOnly session cookies for passwordless sign-in to My Reports. These cookies are required for account access and are not used for advertising.</p>
     <p>We do not use cookies to store payment status or unlock reports. Payment verification is server-side only.</p>
     <p>See also our <a href="privacy.html">Privacy Policy</a>.</p>
   </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookie-policy.html" aria-current="page">Cookie Policy</a>
+        <a href="security-policy.html">Security Policy</a>
+        <a href="support.html">Support</a>
+      </div>
+      <p class="footer-note">© 2026 AI Governance Hub</p>
+    </div>
+  </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
 </body>
 </html>

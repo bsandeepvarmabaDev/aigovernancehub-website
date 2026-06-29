@@ -1,48 +1,49 @@
-/* AI Governance Hub Website v16.0.1 - Razorpay Checkout Helper
-   Public frontend only. Do not place Razorpay key_secret in this file.
-   For production fulfilment, configure backend endpoints to create orders and verify signatures. */
+/* AI Governance Hub Website — Razorpay Checkout Reference Helper
+   DEPRECATED: This file is a legacy reference only and is NOT loaded by any page.
+   The live checkout flow uses /assets/js/guided-assessment.js → /api/create-order → /api/verify-payment.
+   Do not place RAZORPAY_KEY_SECRET in any frontend file.
+   Backend key_id is served from /api/create-order after server-side order creation. */
 (function () {
   "use strict";
 
   const CONFIG = {
-    keyId: "rzp_test_REPLACE_WITH_YOUR_KEY_ID",
+    keyId: "",
     brandName: "AI Governance Hub",
     brandLogo: "https://aigovernancehub.ai/app-logo-512.png",
     supportEmail: "support@aigovernancehub.ai",
 
-    // Recommended production flow:
-    // 1. POST createOrderEndpoint with { planId, amount, currency, customer }
-    // 2. Open Razorpay Checkout with returned order_id
-    // 3. POST verifyEndpoint with razorpay_order_id/payment_id/signature
-    createOrderEndpoint: "",
-    verifyEndpoint: "",
+    // Production flow (implemented in guided-assessment.js + api/):
+    // 1. POST /api/create-order with { sessionId, sessionToken, currency, orderConfirmed }
+    // 2. Open Razorpay Checkout with order_id and key_id returned from server
+    // 3. POST /api/verify-payment with razorpay_order_id/payment_id/signature + sessionId/sessionToken
+    createOrderEndpoint: "/api/create-order",
+    verifyEndpoint: "/api/verify-payment",
 
-    // Static-site fallback while backend verification is not deployed.
     paymentLinks: {
-      assessment: "https://razorpay.me/@balthisandeep?amount=CVDUr6Uxp2FOGZGwAHntNg%3D%3D",
+      assessment: "",
       professional: "",
       enterprise: ""
     }
   };
 
   const PLANS = {
-    assessment: {
-      name: "AI Governance Assessment Report",
-      amount: 9900,
-      displayAmount: "₹99",
-      description: "Instant browser-generated AI Governance PDF report"
+    starter: {
+      name: "AI Governance Executive Assessment",
+      amount: 19900,
+      displayAmount: "From ₹199",
+      description: "Full executive assessment — HTML, PDF, Word, PowerPoint"
     },
     professional: {
-      name: "Professional Governance Review",
-      amount: 29900,
-      displayAmount: "₹299",
-      description: "Detailed governance review and 30-day action plan"
+      name: "Professional AI Governance Assessment",
+      amount: 59900,
+      displayAmount: "From ₹599",
+      description: "Professional-tier assessment up to 500 work items"
     },
-    enterprise: {
-      name: "Enterprise Governance Review",
+    business: {
+      name: "Business AI Governance Assessment",
       amount: 99900,
-      displayAmount: "₹999",
-      description: "Executive governance review and audit-readiness recommendations"
+      displayAmount: "From ₹999",
+      description: "Business-tier assessment up to 1,000 work items"
     }
   };
 

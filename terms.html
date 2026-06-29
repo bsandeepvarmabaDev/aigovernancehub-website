@@ -15,10 +15,12 @@
 </head>
 
 <body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="legal-hero">
-    <nav class="nav">
+    <nav class="nav" aria-label="Main navigation">
       <a class="logo logo-with-icon" href="index.html"><img class="brand-icon" src="app-logo.svg" alt="" aria-hidden="true" /><span>AI Governance Hub</span></a>
-      <div class="nav-links">
+      <button class="legal-nav-toggle" type="button" aria-expanded="false" aria-controls="legalNavLinks">Menu</button>
+      <div class="nav-links" id="legalNavLinks">
         <a href="index.html#platform">Platform</a>
         <a href="index.html#frameworks">Frameworks</a>
         <a href="docs/index.html">Documentation</a>
@@ -29,7 +31,7 @@
     </nav>
   </header>
 
-  <main class="legal-container">
+  <main class="legal-container" id="main-content">
     <h1>Terms of Use</h1>
     <p><strong>Effective Date:</strong> June 9, 2026</p>
 
@@ -90,5 +92,6 @@
       <p class="footer-note">© 2026 AI Governance Hub. Available on Atlassian Marketplace for Jira Cloud. Built on Atlassian Forge. Security-first by design.</p>
     </div>
   </footer>
+  <script src="assets/js/legal-nav.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,26 @@
 /* AI Governance Hub — Starter Experience (customer-visible journey polish) */
 
+@keyframes sx-verify-sweep {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+.agh-progress-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: rgba(37, 99, 235, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.agh-progress-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #0ea5e9, #2563eb);
+  background-size: 200% 100%;
+  border-radius: 999px;
+  animation: sx-verify-sweep 2s ease-in-out infinite;
+}
+
 @keyframes sx-fade-up {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -59,8 +80,8 @@
   background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 55%, #f0fdf4 100%);
   border: 1px solid #bfdbfe;
   box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
-  min-height: 5.5rem;
 }
+.sx-journey-banner:empty { display: none; }
 
 .sx-banner-animate .sx-banner-inner {
   animation: sx-banner-in 0.28s ease-out;
