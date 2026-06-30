@@ -65,10 +65,10 @@
     if (!emailStatusLine || !data) return;
     if (data.emailStatus === "sent") {
       emailStatusLine.textContent =
-        "We've also emailed your report to your checkout address.";
+        "We also emailed you a backup copy. Your downloads above are ready now — no need to wait for it.";
     } else if (data.emailStatus === "failed") {
       emailStatusLine.textContent =
-        "Email delivery is temporarily unavailable — download directly above, or use Recover My Report.";
+        "Email delivery is temporarily unavailable, but your downloads are ready above.";
     } else if (data.reportStatus === "generating") {
       emailStatusLine.textContent =
         "Payment verified. Your report is being prepared — downloads will appear automatically.";
