@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="assets/css/product-maturity.css" />
   <link rel="stylesheet" href="assets/css/premium-experience.css" />
   <link rel="stylesheet" href="assets/css/business-excellence.css" />
+  <link rel="stylesheet" href="assets/css/homepage-premium.css" />
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -61,32 +62,71 @@
   </header>
 
   <main id="top">
-    <section class="hero hero-saas">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <span class="eyebrow">Enterprise AI Governance Platform</span>
-          <h1>Understand your AI portfolio in minutes</h1>
-          <p class="hero-lead"><strong>Upload</strong> a project export from Jira, Azure DevOps, or Excel. <strong>We analyze</strong> every work item for AI risk and governance gaps. <strong>Preview free</strong> — then receive your Executive Assessment in HTML, PDF, Word, and PowerPoint after verified payment.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="pricing.html">Start Your Assessment</a>
-            <a class="btn btn-secondary" href="trust-center.html">Trust Center</a>
+    <section class="hp-hero">
+      <div class="hp-hero-inner">
+        <div class="hp-copy">
+          <span class="hp-eyebrow"><span class="dot" aria-hidden="true"></span>Enterprise AI Governance</span>
+          <h1 class="hp-h1">Know your <span class="hp-grad">AI risk</span> before your board asks.</h1>
+          <p class="hp-lead">Upload a Jira, Azure DevOps, or Excel export. Preview your AI governance score for free. Download executive reports in PDF, Word, PowerPoint, and HTML after verified payment.</p>
+          <div class="hp-cta-row">
+            <a class="hp-btn hp-btn-primary" href="pricing.html#assessment-wizard">Start Free Preview →</a>
+            <a class="hp-btn hp-btn-secondary" href="samples/sample-governance-report.html" target="_blank" rel="noopener">View Sample Report</a>
           </div>
+          <p class="hp-microtrust"><b>No card required</b> to preview · Governance score in under 2 minutes · Server-validated</p>
         </div>
 
-        <div class="hero-visual" aria-label="AI Governance Hub product dashboard preview">
-          <div class="dashboard-frame">
-            <div class="dashboard-top"><span>AI Governance Hub</span><span class="dash-pill">Last 30 Days</span></div>
-            <img src="images/dashboard.svg" alt="AI Governance Hub dashboard preview showing governance score, work items, AI-related count, and risk distribution" loading="lazy" width="640" height="360" />
+        <div class="hp-preview" aria-label="AI Governance Hub executive assessment preview">
+          <div class="hp-window">
+            <div class="hp-win-top">
+              <span class="hp-win-title"><span class="hp-win-dots" aria-hidden="true"><i></i><i></i><i></i></span> Executive Assessment</span>
+              <span class="hp-win-pill">● Ready</span>
+            </div>
+            <div class="hp-win-grid">
+              <div class="hp-tile">
+                <div class="hp-tile-label">Governance score</div>
+                <div class="hp-score" style="margin-top:10px">
+                  <div class="hp-ring">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="9"/><circle cx="50" cy="50" r="44" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="61"/></svg>
+                    <span class="v">78</span>
+                  </div>
+                  <div class="hp-score-meta"><div class="big">Strong</div><div class="trend">▲ +6 vs last run</div></div>
+                </div>
+              </div>
+              <div class="hp-tile hp-stat">
+                <div class="hp-tile-label">AI-related work items</div>
+                <div class="n" style="margin-top:8px">12</div>
+                <div class="s">of 248 scanned · <span style="color:#fca5a5">2 high-risk</span></div>
+                <div class="n" style="font-size:18px;margin-top:14px">248</div>
+                <div class="s">total work items analyzed</div>
+              </div>
+              <div class="hp-tile span2">
+                <div class="hp-tile-label">Risk distribution</div>
+                <div class="hp-riskbar"><span class="hi" style="width:17%"></span><span class="me" style="width:33%"></span><span class="lo" style="width:50%"></span></div>
+                <div class="hp-risk-legend"><span><i style="background:#ef4444"></i>High 2</span><span><i style="background:#f59e0b"></i>Medium 7</span><span><i style="background:#22c55e"></i>Low 3</span></div>
+              </div>
+              <div class="hp-tile span2">
+                <div class="hp-tile-label">Framework mapping</div>
+                <div class="hp-fw"><span>EU AI Act</span><span>ISO 42001</span><span>NIST AI RMF</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="hp-float" aria-hidden="true">
+            <span class="ic">📑</span>
+            <span><span class="t">Board-ready report</span><span class="f">PDF · DOCX · PPTX · HTML</span></span>
           </div>
         </div>
       </div>
 
-      <div class="trust-panel" aria-label="Trust indicators">
-        <a href="https://developer.atlassian.com/platform/forge/" target="_blank" rel="noopener noreferrer">✓ Built on Atlassian Forge</a>
-        <a href="#platform">✓ Jira Cloud Ready</a>
-        <a href="security-policy.html">✓ Security Policy</a>
-        <span>✓ Free preview — no card required</span>
-        <a href="https://marketplace.atlassian.com/apps/3237155442/ai-governance-hub?hosting=cloud&tab=overview" target="_blank" rel="noopener noreferrer">✓ Atlassian Marketplace</a>
+      <div class="hp-proof" aria-label="Why teams trust AI Governance Hub">
+        <span class="hp-proof-item"><span class="ck" aria-hidden="true">✓</span>Free preview before payment</span>
+        <span class="hp-proof-sep" aria-hidden="true"></span>
+        <span class="hp-proof-item"><span class="ck" aria-hidden="true">✓</span>Server-side pricing</span>
+        <span class="hp-proof-sep" aria-hidden="true"></span>
+        <span class="hp-proof-item"><span class="ck" aria-hidden="true">✓</span>Secure Razorpay checkout</span>
+        <span class="hp-proof-sep" aria-hidden="true"></span>
+        <span class="hp-proof-item"><span class="ck" aria-hidden="true">✓</span>Board-ready PDF / DOCX / PPTX</span>
+        <span class="hp-proof-sep" aria-hidden="true"></span>
+        <span class="hp-proof-item"><span class="ck" aria-hidden="true">✓</span>Built for Jira &amp; Excel exports</span>
       </div>
     </section>
 
@@ -96,31 +136,33 @@
         <h2 id="how-it-works-heading">From export to executive report in minutes</h2>
         <p>Upload your project data, get a free preview, then receive a board-ready AI governance assessment after verified payment — no Jira expertise required.</p>
       </div>
-      <div class="sx-home-journey" aria-label="Five steps to your assessment">
-        <div class="sx-home-step">
-          <div class="sx-home-step-num" aria-hidden="true">1</div>
-          <strong>Upload</strong>
-          <span>CSV, Excel, or TSV from Jira, Azure DevOps, or your own spreadsheet</span>
-        </div>
-        <div class="sx-home-step">
-          <div class="sx-home-step-num" aria-hidden="true">2</div>
-          <strong>Analyze</strong>
-          <span>Every work item scanned for AI signals, governance gaps, and risk</span>
-        </div>
-        <div class="sx-home-step">
-          <div class="sx-home-step-num" aria-hidden="true">3</div>
-          <strong>Preview free</strong>
-          <span>Governance score, risk summary, and AI work item count — before you pay</span>
-        </div>
-        <div class="sx-home-step">
-          <div class="sx-home-step-num" aria-hidden="true">4</div>
-          <strong>Pay</strong>
-          <span>Secure Razorpay checkout · Starter from ₹199 · amount verified server-side</span>
-        </div>
-        <div class="sx-home-step">
-          <div class="sx-home-step-num" aria-hidden="true">5</div>
-          <strong>Download</strong>
-          <span>HTML, PDF, Word, PowerPoint — delivered immediately, no sign-in required</span>
+      <div class="hp-how" aria-label="Five steps from export to executive report">
+        <div class="hp-how-flow">
+          <div class="hp-step">
+            <span class="num" aria-hidden="true">1</span>
+            <h3>Upload</h3>
+            <p>A CSV or Excel export from Jira, Azure DevOps, or your own spreadsheet.</p>
+          </div>
+          <div class="hp-step">
+            <span class="num" aria-hidden="true">2</span>
+            <h3>Analyze</h3>
+            <p>Every work item scanned server-side for AI signals, gaps, and risk.</p>
+          </div>
+          <div class="hp-step">
+            <span class="num" aria-hidden="true">3</span>
+            <h3>Preview</h3>
+            <p>See your governance score and risk summary free — before you pay.</p>
+          </div>
+          <div class="hp-step">
+            <span class="num" aria-hidden="true">4</span>
+            <h3>Pay</h3>
+            <p>Secure Razorpay checkout. Starter from ₹199, verified server-side.</p>
+          </div>
+          <div class="hp-step">
+            <span class="num" aria-hidden="true">5</span>
+            <h3>Download</h3>
+            <p>HTML, PDF, Word &amp; PowerPoint — instantly, no sign-in required.</p>
+          </div>
         </div>
       </div>
       <div class="hero-actions" style="justify-content:center;margin-top:1.5rem">
