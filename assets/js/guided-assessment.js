@@ -52,9 +52,7 @@
         "Save the CSV file to your computer",
         "Upload the export below",
       ],
-      sample: "samples/sample-jira-export.csv",
-      videoPlaceholder: "Video walkthrough coming soon.",
-    },
+      sample: "samples/sample-jira-export.csv",    },
     "azure-devops": {
       label: "Azure DevOps",
       supported: true,
@@ -66,9 +64,7 @@
         "Export results to CSV",
         "Upload the CSV file below",
       ],
-      sample: "samples/sample-azure-devops.csv",
-      videoPlaceholder: "Video walkthrough coming soon.",
-    },
+      sample: "samples/sample-azure-devops.csv",    },
     excel: {
       label: "Excel (.xlsx)",
       supported: true,
@@ -79,9 +75,7 @@
         "Save as .xlsx or export as CSV (UTF-8)",
         "Upload your completed file below",
       ],
-      sample: "samples/sample-governance-template.csv",
-      videoPlaceholder: "Video walkthrough coming soon.",
-    },
+      sample: "samples/sample-governance-template.csv",    },
     csv: {
       label: "CSV",
       supported: true,
@@ -92,9 +86,7 @@
         "Use the sample template if unsure",
         "Upload your CSV below",
       ],
-      sample: "samples/sample-governance-template.csv",
-      videoPlaceholder: "Video walkthrough coming soon.",
-    },
+      sample: "samples/sample-governance-template.csv",    },
     github: { label: "GitHub", supported: false },
     servicenow: { label: "ServiceNow", supported: false },
     monday: { label: "Monday.com", supported: false },
@@ -182,9 +174,6 @@
       }).join("") +
       "</ol>" +
       sampleBlock +
-      '<p class="microcopy video-placeholder">' +
-      cfg.videoPlaceholder +
-      "</p>" +
       '<details class="faq-item"><summary>Validation expectations</summary>' +
       "<p>Your file must include Issue Key, Summary, Description, Issue Type, Status, and Project. " +
       "We detect duplicate keys, count work items server-side, and recommend the correct plan automatically.</p></details>";
