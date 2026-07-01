@@ -1,20 +1,18 @@
 /**
  * AI Governance Hub — Product walkthrough video (feature-flagged).
  *
- * To go live with the real 60–90s walkthrough:
- *   1. Set VIDEO_WALKTHROUGH_ENABLED = true
- *   2. Set VIDEO_URL to the embed URL, e.g.
- *        "https://www.youtube-nocookie.com/embed/VIDEO_ID"
- *   The pricing page CSP frame-src already trusts youtube.com / youtube-nocookie.com.
+ * LIVE as of the 90-second walkthrough recorded for v25.13.
+ * The pricing page CSP frame-src already trusts youtube.com / youtube-nocookie.com.
  *
- * While disabled (or with an empty URL) the entire section is hidden — no
- * "coming soon", no placeholder, no empty frame is ever shown.
+ * If this ever needs to be pulled: set VIDEO_WALKTHROUGH_ENABLED = false or clear
+ * VIDEO_URL — the entire section hides again with no "coming soon", no placeholder,
+ * no empty frame ever shown.
  */
 (function () {
   "use strict";
 
-  var VIDEO_WALKTHROUGH_ENABLED = false;
-  var VIDEO_URL = ""; // e.g. "https://www.youtube-nocookie.com/embed/VIDEO_ID"
+  var VIDEO_WALKTHROUGH_ENABLED = true;
+  var VIDEO_URL = "https://www.youtube-nocookie.com/embed/DV52OlF6w1s";
   var VIDEO_TITLE = "AI Governance Hub — 90-second product walkthrough";
 
   var section = document.querySelector("[data-video-walkthrough]");
@@ -41,7 +39,7 @@
   iframe.setAttribute("frameborder", "0");
   iframe.setAttribute(
     "allow",
-    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
   );
   iframe.setAttribute("allowfullscreen", "");
   iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
