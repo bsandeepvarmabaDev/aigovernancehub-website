@@ -114,7 +114,7 @@ export default async function handler(req, res) {
     return sendError(res, 400, validationError);
   }
 
-  const encodingError = validateEncoding(buffer);
+  const encodingError = validateEncoding(buffer, filename);
   if (encodingError) {
     return sendError(res, 400, encodingError);
   }

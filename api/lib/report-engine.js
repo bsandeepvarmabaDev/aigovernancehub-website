@@ -178,9 +178,13 @@ export function runSecurityScan(text) {
   return "";
 }
 
-export function validateEncoding(buffer) {
+export function validateEncoding(buffer, filename = "") {
   const text = buffer.toString("utf8");
   if (text.includes("\uFFFD")) {
+    const lower = filename.toLowerCase();
+    if (lower.endsWith(".xlsx") || lower.endsWith(".xls")) {
+      return "We can't read native Excel workbook files directly yet. In Excel, use File \u2192 Save As \u2192 CSV UTF-8 (Comma delimited), then upload the .csv file instead.";
+    }
     return "File encoding is not supported. Save your export as UTF-8 CSV and try again.";
   }
   return "";

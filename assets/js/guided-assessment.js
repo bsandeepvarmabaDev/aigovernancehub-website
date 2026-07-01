@@ -66,14 +66,14 @@
       ],
       sample: "samples/sample-azure-devops.csv",    },
     excel: {
-      label: "Excel (.xlsx)",
+      label: "Excel (export as CSV)",
       supported: true,
       accept: ".xlsx,.xls,.csv",
       instructions: [
         "Use our Excel-compatible CSV template",
         "Fill required columns for each work item",
-        "Save as .xlsx or export as CSV (UTF-8)",
-        "Upload your completed file below",
+        "In Excel: File → Save As → CSV UTF-8 (Comma delimited)",
+        "Upload the .csv file below",
       ],
       sample: "samples/sample-governance-template.csv",    },
     csv: {
