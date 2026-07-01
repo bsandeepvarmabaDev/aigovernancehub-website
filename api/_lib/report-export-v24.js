@@ -1,10 +1,18 @@
 /**
  * AI Governance Hub v24.0 — Board-ready executive presentation (15–20 slides)
  */
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
 
 async function loadPptxGenJS() {
-  const mod = await import("pptxgenjs");
-  return mod.default;
+  // pptxgenjs is a dual CJS/ESM package. Vercel's bundler mis-resolves the bare
+  // dynamic import("pptxgenjs") to the ESM build (dist/pptxgen.es.js) but
+  // executes it in a context that can't handle import/export syntax, crashing
+  // with "Cannot use import statement outside a module" (confirmed in
+  // production logs). require() forces Node's CJS resolution condition
+  // instead, landing on the confirmed-working dist/pptxgen.cjs.js build.
+  return require("pptxgenjs");
 }
 
 export async function generateExecutiveBoardPptx(executive, meta) {
@@ -192,19 +200,64 @@ export async function generateExecutiveBoardPptx(executive, meta) {
   return Buffer.from(data);
 }
 
+/**
+ * Generates every executive format. HTML + text are the guaranteed minimum
+ * deliverable — if either fails, this throws (nothing usable to give the
+ * customer). PDF, DOCX, and PPTX generate independently via Promise.allSettled:
+ * one format failing never blocks the others or the customer's HTML/text
+ * report. Failed formats are reported back (not thrown) so the caller can
+ * still deliver what succeeded and log exactly what didn't.
+ */
 export async function generateAllExecutiveFormatsV24(executive, meta) {
+  const { logEvent } = await import("./correlation.js");
   const { generateExecutiveHtmlReport, generateExecutiveTextReport } = await import("./report-html-v22.js");
   const { generateExecutivePdfReport, generateExecutiveDocxReport } = await import("./report-export-v22.js");
+
+  function step(format, label, promise) {
+    logEvent("info", "report_format_start", { orderId: meta.orderId, format, category: "report_generation" });
+    return promise.then(
+      (value) => {
+        logEvent("info", "report_format_finish", { orderId: meta.orderId, format, category: "report_generation" });
+        return { status: "fulfilled", value };
+      },
+      (error) => {
+        logEvent("error", "report_format_failed", {
+          orderId: meta.orderId,
+          format,
+          category: "reliability",
+          message: error instanceof Error ? error.message : String(error),
+        });
+        return { status: "rejected", reason: error };
+      }
+    );
+  }
+
   // Only the board deck is ever delivered (pptxBoard always wins over pptxStandard
   // below), so generating the standard deck was pure wasted work on every paid
   // order — a full extra PPTX render, on a serverless function with no extended
   // timeout. Removed to cut total generation time and reduce timeout risk.
-  const [html, text, pdf, docx, pptxBoard] = await Promise.all([
-    Promise.resolve(generateExecutiveHtmlReport(executive, meta)),
-    Promise.resolve(generateExecutiveTextReport(executive, meta)),
-    generateExecutivePdfReport(executive, meta),
-    generateExecutiveDocxReport(executive, meta),
-    generateExecutiveBoardPptx(executive, meta),
+  const [htmlResult, textResult, pdfResult, docxResult, pptxResult] = await Promise.all([
+    step("html", "HTML", Promise.resolve().then(() => generateExecutiveHtmlReport(executive, meta))),
+    step("text", "Text", Promise.resolve().then(() => generateExecutiveTextReport(executive, meta))),
+    step("pdf", "PDF", generateExecutivePdfReport(executive, meta)),
+    step("docx", "DOCX", generateExecutiveDocxReport(executive, meta)),
+    step("pptx", "PPTX", generateExecutiveBoardPptx(executive, meta)),
   ]);
-  return { html, text, pdf, docx, pptx: pptxBoard };
+
+  if (htmlResult.status === "rejected") throw htmlResult.reason;
+  if (textResult.status === "rejected") throw textResult.reason;
+
+  const failedFormats = [];
+  if (pdfResult.status === "rejected") failedFormats.push("pdf");
+  if (docxResult.status === "rejected") failedFormats.push("docx");
+  if (pptxResult.status === "rejected") failedFormats.push("pptx");
+
+  return {
+    html: htmlResult.value,
+    text: textResult.value,
+    pdf: pdfResult.status === "fulfilled" ? pdfResult.value : null,
+    docx: docxResult.status === "fulfilled" ? docxResult.value : null,
+    pptx: pptxResult.status === "fulfilled" ? pptxResult.value : null,
+    failedFormats,
+  };
 }

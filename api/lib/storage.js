@@ -244,26 +244,39 @@ export async function loadReportRecord(orderId) {
   return getJson(reportKey(orderId));
 }
 
+/**
+ * html + text are the guaranteed minimum deliverable — their upload failing is
+ * fatal (throws). PDF/DOCX/PPTX upload independently: if the blob store hiccups
+ * on one optional format, that format is simply reported back as unavailable
+ * rather than losing the customer's already-generated HTML/text report.
+ */
 export async function saveReportContent(orderId, html, text, extras = {}) {
   await putObject(reportHtmlKey(orderId), html, "text/html; charset=utf-8");
   await putObject(reportTextKey(orderId), text, "text/plain; charset=utf-8");
-  if (extras.pdf) {
-    await putObject(reportPdfKey(orderId), extras.pdf, "application/pdf");
+
+  const uploadFailures = [];
+  async function tryUpload(format, buf, key, contentType) {
+    if (!buf) return;
+    try {
+      await putObject(key, buf, contentType);
+    } catch (error) {
+      uploadFailures.push({ format, message: error instanceof Error ? error.message : String(error) });
+    }
   }
-  if (extras.docx) {
-    await putObject(
-      reportDocxKey(orderId),
-      extras.docx,
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    );
-  }
-  if (extras.pptx) {
-    await putObject(
-      reportPptxKey(orderId),
-      extras.pptx,
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-    );
-  }
+  await tryUpload("pdf", extras.pdf, reportPdfKey(orderId), "application/pdf");
+  await tryUpload(
+    "docx",
+    extras.docx,
+    reportDocxKey(orderId),
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  );
+  await tryUpload(
+    "pptx",
+    extras.pptx,
+    reportPptxKey(orderId),
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+  );
+  return { uploadFailures };
 }
 
 export async function loadReportPdf(orderId) {

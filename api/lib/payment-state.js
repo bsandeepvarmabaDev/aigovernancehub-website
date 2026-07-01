@@ -1,6 +1,7 @@
 /**
  * Canonical payment lifecycle states — v25.24 (P0 certification)
  */
+import { maskOrderId } from "./storage.js";
 
 export const PAYMENT_STATE = {
   PENDING: "pending",
@@ -139,11 +140,21 @@ export function customerStatusLabel(customerPaymentState) {
 export function customerStatusMessage(record) {
   const state = resolveCustomerPaymentState(record);
   const reportStatus = resolveReportStatus(record);
+  const ref = record?.orderId ? maskOrderId(record.orderId) : null;
   if (state === CUSTOMER_PAYMENT_STATE.SUCCESS) {
-    return "Payment verified. Your full report is ready to download.";
+    const missingOptional = (record?.failedFormats || []).length > 0;
+    return missingOptional
+      ? "Payment verified. Your report is ready — some formats are still being regenerated and will appear shortly."
+      : "Payment verified. Your full report is ready to download.";
   }
   if (state === CUSTOMER_PAYMENT_STATE.GENERATION_FAILED) {
-    return "Payment verified. Report generation failed — use Recover My Report to retry or contact support@aigovernancehub.ai.";
+    // Always include an internal reference — a bare "generation failed" with
+    // nothing to quote to support is a dead end for the customer.
+    return (
+      "Payment verified. Report generation failed" +
+      (ref ? ` (reference ${ref})` : "") +
+      " — use Recover My Report to retry or contact support@aigovernancehub.ai with this reference."
+    );
   }
   if (state === CUSTOMER_PAYMENT_STATE.PROCESSING) {
     return reportStatus === REPORT_STATE.GENERATING
@@ -171,6 +182,8 @@ export function buildCustomerStatusView(record) {
     message: customerStatusMessage(record),
     emailStatus: record?.emailSent ? "sent" : record?.emailError ? "failed" : "pending",
     availableFormats: record?.availableFormats || ["html", "text"],
+    failedFormats: record?.failedFormats || [],
+    orderRef: record?.orderId ? maskOrderId(record.orderId) : null,
     correlationId: record?.correlationId || null,
   };
 }

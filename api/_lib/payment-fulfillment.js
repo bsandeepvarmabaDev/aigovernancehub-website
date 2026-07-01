@@ -226,26 +226,47 @@ export async function persistVerifiedPayment({
   return record;
 }
 
+/**
+ * HTML + text are the only guaranteed formats. PDF/DOCX/PPTX are best-effort —
+ * if generation or blob upload fails for one, it's simply left out of
+ * availableFormats (and reported in failedFormats for logging/messaging).
+ * The customer still gets everything that succeeded; nothing is ever blocked
+ * by one format failing.
+ */
 async function generateReportArtifacts(session, reportMeta, normalizedIndustry) {
   const executiveRaw = session.executiveAssessment;
   const executive = executiveRaw ? applyIndustryModel(executiveRaw, normalizedIndustry) : null;
   let availableFormats = ["html", "text"];
+  let failedFormats = [];
 
   if (executive) {
     const formats = await generateAllExecutiveFormatsV24(executive, reportMeta);
-    await saveReportContent(reportMeta.orderId, formats.html, formats.text, {
+    const { uploadFailures } = await saveReportContent(reportMeta.orderId, formats.html, formats.text, {
       pdf: formats.pdf,
       docx: formats.docx,
       pptx: formats.pptx,
     });
-    availableFormats = ["html", "text", "pdf", "docx", "pptx"];
+    const uploadFailedSet = new Set((uploadFailures || []).map((f) => f.format));
+    availableFormats = ["html", "text"];
+    if (formats.pdf && !uploadFailedSet.has("pdf")) availableFormats.push("pdf");
+    if (formats.docx && !uploadFailedSet.has("docx")) availableFormats.push("docx");
+    if (formats.pptx && !uploadFailedSet.has("pptx")) availableFormats.push("pptx");
+    failedFormats = Array.from(new Set([...(formats.failedFormats || []), ...uploadFailedSet]));
+    if (failedFormats.length) {
+      logEvent("warn", "report_partial_success", {
+        orderId: reportMeta.orderId,
+        category: "reliability",
+        failedFormats,
+        availableFormats,
+      });
+    }
   } else {
     const html = generateHtmlReport(session.analysis, reportMeta);
     const text = generateTextReport(session.analysis, reportMeta);
     await saveReportContent(reportMeta.orderId, html, text);
   }
 
-  return { executive, availableFormats };
+  return { executive, availableFormats, failedFormats };
 }
 
 /**
@@ -334,11 +355,15 @@ export async function fulfillPaidAssessment({
 
   let executive;
   let availableFormats = ["html", "text"];
+  let failedFormats = [];
 
   try {
+    logEvent("info", "blob_upload_start", { orderId, category: "report_generation" });
     const generated = await generateReportArtifacts(session, reportMeta, normalizedIndustry);
     executive = generated.executive;
     availableFormats = generated.availableFormats;
+    failedFormats = generated.failedFormats || [];
+    logEvent("info", "blob_upload_finish", { orderId, category: "report_generation", availableFormats, failedFormats });
   } catch (error) {
     const failedRecord = {
       ...(await loadReportRecord(orderId)),
@@ -400,6 +425,7 @@ export async function fulfillPaidAssessment({
       executive?.executiveSummary?.governanceScore ?? session.preview?.governanceScore ?? null,
     aiReadiness: executive?.executiveSummary?.aiReadiness ?? session.preview?.aiReadiness ?? null,
     availableFormats,
+    failedFormats,
     intelligenceSnapshot,
     paymentProvider,
     paymentState: PAYMENT_STATE.PAID,
@@ -417,7 +443,9 @@ export async function fulfillPaidAssessment({
     emailError: priorEmailSent ? null : baseRecord.emailError || null,
   };
 
+  logEvent("info", "dashboard_record_start", { orderId, category: "report_generation" });
   await saveReportRecord(reportRecord);
+  logEvent("info", "dashboard_record_finish", { orderId, category: "report_generation" });
 
   if (isEnterpriseOrder) {
     const salesRequest = await loadSalesRequestBySession(sessionId);
@@ -440,6 +468,7 @@ export async function fulfillPaidAssessment({
     emailResult = { sent: true, reason: "Already sent." };
   } else {
     try {
+      logEvent("info", "send_email_start", { orderId, category: "report_generation" });
       emailResult = await sendPaymentEmails({
         buyerName: name,
         buyerEmail: normalizeEmail(email),
@@ -458,6 +487,7 @@ export async function fulfillPaidAssessment({
         planLabel: plan.label,
         availableFormats,
       });
+      logEvent("info", "send_email_finish", { orderId, category: "report_generation", sent: emailResult.sent === true });
     } catch (error) {
       emailResult = {
         sent: false,

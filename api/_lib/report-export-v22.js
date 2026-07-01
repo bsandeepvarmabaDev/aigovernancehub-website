@@ -1,6 +1,7 @@
 /**
  * AI Governance Hub v22.0 — DOCX, PPTX, PDF export (server-side only)
  */
+import { createRequire } from "module";
 import PDFDocument from "pdfkit";
 import {
   Document,
@@ -159,9 +160,16 @@ export async function generateExecutiveDocxReport(executive, meta) {
   return Packer.toBuffer(doc);
 }
 
+const require = createRequire(import.meta.url);
+
 async function loadPptxGenJS() {
-  const mod = await import("pptxgenjs");
-  return mod.default;
+  // pptxgenjs is a dual CJS/ESM package. Vercel's bundler mis-resolves the bare
+  // dynamic import("pptxgenjs") to the ESM build (dist/pptxgen.es.js) but
+  // executes it in a context that can't handle import/export syntax, crashing
+  // with "Cannot use import statement outside a module" (confirmed in
+  // production logs). require() forces Node's CJS resolution condition
+  // instead, landing on the confirmed-working dist/pptxgen.cjs.js build.
+  return require("pptxgenjs");
 }
 
 export async function generateExecutivePptxReport(executive, meta) {
