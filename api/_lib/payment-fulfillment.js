@@ -548,6 +548,21 @@ export async function fulfillFromWebhookPayment({
     return { fulfilled: false, reason: "in_progress" };
   }
 
+  // Razorpay fires payment.captured and order.paid as separate webhook events
+  // for the same payment, often seconds apart as independent concurrent
+  // function invocations. Without an early claim, both pass the check above
+  // (neither has written GENERATING yet) and each runs the full report
+  // generation + email send independently — wasted work, and would double-
+  // email the customer once SMTP is healthy. Claiming immediately here, before
+  // the slower session/sales-request lookups below, shrinks that window from
+  // the full generation pipeline (~1-2s) down to a single write.
+  await saveReportRecord({
+    ...(existingReport || { orderId, paymentId }),
+    orderId,
+    reportStatus: REPORT_STATE.GENERATING,
+    updatedAt: new Date().toISOString(),
+  });
+
   const sessionId =
     existingReport?.sessionId ||
     paymentEntity?.notes?.sessionId ||
