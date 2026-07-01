@@ -260,9 +260,51 @@ export async function generateExecutivePdfReport(executive, meta) {
   subheading("Executive Conclusion");
   bodyText(ex.executiveConclusion, { align: "justify" });
 
-  // ---- 2. Governance Score Breakdown ----
+  // ---- 2. Assessment Overview ----
   doc.addPage();
-  sectionHeading("2. Governance Score Breakdown");
+  sectionHeading("2. Assessment Overview");
+  const overview = executive.assessmentOverview;
+  drawTable(
+    ["Field", "Value"],
+    [
+      ["Company", overview.company],
+      ["Department scope", overview.department],
+      ["Upload date", new Date(overview.uploadDate).toLocaleString()],
+      ["Platform", overview.platform],
+      ["Work items", String(overview.workItemCount)],
+      ["Plan tier", overview.planLabel],
+    ],
+    [1.4, 2]
+  );
+  subheading("Projects");
+  drawTable(
+    ["Project", "Items"],
+    overview.projects.map((p) => [p.name, p.count]),
+    [3, 1]
+  );
+  subheading("Issue Types · Priority · Workflow");
+  drawTable(
+    ["Issue Type", "Count", "Priority", "Count", "Status", "Count"],
+    Array.from({
+      length: Math.max(
+        overview.detectedIssueTypes.length,
+        overview.detectedPriorityDistribution.length,
+        overview.detectedWorkflow.length
+      ),
+    }).map((_, i) => [
+      overview.detectedIssueTypes[i]?.name || "",
+      overview.detectedIssueTypes[i]?.count ?? "",
+      overview.detectedPriorityDistribution[i]?.name || "",
+      overview.detectedPriorityDistribution[i]?.count ?? "",
+      overview.detectedWorkflow[i]?.name || "",
+      overview.detectedWorkflow[i]?.count ?? "",
+    ]),
+    [1.4, 0.8, 1.2, 0.8, 1.2, 0.8]
+  );
+
+  // ---- 3. Governance Score Breakdown ----
+  doc.addPage();
+  sectionHeading("3. Governance Score Breakdown");
   bodyText(`Overall score: ${executive.governanceScoreBreakdown.overall}/100`, { size: 10 });
   doc.moveDown(0.3);
   executive.governanceScoreBreakdown.dimensions.forEach((d) => {
@@ -283,8 +325,8 @@ export async function generateExecutivePdfReport(executive, meta) {
     doc.moveDown(0.5);
   });
 
-  // ---- 3. AI Opportunity Matrix ----
-  sectionHeading("3. AI Opportunity Matrix");
+  // ---- 4. AI Opportunity Matrix ----
+  sectionHeading("4. AI Opportunity Matrix");
   const oppHeaders = ["Title", "Category", "Complexity", "Priority", "Impact"];
   const oppWeights = [2, 1.6, 1, 1, 2.6];
   const oppRow = (o) => [o.title, o.suggestedAiCategory, o.estimatedComplexity, o.priority, o.expectedBusinessImpact];
@@ -297,9 +339,9 @@ export async function generateExecutivePdfReport(executive, meta) {
   subheading("Long-term Initiatives");
   drawTable(oppHeaders, executive.aiOpportunityMatrix.longTerm.map(oppRow), oppWeights);
 
-  // ---- 4. Business Impact ----
+  // ---- 5. Business Impact ----
   doc.addPage();
-  sectionHeading("4. Business Impact (Estimated)");
+  sectionHeading("5. Business Impact (Estimated)");
   const bi = executive.businessImpact;
   subheading("Methodology & assumptions");
   bulletList(bi.assumptions, { size: 9, color: COLORS.muted });
@@ -322,17 +364,17 @@ export async function generateExecutivePdfReport(executive, meta) {
     [1.4, 2]
   );
 
-  // ---- 5. Department Analysis ----
+  // ---- 6. Department Analysis ----
   doc.addPage();
-  sectionHeading("5. Department Analysis");
+  sectionHeading("6. Department Analysis");
   drawTable(
     ["Department", "Score", "Items", "AI-related", "High Risk"],
     executive.departmentAnalysis.map((d) => [d.name, d.score, d.workItems, d.aiCandidates, d.highRisk]),
     [2, 1, 1, 1, 1]
   );
 
-  // ---- 6. Framework Mapping ----
-  sectionHeading("6. Framework Mapping");
+  // ---- 7. Framework Mapping ----
+  sectionHeading("7. Framework Mapping");
   Object.values(executive.frameworkMapping).forEach((f) => {
     ensureSpace(60);
     subheading(f.title);
@@ -343,9 +385,9 @@ export async function generateExecutivePdfReport(executive, meta) {
     doc.moveDown(0.4);
   });
 
-  // ---- 7. Risk Heatmap ----
+  // ---- 8. Risk Heatmap ----
   doc.addPage();
-  sectionHeading("7. Risk Heatmap");
+  sectionHeading("8. Risk Heatmap");
   const riskHeaders = ["Item", "Impact", "Likelihood", "Recommendation", "Priority"];
   const riskWeights = [1.4, 2, 1, 2, 0.8];
   [
@@ -363,8 +405,8 @@ export async function generateExecutivePdfReport(executive, meta) {
     );
   });
 
-  // ---- 8. Executive Roadmap ----
-  sectionHeading("8. Executive Roadmap");
+  // ---- 9. Executive Roadmap ----
+  sectionHeading("9. Executive Roadmap");
   const roadmapHeaders = ["Action", "Business Value", "Owner", "Priority", "Expected Improvement"];
   const roadmapWeights = [1.8, 1.8, 1.4, 0.8, 1.6];
   [
@@ -380,9 +422,9 @@ export async function generateExecutivePdfReport(executive, meta) {
     );
   });
 
-  // ---- 9. Top Recommendations ----
+  // ---- 10. Top Recommendations ----
   doc.addPage();
-  sectionHeading("9. Top Recommendations");
+  sectionHeading("10. Top Recommendations");
   executive.recommendations.slice(0, 8).forEach((r) => {
     ensureSpace(70);
     const cardY = doc.y;
@@ -398,8 +440,8 @@ export async function generateExecutivePdfReport(executive, meta) {
     doc.moveDown(0.5);
   });
 
-  // ---- 10. Executive Insights ----
-  sectionHeading("10. Executive Insights");
+  // ---- 11. Executive Insights ----
+  sectionHeading("11. Executive Insights");
   executive.executiveInsights.forEach((i) => insightBox(i));
 
   doc.moveDown(0.4);
@@ -458,15 +500,54 @@ export async function generateExecutiveDocxReport(executive, meta) {
     new Paragraph({ text: "Executive Conclusion", heading: HeadingLevel.HEADING_2 }),
     new Paragraph({ text: ex.executiveConclusion }),
 
-    new Paragraph({ text: "2. Governance Score Breakdown", heading: HeadingLevel.HEADING_1 }),
+    new Paragraph({ text: "2. Assessment Overview", heading: HeadingLevel.HEADING_1 }),
   ];
+
+  const overview = executive.assessmentOverview;
+  children.push(
+    simpleTable(
+      ["Field", "Value"],
+      [
+        ["Company", overview.company],
+        ["Department scope", overview.department],
+        ["Upload date", new Date(overview.uploadDate).toLocaleString()],
+        ["Platform", overview.platform],
+        ["Work items", String(overview.workItemCount)],
+        ["Plan tier", overview.planLabel],
+      ]
+    )
+  );
+  children.push(new Paragraph({ text: "Projects", heading: HeadingLevel.HEADING_2 }));
+  children.push(simpleTable(["Project", "Items"], overview.projects.map((p) => [p.name, p.count])));
+  children.push(new Paragraph({ text: "Issue Types · Priority · Workflow", heading: HeadingLevel.HEADING_2 }));
+  children.push(
+    simpleTable(
+      ["Issue Type", "Count", "Priority", "Count", "Status", "Count"],
+      Array.from({
+        length: Math.max(
+          overview.detectedIssueTypes.length,
+          overview.detectedPriorityDistribution.length,
+          overview.detectedWorkflow.length
+        ),
+      }).map((_, i) => [
+        overview.detectedIssueTypes[i]?.name || "",
+        overview.detectedIssueTypes[i]?.count ?? "",
+        overview.detectedPriorityDistribution[i]?.name || "",
+        overview.detectedPriorityDistribution[i]?.count ?? "",
+        overview.detectedWorkflow[i]?.name || "",
+        overview.detectedWorkflow[i]?.count ?? "",
+      ])
+    )
+  );
+
+  children.push(new Paragraph({ text: "3. Governance Score Breakdown", heading: HeadingLevel.HEADING_1 }));
 
   executive.governanceScoreBreakdown.dimensions.forEach((d) => {
     children.push(new Paragraph({ text: `${d.label}: ${d.score}/${d.max}`, heading: HeadingLevel.HEADING_2 }));
     children.push(new Paragraph({ text: d.why }));
   });
 
-  children.push(new Paragraph({ text: "3. AI Opportunity Matrix", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "4. AI Opportunity Matrix", heading: HeadingLevel.HEADING_1 }));
   const oppSections = [
     ["Highest ROI Opportunities", executive.aiOpportunityMatrix.highestRoi],
     ["Highest Risk Opportunities", executive.aiOpportunityMatrix.highestRisk],
@@ -488,7 +569,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
   });
 
   const bi = executive.businessImpact;
-  children.push(new Paragraph({ text: "4. Business Impact (Estimated)", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "5. Business Impact (Estimated)", heading: HeadingLevel.HEADING_1 }));
   children.push(new Paragraph({ text: "Methodology & assumptions", heading: HeadingLevel.HEADING_2 }));
   bi.assumptions.forEach((a) => children.push(new Paragraph({ text: a, bullet: { level: 0 } })));
   children.push(
@@ -510,7 +591,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
     )
   );
 
-  children.push(new Paragraph({ text: "5. Department Analysis", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "6. Department Analysis", heading: HeadingLevel.HEADING_1 }));
   children.push(
     simpleTable(
       ["Department", "Score", "Work Items", "AI-related items", "High Risk"],
@@ -518,7 +599,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
     )
   );
 
-  children.push(new Paragraph({ text: "6. Framework Mapping", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "7. Framework Mapping", heading: HeadingLevel.HEADING_1 }));
   Object.values(executive.frameworkMapping).forEach((f) => {
     children.push(new Paragraph({ text: f.title, heading: HeadingLevel.HEADING_2 }));
     if (f.compliant?.length) children.push(new Paragraph({ text: `Compliant: ${f.compliant.join(", ")}` }));
@@ -527,7 +608,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
     children.push(new Paragraph({ text: f.explanation }));
   });
 
-  children.push(new Paragraph({ text: "7. Risk Heatmap", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "8. Risk Heatmap", heading: HeadingLevel.HEADING_1 }));
   [
     ["Critical", executive.riskHeatmap.critical],
     ["High", executive.riskHeatmap.high],
@@ -544,7 +625,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
     );
   });
 
-  children.push(new Paragraph({ text: "8. Executive Roadmap", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "9. Executive Roadmap", heading: HeadingLevel.HEADING_1 }));
   [
     ["Next 30 Days", executive.executiveRoadmap.days30],
     ["Next 60 Days", executive.executiveRoadmap.days60],
@@ -559,7 +640,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
     );
   });
 
-  children.push(new Paragraph({ text: "9. Recommendations", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "10. Recommendations", heading: HeadingLevel.HEADING_1 }));
   executive.recommendations.forEach((r) => {
     children.push(
       new Paragraph({
@@ -573,7 +654,7 @@ export async function generateExecutiveDocxReport(executive, meta) {
     );
   });
 
-  children.push(new Paragraph({ text: "10. Executive Insights", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "11. Executive Insights", heading: HeadingLevel.HEADING_1 }));
   executive.executiveInsights.forEach((i) => children.push(new Paragraph({ text: i, bullet: { level: 0 } })));
 
   children.push(
