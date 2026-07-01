@@ -35,178 +35,375 @@ function sanitizeForPdf(value) {
   return value.replace(/→/g, "->").replace(/←/g, "<-");
 }
 
+const COLORS = {
+  navy: "#0b1f3a",
+  blue: "#2563eb",
+  ink: "#0f172a",
+  muted: "#64748b",
+  line: "#e2e8f0",
+  headerBg: "#f1f5f9",
+  blueBg: "#eff6ff",
+  blueBorder: "#bfdbfe",
+  amberBg: "#fffbeb",
+  amberBorder: "#fcd34d",
+  amber: "#d97706",
+  white: "#ffffff",
+};
+
+const BADGE_COLORS = {
+  p0: { bg: "#fecaca", fg: "#991b1b" },
+  p1: { bg: "#fed7aa", fg: "#9a3412" },
+  p2: { bg: "#dbeafe", fg: "#1e40af" },
+  p3: { bg: "#e2e8f0", fg: "#334155" },
+  critical: { bg: "#fecaca", fg: "#991b1b" },
+  high: { bg: "#fed7aa", fg: "#9a3412" },
+  medium: { bg: "#fef08a", fg: "#854d0e" },
+  low: { bg: "#bbf7d0", fg: "#166534" },
+};
+
+/**
+ * Visually rich PDF export using PDFKit primitives (rects, circles, manual
+ * table layout) — mirrors the HTML report's design system (navy/blue palette,
+ * bordered tables, score circle, priority badges) since the original PDF was
+ * plain black-on-white text with no visual design, a real gap for a
+ * "board-ready" paid deliverable next to the HTML/PPTX versions.
+ */
 export async function generateExecutivePdfReport(executive, meta) {
-  const doc = new PDFDocument({ margin: 50, size: "A4" });
+  const doc = new PDFDocument({ margin: 50, size: "A4", bufferPages: true });
   const originalText = doc.text.bind(doc);
   doc.text = (str, ...args) => originalText(sanitizeForPdf(str), ...args);
   const ex = executive.executiveSummary;
-  const title = "AI Governance Executive Assessment";
+  const pageWidth = doc.page.width;
+  const marginX = doc.page.margins.left;
+  const contentWidth = pageWidth - marginX * 2;
+  const bottomLimit = doc.page.height - doc.page.margins.bottom;
 
-  function heading(text) {
+  function ensureSpace(height) {
+    if (doc.y + height > bottomLimit) doc.addPage();
+  }
+
+  function sectionHeading(text) {
+    ensureSpace(40);
+    doc.moveDown(0.6);
+    doc.font("Helvetica-Bold").fontSize(14).fillColor(COLORS.blue).text(text, marginX, doc.y, { width: contentWidth });
+    const ruleY = doc.y + 2;
+    doc.moveTo(marginX, ruleY).lineTo(marginX + contentWidth, ruleY).lineWidth(1.5).strokeColor(COLORS.blue).stroke();
     doc.moveDown(0.5);
-    doc.fontSize(14).fillColor("#2563eb").text(text);
+  }
+
+  function subheading(text) {
+    ensureSpace(20);
+    doc.font("Helvetica-Bold").fontSize(11).fillColor(COLORS.navy).text(text, marginX, doc.y, { width: contentWidth });
     doc.moveDown(0.2);
   }
-  function subheading(text) {
-    doc.fontSize(11).fillColor("#0b1f3a").text(text);
+
+  function bodyText(text, opts = {}) {
+    doc.font("Helvetica").fontSize(opts.size || 10).fillColor(opts.color || COLORS.ink);
+    ensureSpace(doc.heightOfString(text, { width: contentWidth }) + 4);
+    doc.text(text, marginX, doc.y, { width: contentWidth, align: opts.align || "left" });
   }
-  function row(label, value) {
-    doc.fontSize(10).fillColor("#0f172a").text(`${label}: ${value}`);
+
+  function bulletList(items, opts = {}) {
+    doc.font("Helvetica").fontSize(opts.size || 10).fillColor(opts.color || COLORS.ink);
+    items.forEach((i) => {
+      const h = doc.heightOfString(`•  ${i}`, { width: contentWidth - 10 });
+      ensureSpace(h + 4);
+      doc.text(`•  ${i}`, marginX, doc.y, { width: contentWidth, align: "left" });
+    });
   }
-  function bulletList(items) {
-    doc.fontSize(10).fillColor("#0f172a");
-    items.forEach((i) => doc.text(`• ${i}`, { align: "justify" }));
+
+  function badge(text, scheme, x, y) {
+    const colors = BADGE_COLORS[scheme.toLowerCase()] || BADGE_COLORS.p2;
+    doc.font("Helvetica-Bold").fontSize(8);
+    const w = doc.widthOfString(text) + 12;
+    const h = 14;
+    doc.roundedRect(x, y, w, h, 7).fill(colors.bg);
+    doc.fillColor(colors.fg).text(text, x + 6, y + 3, { width: w - 12, lineBreak: false });
+    return w;
   }
-  function oppTable(list, label) {
-    subheading(label);
-    if (!list.length) {
-      doc.fontSize(9).fillColor("#64748b").text("No items in this category for this upload.");
+
+  function insightBox(text) {
+    doc.font("Helvetica").fontSize(10);
+    const textHeight = doc.heightOfString(text, { width: contentWidth - 20 });
+    const boxHeight = textHeight + 14;
+    ensureSpace(boxHeight + 6);
+    const y0 = doc.y;
+    doc.rect(marginX, y0, contentWidth, boxHeight).fill(COLORS.headerBg);
+    doc.rect(marginX, y0, 4, boxHeight).fill(COLORS.blue);
+    doc.fillColor(COLORS.ink).text(text, marginX + 14, y0 + 7, { width: contentWidth - 28 });
+    doc.y = y0 + boxHeight + 6;
+  }
+
+  function disclaimerBox(text) {
+    doc.font("Helvetica").fontSize(9);
+    const textHeight = doc.heightOfString(text, { width: contentWidth - 20 });
+    const boxHeight = textHeight + 14;
+    ensureSpace(boxHeight + 6);
+    const y0 = doc.y;
+    doc.rect(marginX, y0, contentWidth, boxHeight).fill(COLORS.amberBg);
+    doc.rect(marginX, y0, 4, boxHeight).fill(COLORS.amber);
+    doc.fillColor(COLORS.muted).text(text, marginX + 14, y0 + 7, { width: contentWidth - 28 });
+    doc.y = y0 + boxHeight + 6;
+  }
+
+  /** Simple bordered table with a colored header row; page-break aware. */
+  function drawTable(headers, rows, colWeights) {
+    if (!rows.length) {
+      bodyText("No items in this category for this upload.", { size: 9, color: COLORS.muted });
+      doc.moveDown(0.3);
       return;
     }
-    list.forEach((o) => {
-      doc
-        .fontSize(9)
-        .fillColor("#0f172a")
-        .text(
-          `${o.title} — ${o.suggestedAiCategory} · Complexity: ${o.estimatedComplexity} · Priority: ${o.priority} · Impact: ${o.expectedBusinessImpact}`
-        );
-    });
-    doc.moveDown(0.2);
-  }
-  function riskSection(items, label) {
-    if (!items.length) return;
-    subheading(`${label} (${items.length})`);
-    items.forEach((r) => {
-      doc
-        .fontSize(9)
-        .fillColor("#0f172a")
-        .text(`${r.title} — ${r.businessImpact} Likelihood: ${r.likelihood}. ${r.recommendation} [${r.priority}]`);
-    });
-    doc.moveDown(0.2);
-  }
-  function roadmapSection(label, items) {
-    subheading(label);
-    items.forEach((i) => {
-      doc
-        .fontSize(9)
-        .fillColor("#0f172a")
-        .text(`${i.action} — ${i.businessValue}. Owner: ${i.ownerRecommendation} [${i.priority}] · ${i.expectedImprovement}`);
-    });
-    doc.moveDown(0.2);
+    const weights = colWeights || headers.map(() => 1);
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+    const colWidths = weights.map((w) => (w / totalWeight) * contentWidth);
+    const cellPad = 5;
+
+    function rowHeight(cells) {
+      doc.font("Helvetica").fontSize(8.5);
+      return Math.max(
+        ...cells.map((c, i) => doc.heightOfString(String(c ?? ""), { width: colWidths[i] - cellPad * 2 }))
+      ) + cellPad * 2;
+    }
+
+    function drawRow(cells, opts = {}) {
+      const h = rowHeight(cells);
+      ensureSpace(h);
+      const y0 = doc.y;
+      let x = marginX;
+      if (opts.headerRow) doc.rect(marginX, y0, contentWidth, h).fill(COLORS.headerBg);
+      cells.forEach((c, i) => {
+        doc
+          .font(opts.headerRow ? "Helvetica-Bold" : "Helvetica")
+          .fontSize(8.5)
+          .fillColor(opts.headerRow ? COLORS.navy : COLORS.ink)
+          .text(String(c ?? ""), x + cellPad, y0 + cellPad, { width: colWidths[i] - cellPad * 2 });
+        x += colWidths[i];
+      });
+      doc.rect(marginX, y0, contentWidth, h).strokeColor(COLORS.line).lineWidth(0.5).stroke();
+      x = marginX;
+      colWidths.forEach((w) => {
+        x += w;
+        doc.moveTo(x, y0).lineTo(x, y0 + h).strokeColor(COLORS.line).lineWidth(0.5).stroke();
+      });
+      doc.y = y0 + h;
+    }
+
+    drawRow(headers, { headerRow: true });
+    rows.forEach((r) => drawRow(r));
+    doc.moveDown(0.4);
   }
 
-  doc.fontSize(22).fillColor("#0b1f3a").text(title, { align: "center" });
-  doc.moveDown(0.5);
-  doc.fontSize(11).fillColor("#64748b").text(`Prepared for ${meta.buyerName || "Customer"}`, { align: "center" });
-  if (meta.company) doc.text(meta.company, { align: "center" });
-  doc.text(`Reference: ${meta.orderRef || meta.orderId || ""}`, { align: "center" });
-  doc.moveDown();
+  // ---- Cover band ----
+  const coverHeight = 110;
+  doc.rect(0, 0, pageWidth, coverHeight).fill(COLORS.navy);
+  doc
+    .font("Helvetica-Bold")
+    .fontSize(20)
+    .fillColor(COLORS.white)
+    .text("AI Governance Executive Assessment", marginX, 30, { width: contentWidth, align: "center" });
+  doc
+    .font("Helvetica")
+    .fontSize(10)
+    .fillColor("#bfdbfe")
+    .text(`Prepared for ${meta.buyerName || "Customer"}${meta.company ? " · " + meta.company : ""}`, marginX, 62, {
+      width: contentWidth,
+      align: "center",
+    });
+  doc.text(`Reference: ${meta.orderRef || meta.orderId || ""}`, marginX, 80, { width: contentWidth, align: "center" });
+  doc.y = coverHeight + 20;
 
-  heading("1. Executive Summary");
-  doc.fontSize(11).fillColor("#0f172a");
-  doc.text(`Governance Score: ${ex.governanceScore}/100  |  AI Readiness: ${ex.aiReadiness}/100`);
-  doc.text(`Maturity: ${executive.maturity.level} — ${executive.maturity.why}`);
-  doc.moveDown(0.3);
+  // ---- 1. Executive Summary ----
+  sectionHeading("1. Executive Summary");
+
+  const heroY = doc.y;
+  const heroHeight = 90;
+  doc.roundedRect(marginX, heroY, contentWidth, heroHeight, 10).fillAndStroke(COLORS.blueBg, COLORS.blueBorder);
+  const circleCx = marginX + 55;
+  const circleCy = heroY + heroHeight / 2;
+  doc.circle(circleCx, circleCy, 40).fill(COLORS.blue);
+  doc
+    .font("Helvetica-Bold")
+    .fontSize(26)
+    .fillColor(COLORS.white)
+    .text(String(ex.governanceScore), circleCx - 40, circleCy - 15, { width: 80, align: "center" });
+  const heroTextX = marginX + 120;
+  doc
+    .font("Helvetica-Bold")
+    .fontSize(10)
+    .fillColor(COLORS.ink)
+    .text("Overall Governance Score", heroTextX, heroY + 14, { width: contentWidth - 140 });
+  doc
+    .font("Helvetica")
+    .fontSize(9)
+    .fillColor(COLORS.muted)
+    .text("Composite of ownership, documentation, risk controls, framework alignment, and monitoring.", heroTextX, doc.y + 2, {
+      width: contentWidth - 140,
+    });
+  doc.font("Helvetica-Bold").fontSize(9).fillColor(COLORS.ink).text(`AI Readiness: ${ex.aiReadiness}/100`, heroTextX, doc.y + 6);
+  doc
+    .font("Helvetica")
+    .fontSize(9)
+    .fillColor(COLORS.ink)
+    .text(`Maturity: ${executive.maturity.level} — ${executive.maturity.why}`, heroTextX, doc.y + 2, {
+      width: contentWidth - 140,
+    });
+  doc.y = heroY + heroHeight + 14;
+
   subheading("Top Business Risks");
   bulletList(ex.topBusinessRisks);
-  doc.moveDown(0.2);
+  doc.moveDown(0.3);
   subheading("Top AI Opportunities");
   bulletList(ex.topAiOpportunities);
-  doc.moveDown(0.2);
+  doc.moveDown(0.3);
   subheading("Overall Recommendation");
-  doc.fontSize(10).fillColor("#0f172a").text(ex.overallRecommendation, { align: "justify" });
-  doc.moveDown(0.2);
+  insightBox(ex.overallRecommendation);
   subheading("Executive Conclusion");
-  doc.fontSize(10).fillColor("#0f172a").text(ex.executiveConclusion, { align: "justify" });
+  bodyText(ex.executiveConclusion, { align: "justify" });
 
+  // ---- 2. Governance Score Breakdown ----
   doc.addPage();
-  heading("2. Governance Score Breakdown");
-  doc.fontSize(10).fillColor("#0f172a").text(`Overall score: ${executive.governanceScoreBreakdown.overall}/100`);
-  doc.moveDown(0.2);
+  sectionHeading("2. Governance Score Breakdown");
+  bodyText(`Overall score: ${executive.governanceScoreBreakdown.overall}/100`, { size: 10 });
+  doc.moveDown(0.3);
   executive.governanceScoreBreakdown.dimensions.forEach((d) => {
-    row(d.label, `${d.score}/${d.max} — ${d.why}`);
+    ensureSpace(30);
+    const barY = doc.y;
+    doc.font("Helvetica-Bold").fontSize(10).fillColor(COLORS.ink).text(d.label, marginX, barY, { width: contentWidth - 60 });
+    doc.font("Helvetica-Bold").fontSize(10).fillColor(COLORS.blue).text(`${d.score}/${d.max}`, marginX + contentWidth - 60, barY, {
+      width: 60,
+      align: "right",
+    });
+    const barTop = doc.y + 2;
+    const barWidth = contentWidth;
+    doc.roundedRect(marginX, barTop, barWidth, 8, 4).fill(COLORS.line);
+    const fillWidth = Math.max(6, (d.score / d.max) * barWidth);
+    doc.roundedRect(marginX, barTop, fillWidth, 8, 4).fill(COLORS.blue);
+    doc.y = barTop + 14;
+    doc.font("Helvetica").fontSize(9).fillColor(COLORS.muted).text(d.why, marginX, doc.y, { width: contentWidth, align: "justify" });
+    doc.moveDown(0.5);
   });
 
-  heading("3. AI Opportunity Matrix");
-  oppTable(executive.aiOpportunityMatrix.highestRoi, "Highest ROI Opportunities");
-  oppTable(executive.aiOpportunityMatrix.highestRisk, "Highest Risk Opportunities");
-  oppTable(executive.aiOpportunityMatrix.quickWins, "Quick Wins");
-  oppTable(executive.aiOpportunityMatrix.longTerm, "Long-term Initiatives");
+  // ---- 3. AI Opportunity Matrix ----
+  sectionHeading("3. AI Opportunity Matrix");
+  const oppHeaders = ["Title", "Category", "Complexity", "Priority", "Impact"];
+  const oppWeights = [2, 1.6, 1, 1, 2.6];
+  const oppRow = (o) => [o.title, o.suggestedAiCategory, o.estimatedComplexity, o.priority, o.expectedBusinessImpact];
+  subheading("Highest ROI Opportunities");
+  drawTable(oppHeaders, executive.aiOpportunityMatrix.highestRoi.map(oppRow), oppWeights);
+  subheading("Highest Risk Opportunities");
+  drawTable(oppHeaders, executive.aiOpportunityMatrix.highestRisk.map(oppRow), oppWeights);
+  subheading("Quick Wins");
+  drawTable(oppHeaders, executive.aiOpportunityMatrix.quickWins.map(oppRow), oppWeights);
+  subheading("Long-term Initiatives");
+  drawTable(oppHeaders, executive.aiOpportunityMatrix.longTerm.map(oppRow), oppWeights);
 
+  // ---- 4. Business Impact ----
   doc.addPage();
-  heading("4. Business Impact (Estimated)");
+  sectionHeading("4. Business Impact (Estimated)");
   const bi = executive.businessImpact;
   subheading("Methodology & assumptions");
-  bulletList(bi.assumptions);
-  doc.moveDown(0.2);
-  row("Manual hours (weekly range)", `${bi.potentialManualHoursPerWeek.low}–${bi.potentialManualHoursPerWeek.high} hours`);
-  row("Automation-eligible share", `${bi.potentialAutomationPercent.value}% (${bi.potentialAutomationPercent.basis})`);
-  row(
-    "Annual time savings (range)",
-    `${bi.estimatedTimeSavingsAnnualHours.low}–${bi.estimatedTimeSavingsAnnualHours.high} hours/year`
-  );
-  row(
-    "Annual savings (USD range)",
-    `$${bi.estimatedAnnualSavingsUsd.low.toLocaleString()}–$${bi.estimatedAnnualSavingsUsd.high.toLocaleString()} (${bi.estimatedAnnualSavingsUsd.basis})`
-  );
-  row(
-    "Productivity gain (estimated)",
-    `${bi.estimatedProductivityGainPercent.value}% (${bi.estimatedProductivityGainPercent.basis})`
+  bulletList(bi.assumptions, { size: 9, color: COLORS.muted });
+  doc.moveDown(0.3);
+  drawTable(
+    ["Metric", "Value"],
+    [
+      ["Manual hours (weekly range)", `${bi.potentialManualHoursPerWeek.low}–${bi.potentialManualHoursPerWeek.high} hours`],
+      ["Automation-eligible share", `${bi.potentialAutomationPercent.value}% (${bi.potentialAutomationPercent.basis})`],
+      [
+        "Annual time savings (range)",
+        `${bi.estimatedTimeSavingsAnnualHours.low}–${bi.estimatedTimeSavingsAnnualHours.high} hours/year`,
+      ],
+      [
+        "Annual savings (USD range)",
+        `$${bi.estimatedAnnualSavingsUsd.low.toLocaleString()}–$${bi.estimatedAnnualSavingsUsd.high.toLocaleString()}`,
+      ],
+      ["Productivity gain (estimated)", `${bi.estimatedProductivityGainPercent.value}%`],
+    ],
+    [1.4, 2]
   );
 
+  // ---- 5. Department Analysis ----
   doc.addPage();
-  heading("5. Department Analysis");
-  executive.departmentAnalysis.forEach((d) => {
-    doc
-      .fontSize(11)
-      .fillColor("#0f172a")
-      .text(`${d.name}: Score ${d.score} (${d.aiCandidates} AI-related work items, ${d.highRisk} high-risk)`);
-  });
+  sectionHeading("5. Department Analysis");
+  drawTable(
+    ["Department", "Score", "Items", "AI-related", "High Risk"],
+    executive.departmentAnalysis.map((d) => [d.name, d.score, d.workItems, d.aiCandidates, d.highRisk]),
+    [2, 1, 1, 1, 1]
+  );
 
-  heading("6. Framework Mapping");
+  // ---- 6. Framework Mapping ----
+  sectionHeading("6. Framework Mapping");
   Object.values(executive.frameworkMapping).forEach((f) => {
+    ensureSpace(60);
     subheading(f.title);
-    doc.fontSize(9).fillColor("#0f172a");
-    if (f.compliant?.length) doc.text(`Compliant: ${f.compliant.join(", ")}`);
-    if (f.partial?.length) doc.text(`Partial: ${f.partial.join(", ")}`);
-    if (f.missing?.length) doc.text(`Missing: ${f.missing.join(", ")}`);
-    doc.fontSize(9).fillColor("#64748b").text(f.explanation, { align: "justify" });
-    doc.moveDown(0.2);
+    if (f.compliant?.length) bodyText(`Compliant: ${f.compliant.join(", ")}`, { size: 9 });
+    if (f.partial?.length) bodyText(`Partial: ${f.partial.join(", ")}`, { size: 9 });
+    if (f.missing?.length) bodyText(`Missing: ${f.missing.join(", ")}`, { size: 9 });
+    bodyText(f.explanation, { size: 9, color: COLORS.muted, align: "justify" });
+    doc.moveDown(0.4);
   });
 
+  // ---- 7. Risk Heatmap ----
   doc.addPage();
-  heading("7. Risk Heatmap");
-  riskSection(executive.riskHeatmap.critical, "Critical");
-  riskSection(executive.riskHeatmap.high, "High");
-  riskSection(executive.riskHeatmap.medium, "Medium");
-  riskSection(executive.riskHeatmap.low, "Low");
+  sectionHeading("7. Risk Heatmap");
+  const riskHeaders = ["Item", "Impact", "Likelihood", "Recommendation", "Priority"];
+  const riskWeights = [1.4, 2, 1, 2, 0.8];
+  [
+    ["Critical", executive.riskHeatmap.critical],
+    ["High", executive.riskHeatmap.high],
+    ["Medium", executive.riskHeatmap.medium],
+    ["Low", executive.riskHeatmap.low],
+  ].forEach(([label, items]) => {
+    if (!items.length) return;
+    subheading(`${label} (${items.length})`);
+    drawTable(
+      riskHeaders,
+      items.map((r) => [r.title, r.businessImpact, r.likelihood, r.recommendation, r.priority]),
+      riskWeights
+    );
+  });
 
-  heading("8. Executive Roadmap");
-  roadmapSection("Next 30 Days", executive.executiveRoadmap.days30);
-  roadmapSection("Next 60 Days", executive.executiveRoadmap.days60);
-  roadmapSection("Next 90 Days", executive.executiveRoadmap.days90);
+  // ---- 8. Executive Roadmap ----
+  sectionHeading("8. Executive Roadmap");
+  const roadmapHeaders = ["Action", "Business Value", "Owner", "Priority", "Expected Improvement"];
+  const roadmapWeights = [1.8, 1.8, 1.4, 0.8, 1.6];
+  [
+    ["Next 30 Days", executive.executiveRoadmap.days30],
+    ["Next 60 Days", executive.executiveRoadmap.days60],
+    ["Next 90 Days", executive.executiveRoadmap.days90],
+  ].forEach(([label, items]) => {
+    subheading(label);
+    drawTable(
+      roadmapHeaders,
+      items.map((i) => [i.action, i.businessValue, i.ownerRecommendation, i.priority, i.expectedImprovement]),
+      roadmapWeights
+    );
+  });
 
+  // ---- 9. Top Recommendations ----
   doc.addPage();
-  heading("9. Top Recommendations");
+  sectionHeading("9. Top Recommendations");
   executive.recommendations.slice(0, 8).forEach((r) => {
-    doc.fontSize(11).fillColor("#0f172a").text(`[${r.priority}] ${r.title}`);
-    doc.fontSize(10).fillColor("#64748b").text(`Why: ${r.why}`);
-    doc.fontSize(9).fillColor("#0f172a").text(`Business benefit: ${r.businessBenefit}`);
-    doc.fontSize(9).fillColor("#64748b").text(`Estimated impact: ${r.estimatedImpact} · Governance improvement: ${r.expectedGovernanceImprovement}`);
-    doc.moveDown(0.3);
+    ensureSpace(70);
+    const cardY = doc.y;
+    doc.font("Helvetica-Bold").fontSize(11).fillColor(COLORS.ink).text(r.title, marginX, cardY, { width: contentWidth - 50 });
+    badge(r.priority, r.priority, marginX + contentWidth - 44, cardY + 1);
+    doc.moveDown(0.2);
+    bodyText(`Why: ${r.why}`, { size: 9, color: COLORS.muted });
+    bodyText(`Business benefit: ${r.businessBenefit}`, { size: 9 });
+    bodyText(`Estimated impact: ${r.estimatedImpact} · Governance improvement: ${r.expectedGovernanceImprovement}`, {
+      size: 9,
+      color: COLORS.muted,
+    });
+    doc.moveDown(0.5);
   });
 
-  heading("10. Executive Insights");
-  executive.executiveInsights.forEach((i) => {
-    doc.fontSize(10).fillColor("#0f172a").text(`• ${i}`, { align: "justify" });
-    doc.moveDown(0.15);
-  });
+  // ---- 10. Executive Insights ----
+  sectionHeading("10. Executive Insights");
+  executive.executiveInsights.forEach((i) => insightBox(i));
 
-  doc.moveDown();
-  doc.fontSize(9).fillColor("#64748b").text(
-    "Disclaimer: Planning assessment only — not legal certification. Business impact = documented estimates.",
-    { align: "justify" }
-  );
+  doc.moveDown(0.4);
+  disclaimerBox("Disclaimer: Planning assessment only — not legal certification. Business impact = documented estimates.");
 
   return pdfBuffer(doc);
 }
