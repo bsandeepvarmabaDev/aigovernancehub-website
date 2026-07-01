@@ -135,8 +135,8 @@ export async function sendPaymentEmails(meta) {
     "DOWNLOAD FORMATS",
     formats,
     "",
-    `My Reports: ${dashboardUrl}`,
-    `Recover: ${meta.recoverUrl}`,
+    `View & download your report (valid 90 days, no sign-in required): ${dashboardUrl}`,
+    `Recover on another device: ${meta.recoverUrl}`,
     "",
     "Your reports remain available for 90 days. Re-run an assessment when your portfolio changes.",
     "",
@@ -155,8 +155,8 @@ export async function sendPaymentEmails(meta) {
         { label: "Top recommendation", value: topRec },
         { label: "Formats", value: formats },
       ]) +
-      paragraphHtml("Download board-ready PDF or PowerPoint for leadership. Share Word with compliance. Access everything again from My Reports for <strong>90 days</strong>."),
-    primaryCta: { label: "Open My Reports", href: dashboardUrl },
+      paragraphHtml("Download board-ready PDF or PowerPoint for leadership. Share Word with compliance. This link stays valid for <strong>90 days</strong> — no sign-in required."),
+    primaryCta: { label: "View & download your report", href: dashboardUrl },
     secondaryCta: { label: "Recover on another device", href: meta.recoverUrl },
     footerLines: [
       `Order: ${escapeHtmlEmail(meta.orderRef)} · Payment: ${escapeHtmlEmail(meta.paymentRef)}`,

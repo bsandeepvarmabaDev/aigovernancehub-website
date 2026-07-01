@@ -469,6 +469,18 @@ export async function fulfillPaidAssessment({
   } else {
     try {
       logEvent("info", "send_email_start", { orderId, category: "report_generation" });
+      // The email's primary link must be a direct, pre-authenticated path to
+      // the actual downloads (starter-success.html?confirmation=<token>) —
+      // not dashboard.html or recover-report.html, both of which require
+      // ANOTHER round of email verification to get anywhere. A customer
+      // whose browser-side verify-payment call failed for any reason
+      // (session race, network blip) had no direct way back to their
+      // already-paid-for report. Uses the 90-day recovery token, not the
+      // 15-minute success token — most customers open this email well after
+      // checkout, so a short-lived token would just recreate the same bug.
+      const downloadSecret = getDownloadSigningSecret();
+      const confirmationToken = createRecoveryToken(orderId, paymentId, email, downloadSecret);
+      const confirmationUrl = `${siteUrl}/starter-success.html?confirmation=${encodeURIComponent(confirmationToken)}`;
       emailResult = await sendPaymentEmails({
         buyerName: name,
         buyerEmail: normalizeEmail(email),
@@ -476,9 +488,9 @@ export async function fulfillPaidAssessment({
         orderRef: maskOrderId(orderId),
         paymentRef: maskPaymentId(paymentId),
         paidAt: createdAt,
-        downloadUrl: `${siteUrl}/recover-report.html`,
+        downloadUrl: confirmationUrl,
         recoverUrl: `${siteUrl}/recover-report.html`,
-        dashboardUrl: `${siteUrl}/dashboard.html`,
+        dashboardUrl: confirmationUrl,
         governanceScore: reportRecord.governanceScore,
         topRecommendation:
           executive?.recommendations?.[0]?.title ||

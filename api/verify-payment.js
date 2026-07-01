@@ -2,7 +2,7 @@
 import {
   getKeySecret,
   isNonEmptyString,
-  validateSuccessToken,
+  validateDownloadToken,
   validateSessionToken,
   validateEnterprisePayToken,
 } from "./_lib/tokens.js";
@@ -69,7 +69,12 @@ export default async function handler(req, res) {
         : "";
 
   if (isNonEmptyString(token)) {
-    const tokenData = validateSuccessToken(token, keySecret);
+    // Accepts both the 15-minute success token (fresh post-checkout redirect)
+    // and the 90-day recovery token (the one now embedded in the confirmation
+    // email) — customers routinely open that email well after checkout, and
+    // a success-token-only check here would make the emailed link expire
+    // within 15 minutes regardless of how long-lived the token actually is.
+    const tokenData = validateDownloadToken(token, keySecret);
     if (!tokenData) {
       return sendJson(res, 400, {
         valid: false,
