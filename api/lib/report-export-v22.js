@@ -26,10 +26,74 @@ function pdfBuffer(doc) {
   });
 }
 
+// PDFKit's default Helvetica font uses WinAnsiEncoding, which has no glyph for
+// "→" (renders as garbled "!'"). The same source strings render fine in the
+// HTML/PPTX exports (different renderers, full Unicode) — only the PDF path
+// needs ASCII-safe substitutes.
+function sanitizeForPdf(value) {
+  if (typeof value !== "string") return value;
+  return value.replace(/→/g, "->").replace(/←/g, "<-");
+}
+
 export async function generateExecutivePdfReport(executive, meta) {
   const doc = new PDFDocument({ margin: 50, size: "A4" });
+  const originalText = doc.text.bind(doc);
+  doc.text = (str, ...args) => originalText(sanitizeForPdf(str), ...args);
   const ex = executive.executiveSummary;
   const title = "AI Governance Executive Assessment";
+
+  function heading(text) {
+    doc.moveDown(0.5);
+    doc.fontSize(14).fillColor("#2563eb").text(text);
+    doc.moveDown(0.2);
+  }
+  function subheading(text) {
+    doc.fontSize(11).fillColor("#0b1f3a").text(text);
+  }
+  function row(label, value) {
+    doc.fontSize(10).fillColor("#0f172a").text(`${label}: ${value}`);
+  }
+  function bulletList(items) {
+    doc.fontSize(10).fillColor("#0f172a");
+    items.forEach((i) => doc.text(`• ${i}`, { align: "justify" }));
+  }
+  function oppTable(list, label) {
+    subheading(label);
+    if (!list.length) {
+      doc.fontSize(9).fillColor("#64748b").text("No items in this category for this upload.");
+      return;
+    }
+    list.forEach((o) => {
+      doc
+        .fontSize(9)
+        .fillColor("#0f172a")
+        .text(
+          `${o.title} — ${o.suggestedAiCategory} · Complexity: ${o.estimatedComplexity} · Priority: ${o.priority} · Impact: ${o.expectedBusinessImpact}`
+        );
+    });
+    doc.moveDown(0.2);
+  }
+  function riskSection(items, label) {
+    if (!items.length) return;
+    subheading(`${label} (${items.length})`);
+    items.forEach((r) => {
+      doc
+        .fontSize(9)
+        .fillColor("#0f172a")
+        .text(`${r.title} — ${r.businessImpact} Likelihood: ${r.likelihood}. ${r.recommendation} [${r.priority}]`);
+    });
+    doc.moveDown(0.2);
+  }
+  function roadmapSection(label, items) {
+    subheading(label);
+    items.forEach((i) => {
+      doc
+        .fontSize(9)
+        .fillColor("#0f172a")
+        .text(`${i.action} — ${i.businessValue}. Owner: ${i.ownerRecommendation} [${i.priority}] · ${i.expectedImprovement}`);
+    });
+    doc.moveDown(0.2);
+  }
 
   doc.fontSize(22).fillColor("#0b1f3a").text(title, { align: "center" });
   doc.moveDown(0.5);
@@ -38,36 +102,101 @@ export async function generateExecutivePdfReport(executive, meta) {
   doc.text(`Reference: ${meta.orderRef || meta.orderId || ""}`, { align: "center" });
   doc.moveDown();
 
-  doc.fontSize(14).fillColor("#2563eb").text("Executive Summary");
+  heading("1. Executive Summary");
   doc.fontSize(11).fillColor("#0f172a");
   doc.text(`Governance Score: ${ex.governanceScore}/100  |  AI Readiness: ${ex.aiReadiness}/100`);
-  doc.text(`Maturity: ${executive.maturity.level}`);
+  doc.text(`Maturity: ${executive.maturity.level} — ${executive.maturity.why}`);
   doc.moveDown(0.3);
-  doc.text(ex.executiveConclusion, { align: "justify" });
-  doc.moveDown();
+  subheading("Top Business Risks");
+  bulletList(ex.topBusinessRisks);
+  doc.moveDown(0.2);
+  subheading("Top AI Opportunities");
+  bulletList(ex.topAiOpportunities);
+  doc.moveDown(0.2);
+  subheading("Overall Recommendation");
+  doc.fontSize(10).fillColor("#0f172a").text(ex.overallRecommendation, { align: "justify" });
+  doc.moveDown(0.2);
+  subheading("Executive Conclusion");
+  doc.fontSize(10).fillColor("#0f172a").text(ex.executiveConclusion, { align: "justify" });
 
-  doc.fontSize(14).fillColor("#2563eb").text("Governance Score Breakdown");
-  doc.fontSize(10).fillColor("#0f172a");
+  doc.addPage();
+  heading("2. Governance Score Breakdown");
+  doc.fontSize(10).fillColor("#0f172a").text(`Overall score: ${executive.governanceScoreBreakdown.overall}/100`);
+  doc.moveDown(0.2);
   executive.governanceScoreBreakdown.dimensions.forEach((d) => {
-    doc.text(`${d.label}: ${d.score}/${d.max} — ${d.why}`);
+    row(d.label, `${d.score}/${d.max} — ${d.why}`);
   });
-  doc.moveDown();
 
-  doc.fontSize(14).fillColor("#2563eb").text("Top Recommendations");
-  executive.recommendations.slice(0, 5).forEach((r) => {
-    doc.fontSize(11).fillColor("#0f172a").text(`[${r.priority}] ${r.title}`);
-    doc.fontSize(10).fillColor("#64748b").text(`Why: ${r.why}`);
+  heading("3. AI Opportunity Matrix");
+  oppTable(executive.aiOpportunityMatrix.highestRoi, "Highest ROI Opportunities");
+  oppTable(executive.aiOpportunityMatrix.highestRisk, "Highest Risk Opportunities");
+  oppTable(executive.aiOpportunityMatrix.quickWins, "Quick Wins");
+  oppTable(executive.aiOpportunityMatrix.longTerm, "Long-term Initiatives");
+
+  doc.addPage();
+  heading("4. Business Impact (Estimated)");
+  const bi = executive.businessImpact;
+  subheading("Methodology & assumptions");
+  bulletList(bi.assumptions);
+  doc.moveDown(0.2);
+  row("Manual hours (weekly range)", `${bi.potentialManualHoursPerWeek.low}–${bi.potentialManualHoursPerWeek.high} hours`);
+  row("Automation-eligible share", `${bi.potentialAutomationPercent.value}% (${bi.potentialAutomationPercent.basis})`);
+  row(
+    "Annual time savings (range)",
+    `${bi.estimatedTimeSavingsAnnualHours.low}–${bi.estimatedTimeSavingsAnnualHours.high} hours/year`
+  );
+  row(
+    "Annual savings (USD range)",
+    `$${bi.estimatedAnnualSavingsUsd.low.toLocaleString()}–$${bi.estimatedAnnualSavingsUsd.high.toLocaleString()} (${bi.estimatedAnnualSavingsUsd.basis})`
+  );
+  row(
+    "Productivity gain (estimated)",
+    `${bi.estimatedProductivityGainPercent.value}% (${bi.estimatedProductivityGainPercent.basis})`
+  );
+
+  doc.addPage();
+  heading("5. Department Analysis");
+  executive.departmentAnalysis.forEach((d) => {
+    doc
+      .fontSize(11)
+      .fillColor("#0f172a")
+      .text(`${d.name}: Score ${d.score} (${d.aiCandidates} AI-related work items, ${d.highRisk} high-risk)`);
+  });
+
+  heading("6. Framework Mapping");
+  Object.values(executive.frameworkMapping).forEach((f) => {
+    subheading(f.title);
+    doc.fontSize(9).fillColor("#0f172a");
+    if (f.compliant?.length) doc.text(`Compliant: ${f.compliant.join(", ")}`);
+    if (f.partial?.length) doc.text(`Partial: ${f.partial.join(", ")}`);
+    if (f.missing?.length) doc.text(`Missing: ${f.missing.join(", ")}`);
+    doc.fontSize(9).fillColor("#64748b").text(f.explanation, { align: "justify" });
     doc.moveDown(0.2);
   });
 
   doc.addPage();
-  doc.fontSize(14).fillColor("#2563eb").text("Department Analysis");
-  executive.departmentAnalysis.forEach((d) => {
-    doc.fontSize(11).fillColor("#0f172a").text(`${d.name}: Score ${d.score} (${d.aiCandidates} AI-related work items)`);
-  });
-  doc.moveDown();
+  heading("7. Risk Heatmap");
+  riskSection(executive.riskHeatmap.critical, "Critical");
+  riskSection(executive.riskHeatmap.high, "High");
+  riskSection(executive.riskHeatmap.medium, "Medium");
+  riskSection(executive.riskHeatmap.low, "Low");
 
-  doc.fontSize(14).fillColor("#2563eb").text("Executive Insights");
+  heading("8. Executive Roadmap");
+  roadmapSection("Next 30 Days", executive.executiveRoadmap.days30);
+  roadmapSection("Next 60 Days", executive.executiveRoadmap.days60);
+  roadmapSection("Next 90 Days", executive.executiveRoadmap.days90);
+
+  doc.addPage();
+  heading("9. Top Recommendations");
+  executive.recommendations.slice(0, 8).forEach((r) => {
+    doc.fontSize(11).fillColor("#0f172a").text(`[${r.priority}] ${r.title}`);
+    doc.fontSize(10).fillColor("#64748b").text(`Why: ${r.why}`);
+    doc.fontSize(9).fillColor("#0f172a").text(`Business benefit: ${r.businessBenefit}`);
+    doc.fontSize(9).fillColor("#64748b").text(`Estimated impact: ${r.estimatedImpact} · Governance improvement: ${r.expectedGovernanceImprovement}`);
+    doc.moveDown(0.3);
+  });
+
+  heading("10. Executive Insights");
   executive.executiveInsights.forEach((i) => {
     doc.fontSize(10).fillColor("#0f172a").text(`• ${i}`, { align: "justify" });
     doc.moveDown(0.15);
@@ -84,6 +213,29 @@ export async function generateExecutivePdfReport(executive, meta) {
 
 export async function generateExecutiveDocxReport(executive, meta) {
   const ex = executive.executiveSummary;
+
+  function simpleTable(headers, rows) {
+    return new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      borders: {
+        top: { style: BorderStyle.SINGLE, size: 1 },
+        bottom: { style: BorderStyle.SINGLE, size: 1 },
+        left: { style: BorderStyle.SINGLE, size: 1 },
+        right: { style: BorderStyle.SINGLE, size: 1 },
+      },
+      rows: [
+        new TableRow({
+          children: headers.map(
+            (h) => new TableCell({ children: [new Paragraph({ children: [new TextRun({ text: h, bold: true })] })] })
+          ),
+        }),
+        ...rows.map(
+          (r) => new TableRow({ children: r.map((c) => new TableCell({ children: [new Paragraph(String(c))] })) })
+        ),
+      ],
+    });
+  }
+
   const children = [
     new Paragraph({
       text: "AI Governance Executive Assessment",
@@ -96,12 +248,20 @@ export async function generateExecutiveDocxReport(executive, meta) {
         new TextRun({ text: `Reference: ${meta.orderRef || ""}`, break: 1 }),
       ],
     }),
-    new Paragraph({ text: "Executive Summary", heading: HeadingLevel.HEADING_1 }),
+    new Paragraph({ text: "1. Executive Summary", heading: HeadingLevel.HEADING_1 }),
     new Paragraph({
-      text: `Governance Score: ${ex.governanceScore}/100 | AI Readiness: ${ex.aiReadiness}/100 | Maturity: ${executive.maturity.level}`,
+      text: `Governance Score: ${ex.governanceScore}/100 | AI Readiness: ${ex.aiReadiness}/100 | Maturity: ${executive.maturity.level} — ${executive.maturity.why}`,
     }),
+    new Paragraph({ text: "Top Business Risks", heading: HeadingLevel.HEADING_2 }),
+    ...ex.topBusinessRisks.map((r) => new Paragraph({ text: r, bullet: { level: 0 } })),
+    new Paragraph({ text: "Top AI Opportunities", heading: HeadingLevel.HEADING_2 }),
+    ...ex.topAiOpportunities.map((r) => new Paragraph({ text: r, bullet: { level: 0 } })),
+    new Paragraph({ text: "Overall Recommendation", heading: HeadingLevel.HEADING_2 }),
+    new Paragraph({ text: ex.overallRecommendation }),
+    new Paragraph({ text: "Executive Conclusion", heading: HeadingLevel.HEADING_2 }),
     new Paragraph({ text: ex.executiveConclusion }),
-    new Paragraph({ text: "Governance Score Breakdown", heading: HeadingLevel.HEADING_1 }),
+
+    new Paragraph({ text: "2. Governance Score Breakdown", heading: HeadingLevel.HEADING_1 }),
   ];
 
   executive.governanceScoreBreakdown.dimensions.forEach((d) => {
@@ -109,7 +269,100 @@ export async function generateExecutiveDocxReport(executive, meta) {
     children.push(new Paragraph({ text: d.why }));
   });
 
-  children.push(new Paragraph({ text: "Recommendations", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "3. AI Opportunity Matrix", heading: HeadingLevel.HEADING_1 }));
+  const oppSections = [
+    ["Highest ROI Opportunities", executive.aiOpportunityMatrix.highestRoi],
+    ["Highest Risk Opportunities", executive.aiOpportunityMatrix.highestRisk],
+    ["Quick Wins", executive.aiOpportunityMatrix.quickWins],
+    ["Long-term Initiatives", executive.aiOpportunityMatrix.longTerm],
+  ];
+  oppSections.forEach(([label, list]) => {
+    children.push(new Paragraph({ text: label, heading: HeadingLevel.HEADING_2 }));
+    if (!list.length) {
+      children.push(new Paragraph({ text: "No items in this category for this upload." }));
+    } else {
+      children.push(
+        simpleTable(
+          ["Title", "Category", "Complexity", "Priority", "Impact"],
+          list.map((o) => [o.title, o.suggestedAiCategory, o.estimatedComplexity, o.priority, o.expectedBusinessImpact])
+        )
+      );
+    }
+  });
+
+  const bi = executive.businessImpact;
+  children.push(new Paragraph({ text: "4. Business Impact (Estimated)", heading: HeadingLevel.HEADING_1 }));
+  children.push(new Paragraph({ text: "Methodology & assumptions", heading: HeadingLevel.HEADING_2 }));
+  bi.assumptions.forEach((a) => children.push(new Paragraph({ text: a, bullet: { level: 0 } })));
+  children.push(
+    simpleTable(
+      ["Metric", "Value"],
+      [
+        ["Manual hours (weekly range)", `${bi.potentialManualHoursPerWeek.low}–${bi.potentialManualHoursPerWeek.high} hours`],
+        ["Automation-eligible share", `${bi.potentialAutomationPercent.value}% (${bi.potentialAutomationPercent.basis})`],
+        [
+          "Annual time savings (range)",
+          `${bi.estimatedTimeSavingsAnnualHours.low}–${bi.estimatedTimeSavingsAnnualHours.high} hours/year`,
+        ],
+        [
+          "Annual savings (USD range)",
+          `$${bi.estimatedAnnualSavingsUsd.low.toLocaleString()}–$${bi.estimatedAnnualSavingsUsd.high.toLocaleString()}`,
+        ],
+        ["Productivity gain (estimated)", `${bi.estimatedProductivityGainPercent.value}%`],
+      ]
+    )
+  );
+
+  children.push(new Paragraph({ text: "5. Department Analysis", heading: HeadingLevel.HEADING_1 }));
+  children.push(
+    simpleTable(
+      ["Department", "Score", "Work Items", "AI-related items", "High Risk"],
+      executive.departmentAnalysis.map((d) => [d.name, d.score, d.workItems, d.aiCandidates, d.highRisk])
+    )
+  );
+
+  children.push(new Paragraph({ text: "6. Framework Mapping", heading: HeadingLevel.HEADING_1 }));
+  Object.values(executive.frameworkMapping).forEach((f) => {
+    children.push(new Paragraph({ text: f.title, heading: HeadingLevel.HEADING_2 }));
+    if (f.compliant?.length) children.push(new Paragraph({ text: `Compliant: ${f.compliant.join(", ")}` }));
+    if (f.partial?.length) children.push(new Paragraph({ text: `Partial: ${f.partial.join(", ")}` }));
+    if (f.missing?.length) children.push(new Paragraph({ text: `Missing: ${f.missing.join(", ")}` }));
+    children.push(new Paragraph({ text: f.explanation }));
+  });
+
+  children.push(new Paragraph({ text: "7. Risk Heatmap", heading: HeadingLevel.HEADING_1 }));
+  [
+    ["Critical", executive.riskHeatmap.critical],
+    ["High", executive.riskHeatmap.high],
+    ["Medium", executive.riskHeatmap.medium],
+    ["Low", executive.riskHeatmap.low],
+  ].forEach(([label, items]) => {
+    if (!items.length) return;
+    children.push(new Paragraph({ text: `${label} (${items.length})`, heading: HeadingLevel.HEADING_2 }));
+    children.push(
+      simpleTable(
+        ["Item", "Impact", "Likelihood", "Recommendation", "Priority"],
+        items.map((r) => [r.title, r.businessImpact, r.likelihood, r.recommendation, r.priority])
+      )
+    );
+  });
+
+  children.push(new Paragraph({ text: "8. Executive Roadmap", heading: HeadingLevel.HEADING_1 }));
+  [
+    ["Next 30 Days", executive.executiveRoadmap.days30],
+    ["Next 60 Days", executive.executiveRoadmap.days60],
+    ["Next 90 Days", executive.executiveRoadmap.days90],
+  ].forEach(([label, items]) => {
+    children.push(new Paragraph({ text: label, heading: HeadingLevel.HEADING_2 }));
+    children.push(
+      simpleTable(
+        ["Action", "Business Value", "Owner", "Priority", "Expected Improvement"],
+        items.map((i) => [i.action, i.businessValue, i.ownerRecommendation, i.priority, i.expectedImprovement])
+      )
+    );
+  });
+
+  children.push(new Paragraph({ text: "9. Recommendations", heading: HeadingLevel.HEADING_1 }));
   executive.recommendations.forEach((r) => {
     children.push(
       new Paragraph({
@@ -118,36 +371,13 @@ export async function generateExecutiveDocxReport(executive, meta) {
     );
     children.push(new Paragraph({ text: `Why: ${r.why}` }));
     children.push(new Paragraph({ text: `Business benefit: ${r.businessBenefit}` }));
+    children.push(
+      new Paragraph({ text: `Estimated impact: ${r.estimatedImpact} · Governance improvement: ${r.expectedGovernanceImprovement}` })
+    );
   });
 
-  children.push(new Paragraph({ text: "Department Analysis", heading: HeadingLevel.HEADING_1 }));
-  const deptRows = [
-    new TableRow({
-      children: ["Department", "Score", "Work Items", "AI-related items"].map(
-        (h) => new TableCell({ children: [new Paragraph({ children: [new TextRun({ text: h, bold: true })] })] })
-      ),
-    }),
-    ...executive.departmentAnalysis.map(
-      (d) =>
-        new TableRow({
-          children: [d.name, String(d.score), String(d.workItems), String(d.aiCandidates)].map(
-            (c) => new TableCell({ children: [new Paragraph(c)] })
-          ),
-        })
-    ),
-  ];
-  children.push(
-    new Table({
-      width: { size: 100, type: WidthType.PERCENTAGE },
-      borders: {
-        top: { style: BorderStyle.SINGLE, size: 1 },
-        bottom: { style: BorderStyle.SINGLE, size: 1 },
-        left: { style: BorderStyle.SINGLE, size: 1 },
-        right: { style: BorderStyle.SINGLE, size: 1 },
-      },
-      rows: deptRows,
-    })
-  );
+  children.push(new Paragraph({ text: "10. Executive Insights", heading: HeadingLevel.HEADING_1 }));
+  executive.executiveInsights.forEach((i) => children.push(new Paragraph({ text: i, bullet: { level: 0 } })));
 
   children.push(
     new Paragraph({

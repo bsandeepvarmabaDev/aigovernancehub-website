@@ -110,10 +110,15 @@ export function applyIndustryModel(executive, industryId) {
   };
 
   if (executive.executiveInsights?.length) {
-    clone.executiveInsights = [
-      `[${profile.label}] ${profile.regulatoryLens}`,
-      ...executive.executiveInsights.slice(0, 5),
-    ];
+    // Idempotent: applyIndustryModel runs once at upload time and again at
+    // report-fulfillment time on the same stored executive object (and again
+    // on any regeneration retry). Without stripping a prior industry-tag
+    // line first, each call re-prepends, producing duplicate bullets in the
+    // delivered report — strip any existing "[Label] ..." tag line before
+    // adding the current one so repeated calls stay idempotent.
+    const alreadyTagged = /^\[.+?\]\s/.test(executive.executiveInsights[0] || "");
+    const baseInsights = alreadyTagged ? executive.executiveInsights.slice(1) : executive.executiveInsights;
+    clone.executiveInsights = [`[${profile.label}] ${profile.regulatoryLens}`, ...baseInsights.slice(0, 5)];
   }
 
   if (executive.recommendations?.length) {
