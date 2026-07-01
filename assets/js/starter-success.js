@@ -12,6 +12,10 @@
   var downloadActions = document.getElementById("download-actions");
   var downloadStatus = document.getElementById("download-status");
   var emailStatusLine = document.getElementById("email-status-line");
+  var deliverableGrid = document.getElementById("success-deliverable-grid");
+  var purchaseIncludes = document.getElementById("success-purchase-includes");
+  var nextSteps = document.getElementById("success-next-steps");
+  var failureHelp = document.getElementById("success-failure-help");
   var pollAttempts = 0;
   var MAX_POLL = 24;
   var FLOW_STEP_IDS = ["received", "verifying", "generating", "downloads", "email", "complete"];
@@ -181,6 +185,15 @@
           : "Payment verified. Your full AI governance report has been generated — board-ready formats, delivered securely.";
     }
     focusVerifiedHeading();
+    // Never show "your purchase includes" / deliverable tiles / "what to do next"
+    // as if reports exist unless generation has actually finished successfully —
+    // showing them next to a failure or mid-generation message misleads a paying
+    // customer into thinking they have something to download when they don't.
+    var trulyReady = !isProcessing && !isGenerationFailed;
+    if (deliverableGrid) deliverableGrid.hidden = !trulyReady;
+    if (purchaseIncludes) purchaseIncludes.hidden = !trulyReady;
+    if (nextSteps) nextSteps.hidden = !trulyReady;
+    if (failureHelp) failureHelp.hidden = !isGenerationFailed;
     if (isGenerationFailed) {
       setFlowStep(1, 2);
     } else if (isProcessing) {

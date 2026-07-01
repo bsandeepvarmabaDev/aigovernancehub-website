@@ -766,7 +766,16 @@
     }
     var confirmBox = $("order-confirm-checkbox");
     if (confirmBox && !confirmBox.checked) {
-      showSafeError("Please review and confirm your order summary before payment.");
+      showSafeError("Please check the box below the order summary to confirm before payment.");
+      var confirmLabel = confirmBox.closest(".order-confirm-label");
+      if (confirmLabel) {
+        confirmLabel.scrollIntoView({ behavior: "smooth", block: "center" });
+        confirmLabel.classList.add("sx-confirm-highlight");
+        setTimeout(function () {
+          confirmLabel.classList.remove("sx-confirm-highlight");
+        }, 2800);
+      }
+      confirmBox.focus();
       return;
     }
     var details = getCheckoutDetails();

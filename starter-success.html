@@ -82,7 +82,7 @@
 
       <p class="microcopy" id="email-status-line">Checking email delivery status…</p>
 
-      <div class="sx-deliverable-grid" aria-label="Available report formats">
+      <div class="sx-deliverable-grid" id="success-deliverable-grid" aria-label="Available report formats">
         <div class="sx-deliverable-tile"><em>📄</em>HTML Report</div>
         <div class="sx-deliverable-tile"><em>📕</em>PDF</div>
         <div class="sx-deliverable-tile"><em>📝</em>Word</div>
@@ -96,7 +96,7 @@
         <span><a href="recover-report.html">Recover My Report</a></span>
       </div>
 
-      <div class="pm-customer-success" aria-label="Customer success">
+      <div class="pm-customer-success" id="success-purchase-includes" aria-label="Customer success">
         <h2>Your purchase includes</h2>
         <ul>
           <li><strong>Reports</strong> — HTML, PDF, Word, PowerPoint (available for 90 days)</li>
@@ -108,7 +108,7 @@
         </ul>
       </div>
 
-      <div class="page-intro agh-next-steps">
+      <div class="page-intro agh-next-steps" id="success-next-steps">
         <h2>What to do next</h2>
         <ol>
           <li><strong>Download now</strong> — Choose HTML, PDF, Word, or PowerPoint above.</li>
@@ -116,6 +116,15 @@
           <li><strong>Governance handoff</strong> — Share the Word version with compliance and legal.</li>
           <li><strong>Repeat assessment</strong> — Run a new assessment when your AI portfolio changes.</li>
         </ol>
+      </div>
+
+      <div class="pm-customer-success" id="success-failure-help" role="alert" hidden>
+        <h2>We need your attention</h2>
+        <p>Your payment was verified and is safe — but report generation did not complete. Nothing above is available to download yet.</p>
+        <ul>
+          <li><strong>Retry:</strong> Use <a href="recover-report.html">Recover My Report</a> — this re-attempts generation with your existing payment, at no extra charge.</li>
+          <li><strong>Need help:</strong> Contact <a href="mailto:support@aigovernancehub.ai">support@aigovernancehub.ai</a> with your order reference and we'll resolve it directly.</li>
+        </ul>
       </div>
 
       <div class="report-action-row">

@@ -1,7 +1,6 @@
 /**
  * AI Governance Hub v24.0 — Board-ready executive presentation (15–20 slides)
  */
-import { generateExecutivePptxReport } from "./report-export-v22.js";
 
 async function loadPptxGenJS() {
   const mod = await import("pptxgenjs");
@@ -196,13 +195,16 @@ export async function generateExecutiveBoardPptx(executive, meta) {
 export async function generateAllExecutiveFormatsV24(executive, meta) {
   const { generateExecutiveHtmlReport, generateExecutiveTextReport } = await import("./report-html-v22.js");
   const { generateExecutivePdfReport, generateExecutiveDocxReport } = await import("./report-export-v22.js");
-  const [html, text, pdf, docx, pptxStandard, pptxBoard] = await Promise.all([
+  // Only the board deck is ever delivered (pptxBoard always wins over pptxStandard
+  // below), so generating the standard deck was pure wasted work on every paid
+  // order — a full extra PPTX render, on a serverless function with no extended
+  // timeout. Removed to cut total generation time and reduce timeout risk.
+  const [html, text, pdf, docx, pptxBoard] = await Promise.all([
     Promise.resolve(generateExecutiveHtmlReport(executive, meta)),
     Promise.resolve(generateExecutiveTextReport(executive, meta)),
     generateExecutivePdfReport(executive, meta),
     generateExecutiveDocxReport(executive, meta),
-    generateExecutivePptxReport(executive, meta),
     generateExecutiveBoardPptx(executive, meta),
   ]);
-  return { html, text, pdf, docx, pptx: pptxBoard || pptxStandard, pptxStandard, pptxBoard };
+  return { html, text, pdf, docx, pptx: pptxBoard };
 }

@@ -1586,10 +1586,14 @@ summary:focus-visible {
 .sample-download-callout .sample-downloads { margin: 0.75rem 0 0; }
 
 .sample-downloads {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.5rem;
   margin: 1rem 0 1.5rem;
+}
+.sample-downloads > a {
+  width: 100%;
+  text-align: center;
 }
 .field-requirements-grid {
   display: grid;
@@ -1648,7 +1652,37 @@ summary:focus-visible {
 .order-summary-table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; }
 .order-summary-table th, .order-summary-table td { padding: 0.5rem 0; text-align: left; border-bottom: 1px solid #e2e8f0; }
 .order-total-row td, .order-total-row th { border-bottom: none; font-size: 1.1rem; }
-.order-confirm-label { display: flex; gap: 0.5rem; align-items: flex-start; margin: 1rem 0; }
+.order-confirm-label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #93c5fd;
+  border-radius: 10px;
+  background: #eff6ff;
+  font-weight: 600;
+  color: #1e3a5f;
+}
+.order-confirm-label input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+  accent-color: #2563eb;
+}
+.order-confirm-label.sx-confirm-highlight {
+  border-color: #dc2626;
+  background: #fef2f2;
+  animation: sx-confirm-pulse 1.4s ease-in-out 2;
+}
+@keyframes sx-confirm-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+  50% { box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .order-confirm-label.sx-confirm-highlight { animation: none; }
+}
 .currency-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
 .currency-row select { padding: 0.5rem; border-radius: 8px; border: 1px solid #dbe5f0; }
 
