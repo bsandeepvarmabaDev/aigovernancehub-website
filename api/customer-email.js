@@ -1,5 +1,5 @@
 // AI Governance Hub API — magic link + report recovery (v25.23 Hobby bundle)
-import { getEmailIndexSecret, isNonEmptyString } from "./_lib/tokens.js";
+import { getEmailIndexSecret, isNonEmptyString, createRecoveryToken, getDownloadSigningSecret } from "./_lib/tokens.js";
 import {
   assertStorageConfigured,
   listReportIdsForEmail,
@@ -119,6 +119,7 @@ async function handleRecoverReports(req, res, correlationId) {
   let readyReportCount = 0;
   let processingReportCount = 0;
   let failedReportCount = 0;
+  let latestReadyReport = null;
 
   for (const orderId of orderIds) {
     const report = await loadReportRecord(orderId);
@@ -134,6 +135,9 @@ async function handleRecoverReports(req, res, correlationId) {
     activeReportCount += 1;
     if (report.reportStatus === REPORT_STATE.READY) {
       readyReportCount += 1;
+      if (!latestReadyReport || new Date(report.createdAt) > new Date(latestReadyReport.createdAt)) {
+        latestReadyReport = { orderId, ...report };
+      }
     } else if (report.reportStatus === REPORT_STATE.FAILED) {
       failedReportCount += 1;
     } else {
@@ -153,10 +157,27 @@ async function handleRecoverReports(req, res, correlationId) {
   const generationFailed = failedReportCount > 0;
 
   const emailConfigured = isEmailConfigured();
+  // Route straight to the actual download page (with a 90-day recovery token
+  // baked into the URL) when a ready report exists, instead of always sending
+  // people to bare dashboard.html. Dashboard.html only works if its own
+  // separate cookie-based auth session is valid AND its client JS tab
+  // navigation works — an extra fragile hop when the customer just wants
+  // their files. The magic-link click itself still only has a 15-minute
+  // window, but the destination URL it lands on is then good for 90 days.
+  const redirectPath = latestReadyReport
+    ? `/starter-success.html?confirmation=${encodeURIComponent(
+        createRecoveryToken(
+          latestReadyReport.orderId,
+          latestReadyReport.paymentId,
+          email,
+          getDownloadSigningSecret()
+        )
+      )}`
+    : "/dashboard.html";
   if (paymentReceived && emailConfigured) {
     try {
       const { token } = await createMagicLinkRecord(email);
-      const magicUrl = `${getSiteUrl()}/login.html?token=${encodeURIComponent(token)}&redirect=${encodeURIComponent("/dashboard.html")}`;
+      const magicUrl = `${getSiteUrl()}/login.html?token=${encodeURIComponent(token)}&redirect=${encodeURIComponent(redirectPath)}`;
       const emailResult = await sendMagicLinkEmail(email, magicUrl);
       if (!emailResult.sent) {
         return sendJson(res, 200, {
