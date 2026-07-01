@@ -564,11 +564,19 @@ export async function fulfillFromWebhookPayment({
     return { fulfilled: false, reason: "session_not_found" };
   }
 
+  // Prefer the email the customer typed on our own checkout form (persisted at
+  // create-order time) over Razorpay's payment-entity email — the two can
+  // differ (e.g. UPI apps often submit no email or one tied to the payer's
+  // bank/UPI account rather than what they told us), and using the wrong one
+  // here means "Recover My Report" can never find this order by the address
+  // the customer actually remembers using.
   const email =
     existingReport?.buyerEmail ||
+    session.pendingCheckout?.buyerEmail ||
     (typeof paymentEntity?.email === "string" ? normalizeEmail(paymentEntity.email) : null);
   const name =
     existingReport?.buyerName ||
+    session.pendingCheckout?.buyerName ||
     (typeof paymentEntity?.notes?.name === "string" ? paymentEntity.notes.name : "Customer");
 
   if (!email) {

@@ -671,15 +671,17 @@
     return "";
   }
 
-  async function createOrder() {
+  async function createOrder(session, details) {
     var response = await fetch(CREATE_ORDER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        sessionId: uploadSession.sessionId,
-        sessionToken: uploadSession.sessionToken,
+        sessionId: session.sessionId,
+        sessionToken: session.sessionToken,
         currency: selectedCurrency,
         orderConfirmed: true,
+        name: details.name,
+        email: details.email,
       }),
     });
     var data = await response.json().catch(function () {
@@ -689,15 +691,15 @@
     return data;
   }
 
-  async function verifyPayment(paymentResponse, details) {
+  async function verifyPayment(paymentResponse, details, session) {
     var payload = {
       razorpay_order_id: paymentResponse.razorpay_order_id,
       razorpay_payment_id: paymentResponse.razorpay_payment_id,
       razorpay_signature: paymentResponse.razorpay_signature,
       name: details.name,
       email: details.email,
-      sessionId: uploadSession.sessionId,
-      sessionToken: uploadSession.sessionToken,
+      sessionId: session.sessionId,
+      sessionToken: session.sessionToken,
     };
     if (details.company) payload.company = details.company;
     var response = await fetch(VERIFY_PAYMENT_URL, {
@@ -790,9 +792,17 @@
       return;
     }
 
+    // Captured once per checkout attempt: uploadSession is a shared mutable
+    // variable that can be reassigned (e.g. re-uploading a file) while the
+    // Razorpay modal is open. Reading it fresh inside the handler below —
+    // which fires whenever the user completes payment — sent the WRONG
+    // session to verify-payment in production, orphaning a successful
+    // payment (session never had this order in pendingCheckout).
+    var checkoutSession = uploadSession;
+
     var order;
     try {
-      order = await createOrder();
+      order = await createOrder(checkoutSession, details);
       track("checkout_started");
     } catch (error) {
       showSafeError(error.message);
@@ -809,7 +819,7 @@
       prefill: { name: details.name, email: details.email },
       handler: function (paymentResponse) {
         track("payment_submitted");
-        verifyPayment(paymentResponse, details)
+        verifyPayment(paymentResponse, details, checkoutSession)
           .then(function (result) {
             window.location.href =
               SUCCESS_URL + "?confirmation=" + encodeURIComponent(result.confirmationToken);

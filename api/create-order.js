@@ -59,6 +59,8 @@ export default async function handler(req, res) {
   const sessionToken = typeof body.sessionToken === "string" ? body.sessionToken : "";
   const currency = typeof body.currency === "string" ? body.currency.toUpperCase() : detectCurrency(req);
   const confirmed = body.orderConfirmed === true;
+  const buyerName = typeof body.name === "string" ? body.name.trim().slice(0, 200) : "";
+  const buyerEmail = typeof body.email === "string" ? body.email.trim().slice(0, 200) : "";
 
   if (!sessionId || !sessionToken) {
     return sendError(res, 400, "Upload and preview are required before checkout.");
@@ -122,6 +124,8 @@ export default async function handler(req, res) {
         paymentState: PAYMENT_STATE.PENDING,
         createdAt: checkoutCreatedAt,
         expiresAt: getPendingCheckoutExpiresAt(new Date(checkoutCreatedAt)),
+        buyerName: buyerName || null,
+        buyerEmail: buyerEmail || null,
       },
     });
 
